@@ -1,120 +1,167 @@
-# Validation plan
+# 요구사항 및 시험 명세 v1.0
 
-Status: **PROPOSED / NOT_EXECUTED**
+작성일: 2026-10-16
 
-All requirements and numerical thresholds below are pending definition. No response time, safe-stop threshold or production safety claim is approved by this document.
+상태: **IMPLEMENTATION_BASELINE / NOT_EXECUTED**
 
-## Research question
+설계 기준은 [RESEARCH_BASELINE.md](RESEARCH_BASELINE.md)다. 제출한 작성계획서는 수정하지 않는다. 결과란은 실행 후에만 채운다. 기대 동작은 실측 결과가 아니다.
 
-In a low-speed stop-request demonstrator, can receive-timeout monitoring distinguish normal input from missing distance messages? What happens if frames keep arriving but the distance information's sequence does not advance? How does adding a sequence/freshness check change the observed response?
+## 1. 요구사항
 
-This compares explicitly defined software behaviors under controlled application-level message faults. It is not a claim to diagnose an actual physical sensor failure.
+| ID | 요구사항 | 독립 확인 근거 |
+| --- | --- | --- |
+| R-01 | 정상 원거리 입력이 갱신되면 본시험 구간에 정지 요청을 내지 않는다. | CAN observer의 입력과 요청 |
+| R-02 | 유효 거리 <= 200 cm이면 W-NEAR 기한 안에 정지 요청이 관찰돼야 한다. | 최초 근거리 송신과 요청 |
+| R-03 | 거리 메시지가 중단되면 W-FAULT 기한 안에 요청해야 한다. 다른 ID로 만료를 연장하면 안 된다. | 마지막 신규 거리, 배경 심박과 요청 |
+| R-04 | 동일 순번의 과거 프레임이 반복돼도 W-FAULT 기한 안에 요청해야 한다. | 동결한 payload, 반복 수신과 요청 |
+| R-05 | 동일 거리의 정상 순번 증가와 255->0 회전을 이상으로 오판하지 않는다. | 정상 원거리와 순번 전이 |
+| R-06 | adapter는 요청 수신 후 50 ms 안에 CARLA 제동 제어 호출을 완료한다. | adapter 수신과 호출 완료 시각 |
+| R-07 | 최초 제동 적용 frame부터 2.0 s의 시뮬레이션 시간 안에 평면 속도 <= 0.1 m/s인 구간을 연속 0.5 s 이상 확보한다. | CARLA frame, 적용 제어와 실제 속도 |
+| R-08 | 한 번 정지하면 입력이 복원돼도 run 종료까지 요청과 제동을 유지한다. | 복원 후 요청과 차량 제어 |
+| R-09 | 입력, 요청 관찰, adapter 수신과 호출, 차량 속도를 별개의 증거로 남긴다. | 요구사항별 증거 경로 |
 
-## Requirements draft
+R-04는 A가 설계상 충족하지 못할 수 있는 공통 목표다. 시험 정상 실행과 요구사항 충족은 별개다. 차량이 멈췄다는 사실만으로 상류의 요청 요구사항을 PASS 처리하지 않는다.
 
-| Draft ID | Requirement intent | Needed evidence | Values/policy |
-| --- | --- | --- | --- |
-| R-NORMAL-01 | Do not request stop when input is healthy and no stop condition exists | Normal input, SUT output and sink log | TBD |
-| R-NORMAL-02 | Generate stop request when valid input satisfies the defined distance condition | Distance history and request timestamp | TBD |
-| R-MISSING-01 | Perform the defined response after target distance updates cease | Last accepted input, injection boundary and request time | Timeout and permitted delay TBD |
-| R-REPEAT-01 | Do not count identical sequence repetitions as new distance updates | Payload/counter history and accepted-update log | Counter width and rules TBD |
-| R-DELIVERY-01 | Demonstrate request reception and application separately | Sent request ID, sink receive/apply record | Application response contract TBD |
-| R-RECOVERY-01 | Respond to restored fresh input according to an explicit policy | Restore event and state transition history | Policy TBD |
-| R-MOTION-01 | If vehicle motion is claimed, confirm it using simulator state | CARLA velocity and control/frame history | Speed criterion and observation window TBD |
+## 2. 공통 실행 조건
 
-These are draft requirement intents, not final acceptance criteria. The user and advisor must review the scope and relevant decisions.
+1. run_id, 방식, 입력 fixture 해시, commit과 설정 해시를 미리 지정한다.
+2. 이전 run의 프로세스, 큐와 차량 상태를 초기화한다. 다른 프로젝트의 인터페이스나 파일을 삭제하지 않는다.
+3. 올바른 token의 정상 입력 5개 이상과 ready를 확인하고 명시적으로 arm한다.
+4. 실제 속도 5.0 +/- 0.5 km/h를 1.0 s 이상 유지한다.
+5. 안정화 후 다음 정상 counter=0 프레임의 송신 시작을 t0로 삼는다. 준비 중에도 송수신과 감시는 계속하며 counter를 임의로 되돌리지 않는다.
+6. 이후 n=0~399 슬롯을 명목 t0+0.05*n s에 실행한다. counter는 n mod 256이다. 실제 송신 시작과 성공을 따로 기록하고 지연된 과거 슬롯을 몰아서 송신하지 않는다.
+7. 입력 구간은 20 s다. 지연 때문에 이미 관찰한 요청의 차량 판정 창이 끝나지 않으면 입력 종료 뒤 그 창까지만 관찰을 연장한다. 종료 뒤의 새 타임아웃은 본시험의 신규 사건으로 계산하지 않는다.
+8. 모든 원시 로그를 보존한다. 종료 후 시험용 정지 명령은 본시험 결과에서 제외한다.
 
-## Controlled comparison
+## 3. 본시험 시나리오
 
-Candidate A: target-message receive-timeout monitoring.
+### T-01 정상 원거리
 
-Candidate B: the same timeout monitoring plus a defined sequence-progress check.
+- 400개 슬롯에서 distance_cm=1000, valid=1, counter=n mod 256.
+- 거리 값이 같아도 순번은 전진하고 정상 회전도 포함된다.
+- 배경 심박과 정상 요청 상태 프레임을 계속 보낸다.
+- 기대: A/B 모두 정지 요청 없음. R-01, R-05, R-09 확인.
 
-Use identical scenario inputs and the same predefined oracle. Change only the monitoring behavior being compared. Hold the message contract and other operating conditions constant where applicable.
+### T-02 정상 근거리 진입
 
-Do not repair Candidate A after seeing the result merely to make the demonstration pass. It is legitimate for the simpler design to fail a requirement it cannot observe, provided the scope and interpretation are stated.
+- n=0~99: distance_cm=1000.
+- n=100~399: distance_cm=max(50, 1000-5*(n-100)).
+- 순번과 valid는 정상이다. 명목 n=260, t=13.0 s에서 처음 200 cm가 된다.
+- 실제 판정은 명목 13.0 s가 아니라 해당 프레임의 실제 송신 경계를 사용한다.
+- 기대: A/B 모두 W-NEAR 안에 요청하고 제동 및 정지. R-02, R-06~R-09 확인.
+- 이 곡선은 수치 입력이며 CARLA의 실제 장애물 거리 곡선이 아니다.
 
-An alive counter can show transmission progress. It does not independently prove fresh physical sensing unless the sender's sampling behavior or measurement timestamp is also defined.
+### T-03 거리 메시지 중단
 
-## Core cases
+- 송신되는 거리는 모두 1000 cm다.
+- n=100~159, 명목 t=5.0~8.0 s의 0x100 송신만 생략한다.
+- n=99가 중단 전 마지막 신규 프레임이다. 0x101과 0x200은 계속된다.
+- n=160부터 정상 순번으로 거리 송신을 복원한다.
+- 기대: A/B 모두 W-FAULT 안에 요청하고 정지하며 복원 뒤에도 잠금 유지. R-03, R-06~R-09 확인.
 
-### T-NORMAL-FAR: Negative control
+### T-04 과거 프레임 반복
 
-Distance messages and their counter advance normally; the stop condition is absent.
+- 거리는 전체 1000 cm다.
+- n=100~159에서 n=99의 0x100 payload 8바이트 전체를 50 ms마다 반복한다. counter와 valid, token도 바꾸지 않는다.
+- 배경 순번은 계속 증가한다. 거리 프레임 자체는 도착하므로 중단과 구분된다.
+- n=160부터 정상 순번을 복원한다. B의 마지막 인정값 99에서 160으로 가면 delta=61이다.
+- 공통 목표: W-FAULT 안에 요청하고 정지 및 잠금 유지. R-04, R-06~R-09 확인.
+- 설계상 예상: A는 반복 도착을 정상 수신으로 세어 R-04 미충족 가능성이 있고, B는 신규 순번의 중단을 감시한다. 이는 실측 결과가 아니다.
 
-Check that the controller does not make an unnecessary stop request. A controller that always stops cannot pass solely because fault cases lead to stopping.
+## 4. 시간 경계와 독립 판정
 
-### T-NORMAL-NEAR: Normal obstacle approach
+### 관찰 시각
 
-Healthy distance data crosses the defined stop condition.
+소프트웨어 시각은 같은 호스트의 monotonic_ns다.
 
-Check request occurrence and downstream application. If claiming actual vehicle stop, check the simulator's actual state, not only a brake command.
+- s_begin: 해당 입력 프레임 송신 호출 직전.
+- s_done: 해당 호출의 성공 반환 직후.
+- q_obs: 별도 CAN observer에서 최초 유효 stop=1을 읽은 시각.
+- a_rx: adapter가 그 요청을 읽은 시각.
+- a_done: adapter의 제동 제어 호출 성공 반환 시각.
+- f_apply / tau_apply: 다음 CARLA tick 이후 해당 actor의 제동 적용 상태를 확인한 최초 frame과 시뮬레이션 시각.
 
-### T-MISSING: Target input stops
+이것은 응용 프로그램의 관찰 경계이지 물리 버스 전송 시각이 아니다. observer와 adapter의 수신 순서는 스케줄링에 따라 달라질 수 있으므로 a_rx-q_obs를 물리 전달 지연으로 해석하지 않는다.
 
-Stop the target distance publisher while any other required normal messages remain present.
+### W-NEAR
 
-Check the target-message deadline and response. A bus-wide receive timeout can be masked by unrelated frames and is not automatically equivalent to target-message monitoring.
+최초 distance_cm<=200 유효 프레임의 송신 구간을 쓴다.
 
-### T-REPEAT: Same old frame continues
+- 그 프레임의 s_begin 전에 정지 요청이 있으면 조기 또는 불필요 요청으로 FAIL.
+- q_obs <= s_done+100 ms여야 한다. 미관찰 또는 상한 초과는 FAIL.
+- SUT 내부 생성 로그는 진단 보조다. 주 지표는 독립 vCAN observer에서 관찰한 요청이다.
 
-Freeze the target payload and counter at a previously valid value while frames continue arriving.
+### W-FAULT
 
-Check whether each design distinguishes frame arrival from new information. Sending a constant distance while incrementing the counter is not this fault.
+T-03/T-04 모두 n=99의 마지막 신규 프레임을 기준으로 한다.
 
-## Boundary and robustness cases to consider
+- 구현 만료 조건은 마지막 유효 수신 또는 마지막 인정 순번 갱신 이후 age>=200 ms다.
+- 독립 판정은 q_obs >= s_begin+200 ms 및 q_obs <= s_done+300 ms를 요구한다.
+- fault 시작+200 ms로 계산하지 않는다. 마지막 프레임은 명목 4.95 s이므로 만료는 대략 5.15 s이며, 실제 판정에는 실제 송신 시각을 쓴다.
+- 임의의 +/-20 ms를 관찰 오차로 두지 않는다. 실제 송신 호출 경계와 명시적인 종단 허용 시간을 사용한다.
+- 너무 이른 요청, 늦은 요청, 미요청을 각각 분류한다. 결과를 맞추려고 기준을 SUT 내부 시각으로 바꾸지 않는다.
 
-- Constant distance with increasing counter should not be classified as repetition solely because distance is unchanged.
-- Counter rollover should follow the documented wrap rule.
-- Normal arrival variation should be characterized before selecting a timeout margin.
-- Unsupported IDs and malformed payloads should not crash the receiver.
-- Restored information must follow a stated recovery/re-enable policy.
-- No-target state must be distinct from missing communication.
+### 제어 호출과 차량 정지
 
-Do not expand the thesis to every candidate case before the feasibility gates and core comparison work.
+- R-06: a_done-a_rx <= 50 ms.
+- 제어 호출은 다음 tick의 적용 요청이다. 호출 완료만으로 적용됐다고 단정하지 않는다.
+- 최초 적용 확인 frame부터 [tau_apply, tau_apply+2.0 s] 안에서 속도 조건을 연속 0.5 s 이상 만족해야 한다.
+- 0.05 s 간격에서는 최초와 최후 표본의 시각 차이가 0.5 s 이상이어야 하므로 통상 최소 11개 연속 표본이 필요하다.
+- 호스트 시간과 CARLA 시간을 빼서 전체 지연을 만들지 않는다. 요청 관찰 시간, adapter 처리 시간, 차량 정지 시뮬레이션 시간을 각각 보고한다.
+- 요청이 없어 적용 시작 frame이 없으면 운동 지표 계산 불가와 상류 실패 이유를 기록한다. 해당 시나리오 전체를 PASS로 처리하지 않는다.
 
-## Independent oracle
+## 5. 결과 분류와 반복 집계
 
-The test runner/logger must record observable events and compare them to requirements. Do not use only the SUT's internal PASS label or state variable as the expected result.
+요구사항마다 PASS, FAIL, N/A, INCONCLUSIVE와 증거를 기록한다. 전체 실행 상태는 별도로 분류한다.
 
-Useful evidence fields:
+- COMPLETE: 입력과 기록이 확보돼 판정 가능. 요구사항 FAIL이 있어도 COMPLETE일 수 있다.
+- SUT_ERROR: 제어기 또는 adapter의 예외, 중단과 잘못된 출력. 관련 요구사항 실패로 기록.
+- ENV_ERROR: 접속 또는 spawn 실패, 준비 속도 미충족 등으로 전제를 만들지 못함.
+- EVIDENCE_ERROR: 독립 로그나 시간 기준 누락으로 일부 판정 불가. 이미 증명된 FAIL은 유지.
+- INPUT_ERROR: 시험기가 지정한 프레임이나 이상 구간을 잘못 생성. 해당 결과를 SUT 성능으로 해석하지 않음.
 
-- Run ID, case ID, implementation variant and configuration hash
-- Target CAN ID, DLC, payload, decoded distance/status/counter
-- Host monotonic send and receive times where observed
-- Accepted fresh-input time and reason for rejection
-- Fault injection begin/end events
-- Stop request ID/reason and send time
-- Sink receive and apply times
-- Application response, clearly distinguished from CAN ACK
-- CARLA actor ID, frame, simulation elapsed time and actual velocity
-- PASS/FAIL with violated requirement and supporting evidence paths
+요청 누락, 늦은 요청, 제어 호출 지연, 호스트 스케줄링에 따른 기한 초과를 ENV_ERROR로 바꿔 제외하지 않는다. CARLA가 느려져 충분한 표본을 얻지 못하면 운동 판정만 INCONCLUSIVE로 남기고, 가능한 메시지 수준 판정은 유지한다.
 
-Exact fields and formats should be finalized during implementation.
+80개 run ID를 사전 배정한다. 셀별 10회는 10번의 원래 시도이며 10개 PASS가 나올 때까지 반복한다는 뜻이 아니다. 실패와 환경 오류도 원래 표에 남긴다. 추가 실행은 새 ID, 원본 ID 및 이유를 남기고 80회와 별도 집계한다.
 
-## Time model
+홀수 반복은 A->B, 짝수는 B->A 순서다. 같은 쌍의 입력, 주기, fault 슬롯, 차량과 초기 속도 기준은 같다. token과 actor ID 같은 실행 식별값 차이는 기록한다. 10회 반복으로 실차 고장 확률이나 전체 안전성을 추정하지 않는다.
 
-Initial reference bridges use host monotonic time for watchdogs. This is a starting reference, not a finalized thesis clock strategy.
+## 6. 체크시트
 
-If synchronous CARLA is used, document who owns world.tick and how host-time CAN events relate to simulation frames. Do not subtract timestamps from different time bases or assume a 50 ms simulation step implies 50 ms of real time.
+| 항목 | 기록 내용 |
+| --- | --- |
+| 식별 | run_id, paired_run_id, run_token, T-01~04, A/B, 반복 번호 |
+| 재현 | commit, 기준선, config/fixture/DBC hash, 서버/client 버전 |
+| 준비 | vcan0, ready, 정상 입력 5개, arm, 속도와 안정화 |
+| 입력 | ID/DLC/raw bytes, 실제 송신 시각, fault 구간, 복원, 배경 심박 |
+| 독립 관찰 | 0x100/101/200 수신 시각과 payload |
+| SUT 진단 | 인정 counter, last_valid_rx, last_progress_rx, 원인과 생성 시각 |
+| adapter | 요청 수신, 호출 완료, 예외, actor ID |
+| 차량 | frame, simulation time, host monotonic, velocity, throttle, brake |
+| 판정 | 요구사항별 결과, 지표, 위반 이유와 증거 경로 |
+| 종료 | 정상/예외, 로그 완전성, 추가 실행 관계 |
 
-Characterize simulator/host stalls and scheduling effects before interpreting response times. A rendering stall is not automatically a sensor-communication fault.
+## 7. 결과 파일과 분석 산출물
 
-## Metrics and reporting candidates
+구현 시 runs/<run_id>/에 metadata.json, input_events.jsonl, can_observer.jsonl, sut_events.jsonl, adapter_events.jsonl, vehicle_states.jsonl, verdict.json을 저장한다. CARLA 없는 예비 시험에서 vehicle_states를 생성한 척하지 않고 미수행을 metadata에 기록한다.
 
-- Requirement pass/fail counts by case and implementation
-- Request response latency on a consistently defined clock
-- Unnecessary stop requests in normal conditions
-- Missed or late requests
-- Request delivery and sink application evidence
-- Vehicle speed evolution if the physical simulation is included
+분석 산출물:
 
-Trial counts, aggregation and timing tolerances are TBD. No measured results exist yet.
+1. 요구사항-시나리오-증거 경로 추적표.
+2. 4개 시나리오 x 2개 방식별 원래 시도, 실행 상태와 요구사항별 판정 수.
+3. 요청 관찰 지연과 adapter 처리 시간의 개별값, 중앙값, 최댓값. 미검출과 결측은 따로 표시.
+4. 거리, counter, target 수신, 요청과 fault 구간의 호스트 시간 그래프.
+5. CARLA 시뮬레이션 시간의 속도와 제동 그래프. 호스트 그래프와 같은 시간축으로 합치지 않음.
+6. 방식별 충족 및 미충족 요구사항, 실패와 한계의 요약표.
 
-## Interpretation limits
+## 8. 본시험 전 점검
 
-vCAN verifies application-level message transport and software response. It does not reproduce physical arbitration timing, controller hardware faults, electrical noise or bus-off.
+- 고정 바이트 예시로 pack/unpack을 교차 검증한다.
+- 순번 반복, 전진, 255->0, 거절 순번의 기준값 유지 등을 단위 점검한다.
+- fake clock으로 199 ms와 200 ms 경계를 확인하되 실제 시간 성능 시험으로 보고하지 않는다.
+- 배경 심박이 대상 watchdog을 갱신하지 않는지 점검한다.
+- INIT_INHIBITED, arm, 정지 잠금과 새 run 초기화를 점검한다.
+- CARLA 없는 독립 vCAN에서 4개 x 2개 방식의 예비 시험을 적어도 1회씩 실행한다. 본시험 80회와 별도다.
+- CARLA 단독 주행과 제동, 다음 tick 적용과 속도 관찰을 먼저 확인한다.
 
-A received application response does not prove real ECU execution. CARLA braking behavior does not prove production vehicle braking performance.
-
-The conclusion should identify which requirements were satisfied, where the simpler monitor was insufficient, and what remains outside the test model.
+충족하지 못하면 오류를 수정하거나 기준선 개정 결정을 남긴다. 최종 비교 결과를 확인한 뒤 합격 기준을 조정하지 않는다.

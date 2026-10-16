@@ -8,6 +8,8 @@ The project should be small, reproducible and grounded in actual implementations
 
 The Windows-side investigation confirmed public CARLA/vCAN bridge source code and component tests. It did not run them on this laptop. Environment verification must precede a full thesis implementation.
 
+On 2026-10-16 the user asked to finalize implementation documents without changing the submitted proposal. Read RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md as v1.0. Their design values are fixed for implementation, not proven runtime performance. Do not introduce new tests, automatic restart or actual sensor modeling without a versioned decision.
+
 ## Start here on Ubuntu
 
 Clone this repository into a dedicated Linux project directory, not inside the company's DMS repository. For a public repository:
@@ -24,7 +26,7 @@ A Windows chat ID alone is not the handoff mechanism for this repository. The of
 
 ## First message to Linux Codex
 
-> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/VALIDATION_PLAN.md, docs/SOURCE_AUDIT.md를 모두 읽고 현재 상태를 요약해줘. 이 프로젝트는 학부 졸업논문을 위한 CAN 메시지 이상 대응 검증이고 아직 구현이나 Linux 실행 검증을 하지 않았어. 오늘은 G0 환경 확인부터 시작해서 독립 vCAN 송수신과 CARLA 단독 실행을 재현하는 최소 절차를 잡아줘. 전체 논문 시스템은 한 번에 구현하지 말고, 실제 실행한 명령과 결과를 STATUS와 WORKLOG에 기록해줘. 큰 다운로드나 시스템 변경 전에는 무엇을 하는지 설명해줘.
+> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/RESEARCH_BASELINE.md, docs/VALIDATION_PLAN.md, docs/SOURCE_AUDIT.md를 모두 읽고 현재 상태를 요약해줘. 제출한 계획서는 수정하지 않고 구현용 v1.0 문서를 기준으로 진행해. 이 프로젝트는 아직 구현이나 Linux 실행 검증을 하지 않았어. 오늘은 G0 환경 확인부터 시작해서 독립 vCAN 송수신과 CARLA 단독 실행을 재현하는 최소 절차를 잡아줘. 전체 시스템을 한 번에 구현하지 말고, 실제 실행한 명령과 결과를 STATUS와 WORKLOG에 기록해줘. 큰 다운로드나 시스템 변경 전에는 무엇을 하는지 설명해줘.
 
 ## G0: Read-only environment inspection
 
@@ -92,18 +94,18 @@ The existing Yes, CARLA CAN startup includes extra interfaces and cybersecurity 
 
 Before implementing the full matrix:
 
-- Define the minimum distance-message and stop-request contract as a documented proposal.
+- Implement the minimum v1.0 distance-message and stop-request contract from RESEARCH_BASELINE.md.
 - Establish periodic normal input and verify the negative control.
 - Interrupt only the target distance message.
 - Observe SUT decision, CAN request reception, sink application and actual vehicle state separately.
 - Record independent evidence.
-- Do not silently invent a production safety requirement or select final timing limits.
+- Follow the v1.0 research-only timing limits. Do not represent them as production safety requirements or silently relax them after seeing results.
 
-This is an integration feasibility test. The final requirement values and all comparison trials remain separate work.
+This is an integration feasibility test against the fixed design. It is not execution of the eighty main comparison runs.
 
 ## Timing and rendering cautions
 
-CARLA simulation time and host monotonic time are different clocks. A fixed simulation step does not automatically align wall-clock CAN sending or watchdog deadlines. Choose a timing strategy explicitly and log both clocks with frame IDs.
+CARLA simulation time and host monotonic time are different clocks. v1.0 uses host monotonic time for message and request timing and CARLA simulation time for the vehicle-stop window. A fixed simulation step does not align wall-clock deadlines automatically. Log both clocks with frame IDs and retain scheduling overruns.
 
 Only one process should drive synchronous world ticks. Detect/record simulator stalls so normal slowdown is not mislabeled as an intended message fault.
 
