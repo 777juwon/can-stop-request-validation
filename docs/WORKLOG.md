@@ -347,3 +347,12 @@ bash tools/run_self_checks.sh g3-can
 - 최종 검사 종료코드 0: 단위 검사 80개, pip check, 셸 문법과 Git 공백 검사 통과. 문서 18개/로컬 링크 130개 유효, 고정 연구 문서 무변경. 결과와 source SHA를 위 checks.json에 보존했다. 사용자 검토와 사용자 재실행 완료는 아직 기록하지 않았다.
 - 이번 구현과 안내는 검증 후 별도 로컬 커밋으로 저장한다. 이번 단계의 원격 push는 수행하지 않으며 저장 상태는 git log/status로 확인한다.
 - 다음 작업은 CAN 수신 루프, 이번 core와 G2 제동 함수를 단일 실행기에 연결하는 것이다. 준비와 arm 경계, 실제 적용 frame/속도, 파일 로그와 자원 정리를 확인해야 한다. 전체 G3/G4는 NOT_RUN이며 본시험은 0/80회다.
+
+## 2026-10-31: 사용자 adapter 예제 실행 출력 검토
+
+- 사용자가 직접 실행한 터미널 출력을 제공하고 정상 여부 확인을 요청했다. 제공된 출력 기준으로 판정했으며 같은 실행을 agent가 직접 관측했다고 주장하지 않는다.
+- `bash tools/run_self_checks.sh`에는 check 인자가 없어 도움말만 표시됐다. 사용자 단위 검사 80개 완료로 기록하지 않았다. 다음 실행 명령은 `bash tools/run_self_checks.sh check`다.
+- `.venv/bin/python -I tools/g3_adapter_core.py --dem`의 예제 출력은 기대 동작과 일치했다. 정상 입력은 KEEP_EXISTING_CONTROL, 정지 이후와 후속 정상 입력은 APPLY_FULL_BRAKE였다. stop_latched는 false/true/true, 최초 reason=1 유지, 가짜 콜백 2회였다. 정식 재현 옵션은 --demo로 안내한다.
+- actual_can=false, carla_executed=false를 유지했다. 예제의 call_within_50ms를 실제 R-06 또는 차량 제동 성능으로 해석하지 않았다. 사용자 종료코드와 소스 해시, 소스 검토 완료는 제공되지 않아 추정하지 않았다.
+- 사용자 출력의 의미 요약을 evidence/g3/adapter-core-20261031-01/user_demo_review.json에 저장했다. 전체 대화와 셸 프롬프트는 복사하지 않았다. STATUS/G3_ADAPTER_STEP/LINUX_HANDOFF의 사용자 실행 상태를 갱신했다.
+- 제품 코드 변경은 없다. 문서 링크 132개, JSON 구문과 Git 공백 검사를 확인했다. 단위 검사는 재실행하지 않았다. 전체 G3와 실제 차량 연결은 여전히 미실행이다.

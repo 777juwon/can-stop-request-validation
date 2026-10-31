@@ -18,7 +18,7 @@ On 2026-10-19 the original Linux checkout was fast-forwarded to published v1.0. 
 
 전체 중간점검은 [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에서 확인한다. 설치 및 부분 연결 검증의 완료와 핵심 SUT/본시험/집필의 남은 범위를 구분한다.
 
-후속 구현: [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)의 adapter 핵심과 새 단위 검사 18개를 추가했다. 실제 CAN/CARLA 연결은 없으며 다음은 수신 루프와 G2 콜백을 통합하는 실행기다. Codex가 구현하고 Juwon님이 검토 및 직접 재현하기로 선택했다. 아직 사용자 검토/재실행 완료로 기록하지 않는다.
+후속 구현: [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)의 adapter 핵심과 새 단위 검사 18개를 추가했다. 실제 CAN/CARLA 연결은 없으며 다음은 수신 루프와 G2 콜백을 통합하는 실행기다. Codex가 구현하고 Juwon님이 검토 및 직접 재현하기로 선택했다. 사용자가 예제 출력을 제공했고 기대 동작과 일치했다. 소스 검토와 전체 단위 검사 완료는 아직 확인되지 않았다.
 
 ## Start here on Ubuntu
 

@@ -1,0 +1,29 @@
+{
+  "record_date": "2026-10-31",
+  "evidence_level": "USER_SUPPLIED_TERMINAL_OUTPUT",
+  "source": "사용자가 대화에 제공한 실행 출력의 의미 요약. 전체 대화나 셸 프롬프트는 저장하지 않음",
+  "commands_shown": [
+    "bash tools/run_self_checks.sh",
+    ".venv/bin/python -I tools/g3_adapter_core.py --dem"
+  ],
+  "project_check_observation": "HELP_ONLY; check 인자가 없고 단위 검사 실행 출력은 없음",
+  "demo_scope": "G3_ADAPTER_DEMO_ONLY",
+  "actual_can": false,
+  "carla_executed": false,
+  "brake_callback_count": 2,
+  "actions": [
+    "KEEP_EXISTING_CONTROL",
+    "APPLY_FULL_BRAKE",
+    "APPLY_FULL_BRAKE"
+  ],
+  "stop_latched_sequence": [false, true, true],
+  "first_reason_sequence": [null, 1, 1],
+  "output_review": "EXPECTED_DEMO_BEHAVIOR_MATCHED",
+  "user_exit_code_observed": false,
+  "user_source_hash_verified": false,
+  "human_source_code_review_confirmed": false,
+  "user_full_unit_test_run_confirmed": false,
+  "full_g3_verified": false,
+  "next_command": "bash tools/run_self_checks.sh check",
+  "recommended_demo_command": ".venv/bin/python -I tools/g3_adapter_core.py --demo"
+}
