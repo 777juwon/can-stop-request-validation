@@ -15,7 +15,7 @@ G0/G1/G2/G3 PASS, 거리 입력 A/B SUT 미구현, G4 NOT_RUN, 본시험 0/80회
 
 Codex가 구현 및 실제 실행했다. 사용자가 제공한 과거 80개 검사 OK와 가짜 콜백 예제는 확인됐지만, 사용자의 새 통합 코드 검토와 직접 G3 재현은 아직 기록이 없다. 다음은 이 검토/재현 후 G4용 최소 거리 판단 제어기와 기동/arm 전이를 단계적으로 구현하는 것이다. 이번 G3의 준비 후 arm은 전체 SUT 기동 상태 기계의 검증이 아니다. 서버 종료 crash는 세 번째 관측이며 장시간 무인 시험 전 별도 점검한다. 새 의존성, 수치 변경이나 G4/본시험 추가 실행은 하지 않았다.
 
-중단 후 재개할 때는 Git status, vcan0 UP 여부와 포트 2000/2001을 다시 확인한다. 실행은 `.venv/bin/python -I` 및 기존 진입점을 사용한다. 이번 작업의 push는 하지 않는다. 로컬 커밋 상태는 `git log`와 `git status`로 확인한다.
+중단 후 재개할 때는 Git status, vcan0 UP 여부와 포트 2000/2001을 다시 확인한다. 실행은 `.venv/bin/python -I` 및 기존 진입점을 사용한다. 사용자 요청으로 G3 완료 commit `4815250`까지 GitHub main에 push했고 직접 원격 SHA도 확인했다. 게시 결과와 이 재개 안내는 별도 문서 커밋으로 공유한다. 사용자는 G4를 다음날 이어가기로 했으며 이번에는 시작하지 않는다. 현재 Git 상태는 `git log`와 `git status`로 확인한다.
 
 ## What the previous conversation established
 

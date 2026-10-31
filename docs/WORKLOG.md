@@ -380,3 +380,12 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 이번 범위는 G3 첫 실제 통합까지다. 새 설치/의존성 변경, 연구 수치 변경, 거리 입력 A/B SUT나 G4, 예비/본시험 구현과 실행은 하지 않았다. G4 NOT_RUN, 본시험 0/80회. Juwon님의 새 코드 검토와 직접 G3 재현은 아직 기록이 없다. 이후 최소 거리 메시지 제어기와 기동/arm 전이를 단계적으로 구현한다. 장시간 무인 시험 전에는 서버 종료 문제를 별도 점검한다.
 - 검증한 코드/문서/작은 증거를 Conventional Commit으로 로컬 저장한다. 이번 작업은 push와 브랜치 변경을 하지 않는다. 실제 커밋 결과는 git log/status로 확인한다.
 - 최종 문서 로컬 링크 159개, 변경/추가 자료 49개(점검 기록 자체를 쓰기 전 목록), JSON/JSONL 23개를 확인했다. 6개 실행 모듈은 현재/보존 소스 모두 metadata SHA와 일치했다. Git 공백, 새 파일 후행 공백, 고정 연구 문서 무변경과 credential 형태 혼입 검사를 통과했다. 점검 대상 최대 파일은 차량 원시 로그 178251바이트다. evidence_manifest.json에는 실제 실행 및 이번 마감 근거의 경로/크기/SHA를 기록한다.
+
+## 2026-11-01: 사용자 요청에 따른 G3 게시와 다음 작업 인수인계
+
+- 사용자가 G3까지 push하고 G4는 다음날 진행하도록 요청했다. 작업 시작 시 main은 origin/main보다 3개 커밋 앞이었고 작업 폴더는 깨끗했다. 대상은 cf5f98b, d295771, 4815250이며 새 G4 구현이나 실험은 추가하지 않았다.
+- README/STATUS/LINUX_HANDOFF와 기존 검사 근거를 확인했다. G3 실제 판정 PASS, 전체 검사 119개 종료코드 0 및 최종 검토 PASS를 확인했다. 코드 변경이 없는 게시 작업이므로 단위 검사와 CARLA 실행을 반복하지 않았다.
+- `git ls-remote --exit-code origin refs/heads/main`의 시작 SHA는 9109b3c1d7208f570aeb681fb62a122f1dc0d898였다. `git push origin main`은 종료코드 0, 9109b3c..4815250 main -> main으로 완료됐다. 이후 직접 원격 조회는 4815250f531bcabcb7dce1d676b4ab5a838a038d로 로컬 HEAD와 일치했고, git status는 변경 없이 main/origin/main 동기 상태였다.
+- STATUS/LINUX_HANDOFF에서 이전 작업 당시의 push 미수행 표시를 실제 게시 결과로 갱신했다. 이 기록과 다음날 재개 안내를 별도 문서 커밋으로 저장하고 같은 main에 push한다. 변경은 세 문서뿐이며 Git 공백과 문서 링크를 점검한다. 강제 push, 브랜치 변경이나 새 설치는 하지 않는다.
+- 다음 재개 범위: 현재 Git/vcan0/서버 상태 확인, 사용자 G3 검토 및 직접 재현 상태 확인, 이후 G4 최소 거리 입력 제어기와 기동/arm 전이를 작은 단계로 진행한다. G4 NOT_RUN, 본시험 0/80회와 서버 종료 Signal 11/139 미해결을 유지한다.
+- 문서 점검 결과: `git diff --check` 종료코드 0, 변경 문서 3개의 로컬 링크 39개 정상. 기능 코드와 기존 실행 증거는 변경하지 않았다.

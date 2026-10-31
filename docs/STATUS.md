@@ -96,7 +96,9 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 
 ## Next task
 
-사용자 직접 실행 안내: [SELF_CHECK.md](SELF_CHECK.md), [G3_INTEGRATION.md](G3_INTEGRATION.md), 진입점 `bash tools/run_self_checks.sh`. 실제 G3 진입점은 PASS했고 사용자 직접 재현은 대기 중이다. 전체 단위 검사 119개와 의존성/셸 문법/공백 검사가 통과했다. 이전 사용자 검사 80개와 이번 Codex 검사 119개는 별도 기록한다. [검사 근거](../evidence/g3/integration-20261101-01/gate_checks.json). 새 코드 설명과 주석은 한글로 작성한다. Git 저장 및 원격 반영은 git log/status와 실제 원격 조회로 구분한다. 이번 작업은 push하지 않는다.
+사용자 직접 실행 안내: [SELF_CHECK.md](SELF_CHECK.md), [G3_INTEGRATION.md](G3_INTEGRATION.md), 진입점 `bash tools/run_self_checks.sh`. 실제 G3 진입점은 PASS했고 사용자 직접 재현은 대기 중이다. 전체 단위 검사 119개와 의존성/셸 문법/공백 검사가 통과했다. 이전 사용자 검사 80개와 이번 Codex 검사 119개는 별도 기록한다. [검사 근거](../evidence/g3/integration-20261101-01/gate_checks.json). 새 코드 설명과 주석은 한글로 작성한다.
+
+Git 공유: 사용자 요청으로 G3 완료 commit `4815250`까지 로컬 커밋 3개를 `git push origin main`으로 게시했다. 직접 원격 조회에서도 main SHA `4815250f531bcabcb7dce1d676b4ab5a838a038d`가 일치했다. 이 게시 결과와 재개 안내는 별도 문서 커밋으로 함께 공유한다. 사용자는 G4를 다음날 이어가기로 했으며 이번 작업에서는 시작하지 않는다.
 
 다음은 사용자 검토와 G3 직접 재현, 이후 G4를 위한 최소 거리 입력 제어기와 기동/arm 전이 구현이다. 잘못된 요청의 본시험 차량 대응은 미정이며 필요한 결정을 이유와 함께 제시한다. G3의 준비 후 arm을 전체 SUT의 기동/arm 검증으로 확대하지 않는다. 전체 SUT나 80회 시험을 한 번에 구현하지 않는다. sticky_control=true 및 batch 제동 경로를 유지하고 서버 종료 문제는 장시간 무인 시험 전에 별도로 점검한다.
 
