@@ -1,0 +1,69 @@
+{
+  "observed_utc": "2026-10-31T11:46:50.277413+00:00",
+  "status": "PASS",
+  "scope": "adapter 핵심과 가짜 콜백 검사. 실제 CAN/CARLA 미실행",
+  "commands": [
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": "test_fixture_known_bytes_and_counts (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_known_classic_can_bytes (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_rejects_non_classic_length_or_id (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_output_directory_is_never_reused (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_refuses_physical_or_down_interface (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_sigterm_preserves_interrupted_verdict_and_commands (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_complete_observations_pass_only_connection_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_foreign_run_token_does_not_replace_missing_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_or_duplicate_observation_fails (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_raw_frame_disagreement_and_impossible_observation_time_fail (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_send_slot_upper_boundary_is_exclusive (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_sender_success_without_observer_cannot_pass (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_target_must_not_follow_post_stop_background (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_wrong_bytes_or_dlc_cannot_pass_on_counts_alone (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_failed_or_wrong_actor_response_is_rejected (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_settle_ackermann_then_identical_brake_is_transmitted (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_above_threshold_and_nonfinite_speed_break_hold (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_half_second_requires_eleven_samples (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_missing_frame_and_time_gap_break_continuity (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_carla_float32_step_keeps_exact_40_frame_boundary (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_command_without_applied_brake_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_exact_two_second_window_boundary_is_included (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_stop_hold_must_complete_inside_two_second_window (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_target_speed_without_observed_motion_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_valid_observed_motion_and_braking (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_post_observation_deadline_is_checked_even_when_observation_was_timely (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stability_established_by_late_tick_cannot_be_ready (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stable_completion_at_deadline_is_recorded (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_incomplete_execution_cannot_pass_on_motion_check_alone (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_failure_survives_cleanup_error (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_success_with_cleanup_error_cannot_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_ready_motion_and_successful_cleanup_can_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_callback_exception_preserves_latch_and_prevents_automatic_retry (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_counter_is_recorded_without_adding_sequence_watchdog (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_normal_request_keeps_control_without_acceleration_or_brake (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_real_g2_brake_helper_can_be_connected_as_callback (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_stop_remains_latched_after_normal_input_and_keeps_first_reason (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_unsupported_input_records_error_and_never_calls_brake (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_user_interrupt_is_preserved_and_adapter_cannot_resume (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_wrong_actor_error_or_extra_tick_response_fails (tests.test_g3_adapter_core.AdapterBehaviorTests) ... ok\ntest_demo_is_explicitly_without_real_can_and_carla (tests.test_g3_adapter_core.AdapterLearningDemoTests) ... ok\ntest_clock_regression_is_not_a_negative_successful_duration (tests.test_g3_adapter_core.AdapterTimingTests) ... ok\ntest_invalid_actor_or_received_timestamp_rejected (tests.test_g3_adapter_core.AdapterTimingTests) ... ok\ntest_receive_to_completion_boundary_includes_processing_time (tests.test_g3_adapter_core.AdapterTimingTests) ... ok\ntest_foreign_token_and_reserved_byte_are_reported (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_invalid_token_configuration_rejected (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_known_raw_request (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_other_id_flags_length_and_dlc_are_outside_supported_input (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_supported_normal_and_stop_reasons (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_unassigned_combinations_are_outside_this_g3_domain (tests.test_g3_adapter_core.RequestParsingTests) ... ok\ntest_all_defined_reasons_and_unsigned_boundaries (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_known_bytes_and_little_endian_token (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_nonclassic_length_and_invalid_dlc_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_noninteger_and_out_of_range_encoding_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_payload_length_is_exactly_eight (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_unassigned_fields_are_preserved_without_adapter_policy (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_decoded_fields_cannot_disagree_with_raw_bytes (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_exact_raw_observations_pass_only_transport (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_flags_wrong_id_and_short_payload_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_foreign_token_is_not_the_expected_fixture (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_missing_duplicate_or_reordered_frames_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_optimized_python_keeps_raw_flag_checks (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_raw_bytes_cannot_disagree_with_logged_payload (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_before_send_begin_or_after_record_end_fails (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_timestamp_order_is_checked (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_send_success_without_observation_is_not_pass (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_slot_schedule_and_late_sender_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_direct_worker_cannot_bypass_physical_interface_guard (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_early_exit_cannot_inherit_pass_or_missing_result (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_existing_directory_is_not_reused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_missing_interface_records_env_error_without_starting_workers (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_physical_down_and_ambiguous_interfaces_refused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_receiver_early_exit_keeps_recorded_failure_classification (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_atomic_final_rename_refuses_even_empty_existing_destination (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_destination_or_staging_is_not_reused (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_record_is_never_overwritten (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_path_escape_is_rejected_and_partial_staging_preserved (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_required_binary_must_be_executable (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_size_mismatch_fails_before_extraction (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_small_valid_archive_is_recorded_and_renamed (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\n\n----------------------------------------------------------------------\nRan 80 tests in 0.183s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-I",
+        "tools/g3_adapter_core.py",
+        "--demo"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"scope\": \"G3_ADAPTER_DEMO_ONLY\",\n  \"actual_can\": false,\n  \"carla_executed\": false,\n  \"description\": \"가짜 콜백 예제입니다. 실제 송수신과 차량 적용 결과가 아닙니다.\",\n  \"brake_callback_count\": 2,\n  \"events\": [\n    {\n      \"event\": \"request\",\n      \"actor_id\": 77,\n      \"a_rx_ns\": 6638092028919,\n      \"raw_frame_hex\": \"00020000080000000000000078563412\",\n      \"request\": {\n        \"stop\": false,\n        \"reason\": 0,\n        \"counter\": 0,\n        \"run_token\": 305419896\n      },\n      \"stop_latched\": false,\n      \"first_reason\": null,\n      \"action\": \"KEEP_EXISTING_CONTROL\"\n    },\n    {\n      \"event\": \"request\",\n      \"actor_id\": 77,\n      \"a_rx_ns\": 6638092055600,\n      \"raw_frame_hex\": \"00020000080000000101010078563412\",\n      \"request\": {\n        \"stop\": true,\n        \"reason\": 1,\n        \"counter\": 1,\n        \"run_token\": 305419896\n      },\n      \"stop_latched\": true,\n      \"first_reason\": 1,\n      \"action\": \"APPLY_FULL_BRAKE\",\n      \"call_begin_ns\": 6638092063414,\n      \"a_done_ns\": 6638092063976,\n      \"response\": {\n        \"actor_id\": 77,\n        \"error\": \"\",\n        \"do_tick_cue\": false,\n        \"transport\": \"DEMO_CALLBACK\"\n      },\n      \"call_completed\": true,\n      \"processing_duration_ns\": 8376,\n      \"call_within_50ms\": true\n    },\n    {\n      \"event\": \"request\",\n      \"actor_id\": 77,\n      \"a_rx_ns\": 6638092066540,\n      \"raw_frame_hex\": \"00020000080000000000020078563412\",\n      \"request\": {\n        \"stop\": false,\n        \"reason\": 0,\n        \"counter\": 2,\n        \"run_token\": 305419896\n      },\n      \"stop_latched\": true,\n      \"first_reason\": 1,\n      \"action\": \"APPLY_FULL_BRAKE\",\n      \"call_begin_ns\": 6638092072472,\n      \"a_done_ns\": 6638092072792,\n      \"response\": {\n        \"actor_id\": 77,\n        \"error\": \"\",\n        \"do_tick_cue\": false,\n        \"transport\": \"DEMO_CALLBACK\"\n      },\n      \"call_completed\": true,\n      \"processing_duration_ns\": 6252,\n      \"call_within_50ms\": true\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/RESEARCH_BASELINE.md",
+        "docs/VALIDATION_PLAN.md",
+        "docs/THESIS_OUTLINE.md",
+        "docs/SOURCE_AUDIT.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "unit_tests": 80,
+  "new_adapter_tests": 18,
+  "actual_can": false,
+  "carla_executed": false,
+  "full_g3_verified": false,
+  "human_code_review_recorded": false,
+  "human_rerun_recorded": false,
+  "source_sha256": {
+    "tools/g3_adapter_core.py": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+    "tests/test_g3_adapter_core.py": "bfe86b596572005af575d33672d513b547cef84332931f360b3e2d55f1174145",
+    "tools/g2_carla_smoke.py": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d"
+  },
+  "base_git_commit": "9109b3c1d7208f570aeb681fb62a122f1dc0d898",
+  "active_markdown_files": 18,
+  "local_links_checked": 130,
+  "fixed_research_documents": "UNCHANGED"
+}

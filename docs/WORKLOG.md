@@ -322,3 +322,28 @@ bash tools/run_self_checks.sh g3-can
 - 커밋 전 프로젝트 검사, 문서 링크, 증거 해시 및 파일 범위를 확인한다. 실제 명령과 결과는 evidence/review/2026-10-31/pre_commit_checks.json에 기록한다. 준비를 마친 뒤 Conventional Commit으로 저장하며, 원격 push는 이번 로컬 저장과 구분한다.
 - 커밋 전 검사 결과: 단위 검사 62개와 pip check 통과, 문서 17개/로컬 링크 120개 정상, 마감 목록의 37개 파일 해시 일치, 고정 연구 문서 무변경. 별도 읽기 전용 검토에서도 공개를 막는 credential/개인자료/비공개 URL/큰 런타임 혼입은 발견하지 못했다.
 - 중간점검 커밋은 기능 전체 완료를 뜻하지 않는다. 정상적인 Git commit/push로 스냅샷을 공유하며 실제 저장 및 전달 결과는 Git commit과 원격 ref로 확인한다. 강제 push나 브랜치 변경은 수행하지 않는다.
+
+## 2026-10-31: G3 adapter 핵심과 직접 검토 및 실행 안내
+
+- 앞선 중간점검은 commit 9109b3c1d7208f570aeb681fb62a122f1dc0d898로 저장하고 origin/main push가 성공했다. 직접 원격 조회의 SHA도 일치했고 작업 폴더는 깨끗했다.
+- 사용자가 다음 G3 진행과 자신이 직접 할 일을 질문했다. 진행 방식을 물었고, Codex가 구현하고 Juwon님이 검토 및 직접 실행하는 방식을 선택했다. 이어 구현을 진행하도록 확인했다. 코드 작성, 검토와 실행의 담당은 구분해서 기록한다.
+- README/STATUS/LINUX_HANDOFF, 기준선과 검증 명세 및 소스 조사를 읽고 기존 G2/G3 코드를 확인했다. vcan0가 UP인 상태를 조회했으나 이번 작업에서 새 CAN/CARLA 실험은 하지 않았다.
+- tools/g3_adapter_core.py를 추가했다. 정상 요청의 최소 지원 범위, 정지 잠금/최초 원인 유지, 제동 콜백, 호스트 수신/호출 완료 기록을 구현했다. stop=0은 가속하지 않고 기존 제어를 유지한다. 실제 G2 제동 함수를 콜백에 연결할 수 있다.
+- 지원 범위 밖 입력은 G3InputError로 호출자에게 전달한다. 실제 차량의 오류 대응 정책을 확정한 것은 아니다. counter는 기록만 하며 요청 watchdog을 만들지 않았다. core는 arm 이후 구간용이며 INIT_INHIBITED→arm/reset은 지원하지 않는다.
+- callback 오류와 잘못된 응답, 시각 역행은 기록하고 객체 재사용을 막는다. 50 ms 초과는 호출 완료와 별도로 기록하며 환경 오류로 바꾸지 않는다. 사용자 취소는 상위로 전파하고 재사용을 막는 회귀 검사를 추가했다.
+- tests/test_g3_adapter_core.py의 새 검사 18개가 통과했다. G2 helper 연결 검사도 가짜 client/API를 사용한다. 이 검사를 실제 G3 또는 R-06/R-07 통과로 표현하지 않는다.
+- 별도 읽기 전용 코드/기준선 검토에서 이번 범위를 막는 중요 결함은 발견하지 못했다. 기동/arm 전이의 미구현과 가짜 콜백 시간의 한계를 문서에 명시했다.
+
+실행한 예제:
+
+```bash
+.venv/bin/python -I tools/g3_adapter_core.py --demo
+```
+
+- 종료코드 0. 정상→정지→정상 입력에서 기존 제어 유지→제동→제동, 가짜 콜백 2회. scope=G3_ADAPTER_DEMO_ONLY, actual_can=false, carla_executed=false. 예제 actor77과 시간은 실제 차량 검증 결과가 아니다.
+- docs/G3_ADAPTER_STEP.md에 코드 검토 질문, 지금 실행할 단위 검사/예제와 기존 G2 수동 재현 절차를 정리했다. 사용자 자신의 검토 및 재실행은 아직 완료 기록이 없다. 현재 offscreen 서버는 창이 표시되지 않는다는 점도 안내했다.
+- STATUS/G3_PROGRESS/SELF_CHECK/README/LINUX_HANDOFF를 갱신하고 중간점검 보고서는 9109b3c 당시 기록임을 명시했다. 고정 연구 수치와 제출한 계획서는 변경하지 않았다.
+- 전체 프로젝트 검사와 실행 근거는 evidence/g3/adapter-core-20261031-01/checks.json 및 demo.json에 저장한다. 해당 기록은 핵심 코드/가짜 콜백 확인이며 실제 CAN/CARLA 통합은 아니다.
+- 최종 검사 종료코드 0: 단위 검사 80개, pip check, 셸 문법과 Git 공백 검사 통과. 문서 18개/로컬 링크 130개 유효, 고정 연구 문서 무변경. 결과와 source SHA를 위 checks.json에 보존했다. 사용자 검토와 사용자 재실행 완료는 아직 기록하지 않았다.
+- 이번 구현과 안내는 검증 후 별도 로컬 커밋으로 저장한다. 이번 단계의 원격 push는 수행하지 않으며 저장 상태는 git log/status로 확인한다.
+- 다음 작업은 CAN 수신 루프, 이번 core와 G2 제동 함수를 단일 실행기에 연결하는 것이다. 준비와 arm 경계, 실제 적용 frame/속도, 파일 로그와 자원 정리를 확인해야 한다. 전체 G3/G4는 NOT_RUN이며 본시험은 0/80회다.

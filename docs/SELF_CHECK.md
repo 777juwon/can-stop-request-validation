@@ -17,7 +17,7 @@ bash tools/run_self_checks.sh --help
 bash tools/run_self_checks.sh check
 ```
 
-현재 단위 검사 62개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다.
+현재 단위 검사 80개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다.
 
 ## 3. G1 실제 vCAN 송수신
 
@@ -90,4 +90,4 @@ bash tools/run_self_checks.sh g3-can
 
 정상 요청 5개와 정지 요청 5개를 독립 프로그램 사이에서 보내고 관측한다. 출력 폴더의 verdict.json과 sender.jsonl/receiver.jsonl을 확인한다. `scope=G3_STAGE1_REQUEST_TRANSPORT_ONLY`의 PASS는 CAN 요청 송수신만 뜻한다. 실제 차량 제동이나 전체 G3의 통과는 아니다.
 
-다음 단계에 adapter 수신, 제어 호출, 실제 제동 적용과 차속 변화를 연결하고 이 안내를 추가한다. 이전 45~90분 예상은 전체 G3 작업에 대한 계획 추정이며 완료 보장이나 실측 결과가 아니다.
+adapter 핵심 코드와 가짜 콜백 예제는 [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)에서 직접 실행할 수 있다. 실제 제동 적용과 차속 변화는 다음 통합 단계다. 이전 45~90분 예상은 전체 G3 작업의 계획 추정이며 완료 보장이나 실측 결과가 아니다.

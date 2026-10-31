@@ -18,6 +18,8 @@ On 2026-10-19 the original Linux checkout was fast-forwarded to published v1.0. 
 
 전체 중간점검은 [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에서 확인한다. 설치 및 부분 연결 검증의 완료와 핵심 SUT/본시험/집필의 남은 범위를 구분한다.
 
+후속 구현: [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)의 adapter 핵심과 새 단위 검사 18개를 추가했다. 실제 CAN/CARLA 연결은 없으며 다음은 수신 루프와 G2 콜백을 통합하는 실행기다. Codex가 구현하고 Juwon님이 검토 및 직접 재현하기로 선택했다. 아직 사용자 검토/재실행 완료로 기록하지 않는다.
+
 ## Start here on Ubuntu
 
 Clone this repository into a dedicated Linux project directory, not inside the company's DMS repository. For a public repository:
@@ -34,7 +36,7 @@ A Windows chat ID alone is not the handoff mechanism for this repository. The of
 
 ## First message to Linux Codex
 
-> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/G3_PROGRESS.md, docs/SETUP_AND_SMOKE_2026-10-19.md, docs/RESEARCH_BASELINE.md, docs/VALIDATION_PLAN.md, docs/SOURCE_AUDIT.md를 읽고 현재 상태를 요약해줘. 제출한 계획서는 수정하지 않고 v1.0 기준으로 진행해. G0/G1/G2는 과거 실행 증거가 있고, 2026-10-31 사용자 장치 준비 후 G3의 실제 요청 송수신 부분도 PASS했어. 다음은 CARLA adapter 구현과 단위 검사, 이후 실제 차량 연결이야. 현재 vcan0 상태는 다시 조회해줘. Python은 -I로 실행하고, 새 코드 설명은 한글로 작성해. 단계별 명령과 결과를 STATUS와 WORKLOG에 기록해줘.
+> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/G3_PROGRESS.md, docs/G3_ADAPTER_STEP.md와 기준선/검증 명세/소스 조사를 읽고 상태를 요약해줘. 제출한 계획서와 v1.0 수치는 유지해. 실제 CAN 요청 전달은 PASS했고 adapter core와 단위 검사도 추가했어. 다음은 실제 CAN 수신, core와 G2 제동 함수를 단일 실행기에 연결하는 작업이야. 기동 준비/arm과 실제 frame/속도를 별도로 확인하고, 가짜 콜백 예제를 실제 통합으로 표현하지 마. Codex가 구현하고 내가 검토 및 직접 재현할 수 있도록 한글 설명과 명령을 남겨줘.
 
 ## G0: Read-only environment inspection
 

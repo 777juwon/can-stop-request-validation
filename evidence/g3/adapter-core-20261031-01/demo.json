@@ -1,0 +1,76 @@
+{
+  "scope": "G3_ADAPTER_DEMO_ONLY",
+  "actual_can": false,
+  "carla_executed": false,
+  "description": "가짜 콜백 예제입니다. 실제 송수신과 차량 적용 결과가 아닙니다.",
+  "brake_callback_count": 2,
+  "events": [
+    {
+      "event": "request",
+      "actor_id": 77,
+      "a_rx_ns": 6638092028919,
+      "raw_frame_hex": "00020000080000000000000078563412",
+      "request": {
+        "stop": false,
+        "reason": 0,
+        "counter": 0,
+        "run_token": 305419896
+      },
+      "stop_latched": false,
+      "first_reason": null,
+      "action": "KEEP_EXISTING_CONTROL"
+    },
+    {
+      "event": "request",
+      "actor_id": 77,
+      "a_rx_ns": 6638092055600,
+      "raw_frame_hex": "00020000080000000101010078563412",
+      "request": {
+        "stop": true,
+        "reason": 1,
+        "counter": 1,
+        "run_token": 305419896
+      },
+      "stop_latched": true,
+      "first_reason": 1,
+      "action": "APPLY_FULL_BRAKE",
+      "call_begin_ns": 6638092063414,
+      "a_done_ns": 6638092063976,
+      "response": {
+        "actor_id": 77,
+        "error": "",
+        "do_tick_cue": false,
+        "transport": "DEMO_CALLBACK"
+      },
+      "call_completed": true,
+      "processing_duration_ns": 8376,
+      "call_within_50ms": true
+    },
+    {
+      "event": "request",
+      "actor_id": 77,
+      "a_rx_ns": 6638092066540,
+      "raw_frame_hex": "00020000080000000000020078563412",
+      "request": {
+        "stop": false,
+        "reason": 0,
+        "counter": 2,
+        "run_token": 305419896
+      },
+      "stop_latched": true,
+      "first_reason": 1,
+      "action": "APPLY_FULL_BRAKE",
+      "call_begin_ns": 6638092072472,
+      "a_done_ns": 6638092072792,
+      "response": {
+        "actor_id": 77,
+        "error": "",
+        "do_tick_cue": false,
+        "transport": "DEMO_CALLBACK"
+      },
+      "call_completed": true,
+      "processing_duration_ns": 6252,
+      "call_within_50ms": true
+    }
+  ]
+}

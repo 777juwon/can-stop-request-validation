@@ -6,7 +6,7 @@ Updated: 2026-10-31
 
 **DESIGN_BASELINED / G0_G1_G2_PASSED / SUT_NOT_STARTED**
 
-2026-10-31 현재: 사용자 장치 준비 후 vcan0 UP을 확인하고 실제 StopRequest 송수신이 PASS했다. 독립 송수신 프로세스 사이에서 정상 5개와 정지 5개, 총 10개의 원시 프레임을 확인했다. 이전 장치 부재의 ENV_ERROR도 보존한다. CARLA adapter와 차량 적용은 아직 없으며 전체 G3는 여전히 NOT_RUN이다. [단계별 진행과 다음 명령](G3_PROGRESS.md).
+2026-10-31 현재: 실제 StopRequest 10프레임 송수신 PASS에 이어 adapter 핵심과 새 단위 검사 18개를 구현했다. 가짜 콜백 예제도 실행했다. 실제 CAN/CARLA 통합과 차량 적용은 아직 없으며 전체 G3는 여전히 NOT_RUN이다. 사용자 선택에 따라 Codex가 구현하고 Juwon님이 검토 및 직접 재현하는 방식으로 진행한다. [단계별 진행](G3_PROGRESS.md), [코드와 직접 실행 안내](G3_ADAPTER_STEP.md).
 
 기록 마감: [2026-10-31 체크포인트](CHECKPOINT_2026-10-31.md)에 증거 읽기 순서, 재실행 명령과 다음 adapter 작업의 완료 기준을 정리했다. 이 기록 정리에서는 새 실험이나 구현을 추가하지 않았다.
 
@@ -35,7 +35,8 @@ Server lifecycle limitation: both dedicated servers exited with Signal 11 / code
 | CAN-to-vehicle and minimum stop chain | G3/G4 NOT_RUN | No integration implementation |
 | G1/G2 feasibility tools | IMPLEMENTED / UNIT_TESTED | tools/g1_vcan_smoke.py, tools/g2_carla_smoke.py and tests |
 | G3 request transport tool | IMPLEMENTED / UNIT_TESTED / TRANSPORT_PASS | tools/g3_request_smoke.py, 새 단위 검사 23개와 실제 10프레임 송수신 |
-| SUT implementation and unit tests | NOT_STARTED | No stop-request controller or CAN/CARLA adapter implementation |
+| G3 adapter core | IMPLEMENTED / UNIT_TESTED | tools/g3_adapter_core.py와 새 단위 검사 18개. 실제 CAN/CARLA 연결 미실행 |
+| SUT implementation and unit tests | NOT_STARTED | A/B 제어기 미구현. adapter는 핵심 콜백 경로만 구현 |
 | Thesis preliminary test execution and result summary | NOT_RUN | Only G1/G2 feasibility runs exist |
 | Main comparison runs and result analysis | NOT_RUN | No experimental results |
 
@@ -90,9 +91,9 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 
 ## Next task
 
-사용자 직접 실행 안내: [SELF_CHECK.md](SELF_CHECK.md), 진입점 `bash tools/run_self_checks.sh`. 현재 전체 단위 검사 62개가 통과했다. 실제 G1 진입점 PASS는 2026-10-19 기록이다. G2 진입점은 도움말 및 필수 인자 검사까지만 확인했다. G3 진입점은 장치 준비 후 실제 요청 송수신이 PASS했다. 새 코드 설명과 주석은 한글로 작성한다. 중간점검 스냅샷의 Git 저장 및 원격 반영 상태는 위 보고서의 명령으로 확인한다.
+사용자 직접 실행 안내: [SELF_CHECK.md](SELF_CHECK.md), 진입점 `bash tools/run_self_checks.sh`. 현재 전체 단위 검사 80개가 통과했다. 실제 G1 진입점 PASS는 2026-10-19 기록이다. G2 진입점은 도움말 및 필수 인자 검사까지만 확인했다. G3 진입점은 실제 요청 송수신이 PASS했고, 새 adapter는 가짜 콜백 예제까지만 실행했다. 새 코드 설명과 주석은 한글로 작성한다. Git 저장 및 원격 반영 상태는 중간점검 보고서의 명령으로 확인한다.
 
-다음은 단일 CARLA adapter를 구현하고 단위 검사한 뒤 실제 연결을 확인하는 단계다. 수신, 제어 호출, 최초 적용 frame과 실제 차속을 분리 기록한다. 잘못된 요청에 대한 정책은 구현 전에 기준선에서 확인하고 필요한 결정은 이유와 함께 제시한다. 전체 SUT나 80회 시험을 한 번에 구현하지 않는다. 차량 연결에는 기존 G2의 sticky_control=true 및 batch 제동 경로를 유지하고, 서버 종료 문제는 장시간 무인 시험 전에 별도로 점검한다.
+다음은 실제 CAN 수신 루프, adapter core와 G2 제동 함수를 단일 실행기에 연결하는 단계다. 기동 준비와 arm 경계를 명시하고 수신, 제어 호출, 최초 적용 frame과 실제 차속을 분리 기록한다. 잘못된 요청의 차량 대응은 미정이며 필요한 결정을 이유와 함께 제시한다. 전체 SUT나 80회 시험을 한 번에 구현하지 않는다. sticky_control=true 및 batch 제동 경로를 유지하고, 서버 종료 문제는 장시간 무인 시험 전에 별도로 점검한다.
 
 Read [G0_ENVIRONMENT_2026-10-19.md](G0_ENVIRONMENT_2026-10-19.md) for observed versions, planned commands and execution limits. Earlier analysis is retained in [THESIS_REVIEW](THESIS_REVIEW.md) and [REVISION_REVIEW](REVISION_REVIEW_2026-10-19.md), with original pre-sync snapshots under evidence/g0/2026-10-19/pre_sync.
 

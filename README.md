@@ -5,6 +5,7 @@
 > 현재 상태: **기준선 v1.0, Python/CARLA 0.9.15 설치 완료, G0/G1/G2 PASS**
 > 실제 vCAN 송수신과 CARLA 단독 주행 및 제동 기록이 있습니다. G3/G4와 본시험은 아직 실행하지 않았습니다. 서버 종료 시 crash는 별도 미해결 항목입니다. 제출한 작성계획서는 수정하지 않았습니다.
 > 2026-10-31: 사용자 장치 준비 후 G3 요청 프레임의 실제 송수신 PASS. 정상 5개와 정지 5개를 확인했습니다. 다음은 CARLA adapter이며 전체 G3는 아직 미실행입니다. [단계별 진행](docs/G3_PROGRESS.md)
+> 후속 작업: adapter 핵심과 새 단위 검사 18개 완료. 실제 차량 연결은 다음 단계입니다. [코드 검토와 직접 실행 안내](docs/G3_ADAPTER_STEP.md)
 >
 > 시작 문서: [연구 및 시스템 기준선](docs/RESEARCH_BASELINE.md), [요구사항 및 시험 명세](docs/VALIDATION_PLAN.md), [논문 챕터별 구성](docs/THESIS_OUTLINE.md)
 
@@ -155,8 +156,8 @@ SUT는 System Under Test, 즉 검증 대상 프로그램입니다. 이 프로그
 
 - 작성계획서 제출 마감: 2026-10-23 17:00
 - 최종 졸업논문 제출 마감: 2026-12-20 23:59
-- 현재 단계: G0/G1/G2는 2026-10-19 실행 완료. 2026-10-31 G3의 CAN 요청 송수신 PASS, 다음은 CARLA adapter 구현
-- 실제 실행 결과: G1 PASS, G2는 실패 2건 보존 후 PASS 2건, G3 요청 전달 부분 PASS. SUT와 adapter 구현, 전체 G3/G4 및 본시험 결과는 없음
+- 현재 단계: G3 요청 송수신 PASS와 adapter 핵심 단위 검사 완료. 다음은 실제 CAN/CARLA 통합
+- 실제 실행 결과: G1 PASS, G2는 실패 2건 보존 후 PASS 2건, G3 요청 전달 부분 PASS. A/B 제어기와 전체 G3/G4 및 본시험 결과는 없음
 - 남은 환경 문제: Ctrl+C 서버 종료에서 Signal 11/exit 139를 2회 관측. G2 차량 정리와 설정 복구 이후 발생했으며 원인은 미해결
 
 현재 상태는 [STATUS](docs/STATUS.md), 작업 이력은 [WORKLOG](docs/WORKLOG.md)에 남깁니다. 이후 작업자는 매 작업 종료 시 두 파일을 갱신해 Windows에서 검토하는 사람과 Linux에서 구현하는 사람이 같은 근거를 보게 합니다.
