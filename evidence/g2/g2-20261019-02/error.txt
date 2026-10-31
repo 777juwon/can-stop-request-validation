@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/parkjuwon/can-stop-request-validation/tools/g2_carla_smoke.py", line 368, in run
+    raise RuntimeError("30 s host preparation deadline exceeded after drive observation")
+RuntimeError: 30 s host preparation deadline exceeded after drive observation

@@ -1,0 +1,71 @@
+{
+  "observed_utc": "2026-10-31T10:51:04.181925+00:00",
+  "user_reported_preparation_complete": true,
+  "observed_vcan0": {
+    "ifindex": 5,
+    "ifname": "vcan0",
+    "flags": [
+      "NOARP",
+      "UP",
+      "LOWER_UP"
+    ],
+    "mtu": 72,
+    "qdisc": "noqueue",
+    "operstate": "UNKNOWN",
+    "linkmode": "DEFAULT",
+    "group": "default",
+    "txqlen": 1000,
+    "link_type": "can",
+    "promiscuity": 0,
+    "min_mtu": 0,
+    "max_mtu": 0,
+    "linkinfo": {
+      "info_kind": "vcan"
+    },
+    "num_tx_queues": 1,
+    "num_rx_queues": 1,
+    "gso_max_size": 65536,
+    "gso_max_segs": 65535
+  },
+  "commands": [
+    {
+      "command": [
+        "ip",
+        "-details",
+        "-json",
+        "link",
+        "show",
+        "dev",
+        "vcan0"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"ifindex\":5,\"ifname\":\"vcan0\",\"flags\":[\"NOARP\",\"UP\",\"LOWER_UP\"],\"mtu\":72,\"qdisc\":\"noqueue\",\"operstate\":\"UNKNOWN\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"can\",\"promiscuity\":0,\"min_mtu\":0,\"max_mtu\":0,\"linkinfo\":{\"info_kind\":\"vcan\"},\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535}]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\n",
+        "can-utils",
+        "vulkan-tools"
+      ],
+      "exit_code": 0,
+      "stdout": "can-utils\t2020.11.0-1\nvulkan-tools\t1.3.204.0+dfsg1-1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ss",
+        "-ltn",
+        "sport = :2000 or sport = :2001"
+      ],
+      "exit_code": 0,
+      "stdout": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+      "stderr": ""
+    }
+  ],
+  "status": "VERIFIED",
+  "setup_command_execution_observed_directly": false,
+  "scope": "사용자 준비 보고 이후 실제 장치와 패키지를 재조회한 결과. sudo 실행 출력 자체는 수집하지 않음"
+}

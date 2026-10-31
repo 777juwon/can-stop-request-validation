@@ -1,0 +1,9 @@
+{
+  "scope": "G3_STAGE1_REQUEST_TRANSPORT_ONLY",
+  "status": "ENV_ERROR",
+  "full_g3_verified": false,
+  "carla_executed": false,
+  "main_trials_executed": 0,
+  "cleanup_errors": [],
+  "error": "Device \"vcan0\" does not exist."
+}

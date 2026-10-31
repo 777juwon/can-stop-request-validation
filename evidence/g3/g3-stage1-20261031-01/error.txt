@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/parkjuwon/can-stop-request-validation/tools/g3_request_smoke.py", line 260, in coordinate
+    result["interface"] = inspect_link(args.interface, output)
+  File "/home/parkjuwon/can-stop-request-validation/tools/g3_request_smoke.py", line 106, in inspect_link
+    raise OSError(result.stderr.strip())
+OSError: Device "vcan0" does not exist.

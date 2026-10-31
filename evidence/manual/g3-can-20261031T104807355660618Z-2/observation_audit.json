@@ -1,0 +1,23 @@
+{
+  "observed_utc": "2026-10-31T10:48:56.807250+00:00",
+  "status": "PASS",
+  "scope": "원시 바이트의 독립 재계산으로 요청 전달만 확인. 물리 CAN 지연이나 차량 제동의 검증이 아님",
+  "transmitted_frames": 10,
+  "observed_frames": 10,
+  "normal_frames": 5,
+  "stop_frames": 5,
+  "sender_pid": 10,
+  "receiver_pid": 8,
+  "source_sha256_matched": true,
+  "raw_id_dlc_flags_payload_token_order_matched": true,
+  "worker_exit_codes": {
+    "sender": 0,
+    "receiver": 0
+  },
+  "max_transmit_slot_lateness_ms": 0.108531,
+  "min_transmit_interval_ms": 49.955525,
+  "max_transmit_interval_ms": 50.03241,
+  "full_g3_verified": false,
+  "carla_executed": false,
+  "main_trials_executed": 0
+}

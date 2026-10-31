@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scope": "Independent recomputation of G2 observations, not SUT/CAN integration",
+  "actor_id": 147,
+  "observation_count": 199,
+  "first_brake_frame": 2608,
+  "stable_min_kmh": 4.5751826941727956,
+  "stable_max_kmh": 4.964107976044683,
+  "stop_hold_started_after_applied_sim_s": 0.05000000074505806,
+  "stop_hold_completed_after_applied_sim_s": 0.5500000081956387,
+  "preparation_host_s": 7.863144249,
+  "max_tick_duration_ms": 3.241051,
+  "max_schedule_lateness_ms": 0.126838,
+  "source_hash_matched": true,
+  "contiguous_frames_and_times": true,
+  "actual_velocity_recomputed": true,
+  "batch_response_and_applied_control_checked": true
+}

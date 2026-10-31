@@ -1,0 +1,2 @@
+{"kind": "vehicle_spawned", "host_monotonic_ns": 5878810712304, "actor_id": 148, "spawn_index": 143}
+{"kind": "finished", "host_monotonic_ns": 5908860734635, "status": "ENV_ERROR", "cleanup_errors": []}

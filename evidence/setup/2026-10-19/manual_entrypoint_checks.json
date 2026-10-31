@@ -1,0 +1,84 @@
+{
+  "observed_utc": "2026-10-19T12:07:01.275358+00:00",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "--help"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "사용법:\n  bash tools/run_self_checks.sh check\n  bash tools/run_self_checks.sh g1\n  bash tools/run_self_checks.sh g2 --exclusive-server [--allow-world-load]\n\ncheck: 단위 검사, Python 의존성, 셸 문법과 Git 공백 검사\ng1: 이미 준비된 vcan0에서 독립 송신기와 수신기의 실제 프레임 교환\ng2: 별도로 시작한 전용 CARLA 서버에서 실제 차속과 제동 확인\n\nG2는 127.0.0.1:2000을 사용한다. 다른 시험이나 제어 프로그램을 먼저 종료한다.\n--exclusive-server: 다른 tick/제어 프로그램이 없는 전용 서버임을 명시\n--allow-world-load: 빈 서버의 맵을 Town04로 바꾸는 것을 허용\n이 스크립트는 시스템 설치, 인터페이스 생성, 서버 시작을 자동 수행하지 않는다.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": "test_fixture_known_bytes_and_counts (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_known_classic_can_bytes (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_rejects_non_classic_length_or_id (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_output_directory_is_never_reused (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_refuses_physical_or_down_interface (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_sigterm_preserves_interrupted_verdict_and_commands (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_complete_observations_pass_only_connection_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_foreign_run_token_does_not_replace_missing_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_or_duplicate_observation_fails (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_raw_frame_disagreement_and_impossible_observation_time_fail (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_send_slot_upper_boundary_is_exclusive (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_sender_success_without_observer_cannot_pass (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_target_must_not_follow_post_stop_background (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_wrong_bytes_or_dlc_cannot_pass_on_counts_alone (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_failed_or_wrong_actor_response_is_rejected (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_settle_ackermann_then_identical_brake_is_transmitted (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_above_threshold_and_nonfinite_speed_break_hold (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_half_second_requires_eleven_samples (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_missing_frame_and_time_gap_break_continuity (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_carla_float32_step_keeps_exact_40_frame_boundary (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_command_without_applied_brake_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_exact_two_second_window_boundary_is_included (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_stop_hold_must_complete_inside_two_second_window (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_target_speed_without_observed_motion_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_valid_observed_motion_and_braking (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_post_observation_deadline_is_checked_even_when_observation_was_timely (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stability_established_by_late_tick_cannot_be_ready (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stable_completion_at_deadline_is_recorded (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_incomplete_execution_cannot_pass_on_motion_check_alone (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_failure_survives_cleanup_error (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_success_with_cleanup_error_cannot_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_ready_motion_and_successful_cleanup_can_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_atomic_final_rename_refuses_even_empty_existing_destination (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_destination_or_staging_is_not_reused (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_record_is_never_overwritten (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_path_escape_is_rejected_and_partial_staging_preserved (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_required_binary_must_be_executable (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_size_mismatch_fails_before_extraction (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_small_valid_archive_is_recorded_and_renamed (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 0.071s\n\nOK\n"
+    },
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "g2"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "G2는 --exclusive-server로 전용 서버 사용을 명시해야 합니다.\n"
+    },
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "unknown"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "사용법:\n  bash tools/run_self_checks.sh check\n  bash tools/run_self_checks.sh g1\n  bash tools/run_self_checks.sh g2 --exclusive-server [--allow-world-load]\n\ncheck: 단위 검사, Python 의존성, 셸 문법과 Git 공백 검사\ng1: 이미 준비된 vcan0에서 독립 송신기와 수신기의 실제 프레임 교환\ng2: 별도로 시작한 전용 CARLA 서버에서 실제 차속과 제동 확인\n\nG2는 127.0.0.1:2000을 사용한다. 다른 시험이나 제어 프로그램을 먼저 종료한다.\n--exclusive-server: 다른 tick/제어 프로그램이 없는 전용 서버임을 명시\n--allow-world-load: 빈 서버의 맵을 Town04로 바꾸는 것을 허용\n이 스크립트는 시스템 설치, 인터페이스 생성, 서버 시작을 자동 수행하지 않는다.\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-I",
+        "tools/g2_carla_smoke.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "usage: g2_carla_smoke.py [-h] [--host HOST] [--port PORT] --output-dir\n                         OUTPUT_DIR --exclusive-server [--allow-world-load]\n                         [--spawn-index SPAWN_INDEX]\n                         [--rpc-timeout RPC_TIMEOUT]\n\nG2 standalone CARLA feasibility check, not a thesis scenario or CAN test. Run\nonly against a dedicated server without another ticking/controlling client.\nOnly the actor created here is destroyed. An explicitly allowed map load\ncannot be undone; settings and weather on the tested world are restored on\nexit. CARLA imports are deferred so observation rules can be tested without\nCARLA.\n\noptions:\n  -h, --help            show this help message and exit\n  --host HOST\n  --port PORT\n  --output-dir OUTPUT_DIR\n  --exclusive-server    Assert this is a dedicated server with no other\n                        tick/control clients\n  --allow-world-load    Allow loading Town04 on an otherwise empty dedicated\n                        server\n  --spawn-index SPAWN_INDEX\n                        Optional fixed index in Town04 recommended spawn\n                        points\n  --rpc-timeout RPC_TIMEOUT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "g1"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "실행 증거 위치: /home/parkjuwon/can-stop-request-validation/evidence/manual/g1-20261019T120658753058546Z-20\n{\"status\": \"PASS\", \"output_dir\": \"/home/parkjuwon/can-stop-request-validation/evidence/manual/g1-20261019T120658753058546Z-20\", \"scope\": \"G1_ONLY_CONNECTION_SMOKE_NOT_THESIS_COMPARISON\"}\n",
+      "stderr": ""
+    }
+  ],
+  "g1_output_dir": "/home/parkjuwon/can-stop-request-validation/evidence/manual/g1-20261019T120658753058546Z-20",
+  "g2_via_entrypoint": "NOT_RUN; help and missing-exclusive guard checked only",
+  "unit_tests": 39,
+  "scope": "사용자 실행 진입점 확인. G3 실행이나 본시험 결과가 아님",
+  "documentation_checks": {
+    "status": "PASS",
+    "active_markdown_files": 14,
+    "local_links_checked": 82,
+    "fixed_research_documents": "UNCHANGED",
+    "agent_policy_change": "한글 설명 및 직접 재현 지침 추가"
+  }
+}

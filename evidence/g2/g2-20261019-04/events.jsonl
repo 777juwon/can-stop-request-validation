@@ -1,0 +1,6 @@
+{"kind": "load_world_begin", "host_monotonic_ns": 6116874912288, "map": "Town04"}
+{"kind": "load_world_done", "host_monotonic_ns": 6120439471749, "map": "Carla/Maps/Town04"}
+{"kind": "vehicle_spawned", "host_monotonic_ns": 6120540519186, "actor_id": 147, "spawn_index": 143}
+{"kind": "initial_speed_stable", "host_monotonic_ns": 6128403759204, "frame": 2607, "simulation_time_s": 11.607229995308444, "completed_monotonic_ns": 6128403686118, "deadline_monotonic_ns": 6150540541869}
+{"kind": "brake_first_applied", "host_monotonic_ns": 6128453922340, "frame": 2608, "simulation_time_s": 11.657229996053502}
+{"kind": "finished", "host_monotonic_ns": 6130458130459, "status": "PASS", "cleanup_errors": []}

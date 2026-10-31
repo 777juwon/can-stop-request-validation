@@ -1,0 +1,34 @@
+{
+  "status": "COMPLETE",
+  "archive": "/home/parkjuwon/can-stop-request-validation/third_party/downloads/CARLA_0.9.15.tar.gz",
+  "destination": "/home/parkjuwon/can-stop-request-validation/third_party/CARLA_0.9.15",
+  "staging": "/home/parkjuwon/can-stop-request-validation/third_party/CARLA_0.9.15.extracting",
+  "record": "/home/parkjuwon/can-stop-request-validation/evidence/setup/2026-10-19/server_install.json",
+  "expected_bytes": 8386636048,
+  "actual_bytes": 8386636048,
+  "source_sha256": "7b2f432ce74b251593f95dcc8dee6d99ad9625c2a71a2d6d48f24d879de19ef7",
+  "member_count": 36163,
+  "logical_extracted_bytes": 20205989874,
+  "launcher_body": "#!/bin/sh\nUE4_TRUE_SCRIPT_NAME=$(echo \\\"$0\\\" | xargs readlink -f)\nUE4_PROJECT_ROOT=$(dirname \"$UE4_TRUE_SCRIPT_NAME\")\nchmod +x \"$UE4_PROJECT_ROOT/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping\"\n\"$UE4_PROJECT_ROOT/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping\" CarlaUE4 \"$@\" \n",
+  "started_utc": "2026-10-19T11:25:30.947836+00:00",
+  "started_monotonic_ns": 4225267456434,
+  "python_version": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "tar_filter": "data",
+  "error": null,
+  "checksum_scope": "Locally observed SHA256; no upstream checksum comparison",
+  "logical_bytes_scope": "Sum of regular-file member sizes, not allocated disk bytes",
+  "required_files": {
+    "CarlaUE4.sh": {
+      "size_bytes": 278,
+      "mode": "0o755"
+    },
+    "CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping": {
+      "size_bytes": 111356736,
+      "mode": "0o755"
+    }
+  },
+  "launcher_sha256": "8c683a1aa74e65ba9127f88b595e35559de010e5f7306bf92b049dca5cafec50",
+  "finished_utc": "2026-10-19T11:28:04.050089+00:00",
+  "finished_monotonic_ns": 4378369704334,
+  "staging_retained": false
+}

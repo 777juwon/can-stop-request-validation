@@ -1,0 +1,17 @@
+{
+  "observed_utc": "2026-10-31T10:41:21.379286+00:00",
+  "command": [
+    "bash",
+    "tools/run_self_checks.sh",
+    "g3-can"
+  ],
+  "exit_code": 2,
+  "stdout": "실행 증거 위치: /home/parkjuwon/can-stop-request-validation/evidence/manual/g3-can-20261031T104121341777662Z-4\n{\"status\": \"ENV_ERROR\", \"scope\": \"G3_STAGE1_REQUEST_TRANSPORT_ONLY\", \"output_dir\": \"/home/parkjuwon/can-stop-request-validation/evidence/manual/g3-can-20261031T104121341777662Z-4\"}\n",
+  "stderr": "",
+  "output_dir": "/home/parkjuwon/can-stop-request-validation/evidence/manual/g3-can-20261031T104121341777662Z-4",
+  "observed_status": "ENV_ERROR",
+  "frames_transmitted": 0,
+  "carla_started": false,
+  "full_g3_verified": false,
+  "scope": "실제 사전검사 결과만 확인. vcan0 부재로 송수신 worker를 시작하지 않음"
+}

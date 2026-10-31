@@ -1,0 +1,87 @@
+{
+  "observed_utc": "2026-10-31T11:10:57.817500+00:00",
+  "status": "PASS",
+  "scope": "중간점검 커밋 직전의 코드/문서/증거 확인. 새 CAN/CARLA 실행은 없음",
+  "commands": [
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": "test_fixture_known_bytes_and_counts (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_known_classic_can_bytes (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_rejects_non_classic_length_or_id (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_output_directory_is_never_reused (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_refuses_physical_or_down_interface (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_sigterm_preserves_interrupted_verdict_and_commands (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_complete_observations_pass_only_connection_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_foreign_run_token_does_not_replace_missing_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_or_duplicate_observation_fails (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_raw_frame_disagreement_and_impossible_observation_time_fail (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_send_slot_upper_boundary_is_exclusive (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_sender_success_without_observer_cannot_pass (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_target_must_not_follow_post_stop_background (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_wrong_bytes_or_dlc_cannot_pass_on_counts_alone (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_failed_or_wrong_actor_response_is_rejected (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_settle_ackermann_then_identical_brake_is_transmitted (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_above_threshold_and_nonfinite_speed_break_hold (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_half_second_requires_eleven_samples (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_missing_frame_and_time_gap_break_continuity (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_carla_float32_step_keeps_exact_40_frame_boundary (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_command_without_applied_brake_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_exact_two_second_window_boundary_is_included (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_stop_hold_must_complete_inside_two_second_window (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_target_speed_without_observed_motion_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_valid_observed_motion_and_braking (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_post_observation_deadline_is_checked_even_when_observation_was_timely (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stability_established_by_late_tick_cannot_be_ready (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stable_completion_at_deadline_is_recorded (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_incomplete_execution_cannot_pass_on_motion_check_alone (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_failure_survives_cleanup_error (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_success_with_cleanup_error_cannot_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_ready_motion_and_successful_cleanup_can_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_all_defined_reasons_and_unsigned_boundaries (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_known_bytes_and_little_endian_token (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_nonclassic_length_and_invalid_dlc_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_noninteger_and_out_of_range_encoding_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_payload_length_is_exactly_eight (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_unassigned_fields_are_preserved_without_adapter_policy (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_decoded_fields_cannot_disagree_with_raw_bytes (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_exact_raw_observations_pass_only_transport (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_flags_wrong_id_and_short_payload_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_foreign_token_is_not_the_expected_fixture (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_missing_duplicate_or_reordered_frames_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_optimized_python_keeps_raw_flag_checks (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_raw_bytes_cannot_disagree_with_logged_payload (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_before_send_begin_or_after_record_end_fails (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_timestamp_order_is_checked (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_send_success_without_observation_is_not_pass (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_slot_schedule_and_late_sender_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_direct_worker_cannot_bypass_physical_interface_guard (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_early_exit_cannot_inherit_pass_or_missing_result (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_existing_directory_is_not_reused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_missing_interface_records_env_error_without_starting_workers (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_physical_down_and_ambiguous_interfaces_refused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_receiver_early_exit_keeps_recorded_failure_classification (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_atomic_final_rename_refuses_even_empty_existing_destination (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_destination_or_staging_is_not_reused (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_record_is_never_overwritten (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_path_escape_is_rejected_and_partial_staging_preserved (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_required_binary_must_be_executable (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_size_mismatch_fails_before_extraction (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_small_valid_archive_is_recorded_and_renamed (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\n\n----------------------------------------------------------------------\nRan 62 tests in 0.177s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/RESEARCH_BASELINE.md",
+        "docs/VALIDATION_PLAN.md",
+        "docs/THESIS_OUTLINE.md",
+        "docs/SOURCE_AUDIT.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "check-ignore",
+        ".venv",
+        "third_party/downloads/CARLA_0.9.15.tar.gz",
+        "third_party/CARLA_0.9.15/CarlaUE4.sh"
+      ],
+      "exit_code": 0,
+      "stdout": ".venv\nthird_party/downloads/CARLA_0.9.15.tar.gz\nthird_party/CARLA_0.9.15/CarlaUE4.sh\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "94411a45aac647a0b9b0c811606d74c8f30d1df2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-remote",
+        "--exit-code",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout": "94411a45aac647a0b9b0c811606d74c8f30d1df2\trefs/heads/main\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "exit_code": 0,
+      "stdout": "docs/CHECKPOINT_2026-10-31.md\ndocs/G0_ENVIRONMENT_2026-10-19.md\ndocs/G3_PROGRESS.md\ndocs/MIDTERM_REVIEW_2026-10-31.md\ndocs/REVISION_REVIEW_2026-10-19.md\ndocs/SELF_CHECK.md\ndocs/SETUP_AND_SMOKE_2026-10-19.md\ndocs/THESIS_REVIEW.md\nevidence/g0/2026-10-19/additional_checks.json\nevidence/g0/2026-10-19/carla_download_probe.json\nevidence/g0/2026-10-19/checkout_sync.json\nevidence/g0/2026-10-19/dependency_metadata.json\nevidence/g0/2026-10-19/hardware.json\nevidence/g0/2026-10-19/pre_sync/REVISION_REVIEW_2026-10-19.md\nevidence/g0/2026-10-19/pre_sync/STATUS.md\nevidence/g0/2026-10-19/pre_sync/THESIS_REVIEW.md\nevidence/g0/2026-10-19/pre_sync/WORKLOG.md\nevidence/g0/2026-10-19/pre_sync/manifest.json\nevidence/g0/2026-10-19/software.json\nevidence/g1/g1-20261019-01/commands.json\nevidence/g1/g1-20261019-01/metadata.json\nevidence/g1/g1-20261019-01/receiver.jsonl\nevidence/g1/g1-20261019-01/receiver_ready.json\nevidence/g1/g1-20261019-01/receiver_result.json\nevidence/g1/g1-20261019-01/sender.jsonl\nevidence/g1/g1-20261019-01/sender_result.json\nevidence/g1/g1-20261019-01/verdict.json\nevidence/g2/g2-20261019-01/events.jsonl\nevidence/g2/g2-20261019-01/g2_carla_smoke.py\nevidence/g2/g2-20261019-01/metadata.json\nevidence/g2/g2-20261019-01/result.json\nevidence/g2/g2-20261019-01/vehicle_states.jsonl\nevidence/g2/g2-20261019-02/error.txt\nevidence/g2/g2-20261019-02/events.jsonl\nevidence/g2/g2-20261019-02/g2_carla_smoke.py\nevidence/g2/g2-20261019-02/metadata.json\nevidence/g2/g2-20261019-02/result.json\nevidence/g2/g2-20261019-02/vehicle_states.jsonl\nevidence/g2/g2-20261019-03/events.jsonl\nevidence/g2/g2-20261019-03/g2_carla_smoke.py\nevidence/g2/g2-20261019-03/metadata.json\nevidence/g2/g2-20261019-03/observation_audit.json\nevidence/g2/g2-20261019-03/post_cleanup.json\nevidence/g2/g2-20261019-03/result.json\nevidence/g2/g2-20261019-03/vehicle_states.jsonl\nevidence/g2/g2-20261019-04/events.jsonl\nevidence/g2/g2-20261019-04/metadata.json\nevidence/g2/g2-20261019-04/observation_audit.json\nevidence/g2/g2-20261019-04/post_cleanup.json\nevidence/g2/g2-20261019-04/result.json\nevidence/g2/g2-20261019-04/vehicle_states.jsonl\nevidence/g3/2026-10-31/checkpoint_manifest.json\nevidence/g3/2026-10-31/checks.json\nevidence/g3/2026-10-31/entrypoint_preflight.json\nevidence/g3/2026-10-31/host_ready_recheck.json\nevidence/g3/2026-10-31/transport_checks.json\nevidence/g3/g3-stage1-20261031-01/commands.json\nevidence/g3/g3-stage1-20261031-01/error.txt\nevidence/g3/g3-stage1-20261031-01/g3_request_smoke.py\nevidence/g3/g3-stage1-20261031-01/metadata.json\nevidence/g3/g3-stage1-20261031-01/preflight.json\nevidence/g3/g3-stage1-20261031-01/verdict.json\nevidence/manual/g1-20261019T120658753058546Z-20/commands.json\nevidence/manual/g1-20261019T120658753058546Z-20/metadata.json\nevidence/manual/g1-20261019T120658753058546Z-20/receiver.jsonl\nevidence/manual/g1-20261019T120658753058546Z-20/receiver_ready.json\nevidence/manual/g1-20261019T120658753058546Z-20/receiver_result.json\nevidence/manual/g1-20261019T120658753058546Z-20/sender.jsonl\nevidence/manual/g1-20261019T120658753058546Z-20/sender_result.json\nevidence/manual/g1-20261019T120658753058546Z-20/verdict.json\nevidence/manual/g3-can-20261031T104121341777662Z-4/commands.json\nevidence/manual/g3-can-20261031T104121341777662Z-4/error.txt\nevidence/manual/g3-can-20261031T104121341777662Z-4/g3_request_smoke.py\nevidence/manual/g3-can-20261031T104121341777662Z-4/metadata.json\nevidence/manual/g3-can-20261031T104121341777662Z-4/preflight.json\nevidence/manual/g3-can-20261031T104121341777662Z-4/verdict.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/commands.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/g3_request_smoke.py\nevidence/manual/g3-can-20261031T104807355660618Z-2/metadata.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/observation_audit.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/preflight.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/receiver.jsonl\nevidence/manual/g3-can-20261031T104807355660618Z-2/receiver_preflight.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/receiver_ready.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/receiver_result.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/receiver_stderr.txt\nevidence/manual/g3-can-20261031T104807355660618Z-2/sender.jsonl\nevidence/manual/g3-can-20261031T104807355660618Z-2/sender_preflight.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/sender_result.json\nevidence/manual/g3-can-20261031T104807355660618Z-2/sender_stderr.txt\nevidence/manual/g3-can-20261031T104807355660618Z-2/verdict.json\nevidence/setup/2026-10-19/carla014_before.json\nevidence/setup/2026-10-19/carla014_removal.json\nevidence/setup/2026-10-19/host_setup.json\nevidence/setup/2026-10-19/manual_entrypoint_checks.json\nevidence/setup/2026-10-19/pip_install.json\nevidence/setup/2026-10-19/progress.json\nevidence/setup/2026-10-19/project_checks.json\nevidence/setup/2026-10-19/python_environment.json\nevidence/setup/2026-10-19/server_download.json\nevidence/setup/2026-10-19/server_install.json\nevidence/setup/2026-10-19/server_runtime.json\nevidence/setup/2026-10-19/vulkan_summary.json\nrequirements.lock.txt\nrequirements.txt\ntests/__init__.py\ntests/test_g1_vcan_smoke.py\ntests/test_g2_carla_smoke.py\ntests/test_g3_request_smoke.py\ntests/test_install_carla_archive.py\ntools/check_project.sh\ntools/g1_vcan_smoke.py\ntools/g2_carla_smoke.py\ntools/g3_request_smoke.py\ntools/install_carla_archive.py\ntools/run_self_checks.sh\ntools/setup_g1_host.sh\ntools/start_carla_0915.sh\n",
+      "stderr": ""
+    }
+  ],
+  "head_before_commit": "94411a45aac647a0b9b0c811606d74c8f30d1df2",
+  "observed_remote_main": "94411a45aac647a0b9b0c811606d74c8f30d1df2",
+  "unit_tests": 62,
+  "active_markdown_files": 17,
+  "local_links_checked": 120,
+  "manifest_artifacts_verified": 37,
+  "runtime_directories_ignored": true,
+  "fixed_research_documents": "UNCHANGED",
+  "new_runtime_tests": false,
+  "publication": "LOCAL_COMMIT_PENDING; NO_PUSH"
+}

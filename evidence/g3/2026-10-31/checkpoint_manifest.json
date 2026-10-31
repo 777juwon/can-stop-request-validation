@@ -1,0 +1,245 @@
+{
+  "observed_utc": "2026-10-31T11:02:57.258835+00:00",
+  "record_status": "VERIFIED",
+  "scope": "기존 요청 송수신 실행의 기록 마감. 새 시험이나 차량 연동의 증거가 아님",
+  "run_path": "evidence/manual/g3-can-20261031T104807355660618Z-2",
+  "transport_status": "PASS",
+  "full_g3_verified": false,
+  "main_trials_executed": 0,
+  "latest_project_checks": {
+    "path": "evidence/g3/2026-10-31/transport_checks.json",
+    "observed_utc": "2026-10-31T10:51:47.103418+00:00",
+    "unit_tests": 62,
+    "status": "PASS"
+  },
+  "unit_tests_rerun_for_this_record": false,
+  "new_transport_run": false,
+  "new_commit_or_push": false,
+  "hash_scope": "로컬 파일 내용의 식별과 무결성 대조. 진위 인증 서명이 아님",
+  "artifacts": [
+    {
+      "path": "docs/RESEARCH_BASELINE.md",
+      "bytes": 12875,
+      "sha256": "0c4e59b4560679df52d37c84c7f1b3e616826c9bba69d9d7931d1afd0aadf8d5"
+    },
+    {
+      "path": "docs/SOURCE_AUDIT.md",
+      "bytes": 7283,
+      "sha256": "8f64f50023a9610132af56d1f78f386f1988572fcb25767b76ba82d4d9bb317c"
+    },
+    {
+      "path": "docs/VALIDATION_PLAN.md",
+      "bytes": 12160,
+      "sha256": "aa5109e8f7b04f05dd162d2582a91b1f6e9eec42941fadf62d8e0eb0c75e7aa1"
+    },
+    {
+      "path": "evidence/g3/2026-10-31/checks.json",
+      "bytes": 11111,
+      "sha256": "67942f45e1c90c4b778e37a595e62c1fa5878d82c5dd2e019baec17b56d3e2e9"
+    },
+    {
+      "path": "evidence/g3/2026-10-31/entrypoint_preflight.json",
+      "bytes": 834,
+      "sha256": "fcc6e59e97900cb5f554f0716204bbf85209427f0792b681ae5910619c53e57e"
+    },
+    {
+      "path": "evidence/g3/2026-10-31/host_ready_recheck.json",
+      "bytes": 1987,
+      "sha256": "a91eedceb79e7efc6863baf9b9b6d0a70aa737f6ade77f4fac93471997223373"
+    },
+    {
+      "path": "evidence/g3/2026-10-31/transport_checks.json",
+      "bytes": 8085,
+      "sha256": "f3930f8529f80a03c5197ef0f37555463b69ef6db3898febd992f9119cf8cd49"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/commands.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/error.txt",
+      "bytes": 389,
+      "sha256": "c788b2d6b2ed8321674bc0977945daa68a95f84b8b9e415b5808da19e2fae4e9"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/g3_request_smoke.py",
+      "bytes": 17107,
+      "sha256": "330b193bfed69164a47add0eb2f0053e56f9c8fb1c8ab898c4e665a6942203bc"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/metadata.json",
+      "bytes": 626,
+      "sha256": "87df082a8ecf243c6201e252f8c368e2a8b31ba55fb661e815a589cb7fb7f294"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/preflight.json",
+      "bytes": 193,
+      "sha256": "6ef9a16cb183ddb5426797e8d727ae55bec8e47ed5759a1dd4252d9de7795fea"
+    },
+    {
+      "path": "evidence/g3/g3-stage1-20261031-01/verdict.json",
+      "bytes": 231,
+      "sha256": "85760e43b62f8bb16804390859f7688b9890b81cca0c2f00ce591ae24fae6be5"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/commands.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/error.txt",
+      "bytes": 389,
+      "sha256": "58122e5b3e0bc4d25ef997ffe0ecd29ac85fcb676d5f1fccb58cbf66cf8e5b8a"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/g3_request_smoke.py",
+      "bytes": 19186,
+      "sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/metadata.json",
+      "bytes": 664,
+      "sha256": "652329506e4044ede51d8a41b649b495b39921d4830e94c59f62d5302a15891e"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/preflight.json",
+      "bytes": 193,
+      "sha256": "6ef9a16cb183ddb5426797e8d727ae55bec8e47ed5759a1dd4252d9de7795fea"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104121341777662Z-4/verdict.json",
+      "bytes": 258,
+      "sha256": "f63da89d8840830d43b9c52d4258348fe3cb2d18411083e337616b1c57ad4d41"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/commands.json",
+      "bytes": 932,
+      "sha256": "45b108d48bd90a32586929cad2f9542c9e8a8b8e8510238d25e31f4024905c4d"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/g3_request_smoke.py",
+      "bytes": 19186,
+      "sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/metadata.json",
+      "bytes": 664,
+      "sha256": "99880b32a8ef230b88241466edf6bc873806a00183c67eb61c9d8ef8041caf3f"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/observation_audit.json",
+      "bytes": 718,
+      "sha256": "df176e1189cdf2962b4ec62dcfdb31a81d33bebce026b95e8ce0be1bef59baa0"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/receiver.jsonl",
+      "bytes": 3280,
+      "sha256": "0e16d82176dfc8f0abfbf652e042e572c48ec06d8ecbf428e6e72d5cb7788413"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/receiver_preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/receiver_ready.json",
+      "bytes": 53,
+      "sha256": "4c9984e6f29180647a9d2609a2c51617c3170b2790ebea4c172f556991a2f43c"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/receiver_result.json",
+      "bytes": 86,
+      "sha256": "f7f21c7d9f414ad405e3e6bbb5b557f3d42cfce28c87058f211b5162c41838da"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/receiver_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/sender.jsonl",
+      "bytes": 3200,
+      "sha256": "fa6a1f394dad4236e4dbbceba2346cb5c86d05d2626738c8be4a2251f709fde9"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/sender_preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/sender_result.json",
+      "bytes": 81,
+      "sha256": "3a70a21679834890d16988ce7ec12030684ef6182d5f8195340825c6d7e0d119"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/sender_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/manual/g3-can-20261031T104807355660618Z-2/verdict.json",
+      "bytes": 816,
+      "sha256": "33c5c8a6a912db30dc9b18cb170545c4dd9b3f9713af08d8d5ba0bbc04ba6260"
+    },
+    {
+      "path": "tests/test_g3_request_smoke.py",
+      "bytes": 12075,
+      "sha256": "d94ceb8bf4ef60d41303c6258b9428efad90425d199403cf791c424951a3a7b2"
+    },
+    {
+      "path": "tools/g3_request_smoke.py",
+      "bytes": 19186,
+      "sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d"
+    },
+    {
+      "path": "tools/run_self_checks.sh",
+      "bytes": 2913,
+      "sha256": "7c9a03e0f01c382129ef1455298fa8c1f9fb7e4df5832a801e09043f31cea647"
+    }
+  ],
+  "record_checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/RESEARCH_BASELINE.md",
+        "docs/VALIDATION_PLAN.md",
+        "docs/THESIS_OUTLINE.md",
+        "docs/SOURCE_AUDIT.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "94411a45aac647a0b9b0c811606d74c8f30d1df2\n",
+      "stderr": ""
+    }
+  ],
+  "active_markdown_files": 16,
+  "local_links_checked": 112
+}

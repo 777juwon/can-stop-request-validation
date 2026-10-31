@@ -1,0 +1,73 @@
+{
+  "scope": "Dedicated CARLA 0.9.15 feasibility server lifecycle; not a main trial",
+  "launch_command": "bash tools/start_carla_0915.sh > third_party/carla-server.log 2>&1",
+  "launch_options": ["-RenderOffScreen", "-nosound", "-quality-level=Low", "-carla-rpc-port=2000"],
+  "launcher_reviewed_before_execution": true,
+  "ldd_missing_libraries": [],
+  "readiness_probes": [
+    {"status": "TIMEOUT", "exit_code": 1, "rpc_timeout_s": 5, "note": "Initial startup probe, before readiness"},
+    {"status": "SANDBOX_ERROR", "exit_code": 1, "message": "boost::filesystem::create_directories: Read-only file system", "path": "/home/parkjuwon/carlaCache/0.9.15/Carla/Maps/Nav"},
+    {"status": "PASS", "exit_code": 0, "outside_sandbox": true, "client_version": "0.9.15", "server_version": "0.9.15", "initial_map": "Carla/Maps/Town10HD_Opt"}
+  ],
+  "gpu_evidence": {
+    "commands": ["nvidia-smi pmon -c 1 -s um", "nvidia-smi --query-gpu=name,driver_version,memory.total,memory.free --format=csv,noheader"],
+    "exit_codes": [0, 0],
+    "gpu_index": 0,
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "driver_version": "570.211.01",
+    "total_memory_mib": 8188,
+    "process_id": 36908,
+    "process_type": "C+G",
+    "process_name_reported": "CarlaUE4-Linux-",
+    "framebuffer_memory_mib": 2623,
+    "scope": "Observed first server process on NVIDIA GPU, not a performance benchmark or engine-log device identification"
+  },
+  "first_server_shutdown": {
+    "method": "SIGINT using Ctrl+C on the owned PTY session",
+    "exit_code": 139,
+    "status": "CRASH_ON_SHUTDOWN",
+    "observed_utc_by": "2026-10-19T11:55:21Z",
+    "log_excerpt_captured_before_restart": [
+      "FUnixPlatformMisc::RequestExitWithStatus",
+      "FUnixPlatformMisc::RequestExit",
+      "Signal 11 caught.",
+      "CommonUnixCrashHandler: Signal=11",
+      "Engine crash handling finished; re-raising signal 11 for the default handler. Good bye."
+    ],
+    "rpc_ports_2000_2001_after_shutdown": "not listening",
+    "g2_actor_and_settings_cleanup_before_shutdown": "PASS; separate post_cleanup.json confirms asynchronous mode and no test-relevant actors",
+    "cause": "UNRESOLVED; occurred after G2 result and cleanup",
+    "normal_shutdown_claimed": false
+  },
+  "second_server": {
+    "status": "STOPPED_AFTER_FINAL_G2_PASS_WITH_SHUTDOWN_CRASH",
+    "final_g2": "evidence/g2/g2-20261019-04/result.json",
+    "quit_binding_probe": {
+      "exit_code": 1,
+      "error": "AttributeError: module 'libcarla.command' has no attribute 'ConsoleCommand'",
+      "quit_command_sent": false,
+      "post_cleanup_record_created_before_error": true
+    },
+    "shutdown_method": "SIGINT using Ctrl+C on the owned PTY session",
+    "exit_code": 139,
+    "log_excerpt": [
+      "FUnixPlatformMisc::RequestExitWithStatus",
+      "FUnixPlatformMisc::RequestExit",
+      "Signal 11 caught.",
+      "CommonUnixCrashHandler: Signal=11",
+      "Engine crash handling finished; re-raising signal 11 for the default handler. Good bye.",
+      "CarlaUE4-Linux-Shipping process 38793 exited with Segmentation fault"
+    ],
+    "rpc_ports_2000_2001_after_shutdown": "not listening",
+    "cause": "UNRESOLVED; after G2 result and actor/settings cleanup",
+    "normal_shutdown_claimed": false
+  },
+  "final_recheck_utc": "2026-10-19T12:00:16Z",
+  "final_gpu_pmon": {
+    "command": "nvidia-smi pmon -c 1 -s um",
+    "exit_code": 0,
+    "carla_process_present": false,
+    "scope": "GPU process list only; unrelated application details excluded"
+  },
+  "vcan0_retained": {"kind": "vcan", "flags": ["NOARP", "UP", "LOWER_UP"]}
+}

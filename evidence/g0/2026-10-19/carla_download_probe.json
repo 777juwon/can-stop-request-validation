@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-10-19T10:37:41.879026+00:00",
+  "source": "Official CARLA 0.9.15 GitHub release body",
+  "url": "https://downloads.carlasim.com/Linux/CARLA_0.9.15.tar.gz",
+  "method": "HEAD",
+  "distribution_downloaded": false,
+  "status": 200,
+  "headers": {
+    "Content-Length": "8386636048",
+    "Content-Type": "application/x-tar",
+    "Last-Modified": "Mon, 07 Sep 2026 15:54:22 GMT",
+    "ETag": "\"29655993c45e331cbfc5e36ee10d5a52-125\""
+  }
+}

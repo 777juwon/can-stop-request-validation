@@ -1,0 +1,9 @@
+{
+  "command": "python3 -m pip uninstall --yes carla",
+  "exit_code": 0,
+  "observed_output": "Successfully uninstalled carla-0.9.14",
+  "user_authorization": "User explicitly allowed removal of existing CARLA 0.9.14 in this session",
+  "remaining_global_client_version": null,
+  "original_package_directory_exists": false,
+  "original_metadata_directory_exists": false
+}

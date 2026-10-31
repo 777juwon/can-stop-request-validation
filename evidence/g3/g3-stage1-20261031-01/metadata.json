@@ -1,0 +1,18 @@
+{
+  "baseline": "v1.0",
+  "scope": "G3_STAGE1_REQUEST_TRANSPORT_ONLY",
+  "run_id": "g3-stage1-20261031-01",
+  "run_token": 2068119281,
+  "git_commit": "94411a45aac647a0b9b0c811606d74c8f30d1df2",
+  "tool_sha256": "330b193bfed69164a47add0eb2f0053e56f9c8fb1c8ab898c4e665a6942203bc",
+  "started_utc": "2026-10-31T10:37:28.214809+00:00",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "command_arguments": [
+    "--interface",
+    "vcan0",
+    "--output-dir",
+    "evidence/g3/g3-stage1-20261031-01"
+  ],
+  "fixture": "5 normal + 5 NEAR_DISTANCE, counter 0..9, 50 ms; transport only",
+  "interface": "vcan0"
+}

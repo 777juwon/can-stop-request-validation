@@ -1,0 +1,4 @@
+{"kind": "vehicle_spawned", "host_monotonic_ns": 5972713807568, "actor_id": 149, "spawn_index": 143}
+{"kind": "initial_speed_stable", "host_monotonic_ns": 5980576840305, "frame": 32647, "simulation_time_s": 177.26326671731658, "completed_monotonic_ns": 5980576768380, "deadline_monotonic_ns": 6002713836462}
+{"kind": "brake_first_applied", "host_monotonic_ns": 5980626646642, "frame": 32648, "simulation_time_s": 177.31326671806164}
+{"kind": "finished", "host_monotonic_ns": 5982632364120, "status": "PASS", "cleanup_errors": []}

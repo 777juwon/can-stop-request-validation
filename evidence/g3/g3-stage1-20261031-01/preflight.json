@@ -1,0 +1,14 @@
+{
+  "command": [
+    "ip",
+    "-details",
+    "-json",
+    "link",
+    "show",
+    "dev",
+    "vcan0"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Device \"vcan0\" does not exist.\n"
+}

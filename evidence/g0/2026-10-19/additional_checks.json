@@ -1,0 +1,70 @@
+{
+  "checked_utc": "2026-10-19T10:36:40.062628+00:00",
+  "records": [
+    {
+      "command": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "git version 2.34.1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\\t${Version}\\t${Status}\\n",
+        "carla-simulator"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "dpkg-query: no packages found matching carla-simulator\n"
+    },
+    {
+      "command": [
+        "bash",
+        "-c",
+        "command -v CarlaUE4.sh"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path; import json; paths=[Path(\"/opt/carla-simulator\"),Path(\"/opt/carla-simulator/bin/CarlaUE4.sh\")]; print(json.dumps({str(p):p.exists() for p in paths},indent=2))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"/opt/carla-simulator\": false,\n  \"/opt/carla-simulator/bin/CarlaUE4.sh\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-c",
+        "import json,platform,sysconfig; print(json.dumps({\"machine\":platform.machine(),\"libc\":platform.libc_ver(),\"SOABI\":sysconfig.get_config_var(\"SOABI\")},indent=2))"
+      ],
+      "started_utc": "2026-10-19T10:38:54.326048+00:00",
+      "exit_code": 0,
+      "stdout": "{\n  \"machine\": \"x86_64\",\n  \"libc\": [\n    \"glibc\",\n    \"2.35\"\n  ],\n  \"SOABI\": \"cpython-310-x86_64-linux-gnu\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-details",
+        "link",
+        "show",
+        "dev",
+        "vcan0"
+      ],
+      "started_utc": "2026-10-19T10:38:54.329483+00:00",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Device \"vcan0\" does not exist.\n"
+    }
+  ]
+}

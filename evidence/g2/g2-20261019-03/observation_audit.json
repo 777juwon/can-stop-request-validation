@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "Independent recomputation of recorded G2 observations, not SUT/CAN integration",
+  "actor_id": 149,
+  "observation_count": 199,
+  "first_brake_frame": 32648,
+  "speed_at_first_brake_kmh": 0.9823446219713011,
+  "stable_min_kmh": 4.5751826941727956,
+  "stable_max_kmh": 4.964107976044683,
+  "stop_hold_started_after_applied_sim_s": 0.05000000074505806,
+  "stop_hold_completed_after_applied_sim_s": 0.5500000081956387,
+  "preparation_host_s": 7.862931918,
+  "max_tick_duration_ms": 2.213983,
+  "max_schedule_lateness_ms": 0.30106,
+  "source_hash_matched": true,
+  "execution_source_preserved_at": "evidence/g2/g2-20261019-03/g2_carla_smoke.py",
+  "contiguous_frames_and_times": true,
+  "actual_velocity_recomputed": true,
+  "batch_response_and_applied_control_checked": true
+}

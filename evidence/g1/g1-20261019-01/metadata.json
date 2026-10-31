@@ -1,0 +1,39 @@
+{
+  "CARLA_executed": false,
+  "argv": [
+    "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+    "/home/parkjuwon/can-stop-request-validation/tools/g1_vcan_smoke.py",
+    "--interface",
+    "vcan0",
+    "--output-dir",
+    "evidence/g1/g1-20261019-01"
+  ],
+  "begin_ns": 3539187367191,
+  "coordinator_pid": 2,
+  "fixture": {
+    "background_slots": [
+      0,
+      39
+    ],
+    "period_ns": 50000000,
+    "target_slots": [
+      0,
+      19
+    ],
+    "target_stop_slots": [
+      20,
+      39
+    ],
+    "total_slots": 40
+  },
+  "fixture_notice": "Connection-only G1 fixture; not v1.0 T-01..T-04 or any of eighty main trials",
+  "host_clock": "time.monotonic_ns",
+  "interface": "vcan0",
+  "main_comparison_runs_executed": 0,
+  "physical_CAN_ACK_tested": false,
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "python_executable": "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+  "run_token": 3533323994,
+  "scope": "G1_ONLY_CONNECTION_SMOKE_NOT_THESIS_COMPARISON",
+  "source_sha256": "7e38858058095f046792f2c9e7f9741c55928dba4871d5b831305dc2c5cf7283"
+}

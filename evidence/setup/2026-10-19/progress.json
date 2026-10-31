@@ -1,0 +1,23 @@
+{
+  "observed_utc": "2026-10-19T12:00:16Z",
+  "url": "https://downloads.carlasim.com/Linux/CARLA_0.9.15.tar.gz",
+  "status": "INSTALLED_AND_G2_VERIFIED",
+  "archive": "third_party/downloads/CARLA_0.9.15.tar.gz",
+  "downloaded_bytes": 8386636048,
+  "expected_bytes_from_head": 8386636048,
+  "python_setup": "PASS in isolated .venv",
+  "carla_0_9_14_client_removal": "PASS",
+  "host_setup": "VERIFIED",
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "NOT_RUN",
+  "G4": "NOT_RUN",
+  "main_comparison_runs_executed": 0,
+  "G1_evidence": "evidence/g1/g1-20261019-01/verdict.json",
+  "G2_evidence": "evidence/g2/g2-20261019-04/result.json",
+  "server_install_evidence": "evidence/setup/2026-10-19/server_install.json",
+  "server_running": false,
+  "server_shutdown": "Signal 11 / exit 139 on Ctrl+C twice; unresolved",
+  "next_functional_gate": "G3",
+  "main_comparison_runs_planned": 80
+}

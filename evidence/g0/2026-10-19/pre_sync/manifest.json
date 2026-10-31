@@ -1,0 +1,21 @@
+{
+  "head": "62a193ae252925fcbac3e6371a373adda8800848",
+  "files": {
+    "docs/STATUS.md": {
+      "backup": "evidence/g0/2026-10-19/pre_sync/STATUS.md",
+      "sha256": "c7044a95db38d47a85c91377e362f93287fc07a7c3a884d7598a54dac8660472"
+    },
+    "docs/WORKLOG.md": {
+      "backup": "evidence/g0/2026-10-19/pre_sync/WORKLOG.md",
+      "sha256": "4a525fe85313f28c5622e5de7c8b787d0eec0ec62c9c45e4d68b827ba6154235"
+    },
+    "docs/THESIS_REVIEW.md": {
+      "backup": "evidence/g0/2026-10-19/pre_sync/THESIS_REVIEW.md",
+      "sha256": "503c011836846a195904670a5de326a842e2d782538d98a82835744b941dfd85"
+    },
+    "docs/REVISION_REVIEW_2026-10-19.md": {
+      "backup": "evidence/g0/2026-10-19/pre_sync/REVISION_REVIEW_2026-10-19.md",
+      "sha256": "67704c9ac92255cf2ad6361e2864a81738fea2b9e47f517a7969455a6f734334"
+    }
+  }
+}

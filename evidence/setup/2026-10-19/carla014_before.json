@@ -1,0 +1,19 @@
+{
+  "version": "0.9.14",
+  "location": "/home/parkjuwon/.local/lib/python3.10/site-packages",
+  "files": [
+    "carla-0.9.14.dist-info/INSTALLER",
+    "carla-0.9.14.dist-info/METADATA",
+    "carla-0.9.14.dist-info/RECORD",
+    "carla-0.9.14.dist-info/REQUESTED",
+    "carla-0.9.14.dist-info/WHEEL",
+    "carla-0.9.14.dist-info/direct_url.json",
+    "carla-0.9.14.dist-info/top_level.txt",
+    "carla/__init__.py",
+    "carla/__pycache__/__init__.cpython-310.pyc",
+    "carla/__pycache__/command.cpython-310.pyc",
+    "carla/command.py",
+    "carla/libcarla.cpython-310-x86_64-linux-gnu.so"
+  ],
+  "scope": "User-authorized uninstall of this detected 0.9.14 client only; no other packages or unidentified runtime folders"
+}

@@ -1,0 +1,5 @@
+# Initial reproduction environment: CPython 3.10, Linux x86_64.
+# Full resolved versions are recorded after installation.
+python-can==4.6.1
+cantools==40.7.1
+carla==0.9.15

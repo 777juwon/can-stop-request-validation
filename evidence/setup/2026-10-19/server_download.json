@@ -1,0 +1,13 @@
+{
+  "completed_utc": "2026-10-19T11:23:44.335249+00:00",
+  "url": "https://downloads.carlasim.com/Linux/CARLA_0.9.15.tar.gz",
+  "source": "Official CARLA 0.9.15 GitHub release link",
+  "http_code": 200,
+  "download_exit_code": 0,
+  "size_bytes": 8386636048,
+  "curl_reported_speed_bytes_per_s": 7784744,
+  "archive": "third_party/downloads/CARLA_0.9.15.tar.gz",
+  "checksum_and_extraction": "COMPLETE; see server_install.json",
+  "local_sha256": "7b2f432ce74b251593f95dcc8dee6d99ad9625c2a71a2d6d48f24d879de19ef7",
+  "upstream_checksum_compared": false
+}

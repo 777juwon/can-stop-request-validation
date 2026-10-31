@@ -1,0 +1,232 @@
+{
+  "checked_utc": "2026-10-19T10:36:40.024807+00:00",
+  "scope": "public package/release metadata only; no distribution file downloaded",
+  "packages": {
+    "carla": {
+      "pinned": {
+        "metadata_url": "https://pypi.org/pypi/carla/0.9.15/json",
+        "version": "0.9.15",
+        "requires_python": "",
+        "project_urls": {
+          "Homepage": "https://github.com/carla-simulator/carla"
+        },
+        "requires_dist": null,
+        "release_upload_times": [
+          "2023-11-14T22:51:02.960655Z",
+          "2023-11-14T22:51:08.532052Z",
+          "2023-11-14T22:51:12.511386Z",
+          "2023-11-14T22:51:16.666499Z",
+          "2023-11-14T22:51:20.581448Z",
+          "2023-11-14T22:51:25.270963Z",
+          "2023-11-14T22:51:29.811203Z",
+          "2023-11-14T22:51:33.912826Z",
+          "2023-11-14T22:51:37.845897Z"
+        ],
+        "files": [
+          {
+            "filename": "carla-0.9.15-cp310-cp310-manylinux_2_27_x86_64.whl",
+            "size_bytes": 31895950,
+            "sha256": "61449e33260f6a0cfd2f88d56f2463a5797a0b51bc46618beec07365422d4ad6",
+            "requires_python": null,
+            "yanked": false
+          }
+        ]
+      },
+      "current": {
+        "metadata_url": "https://pypi.org/pypi/carla/json",
+        "version": "0.9.16",
+        "requires_python": null,
+        "project_urls": {
+          "Homepage": "https://github.com/carla-simulator/carla"
+        },
+        "requires_dist": null,
+        "release_upload_times": [
+          "2025-09-14T07:54:35.054982Z",
+          "2025-09-14T07:54:38.302904Z",
+          "2025-09-14T07:54:42.834321Z",
+          "2025-09-14T07:54:45.360275Z",
+          "2025-09-14T07:54:50.049899Z",
+          "2025-09-14T07:54:52.916193Z"
+        ]
+      }
+    },
+    "python-can": {
+      "pinned": {
+        "metadata_url": "https://pypi.org/pypi/python-can/4.6.1/json",
+        "version": "4.6.1",
+        "requires_python": ">=3.9",
+        "project_urls": {
+          "changelog": "https://github.com/hardbyte/python-can/blob/develop/CHANGELOG.md",
+          "documentation": "https://python-can.readthedocs.io",
+          "homepage": "https://github.com/hardbyte/python-can",
+          "repository": "https://github.com/hardbyte/python-can"
+        },
+        "requires_dist": [
+          "uptime~=3.0.1; extra == \"pcan\"",
+          "python-can-remote; extra == \"remote\"",
+          "python-can-sontheim>=0.1.2; extra == \"sontheim\"",
+          "python-can-canine>=0.2.2; extra == \"canine\"",
+          "zlgcan; extra == \"zlgcan\"",
+          "python-can-candle>=1.2.2; extra == \"candle\"",
+          "wrapt~=1.10",
+          "packaging>=23.1",
+          "typing_extensions>=3.10.0.0",
+          "pywin32>=305; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"pywin32\"",
+          "pyserial>=3.0; extra == \"seeedstudio\"",
+          "pyserial~=3.0; extra == \"serial\"",
+          "filelock; extra == \"neovi\"",
+          "python-ics>=2.12; extra == \"neovi\"",
+          "canalystii>=0.1.0; extra == \"canalystii\"",
+          "cantact>=0.0.7; extra == \"cantact\"",
+          "python-can-cvector; extra == \"cvector\"",
+          "gs-usb>=0.2.1; extra == \"gs-usb\"",
+          "nixnet>=0.3.2; extra == \"nixnet\"",
+          "windows-curses; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"viewer\"",
+          "asammdf>=6.0.0; extra == \"mf4\"",
+          "msgpack~=1.1.0; extra == \"multicast\""
+        ],
+        "release_upload_times": [
+          "2025-08-12T07:44:56.550052Z",
+          "2025-08-12T07:44:58.314717Z"
+        ],
+        "files": [
+          {
+            "filename": "python_can-4.6.1-py3-none-any.whl",
+            "size_bytes": 276996,
+            "sha256": "17f95255868a95108dcfcb90565a684dad32d5a3ebb35afd14f739e18c84ff6c",
+            "requires_python": ">=3.9",
+            "yanked": false
+          },
+          {
+            "filename": "python_can-4.6.1.tar.gz",
+            "size_bytes": 1206049,
+            "sha256": "290fea135d04b8504ebff33889cc6d301e2181a54099116609f940825ffe5005",
+            "requires_python": ">=3.9",
+            "yanked": false
+          }
+        ]
+      },
+      "current": {
+        "metadata_url": "https://pypi.org/pypi/python-can/json",
+        "version": "4.6.1",
+        "requires_python": ">=3.9",
+        "project_urls": {
+          "changelog": "https://github.com/hardbyte/python-can/blob/develop/CHANGELOG.md",
+          "documentation": "https://python-can.readthedocs.io",
+          "homepage": "https://github.com/hardbyte/python-can",
+          "repository": "https://github.com/hardbyte/python-can"
+        },
+        "requires_dist": [
+          "uptime~=3.0.1; extra == \"pcan\"",
+          "python-can-remote; extra == \"remote\"",
+          "python-can-sontheim>=0.1.2; extra == \"sontheim\"",
+          "python-can-canine>=0.2.2; extra == \"canine\"",
+          "zlgcan; extra == \"zlgcan\"",
+          "python-can-candle>=1.2.2; extra == \"candle\"",
+          "wrapt~=1.10",
+          "packaging>=23.1",
+          "typing_extensions>=3.10.0.0",
+          "pywin32>=305; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"pywin32\"",
+          "pyserial>=3.0; extra == \"seeedstudio\"",
+          "pyserial~=3.0; extra == \"serial\"",
+          "filelock; extra == \"neovi\"",
+          "python-ics>=2.12; extra == \"neovi\"",
+          "canalystii>=0.1.0; extra == \"canalystii\"",
+          "cantact>=0.0.7; extra == \"cantact\"",
+          "python-can-cvector; extra == \"cvector\"",
+          "gs-usb>=0.2.1; extra == \"gs-usb\"",
+          "nixnet>=0.3.2; extra == \"nixnet\"",
+          "windows-curses; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"viewer\"",
+          "asammdf>=6.0.0; extra == \"mf4\"",
+          "msgpack~=1.1.0; extra == \"multicast\""
+        ],
+        "release_upload_times": [
+          "2025-08-12T07:44:56.550052Z",
+          "2025-08-12T07:44:58.314717Z"
+        ]
+      }
+    },
+    "cantools": {
+      "pinned": {
+        "metadata_url": "https://pypi.org/pypi/cantools/40.7.1/json",
+        "version": "40.7.1",
+        "requires_python": ">=3.9",
+        "project_urls": {
+          "documentation": "https://cantools.readthedocs.io/",
+          "homepage": "https://github.com/cantools/cantools",
+          "repository": "https://github.com/cantools/cantools"
+        },
+        "requires_dist": [
+          "bitstruct>=8.16.1",
+          "python-can>=4.6.0",
+          "textparser>=0.21.1",
+          "diskcache",
+          "argparse_addons",
+          "crccheck",
+          "mypy; extra == \"dev\"",
+          "pipx; extra == \"dev\"",
+          "ruff; extra == \"dev\"",
+          "tox; extra == \"dev\"",
+          "matplotlib; extra == \"plot\"",
+          "windows-curses; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"windows-all\""
+        ],
+        "release_upload_times": [
+          "2025-09-30T07:32:03.102117Z",
+          "2025-09-30T07:32:04.927838Z"
+        ],
+        "files": [
+          {
+            "filename": "cantools-40.7.1-py3-none-any.whl",
+            "size_bytes": 158379,
+            "sha256": "a68159cce229581f77aad0b906938682f29ecc9164248c997af80f1d49c073c9",
+            "requires_python": ">=3.9",
+            "yanked": false
+          },
+          {
+            "filename": "cantools-40.7.1.tar.gz",
+            "size_bytes": 1016424,
+            "sha256": "467e04cc86e076307375ae9bcd83707108e998e3ea6019bf968773580b9aa95f",
+            "requires_python": ">=3.9",
+            "yanked": false
+          }
+        ]
+      },
+      "current": {
+        "metadata_url": "https://pypi.org/pypi/cantools/json",
+        "version": "45.0.0",
+        "requires_python": ">=3.10",
+        "project_urls": {
+          "documentation": "https://cantools.readthedocs.io/",
+          "homepage": "https://github.com/cantools/cantools",
+          "repository": "https://github.com/cantools/cantools"
+        },
+        "requires_dist": [
+          "bitstruct>=8.16.1",
+          "python-can>=4.6.0",
+          "textparser>=0.26",
+          "argparse_addons",
+          "crccheck",
+          "diskcache; extra == \"cache\"",
+          "matplotlib-stubs; extra == \"dev\"",
+          "mypy; extra == \"dev\"",
+          "pipx; extra == \"dev\"",
+          "ruff; extra == \"dev\"",
+          "tox; extra == \"dev\"",
+          "matplotlib; extra == \"plot\"",
+          "windows-curses; (platform_system == \"Windows\" and platform_python_implementation == \"CPython\") and extra == \"windows-all\""
+        ],
+        "release_upload_times": [
+          "2026-10-13T21:56:02.582323Z",
+          "2026-10-13T21:56:04.507197Z"
+        ]
+      }
+    }
+  },
+  "carla_release": {
+    "metadata_url": "https://api.github.com/repos/carla-simulator/carla/releases/tags/0.9.15",
+    "html_url": "https://github.com/carla-simulator/carla/releases/tag/0.9.15",
+    "published_at": "2023-11-11T12:51:52Z",
+    "body": "### Release 0.9.15\r\n\r\n- `[Ubuntu]` [CARLA_0.9.15.tar.gz](https://downloads.carlasim.com/Linux/CARLA_0.9.15.tar.gz)\r\n- `[Ubuntu]` [AdditionalMaps_0.9.15.tar.gz](https://downloads.carlasim.com/Linux/AdditionalMaps_0.9.15.tar.gz)\r\n- `[Windows]` [CARLA_0.9.15.zip](https://downloads.carlasim.com/Windows/CARLA_0.9.15.zip)\r\n- `[Windows]` [AdditionalMaps_0.9.15.zip](https://downloads.carlasim.com/Windows/AdditionalMaps_0.9.15.zip)\r\n\r\n### Changes\r\n\r\n  * Added Digital Twins feature version 0.1. Now you can create your own map based on OpenStreetMaps\r\n  * Added compatibility with SymReady Assets, using NVIDIA Omniverse\r\n  * Added new maps: Town13 (is a large map) and Town15\r\n  * The spectator will be used to load tiles and actor in Large Maps when no other actors with the rolename 'ego_vehicle' or 'hero' are present. Added the `spectator_as_ego` to the `carla.WorldSettings()` to allow users to disable this behavior.\r\n  * Add keyword arguments for `carla.TrafficManager` Python API functions\r\n  * Added build support for VS2022 and Ninja for LibCarla and osm2odr on Windows\r\n  * Added empty actor\r\n  * Restored gamma value to 2.2 instead of 2.4\r\n  * CarlaExporter tool now exports the box collider and convex collider of the object if it has one, otherwise the mesh\r\n  * Pedestrians with AI or in replayer are now faster around 10x. They have collisions disabled until they hit a vehicle.\r\n  * Added API function to avoid replaying the spectator\r\n    * `Client.set_replayer_ignore_spectator(bool)`\r\n    * `start_replaying.py` using flag `--move-spectator`\r\n  * Surface non-unity build mode by passing ARGS=--no-unity to make; allows IWYU-type errors to be unmasked and fixed.\r\n  * Added maps, vehicles, pedestrians and props catalogues to the documentation\r\n  * Collisions detected by the CollisionSensor no longer generate more than one event per frame.\r\n  * Added API function to load a map only if it is different from the current one.\r\n  * Fixed a bug in the TrafficManager causing vehicles that reached an ending lane to have abnormal behavior while lane changing.\r\n  * Fixed bug causing the TM's unstuck logic to incorrectly remove the vehicles in some situations.\r\n  * Fixed the extra data in Directx textures, so we need to copy row by row on Windows to remove extra bytes on images\r\n  * Fixed vertices of big meshes (more than 65k vertices) in CarlaExporter\r\n  * Fixed sensors to check for the stream to be ready (race condition)\r\n  * Fixed bug causing the `FPixelReader::SavePixelsToDisk(PixelData, FilePath)` function to crash due to pixel array not set correctly.\r\n  * Fixed segfaults in Python API due to incorrect GIL locking under Python 3.10.\r\n  * Fixed the import script, where could use any other TilesInfo.txt if the destination folder has many\r\n",
+    "assets": []
+  }
+}

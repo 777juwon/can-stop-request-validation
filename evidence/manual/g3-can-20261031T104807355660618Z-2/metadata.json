@@ -1,0 +1,18 @@
+{
+  "baseline": "v1.0",
+  "scope": "G3_STAGE1_REQUEST_TRANSPORT_ONLY",
+  "run_id": "g3-can-20261031T104807355660618Z-2",
+  "run_token": 3946729006,
+  "git_commit": "94411a45aac647a0b9b0c811606d74c8f30d1df2",
+  "tool_sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+  "started_utc": "2026-10-31T10:48:07.383359+00:00",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "command_arguments": [
+    "--interface",
+    "vcan0",
+    "--output-dir",
+    "evidence/manual/g3-can-20261031T104807355660618Z-2"
+  ],
+  "fixture": "연결 확인용: 정상 5개와 NEAR_DISTANCE 5개, counter 0~9, 50 ms",
+  "interface": "vcan0"
+}

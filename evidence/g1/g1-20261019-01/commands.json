@@ -1,0 +1,64 @@
+[
+  {
+    "argv": [
+      "ip",
+      "-details",
+      "-json",
+      "link",
+      "show",
+      "dev",
+      "vcan0"
+    ],
+    "begin_ns": 3539187548836,
+    "done_ns": 3539190399256,
+    "exit_code": 0,
+    "observed_interface": {
+      "flags": [
+        "NOARP",
+        "UP",
+        "LOWER_UP"
+      ],
+      "ifname": "vcan0",
+      "kind": "vcan"
+    },
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g1_vcan_smoke.py",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "/home/parkjuwon/can-stop-request-validation/evidence/g1/g1-20261019-01",
+      "--worker",
+      "receiver",
+      "--run-token",
+      "3533323994"
+    ],
+    "begin_ns": 3539190562486,
+    "exit_code": 0,
+    "pid": 4,
+    "role": "receiver"
+  },
+  {
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g1_vcan_smoke.py",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "/home/parkjuwon/can-stop-request-validation/evidence/g1/g1-20261019-01",
+      "--worker",
+      "sender",
+      "--run-token",
+      "3533323994"
+    ],
+    "begin_ns": 3539221323088,
+    "exit_code": 0,
+    "pid": 6,
+    "role": "sender"
+  }
+]

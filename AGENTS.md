@@ -50,6 +50,8 @@ Use the repository files, code and recorded evidence as the durable handoff, not
 ## Working style and handoff
 
 - Communicate in Korean unless the user asks otherwise. Avoid the middle-dot character in user-facing writing.
+- 이 프로젝트에서 새로 작성하거나 수정하는 코드의 설명, 주석과 docstring은 한글로 작성한다. 외부 API 이름과 기존 로그의 키는 호환성을 유지하며, 과거 실행 증거와 당시 소스 사본은 번역하지 않는다.
+- 검사 기능을 추가할 때 사용자가 터미널에서 직접 재현할 명령, 결과 위치와 판정 방법도 함께 정리한다.
 - Explain each decision as problem, evidence, judgment, change and verification.
 - Keep scope small and verifiable. Report a failed prerequisite before expanding work.
 - After each substantive task, update docs/STATUS.md and append docs/WORKLOG.md.

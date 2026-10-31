@@ -1,0 +1,33 @@
+{
+  "observed_utc": "2026-10-19T11:14:06.047164+00:00",
+  "host_setup_executed_by": "user terminal; root sudo attempt required password",
+  "user_reported_completion": true,
+  "verification": [
+    {
+      "command": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\\t${Version}\\t${Status}\\n",
+        "can-utils",
+        "vulkan-tools"
+      ],
+      "exit_code": 0,
+      "stdout": "can-utils\t2020.11.0-1\tinstall ok installed\nvulkan-tools\t1.3.204.0+dfsg1-1\tinstall ok installed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-details",
+        "-json",
+        "link",
+        "show",
+        "dev",
+        "vcan0"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"ifindex\":5,\"ifname\":\"vcan0\",\"flags\":[\"NOARP\",\"UP\",\"LOWER_UP\"],\"mtu\":72,\"qdisc\":\"noqueue\",\"operstate\":\"UNKNOWN\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"can\",\"promiscuity\":0,\"min_mtu\":0,\"max_mtu\":0,\"linkinfo\":{\"info_kind\":\"vcan\"},\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535}]\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "session_date": "2026-10-19",
+  "scope": "Read-only OS, CPU, memory, project-filesystem capacity, and GPU-command availability inspection.",
+  "execution_context": "Default sandbox; no escalation attempted.",
+  "project_path": "/home/parkjuwon/can-stop-request-validation",
+  "records": [
+    {
+      "id": "os_release",
+      "command": "cat /etc/os-release",
+      "exit_code": 0,
+      "output": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+      "wall_time_seconds": 1.1741e-05
+    },
+    {
+      "id": "kernel",
+      "command": "uname -srm",
+      "exit_code": 0,
+      "output": "Linux 6.8.0-138-generic x86_64\n",
+      "wall_time_seconds": 1.086e-05
+    },
+    {
+      "id": "cpu",
+      "command": "LC_ALL=C lscpu | rg '^(Architecture|CPU\\(s\\)|On-line CPU\\(s\\) list|Vendor ID|Model name|Thread\\(s\\) per core|Core\\(s\\) per socket|Socket\\(s\\)):'",
+      "exit_code": 0,
+      "output": "Architecture:                            x86_64\nCPU(s):                                  16\nOn-line CPU(s) list:                     0-15\nVendor ID:                               AuthenticAMD\nModel name:                              AMD Ryzen 7 8845HS w/ Radeon 780M Graphics\nThread(s) per core:                      2\nCore(s) per socket:                      8\nSocket(s):                               1\n",
+      "wall_time_seconds": 1.1942e-05
+    },
+    {
+      "id": "memory",
+      "command": "free -h",
+      "exit_code": 0,
+      "output": "               total        used        free      shared  buff/cache   available\nMem:            14Gi       3.6Gi       6.2Gi        43Mi       5.1Gi        10Gi\nSwap:           31Gi          0B        31Gi\n",
+      "wall_time_seconds": 1.11e-05
+    },
+    {
+      "id": "project_disk",
+      "command": "df -h /home/parkjuwon/can-stop-request-validation",
+      "exit_code": 0,
+      "output": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/nvme0n1p4  593G  364G  200G  65% /home/parkjuwon/can-stop-request-validation\n",
+      "wall_time_seconds": 8.345e-06
+    },
+    {
+      "id": "nvidia_smi_path",
+      "command": "command -v nvidia-smi",
+      "exit_code": 0,
+      "output": "/usr/bin/nvidia-smi\n",
+      "wall_time_seconds": 9.748e-06
+    },
+    {
+      "id": "vulkaninfo_path",
+      "command": "command -v vulkaninfo",
+      "exit_code": 1,
+      "output": "",
+      "wall_time_seconds": 6.692e-06
+    },
+    {
+      "id": "gpu_query",
+      "command": "nvidia-smi --query-gpu=name,driver_version,memory.total,memory.free --format=csv,noheader",
+      "exit_code": 9,
+      "output": "NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.\n\n",
+      "wall_time_seconds": 1.1792e-05
+    }
+  ],
+  "observations": [
+    "Ubuntu 22.04.5 LTS; Linux 6.8.0-138-generic x86_64.",
+    "AMD Ryzen 7 8845HS: 8 physical cores, 16 logical CPUs.",
+    "Memory reported as 14 GiB total, 10 GiB available; 31 GiB swap unused at observation.",
+    "Project filesystem reports 200 GiB available.",
+    "/usr/bin/nvidia-smi exists, but restricted GPU query exited 9 because it could not communicate with the NVIDIA driver.",
+    "The GPU-query failure does not establish whether the driver is unavailable on the host or inaccessible from this sandbox. Parent may request an appropriately scoped escalated recheck.",
+    "vulkaninfo was not found in PATH.",
+    "No GPU name, driver version, or VRAM value was successfully verified by this inspection.",
+    "No G0 PASS or CARLA feasibility judgment made."
+  ],
+  "changes_performed": "Only this /tmp evidence JSON file was written. No repository edits, installation, download, module load, or interface changes.",
+  "followup": {
+    "execution_context": "Explicitly approved escalated read-only query after sandbox exit 9",
+    "command": "nvidia-smi --query-gpu=name,driver_version,memory.total,memory.free --format=csv,noheader",
+    "exit_code": 0,
+    "stdout": "NVIDIA GeForce RTX 4060 Laptop GPU, 570.211.01, 8188 MiB, 7806 MiB\n",
+    "interpretation": "GPU query succeeded outside sandbox; earlier failure is not evidence of a broken host driver. Vulkan/CARLA execution remains untested."
+  },
+  "notes": [
+    "Memory and free VRAM values are snapshots.",
+    "Hardware identifiers such as GPU UUID/serial and hostname were not collected."
+  ]
+}

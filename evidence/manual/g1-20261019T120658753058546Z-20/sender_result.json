@@ -1,0 +1,48 @@
+{
+  "begin_ns": 6713161719667,
+  "done_ns": 6715264012473,
+  "interface": {
+    "flags": [
+      "NOARP",
+      "UP",
+      "LOWER_UP"
+    ],
+    "ifname": "vcan0",
+    "kind": "vcan"
+  },
+  "observations": {
+    "scheduled_end_ns": 6715263825600,
+    "sent_frames": 60,
+    "start_ns": 6713263825600
+  },
+  "pid": 27,
+  "preflight_commands": [
+    {
+      "argv": [
+        "ip",
+        "-details",
+        "-json",
+        "link",
+        "show",
+        "dev",
+        "vcan0"
+      ],
+      "begin_ns": 6713161721350,
+      "done_ns": 6713163734970,
+      "exit_code": 0,
+      "observed_interface": {
+        "flags": [
+          "NOARP",
+          "UP",
+          "LOWER_UP"
+        ],
+        "ifname": "vcan0",
+        "kind": "vcan"
+      },
+      "stderr": ""
+    }
+  ],
+  "role": "sender",
+  "scope": "G1_ONLY_CONNECTION_SMOKE_NOT_THESIS_COMPARISON",
+  "status": "COMPLETE"
+}

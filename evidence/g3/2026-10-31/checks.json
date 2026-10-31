@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "observed_utc": "2026-10-31T10:43:52.635356+00:00",
+  "unit_tests": 62,
+  "new_g3_unit_tests": 23,
+  "commands": [
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": "test_fixture_known_bytes_and_counts (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_known_classic_can_bytes (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_rejects_non_classic_length_or_id (tests.test_g1_vcan_smoke.FrameTests) ... ok\ntest_output_directory_is_never_reused (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_refuses_physical_or_down_interface (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_sigterm_preserves_interrupted_verdict_and_commands (tests.test_g1_vcan_smoke.GuardTests) ... ok\ntest_complete_observations_pass_only_connection_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_foreign_run_token_does_not_replace_missing_fixture (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_or_duplicate_observation_fails (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_raw_frame_disagreement_and_impossible_observation_time_fail (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_send_slot_upper_boundary_is_exclusive (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_sender_success_without_observer_cannot_pass (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_target_must_not_follow_post_stop_background (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_wrong_bytes_or_dlc_cannot_pass_on_counts_alone (tests.test_g1_vcan_smoke.OracleTests) ... ok\ntest_missing_failed_or_wrong_actor_response_is_rejected (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_settle_ackermann_then_identical_brake_is_transmitted (tests.test_g2_carla_smoke.ControlTransitionTests) ... ok\ntest_above_threshold_and_nonfinite_speed_break_hold (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_half_second_requires_eleven_samples (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_missing_frame_and_time_gap_break_continuity (tests.test_g2_carla_smoke.HoldObservationTests) ... ok\ntest_carla_float32_step_keeps_exact_40_frame_boundary (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_command_without_applied_brake_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_exact_two_second_window_boundary_is_included (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_stop_hold_must_complete_inside_two_second_window (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_target_speed_without_observed_motion_is_not_success (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_valid_observed_motion_and_braking (tests.test_g2_carla_smoke.MotionObservationTests) ... ok\ntest_post_observation_deadline_is_checked_even_when_observation_was_timely (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stability_established_by_late_tick_cannot_be_ready (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_stable_completion_at_deadline_is_recorded (tests.test_g2_carla_smoke.PreparationDeadlineTests) ... ok\ntest_incomplete_execution_cannot_pass_on_motion_check_alone (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_failure_survives_cleanup_error (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_motion_success_with_cleanup_error_cannot_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_ready_motion_and_successful_cleanup_can_pass (tests.test_g2_carla_smoke.ResultClassificationTests) ... ok\ntest_all_defined_reasons_and_unsigned_boundaries (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_known_bytes_and_little_endian_token (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_nonclassic_length_and_invalid_dlc_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_noninteger_and_out_of_range_encoding_rejected (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_payload_length_is_exactly_eight (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_unassigned_fields_are_preserved_without_adapter_policy (tests.test_g3_request_smoke.RequestBytesTests) ... ok\ntest_decoded_fields_cannot_disagree_with_raw_bytes (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_exact_raw_observations_pass_only_transport (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_flags_wrong_id_and_short_payload_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_foreign_token_is_not_the_expected_fixture (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_missing_duplicate_or_reordered_frames_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_optimized_python_keeps_raw_flag_checks (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_raw_bytes_cannot_disagree_with_logged_payload (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_before_send_begin_or_after_record_end_fails (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_receive_timestamp_order_is_checked (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_send_success_without_observation_is_not_pass (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_slot_schedule_and_late_sender_fail (tests.test_g3_request_smoke.RequestObservationTests) ... ok\ntest_direct_worker_cannot_bypass_physical_interface_guard (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_early_exit_cannot_inherit_pass_or_missing_result (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_existing_directory_is_not_reused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_missing_interface_records_env_error_without_starting_workers (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_physical_down_and_ambiguous_interfaces_refused (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_receiver_early_exit_keeps_recorded_failure_classification (tests.test_g3_request_smoke.RequestRuntimeGuardsTests) ... ok\ntest_atomic_final_rename_refuses_even_empty_existing_destination (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_destination_or_staging_is_not_reused (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_existing_record_is_never_overwritten (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_path_escape_is_rejected_and_partial_staging_preserved (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_required_binary_must_be_executable (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_size_mismatch_fails_before_extraction (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\ntest_small_valid_archive_is_recorded_and_renamed (tests.test_install_carla_archive.ArchiveInstallationTests) ... ok\n\n----------------------------------------------------------------------\nRan 62 tests in 0.190s\n\nOK\n"
+    },
+    {
+      "command": [
+        "bash",
+        "tools/run_self_checks.sh",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "사용법:\n  bash tools/run_self_checks.sh check\n  bash tools/run_self_checks.sh g1\n  bash tools/run_self_checks.sh g3-can\n  bash tools/run_self_checks.sh g2 --exclusive-server [--allow-world-load]\n\ncheck: 단위 검사, Python 의존성, 셸 문법과 Git 공백 검사\ng1: 이미 준비된 vcan0에서 독립 송신기와 수신기의 실제 프레임 교환\ng2: 별도로 시작한 전용 CARLA 서버에서 실제 차속과 제동 확인\ng3-can: CARLA 없이 StopRequest의 독립 송수신만 확인하는 G3 첫 단계\n\nG2는 127.0.0.1:2000을 사용한다. 다른 시험이나 제어 프로그램을 먼저 종료한다.\n--exclusive-server: 다른 tick/제어 프로그램이 없는 전용 서버임을 명시\n--allow-world-load: 빈 서버의 맵을 Town04로 바꾸는 것을 허용\n이 스크립트는 시스템 설치, 인터페이스 생성, 서버 시작을 자동 수행하지 않는다.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-I",
+        "tools/g3_request_smoke.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: g3_request_smoke.py [-h] [--interface INTERFACE] --output-dir\n                           OUTPUT_DIR\n\nG3의 첫 단계: CARLA 없이 StopRequest 바이트와 독립 vCAN 송수신을 확인한다. stop=0 다섯 개와 stop=1 다섯\n개는 연결 확인용 입력이다. SUT의 판단, adapter의 오류 대응, CARLA 제어, 정지 잠금이나 본시험을 구현하지 않는다.\n\noptions:\n  -h, --help            show this help message and exit\n  --interface INTERFACE\n                        이미 준비된 UP 상태의 vcan 장치\n  --output-dir OUTPUT_DIR\n                        존재하지 않는 새 증거 폴더\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/RESEARCH_BASELINE.md",
+        "docs/VALIDATION_PLAN.md",
+        "docs/THESIS_OUTLINE.md",
+        "docs/SOURCE_AUDIT.md"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "94411a45aac647a0b9b0c811606d74c8f30d1df2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-details",
+        "-json",
+        "link",
+        "show",
+        "dev",
+        "vcan0"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Device \"vcan0\" does not exist.\n"
+    },
+    {
+      "command": [
+        "ss",
+        "-ltn",
+        "sport = :2000 or sport = :2001"
+      ],
+      "exit_code": 0,
+      "stdout": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "dpkg-query",
+        "-W",
+        "-f=${binary:Package}\t${Version}\n",
+        "can-utils",
+        "vulkan-tools"
+      ],
+      "exit_code": 0,
+      "stdout": "can-utils\t2020.11.0-1\nvulkan-tools\t1.3.204.0+dfsg1-1\n",
+      "stderr": ""
+    }
+  ],
+  "branch": "main",
+  "head": "94411a45aac647a0b9b0c811606d74c8f30d1df2",
+  "current_vcan0": "ABSENT",
+  "carla_started": false,
+  "actual_request_transport": "NOT_RUN",
+  "full_g3_verified": false,
+  "new_dependencies": false,
+  "scope": "G3 첫 단계의 코드 및 단위 검사, 환경 사전검사만 확인",
+  "active_markdown_files": 15,
+  "local_links_checked": 92,
+  "execution_source_hashes": "MATCHED",
+  "fixed_research_documents": "UNCHANGED"
+}

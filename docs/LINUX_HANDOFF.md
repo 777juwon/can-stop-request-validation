@@ -10,6 +10,14 @@ The Windows-side investigation confirmed public CARLA/vCAN bridge source code an
 
 On 2026-10-16 the user asked to finalize implementation documents without changing the submitted proposal. Read RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md as v1.0. Their design values are fixed for implementation, not proven runtime performance. Do not introduce new tests, automatic restart or actual sensor modeling without a versioned decision.
 
+On 2026-10-19 the original Linux checkout was fast-forwarded to published v1.0. G0 inspection, Python/host setup and actual independent vCAN G1 are complete. The detected user CARLA 0.9.14 client was removed with authorization. Matching CARLA 0.9.15 client/server are installed and standalone G2 passed in run03 and final-source run04; failed run01/run02 remain preserved. Use Python -I to exclude inherited external Python paths. See [SETUP_AND_SMOKE](SETUP_AND_SMOKE_2026-10-19.md). G3 is next. Both server processes crashed on Ctrl+C after G2 cleanup; normal server shutdown remains unverified and no server is left running.
+
+2026-10-31 추가: [G3_PROGRESS](G3_PROGRESS.md)의 첫 단계 요청 송수신 도구 및 새 단위 검사 23개를 구현했다. 초기 장치 부재 ENV_ERROR는 보존했고, 사용자가 준비한 뒤 vcan0 UP과 `bash tools/run_self_checks.sh g3-can`의 실제 10프레임 송수신 PASS를 확인했다. 다음은 CARLA adapter 구현과 연결이다. 전체 G3, G4와 본시험은 미실행이다.
+
+최신 마감 기록: [CHECKPOINT_2026-10-31](CHECKPOINT_2026-10-31.md). 증거 읽기 순서와 다음 단계 완료 기준을 확인한 뒤 구현을 이어간다.
+
+전체 중간점검은 [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에서 확인한다. 설치 및 부분 연결 검증의 완료와 핵심 SUT/본시험/집필의 남은 범위를 구분한다.
+
 ## Start here on Ubuntu
 
 Clone this repository into a dedicated Linux project directory, not inside the company's DMS repository. For a public repository:
@@ -26,13 +34,13 @@ A Windows chat ID alone is not the handoff mechanism for this repository. The of
 
 ## First message to Linux Codex
 
-> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/RESEARCH_BASELINE.md, docs/VALIDATION_PLAN.md, docs/SOURCE_AUDIT.md를 모두 읽고 현재 상태를 요약해줘. 제출한 계획서는 수정하지 않고 구현용 v1.0 문서를 기준으로 진행해. 이 프로젝트는 아직 구현이나 Linux 실행 검증을 하지 않았어. 오늘은 G0 환경 확인부터 시작해서 독립 vCAN 송수신과 CARLA 단독 실행을 재현하는 최소 절차를 잡아줘. 전체 시스템을 한 번에 구현하지 말고, 실제 실행한 명령과 결과를 STATUS와 WORKLOG에 기록해줘. 큰 다운로드나 시스템 변경 전에는 무엇을 하는지 설명해줘.
+> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/G3_PROGRESS.md, docs/SETUP_AND_SMOKE_2026-10-19.md, docs/RESEARCH_BASELINE.md, docs/VALIDATION_PLAN.md, docs/SOURCE_AUDIT.md를 읽고 현재 상태를 요약해줘. 제출한 계획서는 수정하지 않고 v1.0 기준으로 진행해. G0/G1/G2는 과거 실행 증거가 있고, 2026-10-31 사용자 장치 준비 후 G3의 실제 요청 송수신 부분도 PASS했어. 다음은 CARLA adapter 구현과 단위 검사, 이후 실제 차량 연결이야. 현재 vcan0 상태는 다시 조회해줘. Python은 -I로 실행하고, 새 코드 설명은 한글로 작성해. 단계별 명령과 결과를 STATUS와 WORKLOG에 기록해줘.
 
 ## G0: Read-only environment inspection
 
 Inspect available commands first. Do not treat missing commands as installed.
 
-Suggested checks, not executed in this project:
+The initial inspection was completed on 2026-10-19 and its actual commands/results are in the G0 record. The following are generic recheck examples, not a claim that every command below was executed verbatim:
 
 ```bash
 uname -a
@@ -56,6 +64,8 @@ Prior Windows evidence identified an RTX 4060 Laptop GPU with about 8 GB VRAM. T
 
 ## G1: Independent vCAN transport
 
+사용자 직접 재실행 절차는 [SELF_CHECK.md](SELF_CHECK.md)와 tools/run_self_checks.sh에 정리한다. 새로 작성하거나 수정하는 코드의 설명, 주석과 docstring은 한글로 작성하고 과거 실행 증거는 보존한다.
+
 After inspecting the system and explaining needed system changes:
 
 - Use Linux SocketCAN, not python-can's in-memory VirtualBus as a substitute for this gate.
@@ -71,7 +81,7 @@ This gate proves virtual frame transport. It does not prove ECU firmware, physic
 
 - Start with the official CARLA 0.9.15 packaged server as the first reproduction candidate.
 - Use a matching Python client in an isolated environment.
-- Consider the reference's Python 3.9 environment, but verify wheels and dependencies rather than assuming compatibility.
+- Use the Python 3.10.12 project venv selected by G0; imports and exact 0.9.15 client/server compatibility have passed locally.
 - Do not downgrade the Ubuntu system Python.
 - Do not download CARLA from a mirror blindly or execute an upstream all-in-one installer without reading it.
 - Avoid building the engine from source initially.
@@ -79,6 +89,8 @@ This gate proves virtual frame transport. It does not prove ECU firmware, physic
 - No full road navigation, cameras, ROS2 or Autoware are required for this gate.
 
 Record server/client versions, launch parameters, GPU used, command output and actual vehicle-state evidence.
+
+Local findings to preserve: the 0.9.15 client can omit a repeated VehicleControl after Ackermann because its cached earlier control is identical. Disabling sticky_control also affects server AI and prevented movement in run02. The working G2 uses sticky_control=true and client.apply_batch_sync with ApplyVehicleControl and do_tick_cue=False, checks the response and actor ID, then advances world.tick once. Keep observed applied controls and velocity as the motion evidence. Fixed-step windows use frame counts at their float32 time boundary. Ctrl+C caused a shutdown crash twice; do not describe it as normal cleanup.
 
 ## G3: vCAN to vehicle control
 

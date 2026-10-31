@@ -1,0 +1,15 @@
+{
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "prefix": "/home/parkjuwon/can-stop-request-validation/.venv",
+  "base_prefix": "/usr",
+  "isolated_mode": true,
+  "versions": {
+    "python-can": "4.6.1",
+    "cantools": "40.7.1",
+    "carla": "0.9.15"
+  },
+  "carla_module_path": "/home/parkjuwon/can-stop-request-validation/.venv/lib/python3.10/site-packages/carla/__init__.py",
+  "user_site_disabled": true,
+  "pip_check": "PASS with python -I",
+  "earlier_check": "Unisolated shell PYTHONPATH exposed unrelated ROS package metadata; no ROS package was installed. Isolated check excludes those paths."
+}
