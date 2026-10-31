@@ -1,0 +1,20 @@
+{
+  "scope": "G3_RAW_OBSERVATION_RECALCULATION_ONLY",
+  "audit_status": "PASS",
+  "run_id": "g3-20261031T151442436312880Z-11071",
+  "raw_stream_counts": [20, 20, 20, 20],
+  "coordinator_sender_observer_pids": [11071, 11105, 11104],
+  "vehicle_sample_count": 206,
+  "initial_hold_speed_kmh_min": 4.5751826941727956,
+  "initial_hold_speed_kmh_max": 4.964107976044683,
+  "brake_callback_count": 15,
+  "max_receive_to_call_complete_ms": 0.429085,
+  "first_applied_frame": 8685,
+  "stop_hold_first_frame": 8686,
+  "stop_hold_last_frame": 8696,
+  "stop_hold_sample_count": 11,
+  "stop_hold_complete_after_applied_nominal_seconds": 0.55,
+  "final_frame": 8725,
+  "source_sha256_match": true,
+  "main_trials_executed": 0
+}

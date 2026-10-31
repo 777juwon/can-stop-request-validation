@@ -1,0 +1,60 @@
+{
+  "gate": "G3",
+  "scope": "G3_CAN_TO_CARLA_SMOKE_ONLY",
+  "execution_status": "COMPLETE",
+  "cleanup_status": "PASS",
+  "checks": {
+    "scope": "G3_CAN_TO_CARLA_INTEGRATION_ONLY",
+    "all_checks_passed": true,
+    "failures": [],
+    "missing_evidence": [],
+    "metrics": {
+      "main_comparison_runs_executed": 0,
+      "sent_frames": 20,
+      "observed_frames": 20,
+      "adapter_received_frames": 20,
+      "adapter_event_count": 20,
+      "sender_pids": [
+        11105
+      ],
+      "observer_pids": [
+        11104
+      ],
+      "adapter_pids": [
+        11071
+      ],
+      "max_processing_ms": 0.429085,
+      "initial_speed_hold": {
+        "first_frame": 8657,
+        "last_frame": 8677,
+        "first_simulation_time_s": 10.212601035833359,
+        "last_simulation_time_s": 11.21260105073452,
+        "sample_count": 21,
+        "observed_span_s": 1.0000000149011612
+      },
+      "preparation_seconds": 7.862229582,
+      "actual_prefix_motion_observed": true,
+      "pre_request_full_brake_frames": [],
+      "first_brake_applied": {
+        "frame": 8685,
+        "simulation_time_s": 11.612601056694984,
+        "host_monotonic_ns": 502335976742
+      },
+      "stop_hold": {
+        "first_frame": 8686,
+        "last_frame": 8696,
+        "first_simulation_time_s": 11.662601057440042,
+        "last_simulation_time_s": 12.162601064890623,
+        "sample_count": 11,
+        "observed_span_s": 0.5000000074505806
+      },
+      "stop_hold_completed_after_applied_frames": 11
+    },
+    "transport_status": "PASS",
+    "adapter_status": "PASS",
+    "motion_status": "PASS"
+  },
+  "status": "PASS",
+  "main_trials_executed": 0,
+  "full_g4_verified": false
+}

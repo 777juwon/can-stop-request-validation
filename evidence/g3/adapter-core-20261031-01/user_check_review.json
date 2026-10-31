@@ -1,0 +1,14 @@
+{
+  "record_date": "2026-10-31",
+  "evidence_level": "USER_SUPPLIED_TERMINAL_OUTPUT",
+  "command_shown": "bash tools/run_self_checks.sh check",
+  "unit_test_count": 80,
+  "unit_test_result": "OK",
+  "reported_unit_duration_seconds": 0.187,
+  "dependency_check_output": "No broken requirements found.",
+  "user_full_unit_test_run_confirmed_from_output": true,
+  "user_exit_code_observed": false,
+  "user_source_hash_verified": false,
+  "scope": "사용자가 제공한 검사 출력의 확인. 이 명령으로 실제 CAN/CARLA 통합이 실행된 것은 아님",
+  "actual_integration_verified": false
+}

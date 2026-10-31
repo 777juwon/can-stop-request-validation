@@ -1,0 +1,14 @@
+관측: 전용 CARLA 서버에 Ctrl+C 전달 후 종료코드 139.
+원본: third_party/carla-g3-20261101-server.log. 아래 인용에서 NUL 구분자는 줄바꿈으로 표시한다.
+
+FUnixPlatformMisc::RequestExitWithStatus
+FUnixPlatformMisc::RequestExit
+Signal 11 caught.
+Malloc Size=65538 LargeMemoryPoolOffset=65554
+Malloc Size=131160 LargeMemoryPoolOffset=196744
+Malloc Size=131160 LargeMemoryPoolOffset=327928
+4.26.2-0+++UE4+Release-4.26 522 0
+Disabling core dumps.
+CommonUnixCrashHandler: Signal=11
+Engine crash handling finished; re-raising signal 11 for the default handler. Good bye.
+./CarlaUE4.sh: line 5: 10900 Segmentation fault      (core dumped) "$UE4_PROJECT_ROOT/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping" CarlaUE4 "$@"

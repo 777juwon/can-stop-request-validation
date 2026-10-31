@@ -1,0 +1,6 @@
+{
+  "pid": 11104,
+  "host_monotonic_ns": 494064685627,
+  "interface": "vcan0",
+  "scope": "G3_INTEGRATION_CAN_FIXTURE_ONLY"
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "G3_CAN_TO_CARLA_SMOKE_ONLY",
+  "baseline": "v1.0",
+  "run_id": "g3-20261031T151442436312880Z-11071",
+  "run_token": 2787827994,
+  "coordinator_pid": 11071,
+  "started_utc": "2026-10-31T15:14:42.477354+00:00",
+  "execution_status": "ENV_ERROR",
+  "fixture_sends_complete": false,
+  "observation_window_complete": false,
+  "full_g4_verified": false,
+  "main_trials_executed": 0,
+  "request_source": "G3 연결 확인 입력; SUT 출력 아님",
+  "arming_scope": "차량 준비 후 G3 연결 입력 시작. 거리 입력 SUT의 기동/arm을 검증하지 않음",
+  "phase_host_limit_seconds": 10.0,
+  "command_arguments": [
+    "--interface",
+    "vcan0",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "2000",
+    "--output-dir",
+    "evidence/manual/g3-20261031T151442436312880Z-11071",
+    "--exclusive-server",
+    "--allow-world-load"
+  ],
+  "git_commit": "d2957713523261f4f3b3710fd6aa733bb9ab4d9a",
+  "source_sha256": {
+    "g3_carla_smoke.py": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f",
+    "g3_integration_can.py": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586",
+    "g3_integration_oracle.py": "a810be9c32d74eae393ac1d4f88477b8672143f3c1c1e3dc74e756d9f26da485",
+    "g3_adapter_core.py": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+    "g3_request_smoke.py": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+    "g2_carla_smoke.py": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d"
+  },
+  "python_version": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]"
+}

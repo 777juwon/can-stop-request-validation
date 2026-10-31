@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-31T15:22:51.123291+00:00",
+  "failures": [],
+  "reviewed_file_count": 49,
+  "reviewed_total_bytes": 572203,
+  "largest_file": {
+    "path": "evidence/manual/g3-20261031T151442436312880Z-11071/vehicle_states.jsonl",
+    "bytes": 178251
+  },
+  "git_diff_check_exit_code": 0,
+  "protected_documents_unchanged": true,
+  "local_document_links_checked": 159,
+  "json_and_jsonl_files_parsed": 23,
+  "runtime_and_archived_source_sha256_checked": 6,
+  "read_only_code_review": "별도 검토에서 실행을 막는 추가 결함 없음. 적용 frame 귀속, 정상 복원, worker/중단/정리 경로 확인",
+  "gate_evidence": "gate_checks.json: 119개 OK, 의존성/셸 문법/Git 공백 검사 종료코드 0",
+  "actual_g3_exit_code": 0,
+  "actual_g3_status": "PASS",
+  "shutdown_limitation": "Ctrl+C에서 Signal 11/139, 세 번째 관측. 원인 미해결",
+  "review_status": "PASS"
+}

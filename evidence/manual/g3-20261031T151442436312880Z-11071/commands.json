@@ -1,0 +1,36 @@
+[
+  {
+    "role": "observer",
+    "pid": 11104,
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g3_integration_can.py",
+      "--worker",
+      "observer",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "/home/parkjuwon/can-stop-request-validation/evidence/manual/g3-20261031T151442436312880Z-11071",
+      "--run-token",
+      "2787827994"
+    ]
+  },
+  {
+    "role": "sender",
+    "pid": 11105,
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g3_integration_can.py",
+      "--worker",
+      "sender",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "/home/parkjuwon/can-stop-request-validation/evidence/manual/g3-20261031T151442436312880Z-11071",
+      "--run-token",
+      "2787827994"
+    ]
+  }
+]

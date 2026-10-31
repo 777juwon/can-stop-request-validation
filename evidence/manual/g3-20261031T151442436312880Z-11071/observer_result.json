@@ -1,0 +1,21 @@
+{
+  "scope": "G3_INTEGRATION_CAN_FIXTURE_ONLY",
+  "role": "observer",
+  "pid": 11104,
+  "status": "COMPLETE",
+  "started_utc": "2026-10-31T15:14:46.011228+00:00",
+  "begin_monotonic_ns": 494062087651,
+  "interface": "vcan0",
+  "run_token": 2787827994,
+  "received_frames": 20,
+  "decode_errors": 0,
+  "ready_monotonic_ns": 494064685627,
+  "watchdog_deadline_ns": 539064685627,
+  "termination": "COORDINATOR_SIGTERM",
+  "finished_utc": "2026-10-31T15:14:56.291841+00:00",
+  "done_monotonic_ns": 504342686369,
+  "terminate_requested": true,
+  "interrupt_requested": false,
+  "signal_number": 15,
+  "exit_code": 0
+}

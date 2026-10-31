@@ -1,0 +1,3 @@
+{"kind": "load_world_begin", "host_monotonic_ns": 490657988879}
+{"kind": "g3_fixture_armed", "host_monotonic_ns": 501934671236, "frame": 8677, "simulation_time_s": 11.21260105073452}
+{"kind": "brake_first_applied", "host_monotonic_ns": 502336198263, "frame": 8685, "simulation_time_s": 11.612601056694984}

@@ -1,6 +1,6 @@
 # 직접 실행하는 검사 안내
 
-이 안내는 Ubuntu 프로젝트에서 G1/G2와 G3 첫 단계의 요청 송수신을 재현하는 방법이다. G3의 실제 차량 연결은 아직 구현하지 않았다. 현재 환경과 단계별 결과는 [G3 진행 기록](G3_PROGRESS.md)을 확인한다.
+이 안내는 Ubuntu 프로젝트에서 G1/G2, G3 요청 송수신과 실제 차량 연결을 재현하는 방법이다. 전체 G3는 Codex의 실제 실행이 PASS했고 사용자 직접 재현은 아직 기록이 없다. [G3 통합 안내](G3_INTEGRATION.md)에 코드 검토 순서와 판정 방법을 정리했다.
 
 ## 1. 시작 위치와 한글 설명 규칙
 
@@ -17,7 +17,7 @@ bash tools/run_self_checks.sh --help
 bash tools/run_self_checks.sh check
 ```
 
-현재 단위 검사 80개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다.
+현재 단위 검사 119개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다. 사용자에게 확인받은 이전 80개 출력 이후 통합 관련 검사 39개가 추가됐다.
 
 ## 3. G1 실제 vCAN 송수신
 
@@ -66,7 +66,7 @@ bash tools/run_self_checks.sh g2 --exclusive-server --allow-world-load
 
 출력 폴더의 result.json에서 status=PASS를 확인한다. vehicle_states.jsonl에는 실제 차속, 적용 제어, frame과 두 종류의 시각이 남는다. 핵심 검사는 5.0 +/- 0.5 km/h를 1초 유지한 뒤 실제 제동을 적용하고, 2초의 시뮬레이션 창 안에서 속도 0.1 m/s 이하를 0.5초 유지하는 것이다.
 
-검사가 끝나면 자신의 차량을 제거하고 설정과 날씨를 복구한다. 허용한 Town04 로드는 원래 맵으로 복구하지 않는다. 다른 프로그램이 없는 것을 확인한 뒤 터미널 A에서 Ctrl+C로 서버를 종료한다. 현재 환경에서는 이때 Signal 11/exit 139가 두 번 관측됐으며 정상 종료 문제는 미해결이다. 검사 PASS와 서버 종료 성공을 구분한다.
+검사가 끝나면 자신의 차량을 제거하고 설정과 날씨를 복구한다. 허용한 Town04 로드는 원래 맵으로 복구하지 않는다. 다른 프로그램이 없는 것을 확인한 뒤 터미널 A에서 Ctrl+C로 서버를 종료한다. 현재 환경에서는 G2 두 번과 G3 한 번에서 Signal 11/exit 139가 관측됐으며 정상 종료 문제는 미해결이다. 검사 PASS와 서버 종료 성공을 구분한다.
 
 ```bash
 ss -ltn 'sport = :2000 or sport = :2001'
@@ -90,4 +90,14 @@ bash tools/run_self_checks.sh g3-can
 
 정상 요청 5개와 정지 요청 5개를 독립 프로그램 사이에서 보내고 관측한다. 출력 폴더의 verdict.json과 sender.jsonl/receiver.jsonl을 확인한다. `scope=G3_STAGE1_REQUEST_TRANSPORT_ONLY`의 PASS는 CAN 요청 송수신만 뜻한다. 실제 차량 제동이나 전체 G3의 통과는 아니다.
 
-adapter 핵심 코드와 가짜 콜백 예제는 [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)에서 직접 실행할 수 있다. 실제 제동 적용과 차속 변화는 다음 통합 단계다. 이전 45~90분 예상은 전체 G3 작업의 계획 추정이며 완료 보장이나 실측 결과가 아니다.
+adapter 핵심 코드와 가짜 콜백 예제는 [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)에서 직접 실행할 수 있다. 이전 45~90분 예상은 전체 G3 작업의 계획 추정이며 완료 보장이나 실측 결과가 아니다.
+
+## 7. G3 실제 차량 연결
+
+위 3절의 vcan0 준비와 4절 터미널 A의 전용 CARLA 서버 시작을 먼저 수행한다. 다른 tick/제어 프로그램이 없는 상태에서 터미널 B에서 실행한다.
+
+```bash
+bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
+```
+
+정상 5개, 정지 5개, 정상 복원 10개를 독립 송신하고 수신/제동 호출/적용/차속을 분리 기록한다. 화면에 출력한 폴더의 result.json에서 status=PASS, cleanup_status=PASS와 세 구성 요소 PASS를 확인한다. 매번 새 폴더를 만들며 실패 기록도 보존한다. 상세 로그 읽기와 코드 검토는 [G3_INTEGRATION](G3_INTEGRATION.md)을 따른다. Codex가 이 진입점으로 실제 PASS를 확인했다. 사용자 직접 재현과 G4/본시험 완료는 별도다.

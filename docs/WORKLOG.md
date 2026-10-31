@@ -356,3 +356,27 @@ bash tools/run_self_checks.sh g3-can
 - actual_can=false, carla_executed=false를 유지했다. 예제의 call_within_50ms를 실제 R-06 또는 차량 제동 성능으로 해석하지 않았다. 사용자 종료코드와 소스 해시, 소스 검토 완료는 제공되지 않아 추정하지 않았다.
 - 사용자 출력의 의미 요약을 evidence/g3/adapter-core-20261031-01/user_demo_review.json에 저장했다. 전체 대화와 셸 프롬프트는 복사하지 않았다. STATUS/G3_ADAPTER_STEP/LINUX_HANDOFF의 사용자 실행 상태를 갱신했다.
 - 제품 코드 변경은 없다. 문서 링크 132개, JSON 구문과 Git 공백 검사를 확인했다. 단위 검사는 재실행하지 않았다. 전체 G3와 실제 차량 연결은 여전히 미실행이다.
+
+## 2026-11-01: 중단 지점 복구와 첫 실제 G3 통합 PASS
+
+- 사용자가 작업 재개를 요청했다. README/STATUS/LINUX_HANDOFF와 기준선/검증 명세/소스 조사를 확인했고, main/HEAD d2957713523261f4f3b3710fd6aa733bb9ab4d9a, origin/main 대비 로컬 커밋 2개와 예상한 G3 변경만 있는 상태를 확인했다. 끊긴 지점은 통합 실행기/worker/독립 판정 구현 후 실제 실행 전이었다. 기존 로컬 변경을 이어받았으며 제출한 계획서와 v1.0 수치는 유지했다.
+- 이전 사용자의 `bash tools/run_self_checks.sh check` 출력은 80개 OK, 0.187초, 의존성 오류 없음이었다. 중단 전 생성한 evidence/g3/adapter-core-20261031-01/user_check_review.json과 관련 문서 변경을 이번에 함께 마감했다. 사용자 출력의 검토이며 당시 사용자 종료코드나 소스 SHA를 확인했다고 주장하지 않는다.
+- tools/g3_carla_smoke.py, g3_integration_can.py, g3_integration_oracle.py와 단위 검사 39개를 완성했다. worker 13개, 실행기 9개, 독립 판정 17개다. 독립 기대 바이트와 수신 관측, 호출 시각, 실제 적용 제어 및 velocity를 분리한다. 단일 제어/tick, 초기 준비 후 arm, 정지 잠금과 정상 복원 후 제동 유지, worker 종료 근거와 자원 복구를 검사한다. 지원 범위 밖 요청은 중단하고 기록하며 본시험 오류 대응 정책으로 확정하지 않았다.
+- 중단 전 검토에서 제동 적용의 귀속을 보완했다. Ackermann의 이전 제동을 CAN 효과로 잡지 않도록 실행기는 잠금 이후, 독립 판정은 첫 정지 요청의 실제 호출 완료 이후 tick에서만 최초 적용을 인정한다. 회귀 검사로 이전 제동만 있는 자료의 통과를 막았다. 완료 선언과 실제 worker 종료코드/PID/역할도 대조한다. 재개 후 별도 읽기 전용 최종 검토에서 실행을 막는 추가 결함은 발견하지 못했다. 이 검토 자체는 실제 실행 증거가 아니다.
+- 시작 시 vcan0가 없었고 포트 2000/2001은 비어 있었다. `sudo -n bash /home/parkjuwon/can-stop-request-validation/tools/setup_g1_host.sh`는 비밀번호 필요로 종료코드 1이었다. 사용자에게 원래 sudo 명령을 요청했고 완료 응답 후 vcan0/vcan/UP/LOWER_UP을 직접 재조회했다. 사라진 원인을 재부팅으로 단정하지 않았다. 근거: evidence/g3/integration-20261101-01/host_and_server.json.
+- 기존 launcher와 upstream CarlaUE4.sh를 읽고 설치된 0.9.15 전용 서버를 시작했다. 명령은 `bash tools/start_carla_0915.sh > third_party/carla-g3-20261101-server.log 2>&1`. client/server 0.9.15와 초기 Town10HD_Opt를 조회했다. 호스트 NVIDIA 조회는 RTX 4060 Laptop/570.211.01, pmon은 CARLA PID 10900과 GPU 메모리 2619 MiB를 관측했다. 샌드박스 내 별도 compute 조회 실패와 호스트 조회 성공은 구분해 남겼다.
+
+```bash
+bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
+```
+
+- 실제 실행 종료코드 0, 전체 G3 PASS. evidence/manual/g3-20261031T151442436312880Z-11071에 원시 로그와 판정을 보존했다. 폴더/로그는 UTC 2026-10-31이며 한국 시각은 2026-11-01이다. 실행 소요 약 14초, 준비 7.862초다. 다음 실행의 시간 보장은 아니다.
+- 전용 빈 Town04/Model3/ClearNoon/spawn 143, sticky_control=true와 기존 batch 제동을 사용했다. 정상 5개/정지 5개/정상 복원 10개, 총 20개의 0x200/DLC8 입력이다. coordinator 11071, sender 11105, observer 11104가 분리됐다. 송신/독립 관측/adapter 수신/adapter 이벤트가 각각 20개, 차량 상태 206개다.
+- 초기 차속은 21개 연속 표본에서 4.575182694~4.964107976 km/h였다. 제동 호출은 15회, 호스트 수신부터 완료까지 최대 0.429085 ms. 최초 적용 frame 8685 뒤 정지 유지 frame 8686~8696의 11개 연속 표본을 확인했고 적용 후 명목 0.55초에 유지 조건이 완료됐다. frame 8725까지 40간격 관측을 완료했다. 정상 복원 뒤에도 잠금과 제동을 유지했다. 이번 한 번의 연결 시험이며 본시험 통계나 SUT 전체 요구사항 준수로 확대하지 않는다.
+- adapter/worker/oracle 모듈을 가져오지 않는 별도 audit_observations.py로 원시 바이트, PID, 시각, 실제 차속, 연속 frame, 잠금, 정지 유지와 정리를 재계산했다. 종료코드 0, observation_audit.json과 일치했다. metadata의 소스 SHA 6개를 현재 파일과 대조하고 source/에 동일 바이트를 보존했다. wrapper 사본은 실행 후 설명 주석만 고친 버전임을 source_archive.json에 구분했다.
+- 자신의 actor 제거와 날씨/설정 복구가 완료됐고 서버를 별도 재조회해 비동기/고정 간격 없음/관련 actor 0개를 확인했다. 허용한 Town04 맵은 복구하지 않는다. 전용 서버에 Ctrl+C를 전달하자 다시 Signal 11/exit 139였다. G2 2건에 이어 세 번째 관측이며 원인은 미해결이다. 종료 후 포트 LISTEN과 GPU의 CARLA 프로세스가 남지 않았음을 확인했다. 종료 원문 일부는 server_shutdown_excerpt.txt에 보존했다. G3 연결 PASS와 정상 서버 종료 실패를 구분한다.
+- `bash tools/run_self_checks.sh check`: 종료코드 0, 전체 119개 OK, pip check/셸 문법/Git 공백 검사 통과. 실제 명령/출력은 evidence/g3/integration-20261101-01/gate_checks.json. 합성 로그와 API 대역의 단위 검사를 실제 G3 관측으로 대체하지 않았다.
+- docs/G3_INTEGRATION.md에 검토 코드, 두 터미널 직접 실행, 결과 파일과 판정 방법을 추가했다. README/STATUS/LINUX_HANDOFF/SELF_CHECK/G3_PROGRESS/G3_ADAPTER_STEP를 현재 단계로 갱신했다. 새 코드 설명과 주석/docstring은 한글이다. 과거 raw 증거와 소스는 번역하지 않았다. 최종 문서/JSON/해시 및 공개 범위 점검 결과는 같은 evidence/g3/integration-20261101-01/final_review.json에 기록한다.
+- 이번 범위는 G3 첫 실제 통합까지다. 새 설치/의존성 변경, 연구 수치 변경, 거리 입력 A/B SUT나 G4, 예비/본시험 구현과 실행은 하지 않았다. G4 NOT_RUN, 본시험 0/80회. Juwon님의 새 코드 검토와 직접 G3 재현은 아직 기록이 없다. 이후 최소 거리 메시지 제어기와 기동/arm 전이를 단계적으로 구현한다. 장시간 무인 시험 전에는 서버 종료 문제를 별도 점검한다.
+- 검증한 코드/문서/작은 증거를 Conventional Commit으로 로컬 저장한다. 이번 작업은 push와 브랜치 변경을 하지 않는다. 실제 커밋 결과는 git log/status로 확인한다.
+- 최종 문서 로컬 링크 159개, 변경/추가 자료 49개(점검 기록 자체를 쓰기 전 목록), JSON/JSONL 23개를 확인했다. 6개 실행 모듈은 현재/보존 소스 모두 metadata SHA와 일치했다. Git 공백, 새 파일 후행 공백, 고정 연구 문서 무변경과 credential 형태 혼입 검사를 통과했다. 점검 대상 최대 파일은 차량 원시 로그 178251바이트다. evidence_manifest.json에는 실제 실행 및 이번 마감 근거의 경로/크기/SHA를 기록한다.

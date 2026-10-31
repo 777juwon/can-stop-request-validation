@@ -1,0 +1,180 @@
+{
+  "scope": "G3 실제 실행 및 이번 마감 근거의 파일 목록. 자기 자신은 제외",
+  "files": [
+    {
+      "path": "evidence/g3/adapter-core-20261031-01/user_check_review.json",
+      "bytes": 604,
+      "sha256": "5960c3bc30257cd4f94dfe1baf7d06f53f4b0c2498526efe93d8db1c7b8d772a"
+    },
+    {
+      "path": "evidence/g3/integration-20261101-01/final_review.json",
+      "bytes": 913,
+      "sha256": "c20e2c08b7cd4986b8b7591b2b8edeb2bebfa7f323fec0fb9ee4c66385156af7"
+    },
+    {
+      "path": "evidence/g3/integration-20261101-01/gate_checks.json",
+      "bytes": 13568,
+      "sha256": "f543fc4a6e1836638feb4f51eac23d5cc9698f82211af52b3a0a001cf1c9fbb9"
+    },
+    {
+      "path": "evidence/g3/integration-20261101-01/host_and_server.json",
+      "bytes": 2786,
+      "sha256": "4d1e8aa749ba94475f6a4d48152129da6023a1e2b6166db3c50bd9ad4dae6d18"
+    },
+    {
+      "path": "evidence/g3/integration-20261101-01/server_shutdown_excerpt.txt",
+      "bytes": 744,
+      "sha256": "db23200aa65c679e0a49ac99b0f89203a66f00f59de3aaeb52431187c8c92e71"
+    },
+    {
+      "path": "evidence/g3/integration-20261101-01/source_archive.json",
+      "bytes": 813,
+      "sha256": "46ded25b1247f6e668dbc24eefd53f7af5e3372b8cfe0cb807370d02535aee60"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/adapter_events.jsonl",
+      "bytes": 9410,
+      "sha256": "3de8fa71154ee585d9fb5211f25ba666819f577c367272ab9573141e0481400e"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/adapter_rx.jsonl",
+      "bytes": 5160,
+      "sha256": "a9643e44c45e2c5ebac27ceaae0fe08dbafb5297dc2561ff95d3f7fe76909e5c"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/audit_observations.py",
+      "bytes": 6316,
+      "sha256": "5a887a2b9d3cf5d2e26ebf8901c4c2dbc6dec92f56b48e7f8e2099a316f72f27"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/can_observer.jsonl",
+      "bytes": 4820,
+      "sha256": "881acacd313eb632187088f171b31d18fd7b3db8c1938b565e83ba3c26f475ec"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/commands.json",
+      "bytes": 943,
+      "sha256": "c07ed8f6c2d35307a59a024eb132112a6374a7f10d1305968e4dc17941146ccf"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/coordinator_events.jsonl",
+      "bytes": 306,
+      "sha256": "e39d1136a96756ddf09e47e0f0beb1ad7b5c947d74c903c16c099f7cbdae2339"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/input_events.jsonl",
+      "bytes": 6410,
+      "sha256": "2f547afe9f82f7343cc442c6a81818c2269292873ece7fe170cd2a93d1aacae1"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/metadata.json",
+      "bytes": 8799,
+      "sha256": "3e409f00120e73d9db17ad92c7e834cff71dbd4691d9292465b3024c3278b920"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/metadata_started.json",
+      "bytes": 1592,
+      "sha256": "e492b09c27157a18d896ff06ec9704f8f7d5ec977a2384d02f7910a224e90ec7"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/observation_audit.json",
+      "bytes": 715,
+      "sha256": "94235a76a819f74d9b60fcf453c2b82d8886c50e1d094e24743bb6a5867e47c5"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/observer_preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/observer_ready.json",
+      "bytes": 126,
+      "sha256": "2f88187e41c6409770d92edfabca8274ed4e235de0b1a6f78efeeabb8ef1dd78"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/observer_result.json",
+      "bytes": 613,
+      "sha256": "aff50956bdb3518366e3162d5f002155545e5dfbce8ba42b9faa70002b6580ff"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/observer_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/result.json",
+      "bytes": 1690,
+      "sha256": "33d58289aa9ef1294717643cc4daaf86e96dbfe34e523bb89cec4ae8969b1054"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/sender_preflight.json",
+      "bytes": 555,
+      "sha256": "34dbe2bd09fc7e7518a38a6c64275f8ec2d76e285ec2ce952e9012cbd1f5b665"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/sender_ready.json",
+      "bytes": 126,
+      "sha256": "8200b40cb5ba15963250a0b59594b3b84bdd9a7948e40688a52cdf60bbaab42d"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/sender_result.json",
+      "bytes": 690,
+      "sha256": "54a926b4fad1480944737745d35095cc22ba59a7b2b2162cc63d798b482fdf69"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/sender_start.json",
+      "bytes": 99,
+      "sha256": "bcfa7a01d130beb19c78c6e772e7286a65f08dd363852a18f3db572b682d833f"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/sender_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g2_carla_smoke.py",
+      "bytes": 23514,
+      "sha256": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g3_adapter_core.py",
+      "bytes": 8113,
+      "sha256": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g3_carla_smoke.py",
+      "bytes": 24581,
+      "sha256": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g3_integration_can.py",
+      "bytes": 9840,
+      "sha256": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g3_integration_oracle.py",
+      "bytes": 22297,
+      "sha256": "a810be9c32d74eae393ac1d4f88477b8672143f3c1c1e3dc74e756d9f26da485"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/g3_request_smoke.py",
+      "bytes": 19186,
+      "sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/source/run_self_checks.sh",
+      "bytes": 3257,
+      "sha256": "b237d87af23761ff4c47c382bb767c58acf2e7bf5e2a08f55675db3b209e5d65"
+    },
+    {
+      "path": "evidence/manual/g3-20261031T151442436312880Z-11071/vehicle_states.jsonl",
+      "bytes": 178251,
+      "sha256": "ae3c3d487cf10553f6179352819e3b84c602c55c426b9f23160aa5e4578b90fa"
+    }
+  ]
+}

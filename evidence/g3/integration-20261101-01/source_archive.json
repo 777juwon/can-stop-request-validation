@@ -1,0 +1,9 @@
+{
+  "runtime_source_archive": "../../manual/g3-20261031T151442436312880Z-11071/source",
+  "metadata_source_sha256_matched": true,
+  "runtime_module_count": 6,
+  "runtime_modules": ["g3_carla_smoke.py", "g3_integration_can.py", "g3_integration_oracle.py", "g3_adapter_core.py", "g3_request_smoke.py", "g2_carla_smoke.py"],
+  "entrypoint_archive_note": "run_self_checks.sh는 실행 후 첫 설명 주석을 전체 G3 범위로 고친 버전이다. 실행 동작은 동일하지만 실행 당시 바이트 해시를 검증한 6개 모듈과 구분한다.",
+  "git_commit_at_run": "d2957713523261f4f3b3710fd6aa733bb9ab4d9a",
+  "working_tree_note": "새 통합 모듈은 실행 당시 아직 커밋 전이었다. metadata.json의 SHA와 일치하는 소스를 보존했고 이후 로컬 커밋으로 저장한다."
+}

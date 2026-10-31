@@ -1,5 +1,22 @@
 # Linux Codex handoff
 
+## 현재 인수인계: 2026-11-01
+
+G0/G1/G2/G3 PASS, 거리 입력 A/B SUT 미구현, G4 NOT_RUN, 본시험 0/80회. 중단된 지점은 G3 통합 코드 작성 후 실제 실행 전이었다. 재개 후 vcan0 부재를 확인했고 사용자 sudo 준비 후 실제 통합까지 검증했다. [G3_INTEGRATION](G3_INTEGRATION.md)에 읽을 코드, 재현 명령과 결과 판정 방법이 있다.
+
+실행 근거 읽기 순서:
+
+1. [G3 result.json](../evidence/manual/g3-20261031T151442436312880Z-11071/result.json): 세 구성 요소 PASS와 정리 PASS.
+2. [metadata.json](../evidence/manual/g3-20261031T151442436312880Z-11071/metadata.json): 버전, 소스 SHA, arm/worker/차량 및 복구 상태.
+3. 같은 폴더의 input_events/can_observer/adapter_rx/adapter_events/vehicle_states.jsonl: 원시 바이트, 호출과 실제 상태.
+4. [별도 재계산](../evidence/manual/g3-20261031T151442436312880Z-11071/observation_audit.json): 20개 요청, 제동 15회, 차량 표본 206개와 소스 SHA 대조.
+5. [검사 기록](../evidence/g3/integration-20261101-01/gate_checks.json): 전체 단위 검사 119개, 의존성/셸 문법/공백 통과.
+6. [호스트와 서버 종료](../evidence/g3/integration-20261101-01/host_and_server.json): Ctrl+C에서 Signal 11/139 재발. 포트/GPU 프로세스는 종료됨.
+
+Codex가 구현 및 실제 실행했다. 사용자가 제공한 과거 80개 검사 OK와 가짜 콜백 예제는 확인됐지만, 사용자의 새 통합 코드 검토와 직접 G3 재현은 아직 기록이 없다. 다음은 이 검토/재현 후 G4용 최소 거리 판단 제어기와 기동/arm 전이를 단계적으로 구현하는 것이다. 이번 G3의 준비 후 arm은 전체 SUT 기동 상태 기계의 검증이 아니다. 서버 종료 crash는 세 번째 관측이며 장시간 무인 시험 전 별도 점검한다. 새 의존성, 수치 변경이나 G4/본시험 추가 실행은 하지 않았다.
+
+중단 후 재개할 때는 Git status, vcan0 UP 여부와 포트 2000/2001을 다시 확인한다. 실행은 `.venv/bin/python -I` 및 기존 진입점을 사용한다. 이번 작업의 push는 하지 않는다. 로컬 커밋 상태는 `git log`와 `git status`로 확인한다.
+
 ## What the previous conversation established
 
 The user wants to learn CAN and demonstrate vehicle SW validation ability through a bachelor's thesis. They prefer verification and evaluation to developing another autonomous-driving algorithm.
@@ -12,13 +29,13 @@ On 2026-10-16 the user asked to finalize implementation documents without changi
 
 On 2026-10-19 the original Linux checkout was fast-forwarded to published v1.0. G0 inspection, Python/host setup and actual independent vCAN G1 are complete. The detected user CARLA 0.9.14 client was removed with authorization. Matching CARLA 0.9.15 client/server are installed and standalone G2 passed in run03 and final-source run04; failed run01/run02 remain preserved. Use Python -I to exclude inherited external Python paths. See [SETUP_AND_SMOKE](SETUP_AND_SMOKE_2026-10-19.md). G3 is next. Both server processes crashed on Ctrl+C after G2 cleanup; normal server shutdown remains unverified and no server is left running.
 
-2026-10-31 추가: [G3_PROGRESS](G3_PROGRESS.md)의 첫 단계 요청 송수신 도구 및 새 단위 검사 23개를 구현했다. 초기 장치 부재 ENV_ERROR는 보존했고, 사용자가 준비한 뒤 vcan0 UP과 `bash tools/run_self_checks.sh g3-can`의 실제 10프레임 송수신 PASS를 확인했다. 다음은 CARLA adapter 구현과 연결이다. 전체 G3, G4와 본시험은 미실행이다.
+2026-10-31 당시: [G3_PROGRESS](G3_PROGRESS.md)의 첫 단계 요청 송수신 도구 및 새 단위 검사 23개를 구현했다. 초기 장치 부재 ENV_ERROR는 보존했고, 사용자가 준비한 뒤 vcan0 UP과 `bash tools/run_self_checks.sh g3-can`의 실제 10프레임 송수신 PASS를 확인했다. 당시에는 전체 G3, G4와 본시험이 미실행이었다. 이후 G3 완료는 위 최신 인수인계를 따른다.
 
-최신 마감 기록: [CHECKPOINT_2026-10-31](CHECKPOINT_2026-10-31.md). 증거 읽기 순서와 다음 단계 완료 기준을 확인한 뒤 구현을 이어간다.
+과거 마감 기록: [CHECKPOINT_2026-10-31](CHECKPOINT_2026-10-31.md). 10월 31일 단계의 증거 읽기 순서와 당시 다음 단계 완료 기준이다.
 
 전체 중간점검은 [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에서 확인한다. 설치 및 부분 연결 검증의 완료와 핵심 SUT/본시험/집필의 남은 범위를 구분한다.
 
-후속 구현: [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)의 adapter 핵심과 새 단위 검사 18개를 추가했다. 실제 CAN/CARLA 연결은 없으며 다음은 수신 루프와 G2 콜백을 통합하는 실행기다. Codex가 구현하고 Juwon님이 검토 및 직접 재현하기로 선택했다. 사용자가 예제 출력을 제공했고 기대 동작과 일치했다. 소스 검토와 전체 단위 검사 완료는 아직 확인되지 않았다.
+후속 구현: [G3_ADAPTER_STEP](G3_ADAPTER_STEP.md)의 adapter 핵심과 새 단위 검사 18개를 추가했고 이후 실제 통합까지 완료했다. Codex가 구현하고 Juwon님이 검토 및 직접 재현하기로 선택했다. 사용자 예제 출력이 기대와 일치했고, 당시 전체 검사 80개 OK 및 의존성 검사 통과 출력도 확인했다. 소스 검토 완료와 실제 통합 실행은 별도로 확인한다.
 
 ## Start here on Ubuntu
 
@@ -36,7 +53,7 @@ A Windows chat ID alone is not the handoff mechanism for this repository. The of
 
 ## First message to Linux Codex
 
-> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/G3_PROGRESS.md, docs/G3_ADAPTER_STEP.md와 기준선/검증 명세/소스 조사를 읽고 상태를 요약해줘. 제출한 계획서와 v1.0 수치는 유지해. 실제 CAN 요청 전달은 PASS했고 adapter core와 단위 검사도 추가했어. 다음은 실제 CAN 수신, core와 G2 제동 함수를 단일 실행기에 연결하는 작업이야. 기동 준비/arm과 실제 frame/속도를 별도로 확인하고, 가짜 콜백 예제를 실제 통합으로 표현하지 마. Codex가 구현하고 내가 검토 및 직접 재현할 수 있도록 한글 설명과 명령을 남겨줘.
+> AGENTS.md, README.md, docs/STATUS.md, docs/LINUX_HANDOFF.md, docs/G3_INTEGRATION.md와 기준선/검증 명세/소스 조사를 읽고 상태를 요약해줘. 제출한 계획서와 v1.0 수치는 유지해. 실제 G3는 첫 실행 PASS이고 전체 검사 119개가 통과했어. 사용자 검토와 직접 재현 완료 여부는 별도로 확인해. 다음 구현은 G4용 최소 거리 입력 제어기와 기동/arm 전이를 작은 단계로 진행하는 것이야. 서버 종료 Signal 11/139 세 건은 미해결로 유지하고, G4/본시험을 실행한 것으로 표현하지 마. 새 코드 설명과 직접 실행 명령은 한글로 남겨줘.
 
 ## G0: Read-only environment inspection
 
