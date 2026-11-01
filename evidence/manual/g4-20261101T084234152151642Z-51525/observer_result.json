@@ -1,0 +1,23 @@
+{
+  "scope": "G4_MINIMUM_A_T03_CHAIN_ONLY",
+  "role": "observer",
+  "pid": 51724,
+  "status": "COMPLETE",
+  "started_utc": "2026-11-01T08:42:38.134754+00:00",
+  "begin_monotonic_ns": 973583748083,
+  "interface": "vcan0",
+  "run_token": 2999130190,
+  "received_frames": 1846,
+  "decode_errors": 0,
+  "ready_monotonic_ns": 973585778189,
+  "watchdog_deadline_ns": 1038585778189,
+  "termination": "COORDINATOR_SIGTERM",
+  "drained_after_sigterm_frames": 0,
+  "drain_completed_monotonic_ns": 1006557142309,
+  "finished_utc": "2026-11-01T08:43:11.108211+00:00",
+  "done_monotonic_ns": 1006557200088,
+  "terminate_requested": true,
+  "interrupt_requested": false,
+  "signal_number": 15,
+  "exit_code": 0
+}

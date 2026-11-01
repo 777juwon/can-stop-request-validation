@@ -1,0 +1,12 @@
+{
+  "scope": "첫 G4 실패 원인 확인. 원시 로그와 기존 FAIL은 유지",
+  "first_request_s_begin_ns": 973585579717,
+  "observer_ready_monotonic_ns": 973585778189,
+  "first_request_counter": 0,
+  "first_observed_request_counter": 1,
+  "controller_request_count": 595,
+  "observed_request_count": 594,
+  "runtime_modules_archived": 8,
+  "cause": "독립 관측기 bind 준비 전 제어기가 최초 INIT 요청을 송신했다. worker 동시 시작 순서의 경합이다.",
+  "planned_fix": "observer 준비 확인 뒤 controller와 sender를 순서대로 시작한다. 판정 기준은 유지한다."
+}

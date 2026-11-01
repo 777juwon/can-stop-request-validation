@@ -1,0 +1,58 @@
+{
+  "record_date_kst": "2026-11-01",
+  "scope": "G4 환경 준비와 전용 서버 실행/종료 기록",
+  "initial_vcan_query_exit_code": 1,
+  "initial_vcan_query_output": "Device \"vcan0\" does not exist.",
+  "initial_carla_ports_listening": false,
+  "sudo_noninteractive_exit_code": 1,
+  "sudo_noninteractive_output": "sudo: a password is required",
+  "user_setup_attempt": {
+    "command": "sudo bash /home/parkjuwon/can-stop-request-validation/tools/setup_g1_host.sh",
+    "evidence_level": "USER_SUPPLIED_TERMINAL_OUTPUT",
+    "error": "dpkg frontend lock held by process 24242 (unattended-upgr)",
+    "user_exit_code_observed": false
+  },
+  "agent_rechecks": {
+    "can-utils": "install ok installed / 2020.11.0-1",
+    "vulkan-tools": "install ok installed / 1.3.204.0+dfsg1-1",
+    "dpkg_query_exit_code": 0,
+    "process_24242_query_exit_code": 1,
+    "process_24242_query_output": "",
+    "vcan_module": "/lib/modules/6.8.0-138-generic/kernel/drivers/net/can/vcan.ko",
+    "note": "해당 PID가 사라진 사실만으로 모든 업데이트가 완료됐다고 단정하지 않는다."
+  },
+  "user_vcan_only_setup": {
+    "command": "sudo bash /home/parkjuwon/can-stop-request-validation/tools/prepare_vcan0.sh",
+    "user_reported_complete": true,
+    "user_terminal_output_observed": false,
+    "agent_recheck_exit_code": 0,
+    "kind": "vcan",
+    "flags": ["NOARP", "UP", "LOWER_UP"],
+    "system_package_install_performed_by_new_script": false,
+    "lock_file_removed_or_update_killed": false
+  },
+  "server": {
+    "launch_command": "bash tools/start_carla_0915.sh > third_party/carla-g4-20261101-server.log 2>&1",
+    "initial_map": "Carla/Maps/Town10HD_Opt",
+    "client_version": "0.9.15",
+    "server_version": "0.9.15",
+    "gpu_monitor_exit_code": 0,
+    "carla_pid_on_gpu_0": 48885,
+    "gpu_process_fb_memory_mib": 2637,
+    "post_runs_query_exit_code": 0,
+    "post_runs_query": {"map": "Carla/Maps/Town04", "synchronous_mode": false, "fixed_delta_seconds": null, "relevant_actors": []},
+    "stop_action": "전용 서버 세션에 Ctrl+C",
+    "exit_code": 139,
+    "signal_11_seen_in_log": true,
+    "shutdown_excerpt": "server_shutdown_excerpt.txt",
+    "normal_shutdown_status": "FAIL_UNRESOLVED",
+    "shutdown_crash_observation_count_including_prior_g2_g3": 4,
+    "post_stop_ports_2000_2001_listening": false,
+    "post_stop_gpu_carla_process_present": false
+  },
+  "runs": [
+    {"run_id": "g4-20261101T084234152151642Z-51525", "exit_code": 1, "status": "FAIL", "cause": "독립 관측기 bind 전 최초 INIT 요청 1개 누락"},
+    {"run_id": "g4-20261101T084459538960446Z-57997", "exit_code": 0, "status": "PASS", "change": "관측기 준비 완료 확인 후 제어기/송신기 시작"}
+  ],
+  "main_trials_executed": 0
+}

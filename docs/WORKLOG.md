@@ -389,3 +389,21 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - STATUS/LINUX_HANDOFF에서 이전 작업 당시의 push 미수행 표시를 실제 게시 결과로 갱신했다. 이 기록과 다음날 재개 안내를 별도 문서 커밋으로 저장하고 같은 main에 push한다. 변경은 세 문서뿐이며 Git 공백과 문서 링크를 점검한다. 강제 push, 브랜치 변경이나 새 설치는 하지 않는다.
 - 다음 재개 범위: 현재 Git/vcan0/서버 상태 확인, 사용자 G3 검토 및 직접 재현 상태 확인, 이후 G4 최소 거리 입력 제어기와 기동/arm 전이를 작은 단계로 진행한다. G4 NOT_RUN, 본시험 0/80회와 서버 종료 Signal 11/139 미해결을 유지한다.
 - 문서 점검 결과: `git diff --check` 종료코드 0, 변경 문서 3개의 로컬 링크 39개 정상. 기능 코드와 기존 실행 증거는 변경하지 않았다.
+
+## 2026-11-01: G4 A 방식 최소 체인과 사용자 실행 방식 전환
+
+- 사용자 G4 시작 요청으로 main/bcfa487, 깨끗한 작업 폴더에서 시작했다. README/STATUS/LINUX_HANDOFF와 고정 기준선/명세/소스 조사를 읽었다. G4 범위는 A 방식의 T-03 한 번으로 정했고 B, 예비 8개 조합과 본시험 80회는 추가하지 않았다. 연구 수치와 제출한 계획서는 변경하지 않았다.
+- 최초 vcan0 부재와 서버 포트 비어 있음을 확인했다. sudo -n은 비밀번호 필요로 실패했다. 사용자가 기존 setup_g1_host.sh를 실행했으나 unattended-upgrades의 dpkg 잠금 오류 출력을 제공했다. 패키지 can-utils 2020.11.0-1, vulkan-tools 1.3.204.0+dfsg1-1과 vcan 모듈 설치를 직접 확인했다. 잠금 파일 삭제나 업데이트 강제 종료는 하지 않았다. tools/prepare_vcan0.sh를 만들고 사용자 실행 완료 후 vcan/UP을 재조회했다.
+- g4_controller_core.py에 A의 INIT_INHIBITED/명시적 arm/수신 만료/근거리/최초 원인 잠금을 구현했다. 같은 counter도 갱신하고, 배경/잘못된 입력은 거리 감시를 갱신하지 않는다. 늦은 복원이 만료를 숨기지 못하게 새 입력 처리 전 만료를 평가한다. B 순번 감시는 미구현이다.
+- g4_can_workers.py는 독립 입력/관측/SUT, 원자적 명령 신호와 요청 송신을 담당한다. 준비 입력을 계속 보내고 다음 counter 회전의 0부터 실제 송신 시각 T0를 확정한다. g4_carla_smoke.py가 단일 차량 제어/tick, 준비/arm 경계, SUT 종료 뒤 adapter drain/마지막 tick과 복구를 맡는다. g4_oracle.py는 다른 기대 바이트와 독립 관측으로 네 구성 요소를 판정한다.
+- G3 시작 뒤 사용량 방식 변경 전에는 핵심/worker/oracle를 파일별로 분리해 구현 및 읽기 검토했다. 실제 성공 근거는 아래 별도 실행이다. 새로운 설명/주석/docstring은 한글이며 외부 API/JSON 키와 과거 실행 소스는 보존했다.
+- 최초 전체 검사 207개 통과. evidence/g4/2026-11-01/pre_integration_checks.json. 설치된 전용 CARLA 0.9.15를 `bash tools/start_carla_0915.sh > third_party/carla-g4-20261101-server.log 2>&1`로 시작했고 matching client/server와 초기 Town10HD_Opt를 조회했다.
+- `bash tools/run_self_checks.sh g4 --exclusive-server --allow-world-load`: 첫 실행 g4-20261101T084234152151642Z-51525는 종료코드 1/FAIL. 제동과 차속은 통과했지만 관측기 bind 전 INIT counter0 요청이 송신돼 요청595개 중594개만 독립 관측됐다. 최초 송신 973585579717ns, 관측기 ready 973585778189ns였다. 원시 FAIL과 failure_audit.json 및 당시 SHA 일치 소스8개를 해당 폴더에 보존했다.
+- 관측기 ready 확인 뒤 controller/sender를 시작하도록 수정하고 회귀 검사를 추가했다. 판정 기준은 바꾸지 않았다. `bash tools/run_self_checks.sh check` 종료코드0, 전체208개 OK, 의존성/셸 문법/Git 공백 통과. evidence/g4/2026-11-01/after_startup_fix_checks.json. 수정 뒤 새 실험이므로 재검사와 실제 재실행이 필요했다.
+- 같은 G4 명령의 새 폴더 g4-20261101T084459538960446Z-57997: 종료코드0/PASS. 준비512+본구간740=입력1252개, 요청595개, 독립관측1847개, 초기큐7개/활성adapter588개, 차량653표본. coordinator57997/observer58237/controller58239/sender58241 분리. 준비256슬롯 뒤 counter0으로 T0를 시작하고 본구간 n100~159의 거리만 생략, 심박400개 유지와 n160 복원을 확인했다.
+- 마지막 신규 거리 송신 완료 뒤200.191233ms에 정지 요청을 독립 관측했다. adapter 최대1.445615ms, 최초 적용32125 뒤 정지유지32126~32136의11표본을 관측해 명목0.55초에 유지 조건을 완료했다. 복원 후 끝까지 제동 유지. 실제 요청 송신 최대 간격60.183816ms도 진단에 남겼고 임의 지터 허용값을 추가하지 않았다. 한 번의 연결 수치를 본시험 통계로 확대하지 않는다.
+- SUT/기존oracle를 가져오지 않는 audit_observations.py로 원시 바이트/시각/4PID/arm/실제 차속/정지 유지와 소스SHA를 재계산했다. observation_audit.json의 PASS, 실패0. 성공run/source에는 기록SHA와 일치하는9개 모듈을 보존했고 재계산은 이 사본을 우선한다. 현재 코드 일치는 별도 진단이다.
+- actor/날씨/설정 복구 후 서버 재조회는 비동기/고정간격없음/관련actor0이었다. pmon은 GPU0의CARLA PID48885,2637MiB를 관측했다. Ctrl+C 종료139/Signal11 재발, 총네번째이며 원인은 미해결이다. 종료 후 포트2000/2001과GPU CARLA프로세스는 남지 않았다. host_and_server.json 및 server_shutdown_excerpt.txt에 기록한다.
+- 사용자 사용량 절약 요청으로 이후 실제 서버/시험 실행은 사용자가 맡고 에이전트는 코드/명령과 필요한 결과만 검토한다. 기본은 단일 에이전트다. 사용자가 공유한 5h 잔여47%, 주간46%, 컨텍스트48%는 각자 다른 화면값이다. 잔여율 자동 조회 도구가 없어20% 자동 감시는 보장하지 않는다. 사용자가20%이하를 알려주면 추가 작업을 중단한다. AGENTS/STATUS/LINUX_HANDOFF와 G4 안내에 지속 인수인계를 남겼다.
+- docs/G4_MINIMUM_CHAIN.md에 서버 시작부터 검사, 결과 전달과 종료까지 직접 명령 및 바톤터치를 정리했다. 사용자는 출력 폴더와 마지막status만 전달하고 에이전트가 필요한 로그만 읽는다. 사용자 자신의 G4 재현은 아직 미실행 기록이다. 새 실험은 더 하지 않으며 B/예비8조합/본시험0/80회를 유지한다. 이번 G4 코드/문서/작은 실행 증거는 검증 후 로컬 커밋으로 저장하며 push는 요청받지 않았다.
+- 최종 마감: 문서 링크183개,JSON/JSONL59개,보존소스17개(첫실패8/최종9)의SHA를확인했다. 공백/새파일설명/credential형태혼입과고정문서무변경을점검했다. 종료로그발췌의줄끝공백만정규화후재검사해final_review.json PASS. 원본raw와과거판정은수정하지않았다. evidence_manifest.json에85개근거,5695989바이트의경로/크기/SHA를기록했다. 사용량방식변경후시뮬레이터추가실행0회이며최신208개검사이후기능코드변경은없다.

@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-11-01T08:55:58.910579+00:00",
+  "review_status": "PASS",
+  "failures": [],
+  "reviewed_file_count_before_this_record": 102,
+  "reviewed_total_bytes": 5994099,
+  "largest_file_bytes": 721074,
+  "local_document_links_checked": 183,
+  "json_and_jsonl_files_parsed": 59,
+  "archived_runtime_sources_checked": 17,
+  "protected_documents_unchanged": true,
+  "latest_unit_test_count": 208,
+  "unit_gate_evidence": "after_startup_fix_checks.json",
+  "simulation_reruns_after_user_workflow_change": 0,
+  "note": "기능 코드는 마지막208개검사/실제실행후변경없음. 문서/기록검사만마감",
+  "initial_document_check_note": "서버 종료 발췌의 줄끝공백을 정규화하고 재검사했다. 원본 서버 로그/실험raw는 변경하지 않았다."
+}

@@ -1,0 +1,24 @@
+{
+  "scope": "G4_MINIMUM_A_T03_CHAIN_ONLY",
+  "role": "controller",
+  "pid": 58239,
+  "run_token": 4161689825,
+  "host_monotonic_ns": 1119732955977,
+  "acknowledged_monotonic_ns": 1119733008566,
+  "arm_command": {
+    "run_token": 4161689825,
+    "host_monotonic_ns": 1119721099076
+  },
+  "snapshot": {
+    "run_token": 4161689825,
+    "started_ns": 1119424023085,
+    "last_clock_ns": 1119732955977,
+    "state": "ARMED",
+    "reason": 0,
+    "stop": false,
+    "valid_normal_count": 5,
+    "last_valid_rx_ns": 1119708604216,
+    "distance_cm": 1000,
+    "last_counter": 4
+  }
+}

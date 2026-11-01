@@ -1,0 +1,67 @@
+{
+  "gate": "G4",
+  "scope": "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY",
+  "execution_status": "COMPLETE",
+  "cleanup_status": "PASS",
+  "checks": {
+    "scope": "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY",
+    "all_checks_passed": false,
+    "failures": [
+      {
+        "domain": "request",
+        "code": "independent_request_observation_missing",
+        "count": 1
+      }
+    ],
+    "missing_evidence": [],
+    "metrics": {
+      "main_comparison_runs_executed": 0,
+      "variant": "A",
+      "scenario": "T-03",
+      "input_sent_frames": 1252,
+      "observed_frames": 1846,
+      "controller_request_frames": 595,
+      "adapter_received_frames": 589,
+      "adapter_event_count": 589,
+      "normal_distance_frames_before_arm": 5,
+      "last_distance_s_begin_ns": 991385809644,
+      "last_distance_s_done_ns": 991385832888,
+      "first_timeout_q_obs_ns": 991586026078,
+      "timeout_observation_after_send_done_ms": 200.19319,
+      "max_request_send_gap_ms": 60.131217,
+      "trial_distance_frames": 340,
+      "trial_heartbeat_frames": 400,
+      "max_processing_ms": 1.900914,
+      "initial_speed_hold": {
+        "first_frame": 7885,
+        "last_frame": 7905,
+        "first_simulation_time_s": 15.317432243842632,
+        "last_simulation_time_s": 16.317432258743793,
+        "sample_count": 21,
+        "observed_span_s": 1.0000000149011612
+      },
+      "preparation_seconds": 8.172508723,
+      "first_brake_applied": {
+        "frame": 8008,
+        "simulation_time_s": 21.467432335484773,
+        "host_monotonic_ns": 991588699871
+      },
+      "stop_hold": {
+        "first_frame": 8009,
+        "last_frame": 8019,
+        "first_simulation_time_s": 21.51743233622983,
+        "last_simulation_time_s": 22.01743234368041,
+        "sample_count": 11,
+        "observed_span_s": 0.5000000074505806
+      },
+      "pre_request_full_brake_frames": [],
+      "stop_hold_completed_after_applied_frames": 11
+    },
+    "transport_status": "PASS",
+    "request_status": "FAIL",
+    "adapter_status": "PASS",
+    "motion_status": "PASS"
+  },
+  "status": "FAIL",
+  "main_trials_executed": 0
+}

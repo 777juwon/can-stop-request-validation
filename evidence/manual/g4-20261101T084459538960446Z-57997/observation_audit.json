@@ -1,0 +1,152 @@
+{
+  "audit_status": "PASS",
+  "scope": "G4_A_RX_TIMEOUT_SECOND_ATTEMPT_HISTORICAL_OBSERVATION_AUDIT",
+  "run_id": "g4-20261101T084459538960446Z-57997",
+  "baseline": "v1.0",
+  "variant": "A",
+  "scenario": "T-03",
+  "audited_utc": "2026-11-01T08:50:06.095025+00:00",
+  "audit_script_sha256": "ac07919997f5bcbffb99f77b498150f2a55a57a996781619b15161a26ca053f8",
+  "real_runs_executed_by_audit": 0,
+  "main_comparison_runs_executed": 0,
+  "source_imports": "Python 표준 라이브러리만 사용. SUT와 기존 oracle은 가져오지 않음.",
+  "failure_count": 0,
+  "failures": [],
+  "counts": {
+    "prepare_input_frames": 512,
+    "trial_input_frames": 740,
+    "trial_distance_frames": 340,
+    "trial_heartbeat_frames": 400,
+    "omitted_distance_slots": 60,
+    "controller_requests": 595,
+    "independent_observed_frames": 1847,
+    "independent_observed_requests": 595,
+    "normal_inputs_before_arm": 5,
+    "prearm_queue_frames": 7,
+    "adapter_received_requests": 588,
+    "adapter_events": 588,
+    "successful_brake_calls": 269,
+    "vehicle_samples": 653,
+    "restored_stop_requests": 217,
+    "restored_brake_samples": 242
+  },
+  "process_ids": {
+    "coordinator": 57997,
+    "observer": 58237,
+    "controller": 58239,
+    "sender": 58241
+  },
+  "timing": {
+    "last_distance_s_begin_ns": 1137258582932,
+    "last_distance_s_done_ns": 1137258599964,
+    "first_timeout_q_obs_ns": 1137458791197,
+    "from_last_send_begin_ms": 200.208265,
+    "from_last_send_done_ms": 200.191233,
+    "allowed_min_after_begin_ms": 200,
+    "allowed_max_after_done_ms": 300,
+    "max_adapter_processing_ms": 1.445615,
+    "first_timeout_a_done_ns": 1137459209722,
+    "max_request_send_gap_ms": 60.183816
+  },
+  "motion": {
+    "initial_speed_sample_count": 21,
+    "initial_speed_first_frame": 32001,
+    "initial_speed_last_frame": 32021,
+    "initial_speed_min_kph": 4.731060525462856,
+    "initial_speed_max_kph": 5.081042680175668,
+    "first_applied_frame": 32125,
+    "first_applied_simulation_time_s": 162.94319847831503,
+    "first_applied_tick_begin_ns": 1137476564480,
+    "stop_hold_first_frame": 32126,
+    "stop_hold_last_frame": 32136,
+    "stop_hold_sample_count": 11,
+    "stop_hold_observed_span_s": 0.5000000074505806,
+    "stop_hold_completed_after_applied_frames": 11,
+    "full_brake_maintained_through_frame": 32423
+  },
+  "source_sha256": {
+    "g4_carla_smoke.py": {
+      "recorded": "33d05f5681b7e5fe18b26064727c27516c3aa0397581f96b6479c037c8a75fb9",
+      "recomputed": "33d05f5681b7e5fe18b26064727c27516c3aa0397581f96b6479c037c8a75fb9",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g4_carla_smoke.py",
+      "current_tools_sha256": "33d05f5681b7e5fe18b26064727c27516c3aa0397581f96b6479c037c8a75fb9",
+      "current_tools_matches_recorded": true
+    },
+    "g4_can_workers.py": {
+      "recorded": "7278dd8a32c23dc30b2b01597327858d4501d42d8b0ddbe02a1b073cbaec927b",
+      "recomputed": "7278dd8a32c23dc30b2b01597327858d4501d42d8b0ddbe02a1b073cbaec927b",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g4_can_workers.py",
+      "current_tools_sha256": "7278dd8a32c23dc30b2b01597327858d4501d42d8b0ddbe02a1b073cbaec927b",
+      "current_tools_matches_recorded": true
+    },
+    "g4_controller_core.py": {
+      "recorded": "4b7069509d7a5fa3b4513494dab4f18417383ddd45013b847c631c9af5bc2076",
+      "recomputed": "4b7069509d7a5fa3b4513494dab4f18417383ddd45013b847c631c9af5bc2076",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g4_controller_core.py",
+      "current_tools_sha256": "4b7069509d7a5fa3b4513494dab4f18417383ddd45013b847c631c9af5bc2076",
+      "current_tools_matches_recorded": true
+    },
+    "g4_oracle.py": {
+      "recorded": "df9127d7dcda9efb7881989604ee7af9bd460a41fec8a8477382fac84837410d",
+      "recomputed": "df9127d7dcda9efb7881989604ee7af9bd460a41fec8a8477382fac84837410d",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g4_oracle.py",
+      "current_tools_sha256": "df9127d7dcda9efb7881989604ee7af9bd460a41fec8a8477382fac84837410d",
+      "current_tools_matches_recorded": true
+    },
+    "g3_adapter_core.py": {
+      "recorded": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+      "recomputed": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g3_adapter_core.py",
+      "current_tools_sha256": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+      "current_tools_matches_recorded": true
+    },
+    "g3_carla_smoke.py": {
+      "recorded": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f",
+      "recomputed": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g3_carla_smoke.py",
+      "current_tools_sha256": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f",
+      "current_tools_matches_recorded": true
+    },
+    "g3_request_smoke.py": {
+      "recorded": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+      "recomputed": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g3_request_smoke.py",
+      "current_tools_sha256": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+      "current_tools_matches_recorded": true
+    },
+    "g3_integration_can.py": {
+      "recorded": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586",
+      "recomputed": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g3_integration_can.py",
+      "current_tools_sha256": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586",
+      "current_tools_matches_recorded": true
+    },
+    "g2_carla_smoke.py": {
+      "recorded": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d",
+      "recomputed": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d",
+      "matches": true,
+      "validated_source": "evidence/manual/g4-20261101T084459538960446Z-57997/source/g2_carla_smoke.py",
+      "current_tools_sha256": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d",
+      "current_tools_matches_recorded": true
+    }
+  },
+  "source_validation_basis": "preserved_source",
+  "evidence_sha256": {
+    "metadata.json": "7d482679035a8414c5e7b69db51f72c8e39efb2bb40d9d7c73b4f0a03a4e15b8",
+    "input_events.jsonl": "42cfed3a4094ac0c6e18fcd1b003dbe9da2b9a5a5c3169ad7a3f6f2886ba5206",
+    "can_observer.jsonl": "a50dc1b54af9b49e6e911c6c8aa95be3f5ac5bcce9a21e5f0be6f68bb630777f",
+    "sut_events.jsonl": "3e6c7ba7dfdc6095b4e73d74221a58dc2269273d8326f792a057d9c1354145cb",
+    "adapter_prearm_rx.jsonl": "617097052ebfa7593830588f223155a0bc854b71194c3eaf9673e7421ad555e5",
+    "adapter_rx.jsonl": "b1e4a22965c37e55fa2d601539ea0b42f74a483ec5468b6344338c3403f2f4f4",
+    "adapter_events.jsonl": "7cb3a49ce95275f81b79ac84ee54a3b97e20461a9171ad4c2bb87ac323880cc5",
+    "vehicle_states.jsonl": "b64ce5ef871a33df6f9ae6e94d6a979eaecfc22e05c22156dfeb293274ce9573"
+  }
+}

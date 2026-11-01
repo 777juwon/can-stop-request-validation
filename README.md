@@ -2,10 +2,11 @@
 
 가상 CAN 환경에서 저속 주행 정지 요청 기능의 메시지 이상 대응을 검증하는 학부 졸업논문 프로젝트입니다.
 
-> 현재 상태: **기준선 v1.0, Python/CARLA 0.9.15 설치 완료, G0/G1/G2/G3 PASS**
-> 실제 vCAN 요청 수신부터 CARLA 제동 적용과 차속 변화까지 확인했습니다. G4와 본시험은 아직 실행하지 않았습니다. 서버 종료 시 crash는 별도 미해결 항목입니다. 제출한 작성계획서는 수정하지 않았습니다.
+> 현재 상태: **기준선 v1.0, G0/G1/G2/G3와 G4 최소 연결 PASS**
+> A 방식에서 거리 메시지 중단부터 정지 요청, CAN 전달과 실제 제동까지 확인했습니다. B 방식과 본시험 80회는 아직 실행하지 않았습니다. 서버 종료 시 crash는 별도 미해결 항목입니다. 제출한 작성계획서는 수정하지 않았습니다.
 > 2026-10-31: 사용자 장치 준비 후 G3 요청 프레임의 실제 송수신 PASS. 정상 5개와 정지 5개를 확인했습니다. 다음은 CARLA adapter이며 전체 G3는 아직 미실행입니다. [단계별 진행](docs/G3_PROGRESS.md)
 > 2026-11-01: 전체 G3 첫 실제 실행 PASS. 정상 복원 뒤 제동 유지까지 확인했습니다. Codex가 구현 및 실행했고 사용자 검토와 직접 재현은 다음 단계입니다. [실제 연결 결과와 실행 안내](docs/G3_INTEGRATION.md)
+> 후속 G4: A의 T-03 한 번 PASS. 최초 관측 누락 FAIL은 보존하고 준비 순서를 수정했습니다. 전체 검사 208개 통과. [G4 코드와 직접 실행](docs/G4_MINIMUM_CHAIN.md)
 >
 > 시작 문서: [연구 및 시스템 기준선](docs/RESEARCH_BASELINE.md), [요구사항 및 시험 명세](docs/VALIDATION_PLAN.md), [논문 챕터별 구성](docs/THESIS_OUTLINE.md)
 
@@ -46,7 +47,7 @@ CAN을 통해 전달되는 장애물 거리 정보가 중단되거나 과거 메
 | 시뮬레이터 | CARLA 0.9.15 | 서버/client 버전 일치 확인, Town04 단독 주행 및 제동 G2 PASS, 기존 0.9.14 client 제거 |
 | Python 호환 환경 | 별도 프로젝트 venv | 격리 pip check 통과, 정확한 버전은 requirements.lock.txt |
 | 메시지 해석 | python-can 4.6.1 / cantools 40.7.1 / 자체 DBC | Python 패키지 설치/import 완료, DBC 미구현 |
-| 차량 연동 | CAN 수신 결과를 CARLA Python API에 적용 | G3 실제 CAN 수신, 제동 적용 및 실제 차속 PASS. 거리 판단 SUT 미구현 |
+| 차량 연동 | CAN 수신 결과를 CARLA Python API에 적용 | G3 PASS, G4 A 거리 중단의 요청과 실제 정지 PASS. B 미구현 |
 | 분석 | Python 기반 로그 판정과 표 및 그래프 | 미구현 |
 
 CARLA 0.9.15를 첫 실행 기준으로 삼은 이유는 직접적인 공개 연동 사례가 이 버전을 고정해서 사용하기 때문입니다. 서버와 Python client 버전을 맞추고, 시스템 Python을 임의로 낮추지 않습니다. 버전 변경이 필요하면 호환성 근거와 기준선 개정 결정을 남깁니다.
@@ -55,7 +56,7 @@ CARLA 0.9.15를 첫 실행 기준으로 삼은 이유는 직접적인 공개 연
 
 설치, G1/G2 결과와 실패 원인은 [SETUP_AND_SMOKE](docs/SETUP_AND_SMOKE_2026-10-19.md)에 기록합니다. 프로젝트 검사 명령은 `bash tools/check_project.sh`이며, 단위 검사는 실제 CARLA/vCAN 실행 판정과 구분합니다.
 
-직접 실행할 때는 [검사 안내](docs/SELF_CHECK.md)를 따라 `bash tools/run_self_checks.sh check`, `g1`, `g2`, `g3-can`, `g3`을 사용합니다. `g3-can`은 요청 프레임만, `g3`은 실제 차량 연결까지 확인합니다. 새로 작성하거나 수정하는 코드 설명과 주석은 한글로 작성합니다.
+직접 실행할 때는 [검사 안내](docs/SELF_CHECK.md)를 따라 `bash tools/run_self_checks.sh check`, `g1`, `g2`, `g3-can`, `g3`, `g4`를 사용합니다. `g3-can`은 요청 프레임만, `g3`은 요청의 차량 연결, `g4`는 A의 거리 중단 대응 연결 한 번을 확인합니다. 새로 작성하거나 수정하는 코드 설명과 주석은 한글로 작성합니다.
 
 ROS2는 이 최소 구성의 필수 의존성이 아닙니다. 이미 ROS2를 사용해 왔다는 이유만으로 ROS2 브리지나 전체 Autoware를 추가하지 않습니다.
 
@@ -156,9 +157,9 @@ SUT는 System Under Test, 즉 검증 대상 프로그램입니다. 이 프로그
 
 - 작성계획서 제출 마감: 2026-10-23 17:00
 - 최종 졸업논문 제출 마감: 2026-12-20 23:59
-- 현재 단계: G3 실제 CAN/CARLA 통합 PASS. 다음은 사용자 검토와 직접 재현, 이후 G4 최소 거리 판단 연결
-- 실제 실행 결과: G1 PASS, G2는 실패 2건 보존 후 PASS 2건, G3 요청 전달과 실제 차량 연결 PASS. A/B 제어기와 G4 및 본시험 결과는 없음
-- 남은 환경 문제: Ctrl+C 서버 종료에서 Signal 11/exit 139를 3회 관측. 차량 정리와 설정 복구 이후 발생했으며 원인은 미해결
+- 현재 단계: G4 A 최소 거리 중단 연결 PASS. 다음은 사용자 검토/직접 재현, B의 순번 감시와 전체 시험 체계
+- 실제 실행 결과: G1/G2/G3 PASS와 G4 A/T-03 PASS. 실패 기록도 보존. 예비 8개 조합과 본시험 80회는 미실행
+- 남은 환경 문제: Ctrl+C 서버 종료에서 Signal 11/exit 139를 4회 관측. 차량 정리와 설정 복구 이후 발생했으며 원인은 미해결
 
 현재 상태는 [STATUS](docs/STATUS.md), 작업 이력은 [WORKLOG](docs/WORKLOG.md)에 남깁니다. 이후 작업자는 매 작업 종료 시 두 파일을 갱신해 Windows에서 검토하는 사람과 Linux에서 구현하는 사람이 같은 근거를 보게 합니다.
 
@@ -174,6 +175,7 @@ SUT는 System Under Test, 즉 검증 대상 프로그램입니다. 이 프로그
 4. [Linux 인수인계](docs/LINUX_HANDOFF.md)
    - 실행 준비에는 [G0 환경 점검 기록](docs/G0_ENVIRONMENT_2026-10-19.md)도 확인
    - 최신 연결과 직접 재현은 [G3 통합 안내](docs/G3_INTEGRATION.md) 확인
+   - 이후 거리 중단 대응은 [G4 최소 연결](docs/G4_MINIMUM_CHAIN.md) 확인
 5. 구현 전에 [설계 기준선](docs/RESEARCH_BASELINE.md), [검증 계획](docs/VALIDATION_PLAN.md)과 [소스 조사 기록](docs/SOURCE_AUDIT.md)
 6. 논문 작성에는 [챕터별 구성](docs/THESIS_OUTLINE.md)
 

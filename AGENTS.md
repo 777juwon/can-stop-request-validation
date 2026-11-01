@@ -57,3 +57,5 @@ Use the repository files, code and recorded evidence as the durable handoff, not
 - After each substantive task, update docs/STATUS.md and append docs/WORKLOG.md.
 - Record commands, versions, observed results, evidence paths and the next task.
 - Keep unexecuted commands clearly labeled as planned. Do not mark documentation readiness as experiment completion.
+- 사용자 사용량 절약 선호: 기본은 단일 에이전트로 코드와 명령을 준비하고, CARLA 서버 및 실제 CAN/차량 시험은 사용자가 터미널에서 실행한다. 사용자가 직접 실행을 다시 위임한 경우에만 에이전트가 실행한다. 사용자는 출력 폴더 경로를 전달하고 에이전트는 필요한 결과와 로그만 읽어 검토한다.
+- 계정 5시간 잔여율은 현재 도구에서 자동 조회할 수 없다. 사용자가 /status 등으로 잔여 20% 이하를 알려주면 추가 작업을 중단하고 짧은 인수인계만 남긴다. 확인하지 못한 잔여율이나 자동 중지를 보장했다고 주장하지 않는다.

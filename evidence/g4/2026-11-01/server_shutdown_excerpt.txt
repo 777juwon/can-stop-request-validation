@@ -1,0 +1,12 @@
+전용 서버 Ctrl+C 후 종료코드139. 원본 로그의 NUL은 \0으로 표시하고 줄 끝 공백은 생략한다.
+FUnixPlatformMisc::RequestExitWithStatus
+\0FUnixPlatformMisc::RequestExit
+\0Signal 11 caught.
+Malloc Size=65538 LargeMemoryPoolOffset=65554
+Malloc Size=131160 LargeMemoryPoolOffset=196744
+Malloc Size=131160 LargeMemoryPoolOffset=327928
+4.26.2-0+++UE4+Release-4.26 522 0
+Disabling core dumps.
+CommonUnixCrashHandler: Signal=11
+Engine crash handling finished; re-raising signal 11 for the default handler. Good bye.
+./CarlaUE4.sh: line 5: 48885 Segmentation fault      (core dumped) "$UE4_PROJECT_ROOT/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping" CarlaUE4 "$@"

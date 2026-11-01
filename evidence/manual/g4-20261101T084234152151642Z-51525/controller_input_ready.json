@@ -1,0 +1,19 @@
+{
+  "scope": "G4_MINIMUM_A_T03_CHAIN_ONLY",
+  "role": "controller",
+  "pid": 51725,
+  "run_token": 2999130190,
+  "host_monotonic_ns": 973835876396,
+  "snapshot": {
+    "run_token": 2999130190,
+    "started_ns": 973585515025,
+    "last_clock_ns": 973835876396,
+    "state": "INIT_INHIBITED",
+    "reason": 4,
+    "stop": true,
+    "valid_normal_count": 5,
+    "last_valid_rx_ns": 973835783251,
+    "distance_cm": 1000,
+    "last_counter": 4
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY",
+  "gate": "G4",
+  "baseline": "v1.0",
+  "variant": "A",
+  "scenario": "T-03",
+  "run_id": "g4-20261101T084459538960446Z-57997",
+  "run_token": 4161689825,
+  "coordinator_pid": 57997,
+  "started_utc": "2026-11-01T08:44:59.582328+00:00",
+  "execution_status": "ENV_ERROR",
+  "fixture_sends_complete": false,
+  "observation_window_complete": false,
+  "main_trials_executed": 0,
+  "command_arguments": [
+    "--interface",
+    "vcan0",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "2000",
+    "--output-dir",
+    "evidence/manual/g4-20261101T084459538960446Z-57997",
+    "--exclusive-server",
+    "--allow-world-load"
+  ],
+  "scope_note": "기동/arm과 A의 거리 중단 한 번. 전체 A/B 검증이나 본시험이 아님",
+  "git_commit": "bcfa487a6e546e045c21ebb44ae30dd03df1b284",
+  "source_sha256": {
+    "g4_carla_smoke.py": "33d05f5681b7e5fe18b26064727c27516c3aa0397581f96b6479c037c8a75fb9",
+    "g4_can_workers.py": "7278dd8a32c23dc30b2b01597327858d4501d42d8b0ddbe02a1b073cbaec927b",
+    "g4_controller_core.py": "4b7069509d7a5fa3b4513494dab4f18417383ddd45013b847c631c9af5bc2076",
+    "g4_oracle.py": "df9127d7dcda9efb7881989604ee7af9bd460a41fec8a8477382fac84837410d",
+    "g3_adapter_core.py": "ea059b6fe76430a02dd2abe3aa18589f3b12c8c2c9bd1fe07ca5b191f980c49f",
+    "g3_carla_smoke.py": "7f26d18bdabd7b2da5e226374627b370bca7bccfda33a6c68c76352687b7ac0f",
+    "g3_request_smoke.py": "8be9714c9ab0d9d821b8d297c316e53527a06298d58928effe58e8e83b18122d",
+    "g3_integration_can.py": "a8d09842f9bb217789d6e16713d3291734c192c27a1774699fd94d18e7360586",
+    "g2_carla_smoke.py": "f2965289ceff4af6a49eb8cac1475bdc3dc822c39175d4456b4916b7f433ae2d"
+  },
+  "python_version": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]"
+}

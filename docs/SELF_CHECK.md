@@ -1,6 +1,6 @@
 # 직접 실행하는 검사 안내
 
-이 안내는 Ubuntu 프로젝트에서 G1/G2, G3 요청 송수신과 실제 차량 연결을 재현하는 방법이다. 전체 G3는 Codex의 실제 실행이 PASS했고 사용자 직접 재현은 아직 기록이 없다. [G3 통합 안내](G3_INTEGRATION.md)에 코드 검토 순서와 판정 방법을 정리했다.
+이 안내는 Ubuntu 프로젝트에서 G1~G4를 직접 재현하는 방법이다. 최신 G4는 A/T-03 최소 연결 PASS이며 사용자 직접 재현은 아직 기록이 없다. [G4 최소 연결](G4_MINIMUM_CHAIN.md)에 코드와 판정 방법을 정리했다. 앞으로 실제 실행은 사용자가 맡고 Codex는 코드 준비와 결과 검토를 맡는다.
 
 ## 1. 시작 위치와 한글 설명 규칙
 
@@ -17,7 +17,7 @@ bash tools/run_self_checks.sh --help
 bash tools/run_self_checks.sh check
 ```
 
-현재 단위 검사 119개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다. 사용자에게 확인받은 이전 80개 출력 이후 통합 관련 검사 39개가 추가됐다.
+현재 단위 검사 208개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다. 사용자 과거 80개, G3의 119개와 이번 208개는 서로 다른 시점의 기록이다.
 
 ## 3. G1 실제 vCAN 송수신
 
@@ -27,10 +27,10 @@ bash tools/run_self_checks.sh check
 ip -details link show dev vcan0
 ```
 
-장치 종류가 vcan이고 UP이어야 한다. 재부팅 후 장치가 없어졌다면 아래 명령으로 기존 준비 스크립트를 실행한다. 이 명령은 관리자 비밀번호를 요청하며 can-utils/vulkan-tools 설치 확인과 vcan0 준비를 수행한다.
+장치 종류가 vcan이고 UP이어야 한다. 설치가 완료된 현재 호스트에서 장치가 없거나 DOWN이면 아래 명령으로 가상 장치만 준비한다. 관리자 비밀번호가 필요하며 apt/dpkg를 사용하지 않는다.
 
 ```bash
-sudo bash tools/setup_g1_host.sh
+sudo bash tools/prepare_vcan0.sh
 ```
 
 다른 프로젝트 검사 프로그램이 vcan0를 사용하지 않는 상태에서 실행한다.
@@ -66,7 +66,7 @@ bash tools/run_self_checks.sh g2 --exclusive-server --allow-world-load
 
 출력 폴더의 result.json에서 status=PASS를 확인한다. vehicle_states.jsonl에는 실제 차속, 적용 제어, frame과 두 종류의 시각이 남는다. 핵심 검사는 5.0 +/- 0.5 km/h를 1초 유지한 뒤 실제 제동을 적용하고, 2초의 시뮬레이션 창 안에서 속도 0.1 m/s 이하를 0.5초 유지하는 것이다.
 
-검사가 끝나면 자신의 차량을 제거하고 설정과 날씨를 복구한다. 허용한 Town04 로드는 원래 맵으로 복구하지 않는다. 다른 프로그램이 없는 것을 확인한 뒤 터미널 A에서 Ctrl+C로 서버를 종료한다. 현재 환경에서는 G2 두 번과 G3 한 번에서 Signal 11/exit 139가 관측됐으며 정상 종료 문제는 미해결이다. 검사 PASS와 서버 종료 성공을 구분한다.
+검사가 끝나면 자신의 차량을 제거하고 설정과 날씨를 복구한다. 허용한 Town04 로드는 원래 맵으로 복구하지 않는다. 다른 프로그램이 없는 것을 확인한 뒤 터미널 A에서 Ctrl+C로 서버를 종료한다. G2 두 번과 G3/G4 각 한 번에서 Signal 11/exit 139가 관측됐으며 정상 종료 문제는 미해결이다. 검사 PASS와 서버 종료 성공을 구분한다.
 
 ```bash
 ss -ltn 'sport = :2000 or sport = :2001'
@@ -75,6 +75,8 @@ ss -ltn 'sport = :2000 or sport = :2001'
 서버 종료 후 두 포트가 더 이상 LISTEN 상태가 아닌지 확인한다.
 
 ## 5. 결과 위치와 다음 단계
+
+최신 G4 실행과 사용자/에이전트 바톤터치는 [G4 안내 3절과 6절](G4_MINIMUM_CHAIN.md)을 따른다. G4 전용 서버까지 포함한 종료 Signal 11/139는 총 네 건이다. 아래 G3 안내는 당시 기록이다.
 
 스크립트는 매번 evidence/manual 아래에 시각과 프로세스 번호를 포함한 새 폴더를 만든다. 기존 증거를 덮어쓰지 않는다. PASS가 아닌 경우 출력 폴더를 보존하고 result.json 또는 verdict.json 및 error.txt가 있으면 함께 확인한다. G1의 TOOL_ERROR와 환경 오류도 통과로 간주하지 않는다.
 

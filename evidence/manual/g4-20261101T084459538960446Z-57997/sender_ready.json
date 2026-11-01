@@ -1,0 +1,8 @@
+{
+  "scope": "G4_MINIMUM_A_T03_CHAIN_ONLY",
+  "role": "sender",
+  "pid": 58241,
+  "run_token": 4161689825,
+  "interface": "vcan0",
+  "host_monotonic_ns": 1119458424374
+}
