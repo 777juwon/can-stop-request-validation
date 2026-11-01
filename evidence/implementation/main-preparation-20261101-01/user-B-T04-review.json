@@ -1,0 +1,48 @@
+{
+  "recorded_utc": "2026-11-01T13:32:36.129283+00:00",
+  "scope": "사용자 B/T-04 개발 확인의 결과/metadata와 일부 원시 근거 별도 대조. 전체 oracle 재실행은 아님",
+  "output_dir": "runs/check-B-T04-01",
+  "execution_git_commit": "af96576abdbd10922aedf384b23e1c1837fce59f",
+  "requirements": {
+    "R-04": {
+      "status": "PASS",
+      "reason": "WITHIN_WINDOW"
+    },
+    "R-08": {
+      "status": "PASS"
+    },
+    "R-06": {
+      "status": "PASS"
+    },
+    "R-07": {
+      "status": "PASS"
+    },
+    "R-09": {
+      "status": "PASS",
+      "reason": "FULL_CHAIN_EVIDENCE"
+    }
+  },
+  "raw_input_plus_request_multisets_match_observer": true,
+  "runtime_source_hashes_match_current": true,
+  "frozen_payload_slots_100_to_159_match_slot_99": true,
+  "restored_counter": 160,
+  "first_stop_reason": 3,
+  "request_after_last_new_send_done_ms": 200.131672,
+  "max_adapter_processing_ms": 1.462236,
+  "stop_hold_samples": 11,
+  "stop_hold_frames": [
+    5995,
+    6005
+  ],
+  "cleanup_status": "PASS",
+  "post_cleanup": {
+    "synchronous_mode": false,
+    "fixed_delta_seconds": null,
+    "remaining_relevant_actors": []
+  },
+  "review_status": "PASS",
+  "main_trials_executed": 0,
+  "actual_can_executed_by_agent": false,
+  "carla_executed_by_agent": false,
+  "agent_started_or_stopped_server": false
+}

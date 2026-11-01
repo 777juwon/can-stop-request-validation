@@ -493,3 +493,10 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 병합 대상은 문서뿐이다. 본시험20개 동결 파일/입력/설정과 소스 사본을 대조하고 문서 링크/충돌 표식/공백을 검사한 뒤 병합 커밋을 게시한다. 실제CAN/CARLA는 실행하지 않는다. 본시험0/80회와 서버 종료 문제를 유지한다. 원격 반영은 push 결과와 ls-remote로 확인한다.
 - 검토 결과: 원격 목차/본문2파일은 원격과 byte 동일, 양쪽 WORKLOG 원문 보존, 동결20개와 사본SHA 일치, 문서링크50개/공백/충돌표식 검사PASS. 기능코드 변경이 없어273개 검사를 반복하지 않았다. merge_review.json에 범위와 결과를 기록했다.
 - 병합 커밋5f8fab7을 `git push origin main`으로 게시했다. 종료코드0,95934cc..5f8fab7 main -> main. `git ls-remote --exit-code origin refs/heads/main`에서5f8fab7c985edeee6f3820bc5ffbad72d82f5a5f가 로컬HEAD와 일치했고 작업 폴더도 깨끗했다. publication.json에 실제 결과를 보존했다. 이 게시 기록과 STATUS/LINUX_HANDOFF 갱신도 후속 문서 커밋으로 저장해 같은 main에 공유한다. 강제push나 본시험 추가 실행은 하지 않았다.
+
+## 2026-11-01: 사용자 B/T-04 CARLA 개발 확인 PASS 검토
+
+- 사용자가 `.venv/bin/python -I tools/main_campaign.py check --output-dir runs/check-B-T04-01 --variant B --scenario T-04 --exclusive-server --allow-world-load`의PASS를 제공하고 서버 유지 여부를 물었다. 터미널 A는 유지하도록 안내했고 결과/metadata/원시 로그만 읽었다. 에이전트는 서버나 실제CAN 시험을 실행하지 않았다.
+- COMPLETE/전체PASS/cleanupPASS, client/server0.9.15/Town04/spawn143과 R-04/R-06/R-07/R-08/R-09 PASS를 확인했다. 원시 입력+요청1907개와 독립 관측의 다중집합, 실행 소스SHA가 일치했다. 거리 n100~159 전체payload는99와 같고160으로 복원됐다. 최초 정지reason3은 마지막 신규 송신 완료 뒤200.131672ms로 W-FAULT 안이었다.
+- adapter 처리 최대1.462236ms, 최초 제동frame5994 뒤5995~6005의11표본에서 실제 평면속도<=0.1m/s와 제동을 별도 확인했다. 차량 제거/날씨/설정 복구와 관련actor0을 기록에서 확인했다. 호스트와 시뮬레이션 시간을 섞지 않았고 이1회 수치를 본시험 통계로 확대하지 않는다.
+- user-B-T04-review.json에 별도 대조 범위를 기록했다. 전체oracle 재실행과 구분한다. 코드 변경이 없어 단위/실제 시험은 반복하지 않고 문서 링크/공백을 점검한다. STATUS/LINUX_HANDOFF/README/MAIN_PREPARATION을 갱신한다. 다음은 사용자 A/T-01 개발 확인이며 본시험0/80회다. 추가 push는 하지 않는다.

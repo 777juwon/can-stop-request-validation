@@ -11,6 +11,7 @@
 > 수정기록: 첫 예비 시도의 시작신호 지연 INPUT_ERROR를 보존하고 수정했습니다. 회귀 포함242개 검사PASS.
 > 최신결과: 사용자 메시지 예비시험8개 모두COMPLETE. A/T-04 R-04 FAIL 1건은 보존한 비교 결과입니다. 본시험0/80회. [결과와 로그 해석](docs/PRELIMINARY_RESULTS_2026-11-01.md)
 > 최신준비: 고정 설정/80개 ID와 실행·재개/독립 차량 판정 구현, 전체273개 검사PASS. 다음은 사용자의 별도 CARLA 확인2개입니다. [서버 시작부터 본시험과 재개 명령](docs/MAIN_PREPARATION.md)
+> 최신확인: 사용자 B/T-04 CARLA 개발 확인PASS, 실제 정지와 정리까지 확인. 다음은 A/T-01이며 본시험은0/80회입니다.
 >
 > 시작 문서: [연구 및 시스템 기준선](docs/RESEARCH_BASELINE.md), [요구사항 및 시험 명세](docs/VALIDATION_PLAN.md), [논문 챕터별 구성](docs/THESIS_OUTLINE.md)
 
