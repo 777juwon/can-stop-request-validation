@@ -549,3 +549,13 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 요청 counter가 회전해 원시 바이트가 다시 나타나는 경우도 FIFO로 송신과 호출을 대응했다. 다음tick 실제 제동과 복원 뒤 유지, 실제 속도/연속frame을 별도 대조했다. 호스트/시뮬레이션 시간은 분리했고 checkpoint-060.json에 범위/원본SHA/개별값을 보존했다. 전체oracle 재실행이나 실제 시험은 에이전트가 하지 않았다.
 - 다음ID M-T-04-R01-A, 같은 서버에서 --max-runs 20으로 마지막 T-04 전체를 사용자 실행한다. A의 R-04 미요청FAIL은 설계상 예상이므로 원래 시도로 보존하며 COMPLETE/실행 오류와 구분한다. B의 순번 만료 제동/정지도 실제 결과로 확인한다. 현재T-04는 미실행이며80회 완료와 모든 요구사항PASS를 혼동하지 않는다.
 - 기능코드/기준은 바꾸지 않았다.273개 검사는 반복하지 않고 동결 대조와 문서 링크/공백을 확인했다. 시나리오 묶음 체크포인트로 로컬 커밋에 저장하며 추가push는 하지 않는다.
+
+## 2026-11-01: 본시험80회 실행 완료와 A/T-04 FAIL10건 보존
+
+- 사용자가 T-04 A10회FAIL/B10회PASS, 누적시도80/완료80/미시작0/요구사항FAIL10/all_original_attempts_recorded=true/batch_halted=false를 제공하고FAIL 원인을 물었다.80회 실행은 끝났으며 요구사항 미충족과 실행 완료를 구분해 안내했다. 모든FAIL이 A/T-04의R-04 STOP_NOT_OBSERVED인지20개 result/metadata와 원시 자료에서 확인했다.
+- 앞선60회 result/metadata SHA 유지, 마지막20회의 동결/계획/설정/fixture/소스 일치와 원시 송수신 다중집합, 거리400개/심박400개,100~159슬롯의99payload8바이트 반복과160복원을 확인했다. A10회 모두 본구간 정지 요청/adapter 제동0회이며 실제 계속 움직였다. R-04 FAIL, R-06/R-07/R-08 N/A, R-09 PASS를 보존했다.
+- B10회 모두reason3 요청의 W-FAULT, adapter 처리50ms와 다음tick 제동, 연속11표본 정지 및 복원 후 잠금 유지를 확인했다. 마지막 신규 송신 완료 뒤 관측200.122921~200.278851ms, adapter 최대23.853492ms, 정지 유지 완료11frame 간격이었다. 호스트/시뮬레이션 시간은 분리했다. 요구사항을 완화하거나FAIL을 재실행으로 대체하지 않았다.
+- 최종 COMPLETE80/정리PASS80, 결과PASS70/FAIL10이다. checkpoint-080.json과80행main_run_summary.csv, MAIN_RESULTS_2026-11-01.md에 실행 요약과 검토 범위를 보존했다. 앞선 자료는 체크포인트SHA로 연결했고 전체oracle 재실행과 구분한다. 실제 시험과 서버 제어는 에이전트가 하지 않았다.
+- README/STATUS/LINUX_HANDOFF/MAIN_PREPARATION/REMAINING_STEPS를 실행 완료와 분석 대기로 갱신한다. 기능코드/판정 기준 변경이 없어273개 검사는 반복하지 않고 동결 대조/CSV집계/문서 링크/공백을 확인한다. 로컬 완료 체크포인트 커밋으로 저장하며 추가push는 하지 않는다.
+- 남은 작업은 서버 종료 결과 기록, 실패 포함 전체 통계/그래프/추적표, 최종5장 목차의 본문 갱신과 별도 시각화 촬영이다. 각 실행의actor/날씨/설정 복구는 확인됐지만 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제를 정상 종료로 처리하지 않는다.
+- 마감 검토PASS: CSV80개 고유ID, COMPLETE80/정리PASS80, 결과PASS70/FAIL10와 실제FAIL 항목10개 일치, 원본result/metadata SHA 및 동결 유지, 로컬 문서링크119개와 공백/새문자 검사를 확인했다. completion_review.json에 범위와 CSV/체크포인트 SHA를 보존했다. 서버 정상 종료나 전체 분석 완료로 확대하지 않는다.

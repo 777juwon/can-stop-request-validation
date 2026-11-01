@@ -1,0 +1,24 @@
+{
+  "recorded_utc": "2026-11-01T14:52:17.303954+00:00",
+  "review_status": "PASS",
+  "scope": "80개 실행 완료/FAIL 식별/요약CSV/동결/원본result 및 metadata SHA/문서의 마감 검토. 전체 분석이나 서버 정상 종료 판정은 아님",
+  "original_attempted": 80,
+  "original_completed": 80,
+  "not_started": 0,
+  "run_status_counts": {
+    "PASS": 70,
+    "FAIL": 10
+  },
+  "all_failure_items": "A/T-04 R-04 STOP_NOT_OBSERVED 10건",
+  "cleanup_pass_count": 80,
+  "csv_rows": 80,
+  "local_links_checked": 119,
+  "frozen_code_config_fixture_check": "PASS",
+  "code_and_protected_baseline_changes": false,
+  "checkpoint_sha256": "c68f42ff929442bbed5095300a10d4d539410d14eb53ab3d8e48023696f1e609",
+  "summary_csv_sha256": "6318d39f380f60a20f4685cb128e764a54d617612eea420b5b58219d7dc3d524",
+  "unit_tests_not_repeated_reason": "기능코드/기준 변경 없음.273개 검사 당시의 동결20개 파일 유지",
+  "server_shutdown_status": "NOT_YET_CONFIRMED",
+  "actual_can_executed_by_agent": false,
+  "carla_executed_by_agent": false
+}
