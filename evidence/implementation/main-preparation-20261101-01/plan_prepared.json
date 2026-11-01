@@ -1,0 +1,38 @@
+{
+  "source_git_commit": "09332f86eaf889254623558da84eee177d65303b",
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-I",
+        "tools/main_campaign.py",
+        "prepare",
+        "--output-dir",
+        "runs/main-v1-20261101"
+      ],
+      "exit_code": 0,
+      "prepared_original_ids": 80
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-I",
+        "tools/main_campaign.py",
+        "status",
+        "--output-dir",
+        "runs/main-v1-20261101"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "output_dir": "runs/main-v1-20261101",
+  "manifest_sha256": "515ce8d8f97184d25ab477b54412e6cf32ab68b4b02e5ba220cda3f3ea2c0ca4",
+  "frozen_config_fixture_source_check": "PASS",
+  "source_snapshot_files_verified": 20,
+  "original_attempted": 0,
+  "original_completed": 0,
+  "not_started": 80,
+  "actual_can_executed_by_agent": false,
+  "carla_executed": false,
+  "main_trials_executed": 0
+}

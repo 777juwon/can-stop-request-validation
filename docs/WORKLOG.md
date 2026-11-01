@@ -452,3 +452,10 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 첫 개별 unittest 호출은 -I에서 tests import 경로가 없어 실패했고, 기존 프로젝트 방식인 `-I -m unittest discover -s tests -t . -p 'test_main*.py' -q`로 바로잡았다. 새 preflight 검사 작성 중 subprocess mock이 git 조회까지 가로채던 실패를 수정하고 전체 검사를 통과했다. 실패를 합격 결과로 기록하지 않았다.
 - MAIN_PREPARATION.md에 서버 시작부터 본시험 밖 B/T-04 및 A/T-01 확인, 계획 생성/조회, 본시험1개씩 실행, 결과 위치와 재개/중단 판단을 정리했다. STATUS/LINUX_HANDOFF/README/REMAINING_STEPS를 갱신했다. 실제 개발 확인과 본시험은 미실행이며0/80회다. Ctrl+C 서버 Signal11/139 문제도 미해결로 유지한다.
 - 예비8개 원시JSONL24개(14,298,856바이트)는 로컬 보존하고 Git 게시에서 제외했다. raw_manifest.json에 크기/SHA를 기록하고 작은 metadata/판정/요약/검토 기록을 관리한다. 원본 로그와 판정은 수정하지 않았다. runs/도 로컬 실행 자료로 제외한다. push나 branch 변경은 하지 않는다.
+
+## 2026-11-01: 본시험 계획 파일 실제 생성
+
+- 검증한 구현과 예비 결과의 작은 기록을 `09332f8 feat: prepare frozen CARLA main campaign and 80 original runs`에 로컬 저장했다. 원시 JSONL은 포함하지 않았다.
+- `.venv/bin/python -I tools/main_campaign.py prepare --output-dir runs/main-v1-20261101` 및 같은 경로의 `status` 실행, 모두 종료코드0.80개ID/고유 token/commit/설정/입력/소스20개를 동결했다. 시도0/완료0/미시작80이며 attempts와 runs 하위 폴더는 비어 있다. 실제CAN/CARLA는 실행하지 않았다.
+- verify_frozen과 보존한 사본20개의 SHA를 재확인해PASS. evidence/implementation/main-preparation-20261101-01/plan_prepared.json과 prepared_manifest.json에 명령/결과/원본 사본을 보존했다. 전체 코드 검사 뒤 기능 코드 변경은 없으며 문서/근거만 추가했다.
+- STATUS/LINUX_HANDOFF/MAIN_PREPARATION에 이미 생성된 계획의 prepare 반복 금지와 status 조회를 안내했다. 다음은 사용자 B/T-04/A/T-01 개발 확인 및 결과 검토다. 본시험0/80회, push하지 않음.

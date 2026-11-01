@@ -69,6 +69,8 @@ ss -ltn 'sport = :2000 or sport = :2001'
 
 아래 prepare/status는 서버와 CAN을 실행하지 않는다. prepare는 **한 번만**, 존재하지 않는 폴더에 실행한다. 생성하면80개 ID와 고유 token, 설정/입력/소스 해시, 소스 사본을 manifest.json에 고정한다. `runs/` 원시 자료는 로컬 보존 대상이며 Git 업로드에서 제외했다.
 
+**현재 로컬에서는 이미 생성 완료**: 코드 커밋09332f8 뒤 `runs/main-v1-20261101`을 만들었고 status는 시도0/완료0/미시작80이다.20개 소스/설정 사본의 SHA와 동결 대조도PASS다. 이 장치에서는 아래 prepare를 다시 실행하지 않고 status만 사용한다. [생성 명령과 검증 기록](../evidence/implementation/main-preparation-20261101-01/plan_prepared.json), [생성한 manifest 사본](../evidence/implementation/main-preparation-20261101-01/prepared_manifest.json). 별도 장치의 계획은 해당 장치에서 따로 준비하며 로컬 원시 결과가 Git으로 자동 공유되지는 않는다.
+
 ```bash
 .venv/bin/python -I tools/main_campaign.py prepare \
   --output-dir runs/main-v1-20261101

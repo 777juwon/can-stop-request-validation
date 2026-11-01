@@ -6,6 +6,8 @@ Updated: 2026-11-01 (한국 시각)
 
 최신 본시험 준비: 중단 지점에서 고정 설정/80개 원래ID, 실행기/독립 차량 판정/재개 보호를 마무리했다. 전체273개 코드 검사와 의존성/셸 문법/공백PASS. 새 실행기의 실제CARLA 통합은 아직이며 본시험0/80회다. 다음은 사용자가 별도 B/T-04와 A/T-01 개발 확인을 실행하고 경로를 전달하는 단계다. [전체 명령과 바톤터치](MAIN_PREPARATION.md), [코드 검사 근거](../evidence/implementation/main-preparation-20261101-01/checks.json). 실제CAN/CARLA는 이번 작업에서 실행하지 않았다.
 
+로컬 계획 생성 완료: 코드 커밋09332f8의 설정/소스/입력과80개 고유 token을 `runs/main-v1-20261101/manifest.json`에 동결했다. CLI prepare/status 종료코드0, 시도0/완료0/미시작80, 사본20개 SHA 대조PASS다. [생성 근거](../evidence/implementation/main-preparation-20261101-01/plan_prepared.json). prepare를 다시 실행하지 않고 status부터 조회한다. 구현과 작은 기록은 로컬 커밋으로 저장하며 push는 하지 않았다.
+
 이전 중단 기록: 사용자가5시간 잔여15%를 알려20%기준에 따라 멈췄고, 이후 끊기면 이어가기로 명시적으로 본시험 준비를 재개했다. 이번 준비는 그 예외다. 잔여율을 자동 조회하거나 자동 중지를 보장하는 기능은 없다.
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
