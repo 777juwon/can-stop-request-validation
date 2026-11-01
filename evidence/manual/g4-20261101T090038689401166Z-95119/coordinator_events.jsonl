@@ -1,0 +1,4 @@
+{"kind": "load_world_begin", "host_monotonic_ns": 2054464312779}
+{"kind": "adapter_armed", "host_monotonic_ns": 2058610943727, "arm_host_monotonic_ns": 2058602697436}
+{"kind": "trial_started", "host_monotonic_ns": 2071197166342, "t0_ns": 2071188812299}
+{"kind": "brake_first_applied", "host_monotonic_ns": 2076373974456, "frame": 8869, "simulation_time_s": 21.420639934018254}

@@ -4,7 +4,11 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / SUT_A_PARTIAL**
+사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
+
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / AB_CORE_UNIT_TESTED / PRELIMINARY_NOT_RUN**
+
+후속 구현: B 순번 감시, 자체DBC와4개 시나리오×A/B 메시지 예비 도구를 준비했다. 전체238개 검사와 의존성/셸 문법/공백 통과. 실제CAN/CARLA는 추가 실행하지 않았다. 다음은 사용자가 `bash tools/run_self_checks.sh preliminary`로8개 조합을 실행하고 경로를 전달하는 단계다. [순서와 명령](REMAINING_STEPS.md), [검사 근거](../evidence/implementation/preliminary-20261101-01/checks.json). CARLA 본시험 실행기/80개ID는 다음 단계이며 본시험0/80회다.
 
 최신 G4: A 방식의 T-03 거리 중단 한 번이 실제 PASS했다. 기동 억제, 정상 입력 5개 뒤 명시적 arm, 준비 중 연속 입력과 실제 차속, 20초 본 구간의 거리만 중단/복원, 정지 잠금을 연결했다. B 방식과 A/B 전체 요구사항 검증, 예비 8개 조합 및 본시험 80회는 남아 있다. [코드와 직접 실행](G4_MINIMUM_CHAIN.md), [G4 판정](../evidence/manual/g4-20261101T084459538960446Z-57997/result.json).
 
@@ -45,7 +49,7 @@ Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 �
 | G3 request transport tool | IMPLEMENTED / UNIT_TESTED / TRANSPORT_PASS | tools/g3_request_smoke.py, 새 단위 검사 23개와 실제 10프레임 송수신 |
 | G3 adapter core | IMPLEMENTED / UNIT_TESTED / CONNECTED | tools/g3_adapter_core.py와 핵심 검사 18개. G3 실행기에서 실제 제동 연결 |
 | G3 integration runner and oracle | IMPLEMENTED / LOCALLY_VERIFIED | tools/g3_carla_smoke.py, g3_integration_can.py, g3_integration_oracle.py와 실제 20프레임/차량 관측 |
-| SUT implementation and unit tests | PARTIAL_A_ONLY | A 핵심/기동/arm 구현 및 33개 핵심 검사. B, DBC와 전체 시험 체계는 남음 |
+| SUT implementation and unit tests | AB_CORE_UNIT_TESTED | A/B 핵심과 DBC 구현 및 단위 검사. B 실제 실행과 전체 CARLA 시험 체계는 남음 |
 | Thesis preliminary test execution and result summary | NOT_RUN | G1~G4 연결 확인만 실행. 예비 8개 조합 미실행 |
 | Main comparison runs and result analysis | NOT_RUN | No experimental results |
 
@@ -108,7 +112,7 @@ Git 공유: 사용자 요청으로 G3 완료 commit `4815250`까지 로컬 커�
 
 그 뒤 인수인계 commit bcfa487도 게시됐고, 이번 G4 작업은 해당 main에서 변경 없이 시작했다. G4는 별도 로컬 커밋으로 저장하며 추가 push 요청은 아직 없다. 위 G3 게시 기록의 다음날 재개 계획에 따라 이번에 G4를 실행했다.
 
-다음은 사용자 코드 검토와 G4 직접 재현, B의 순번 감시 및 A/B 전체 시험 체계 완성이다. 잘못된 StopRequest의 본시험 차량 대응은 미정이며 필요한 결정을 이유와 함께 제시한다. A 기동/arm이 구현됐지만 B와 모든 요구사항 검증을 완료한 것으로 확대하지 않는다. 예비 8개 조합과 80회 시험을 한 번에 추가하지 않는다. sticky_control=true 및 batch 제동 경로를 유지하고 서버 종료 문제는 장시간 무인 시험 전에 별도로 점검한다.
+다음은 사용자 코드 검사와 메시지 예비시험8개다. 결과 검토 뒤 CARLA 본시험 실행기/고정 설정/80개 원래ID를 준비한다. 잘못된 StopRequest의 본시험 차량 대응은 미정이며 필요한 결정을 이유와 함께 제시한다. B 단위 검사를 실제 B 실행이나 본시험 완료로 확대하지 않는다. sticky_control=true와 batch 제동을 유지하고 서버 종료 문제는 장시간 무인 시험 전에 별도 점검한다.
 
 Read [G0_ENVIRONMENT_2026-10-19.md](G0_ENVIRONMENT_2026-10-19.md) for observed versions, planned commands and execution limits. Earlier analysis is retained in [THESIS_REVIEW](THESIS_REVIEW.md) and [REVISION_REVIEW](REVISION_REVIEW_2026-10-19.md), with original pre-sync snapshots under evidence/g0/2026-10-19/pre_sync.
 

@@ -12,6 +12,7 @@ usage() {
   bash tools/run_self_checks.sh g2 --exclusive-server [--allow-world-load]
   bash tools/run_self_checks.sh g3 --exclusive-server [--allow-world-load]
   bash tools/run_self_checks.sh g4 --exclusive-server [--allow-world-load]
+  bash tools/run_self_checks.sh preliminary
 
 check: 단위 검사, Python 의존성, 셸 문법과 Git 공백 검사
 g1: 이미 준비된 vcan0에서 독립 송신기와 수신기의 실제 프레임 교환
@@ -19,6 +20,7 @@ g2: 별도로 시작한 전용 CARLA 서버에서 실제 차속과 제동 확인
 g3-can: CARLA 없이 StopRequest의 독립 송수신만 확인하는 G3 첫 단계
 g3: 독립 CAN 요청의 수신부터 실제 CARLA 제동과 차속까지 확인
 g4: A 방식의 거리 메시지 중단부터 실제 정지까지 T-03 한 번 확인
+preliminary: CARLA 없이 vcan0에서 4개 시나리오 x A/B 예비시험 8개 실행
 
 G2/G3/G4는 127.0.0.1:2000을 사용한다. 다른 시험이나 제어 프로그램을 먼저 종료한다.
 --exclusive-server: 다른 tick/제어 프로그램이 없는 전용 서버임을 명시
@@ -31,7 +33,7 @@ mode=${1:-help}
 if [[ $# -gt 0 ]]; then shift; fi
 case "${mode}" in
     help|-h|--help) usage; exit 0 ;;
-    check|g1|g3-can)
+    check|g1|g3-can|preliminary)
         if [[ $# -ne 0 ]]; then usage >&2; exit 2; fi
         ;;
     g2|g3|g4)
@@ -86,5 +88,9 @@ case "${mode}" in
     g4)
         exec "${python_path}" -I tools/g4_carla_smoke.py \
             --interface vcan0 --host 127.0.0.1 --port 2000 --output-dir "${output_dir}" "$@"
+        ;;
+    preliminary)
+        exec "${python_path}" -I tools/run_message_preliminary.py \
+            --interface vcan0 --output-dir "${output_dir}"
         ;;
 esac

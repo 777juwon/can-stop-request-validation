@@ -7,6 +7,7 @@
 > 2026-10-31: 사용자 장치 준비 후 G3 요청 프레임의 실제 송수신 PASS. 정상 5개와 정지 5개를 확인했습니다. 다음은 CARLA adapter이며 전체 G3는 아직 미실행입니다. [단계별 진행](docs/G3_PROGRESS.md)
 > 2026-11-01: 전체 G3 첫 실제 실행 PASS. 정상 복원 뒤 제동 유지까지 확인했습니다. Codex가 구현 및 실행했고 사용자 검토와 직접 재현은 다음 단계입니다. [실제 연결 결과와 실행 안내](docs/G3_INTEGRATION.md)
 > 후속 G4: A의 T-03 한 번 PASS. 최초 관측 누락 FAIL은 보존하고 준비 순서를 수정했습니다. 전체 검사 208개 통과. [G4 코드와 직접 실행](docs/G4_MINIMUM_CHAIN.md)
+> 다음: B 핵심/메시지 예비8개 도구 구현, 전체238개 검사PASS. 실제 예비시험은 사용자 실행 대기입니다. [남은 순서와 실행 명령](docs/REMAINING_STEPS.md)
 >
 > 시작 문서: [연구 및 시스템 기준선](docs/RESEARCH_BASELINE.md), [요구사항 및 시험 명세](docs/VALIDATION_PLAN.md), [논문 챕터별 구성](docs/THESIS_OUTLINE.md)
 
@@ -46,7 +47,7 @@ CAN을 통해 전달되는 장애물 거리 정보가 중단되거나 과거 메
 | 언어 | Python | 프로젝트 .venv의 3.10.12 사용, 외부 Python 경로 배제를 위해 -I로 실행 |
 | 시뮬레이터 | CARLA 0.9.15 | 서버/client 버전 일치 확인, Town04 단독 주행 및 제동 G2 PASS, 기존 0.9.14 client 제거 |
 | Python 호환 환경 | 별도 프로젝트 venv | 격리 pip check 통과, 정확한 버전은 requirements.lock.txt |
-| 메시지 해석 | python-can 4.6.1 / cantools 40.7.1 / 자체 DBC | Python 패키지 설치/import 완료, DBC 미구현 |
+| 메시지 해석 | python-can 4.6.1 / cantools 40.7.1 / 자체 DBC | config/stop_request_v1.dbc 구현 및 고정 바이트 교차 검사. 실차 DBC 아님 |
 | 차량 연동 | CAN 수신 결과를 CARLA Python API에 적용 | G3 PASS, G4 A 거리 중단의 요청과 실제 정지 PASS. B 미구현 |
 | 분석 | Python 기반 로그 판정과 표 및 그래프 | 미구현 |
 

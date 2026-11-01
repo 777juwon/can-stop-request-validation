@@ -407,3 +407,20 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 사용자 사용량 절약 요청으로 이후 실제 서버/시험 실행은 사용자가 맡고 에이전트는 코드/명령과 필요한 결과만 검토한다. 기본은 단일 에이전트다. 사용자가 공유한 5h 잔여47%, 주간46%, 컨텍스트48%는 각자 다른 화면값이다. 잔여율 자동 조회 도구가 없어20% 자동 감시는 보장하지 않는다. 사용자가20%이하를 알려주면 추가 작업을 중단한다. AGENTS/STATUS/LINUX_HANDOFF와 G4 안내에 지속 인수인계를 남겼다.
 - docs/G4_MINIMUM_CHAIN.md에 서버 시작부터 검사, 결과 전달과 종료까지 직접 명령 및 바톤터치를 정리했다. 사용자는 출력 폴더와 마지막status만 전달하고 에이전트가 필요한 로그만 읽는다. 사용자 자신의 G4 재현은 아직 미실행 기록이다. 새 실험은 더 하지 않으며 B/예비8조합/본시험0/80회를 유지한다. 이번 G4 코드/문서/작은 실행 증거는 검증 후 로컬 커밋으로 저장하며 push는 요청받지 않았다.
 - 최종 마감: 문서 링크183개,JSON/JSONL59개,보존소스17개(첫실패8/최종9)의SHA를확인했다. 공백/새파일설명/credential형태혼입과고정문서무변경을점검했다. 종료로그발췌의줄끝공백만정규화후재검사해final_review.json PASS. 원본raw와과거판정은수정하지않았다. evidence_manifest.json에85개근거,5695989바이트의경로/크기/SHA를기록했다. 사용량방식변경후시뮬레이터추가실행0회이며최신208개검사이후기능코드변경은없다.
+
+## 2026-11-01: 사용자 G4 직접 재현 결과 확인
+
+- 사용자가 g4-20261101T090038689401166Z-95119의 PASS 출력, 종료 후 포트 헤더와 CARLA 시작 메시지를 제공했다. result.json/metadata.json 및 launcher만 읽었다. 추가 실험은 실행하지 않았다.
+- 실제 기록은 COMPLETE/cleanup PASS, transport/request/adapter/motion PASS, client/server 0.9.15, Town04였다. 마지막 거리 송신 완료 뒤 요청 관측200.190496ms, adapter 최대0.965605ms, 제동 적용 후11frame에 정지 유지 조건 완료. actor/날씨/설정 복구와 관련actor0도 기록됐다. 사용자가 직접 G4를 재현했음을 확인하되 본시험에 포함하지 않는다.
+- -RenderOffScreen으로 창이 없는 것이 현재 설정임을 확인했다. 4.26.2는 Unreal Engine 정보이며 CARLA 버전과 구분한다. 사용자 ss 출력은 포트2000/2001 LISTEN 없음의 근거이며 서버 정상 종료코드는 제공되지 않았다. 제품 코드 변경이 없어 단위/실제 시험은 반복하지 않고 문서 공백만 확인한다.
+
+## 2026-11-01: B 핵심과 사용자 메시지 예비시험 준비
+
+- 사용자가 남은 순서대로 직접 실행하고 검토를 맡기는 방식을 요청했다. README/STATUS/LINUX_HANDOFF 및 고정 기준선/명세/소스 조사를 확인했다. 기존 사용자G4 기록과 변경을 보존했다. 단일 에이전트로 진행했고 실제CAN/CARLA는 추가 실행하지 않았다.
+- sequence_controller_core.py에 B를 추가했다. delta1~127만 순번/거리/갱신 시각을 인정하고 반복/거절은 유효 수신만 갱신한다. 수신 만료→순번 만료→근거리 우선순위, 최초 원인과 잠금을 유지한다. B 가짜시각 검사12개를 추가했다. 실제 시간 성능 시험이 아니다.
+- g4_can_workers.py는 기본A/T-03을 유지하며 A/B와 네 고정 시나리오 선택을 지원한다. 고정 입력/근거리260/거리60개생략/반복payload와복원delta61을 검사했다. 자체 config/stop_request_v1.dbc를 cantools로 고정 바이트와 교차 확인했다. 새 의존성/수치 변경은 없다.
+- message_trial_oracle.py와 run_message_preliminary.py는 독립 입력/요청 관측, PID, 준비/arm/20초/슬롯, W-NEAR/W-FAULT와 요청 잠금을 판정한다. 차량 요구사항과 전체R-09는N/A다. COMPLETE와 요구사항FAIL을 분리하고 A/T-04 R-04 FAIL도 보존한다. 예비8개 P-ID를 미리 기록하며 환경/입력/증거 오류 시 이후 조합을 강행하지 않는다.
+- 첫238개 검사 중 사전검사 테스트1개가 실패했다. Popen대역이git check_output에도 적용된 테스트 구성 문제라git조회 대역을 분리했다. 재실행 `bash tools/run_self_checks.sh check`: 종료코드0,238개OK, pip/셸 문법/Git 공백 통과. evidence/implementation/preliminary-20261101-01/checks.json에 최종 출력과 초기 원인을 보존했다.
+- 사용자 G4 g4-20261101T090038689401166Z-95119의9개 소스를 기록된ac6d930 commit에서 읽어 당시SHA와 일치 확인 후 source/에 보존했다. 기존raw/result는 수정하지 않았다. worker가 바뀌어도 과거 실행 근거를 확인할 수 있다.
+- REMAINING_STEPS.md에 전체 순서와 지금 실행할 check/preliminary 명령, 출력 폴더 전달 및 완료/요구사항PASS 구분을 정리했다. STATUS/LINUX_HANDOFF/SELF_CHECK/README를 갱신했다. 실제 예비8개는 사용자 실행 대기, CARLA 본시험 실행기/80개ID는 다음 단계다. 본시험0/80회, 이번 단계push/서버실행 없음.
+- 최종 정적 확인: 로컬 문서링크194개,JSON/JSONL28개,변경/추가파일58개(점검기록자체생성전)와 약3.06MB를 확인했다. Git/새파일 공백,credential형태 혼입과 고정 문서 무변경을 점검했고 final_review.json PASS다. 핵심5개 소스/DBC의SHA를 기록했다. 이후 기능 코드는 변경하지 않았으며 코드/문서/사용자 G4 증거를 로컬 커밋으로 저장한다. push는 하지 않는다.

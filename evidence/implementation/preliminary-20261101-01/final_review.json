@@ -1,0 +1,20 @@
+{
+  "recorded_utc": "2026-11-01T09:25:05.282668+00:00",
+  "review_status": "PASS",
+  "failures": [],
+  "local_links_checked": 194,
+  "json_jsonl_parsed": 28,
+  "files_reviewed_before_this_record": 58,
+  "bytes_reviewed": 3063460,
+  "unit_test_count": 238,
+  "actual_preliminary_executed": false,
+  "carla_executed": false,
+  "main_trials_executed": 0,
+  "source_sha256": {
+    "tools/sequence_controller_core.py": "40c4fa0d58268c4d573c92b79c686e97a87594461a2773766468e744e91b6a20",
+    "tools/g4_can_workers.py": "3283917bf262948f108299e13d7dfb77520d9e8a0d05b0a8d94ad0d664c840bc",
+    "tools/message_trial_oracle.py": "d2804b25129176e9844dfcccd409ac70c0fe16c930c8debad2f61cea5245a5dd",
+    "tools/run_message_preliminary.py": "dedf59339d76a84c36e89f470d6aeafec57e326fd611c611ed274945694e014f",
+    "config/stop_request_v1.dbc": "6d331ce2bfcbf57fdd779e01bc8cbffc4ef9868485e2865c8cffe4a86651c7ce"
+  }
+}

@@ -1,0 +1,30 @@
+VERSION "v1.0"
+
+NS_ :
+    CM_
+    VAL_
+
+BS_:
+
+BU_: SensorStub StopController BrakeAdapter
+
+BO_ 256 DistanceInput: 8 SensorStub
+ SG_ distance_cm : 0|16@1+ (1,0) [0|10000] "cm" StopController
+ SG_ counter : 16|8@1+ (1,0) [0|255] "" StopController
+ SG_ valid : 24|8@1+ (1,0) [0|1] "" StopController
+ SG_ run_token : 32|32@1+ (1,0) [0|4294967295] "" StopController
+
+BO_ 257 BackgroundHeartbeat: 8 SensorStub
+ SG_ counter : 0|8@1+ (1,0) [0|255] "" StopController
+ SG_ reserved : 8|24@1+ (1,0) [0|0] "" StopController
+ SG_ run_token : 32|32@1+ (1,0) [0|4294967295] "" StopController
+
+BO_ 512 StopRequest: 8 StopController
+ SG_ stop : 0|8@1+ (1,0) [0|1] "" BrakeAdapter
+ SG_ reason : 8|8@1+ (1,0) [0|4] "" BrakeAdapter
+ SG_ counter : 16|8@1+ (1,0) [0|255] "" BrakeAdapter
+ SG_ reserved : 24|8@1+ (1,0) [0|0] "" BrakeAdapter
+ SG_ run_token : 32|32@1+ (1,0) [0|4294967295] "" BrakeAdapter
+
+CM_ "학부 연구용 자체 메시지 규격. 실차 DBC나 안전 인증 기준이 아니다.";
+VAL_ 512 reason 0 "NORMAL" 1 "NEAR_DISTANCE" 2 "RX_TIMEOUT" 3 "NO_SEQUENCE_PROGRESS" 4 "INIT_INHIBITED";

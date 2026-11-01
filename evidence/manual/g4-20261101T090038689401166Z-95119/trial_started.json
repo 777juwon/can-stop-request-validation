@@ -1,0 +1,11 @@
+{
+  "scope": "G4_MINIMUM_A_T03_CHAIN_ONLY",
+  "pid": 95151,
+  "run_token": 3902032843,
+  "host_monotonic_ns": 2071188834380,
+  "t0_ns": 2071188812299,
+  "t0_done_ns": 2071188834380,
+  "trial_global_slot": 256,
+  "trial_first_scheduled_ns": 2071188812299,
+  "trial_end_ns": 2091188812299
+}

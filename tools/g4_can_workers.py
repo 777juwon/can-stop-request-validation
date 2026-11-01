@@ -31,7 +31,7 @@ from tools.g3_request_smoke import (  # noqa: E402
 )
 
 
-SCOPE = "G4_MINIMUM_A_T03_CHAIN_ONLY"
+SCOPE = "CAN_TRIAL_WORKERS_V1_ONLY"
 PERIOD_NS = 50_000_000
 POLL_NS = 10_000_000
 PREPARE_NS = 30_000_000_000
@@ -74,8 +74,11 @@ def atomic_write_json(path: Path, value) -> None:
             temporary.unlink()
 
 
-def fixture_frames(token: int, global_slot: int, trial_slot: int | None = None) -> list[bytes]:
-    """고정 거리와 심박을 구성하며 T-03의 거리 60개만 생략한다."""
+def fixture_frames(token: int, global_slot: int, trial_slot: int | None = None,
+                   scenario: str = "T-03") -> list[bytes]:
+    """기준선의 네 수치 입력과 배경 심박을 구성한다. 준비 입력은 원거리다."""
+    if scenario not in ("T-01", "T-02", "T-03", "T-04"):
+        raise ValueError("정의된 T-01~T-04 시나리오가 필요합니다")
     for name, value, maximum in (("run_token", token, 0xFFFFFFFF),
                                  ("global_slot", global_slot, None),
                                  ("trial_slot", trial_slot, TRIAL_SLOTS - 1)):
@@ -86,10 +89,13 @@ def fixture_frames(token: int, global_slot: int, trial_slot: int | None = None) 
     counter = global_slot % 256
     if trial_slot is not None and counter != trial_slot % 256:
         raise ValueError("준비 순번과 시험 순번이 이어지지 않습니다")
-    distance = struct.pack("<HBBI", 1000, counter, 1, token)
+    distance_cm = (max(50, 1000 - 5 * (trial_slot - 100))
+                   if scenario == "T-02" and trial_slot is not None and trial_slot >= 100 else 1000)
+    distance_counter = 99 if scenario == "T-04" and trial_slot is not None and 100 <= trial_slot < 160 else counter
+    distance = struct.pack("<HBBI", distance_cm, distance_counter, 1, token)
     heartbeat = bytes([counter, 0, 0, 0]) + token.to_bytes(4, "little")
     frames = []
-    if trial_slot is None or not 100 <= trial_slot < 160:
+    if not (scenario == "T-03" and trial_slot is not None and 100 <= trial_slot < 160):
         frames.append(CAN_FRAME.pack(DISTANCE_ID, 8, distance))
     frames.append(CAN_FRAME.pack(HEARTBEAT_ID, 8, heartbeat))
     return frames
@@ -142,8 +148,9 @@ def sleep_until(due_ns: int, signals: StopSignals, watchdog_ns: int) -> None:
         time.sleep(min((due_ns - now) / 1e9, POLL_NS / 1e9))
 
 
-def sender(interface: str, output: Path, token: int, signals: StopSignals) -> dict:
-    """준비 순번을 유지한 채 다음 0 경계부터 고정 T-03을 송신한다."""
+def sender(interface: str, output: Path, token: int, signals: StopSignals,
+           scenario: str = "T-03") -> dict:
+    """준비 순번을 유지한 채 다음 0 경계부터 선택한 기준선 입력을 송신한다."""
     with open_bus(interface) as bus, (output / "input_events.jsonl").open("x", encoding="utf-8") as stream:
         ready = time.monotonic_ns()
         watchdog, prepare_deadline = ready + WATCHDOG_NS, ready + PREPARE_NS
@@ -179,10 +186,10 @@ def sender(interface: str, output: Path, token: int, signals: StopSignals) -> di
                 emit(stream, event="missed_slot", phase=phase, slot=slot, global_slot=global_slot,
                      scheduled_ns=due, host_monotonic_ns=now, pid=os.getpid())
                 raise InputFailure(f"전역 송신 슬롯 {global_slot}를 놓쳐 밀린 입력을 전송하지 않습니다")
-            if slot is not None and 100 <= slot < 160:
+            if scenario == "T-03" and slot is not None and 100 <= slot < 160:
                 emit(stream, event="distance_omitted", phase=phase, slot=slot, global_slot=global_slot,
                      scheduled_ns=due, host_monotonic_ns=now, pid=os.getpid(), arbitration_id=DISTANCE_ID)
-            for raw in fixture_frames(token, global_slot, slot):
+            for raw in fixture_frames(token, global_slot, slot, scenario):
                 begin = time.monotonic_ns()
                 if begin >= due + PERIOD_NS:
                     emit(stream, event="missed_slot", phase=phase, slot=slot, global_slot=global_slot,
@@ -256,9 +263,14 @@ def observer(interface: str, output: Path, token: int, signals: StopSignals) -> 
             count += 1
 
 
-def controller(interface: str, output: Path, token: int, signals: StopSignals) -> dict:
+def controller(interface: str, output: Path, token: int, signals: StopSignals,
+               variant: str = "A") -> dict:
     """10 ms 감시와 명시적 arm을 수행하며 전이 즉시 요청을 보낸다."""
     from tools.g4_controller_core import DistanceTimeoutController, G4ArmError
+    from tools.sequence_controller_core import SequenceProgressController
+
+    if variant not in ("A", "B"):
+        raise ValueError("A 또는 B 방식이 필요합니다")
 
     with open_bus(interface) as bus, (output / "sut_events.jsonl").open("x", encoding="utf-8") as stream:
         bus.settimeout(POLL_NS / 1e9)
@@ -266,7 +278,7 @@ def controller(interface: str, output: Path, token: int, signals: StopSignals) -
                        b"".join(struct.pack("=II", item, 0x7FF) for item in (DISTANCE_ID, HEARTBEAT_ID)))
         ready = time.monotonic_ns()
         watchdog, prepare_deadline = ready + WATCHDOG_NS, ready + PREPARE_NS
-        core = call_core(DistanceTimeoutController, token, ready)
+        core = call_core(DistanceTimeoutController if variant == "A" else SequenceProgressController, token, ready)
         event_index = request_counter = transmitted = 0
         input_ready_ns = armed_ns = acknowledged_ns = None
 
@@ -378,11 +390,14 @@ def run_worker(args: argparse.Namespace) -> int:
     result = {"scope": SCOPE, "role": args.worker, "pid": os.getpid(), "status": "TOOL_ERROR",
               "started_utc": datetime.now(timezone.utc).isoformat(),
               "begin_monotonic_ns": time.monotonic_ns(), "interface": args.interface,
-              "run_token": args.run_token}
+              "run_token": args.run_token, "variant": getattr(args, "variant", "A"),
+              "scenario": getattr(args, "scenario", "T-03")}
     try:
         inspect_link(args.interface, output, record_name=f"{args.worker}_preflight.json")
-        result.update({"sender": sender, "observer": observer, "controller": controller}[args.worker](
-            args.interface, output, args.run_token, signals))
+        operation = {"sender": sender, "observer": observer, "controller": controller}[args.worker]
+        options = ({"scenario": result["scenario"]} if args.worker == "sender" and result["scenario"] != "T-03"
+                   else {"variant": result["variant"]} if args.worker == "controller" and result["variant"] != "A" else {})
+        result.update(operation(args.interface, output, args.run_token, signals, **options))
         result["status"] = "COMPLETE"
     except (Exception, KeyboardInterrupt) as exc:
         result.update(status="INTERRUPTED" if isinstance(exc, KeyboardInterrupt) else
@@ -411,6 +426,8 @@ def main() -> int:
     parser.add_argument("--interface", default="vcan0")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--run-token", type=int, required=True)
+    parser.add_argument("--variant", choices=("A", "B"), default="A")
+    parser.add_argument("--scenario", choices=("T-01", "T-02", "T-03", "T-04"), default="T-03")
     args = parser.parse_args()
     if not 0 <= args.run_token <= 0xFFFFFFFF:
         parser.error("run-token은 uint32 정수여야 합니다")

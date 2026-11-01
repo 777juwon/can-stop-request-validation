@@ -1,0 +1,61 @@
+{
+  "gate": "G4",
+  "scope": "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY",
+  "execution_status": "COMPLETE",
+  "cleanup_status": "PASS",
+  "checks": {
+    "scope": "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY",
+    "all_checks_passed": true,
+    "failures": [],
+    "missing_evidence": [],
+    "metrics": {
+      "main_comparison_runs_executed": 0,
+      "variant": "A",
+      "scenario": "T-03",
+      "input_sent_frames": 1252,
+      "observed_frames": 1849,
+      "controller_request_frames": 597,
+      "adapter_received_frames": 590,
+      "adapter_event_count": 590,
+      "normal_distance_frames_before_arm": 5,
+      "last_distance_s_begin_ns": 2076138958770,
+      "last_distance_s_done_ns": 2076138990479,
+      "first_timeout_q_obs_ns": 2076339180975,
+      "timeout_observation_after_send_done_ms": 200.190496,
+      "max_request_send_gap_ms": 60.122912,
+      "trial_distance_frames": 340,
+      "trial_heartbeat_frames": 400,
+      "max_processing_ms": 0.965605,
+      "initial_speed_hold": {
+        "first_frame": 8745,
+        "last_frame": 8765,
+        "first_simulation_time_s": 15.220639841631055,
+        "last_simulation_time_s": 16.220639856532216,
+        "sample_count": 21,
+        "observed_span_s": 1.0000000149011612
+      },
+      "preparation_seconds": 8.255603165,
+      "first_brake_applied": {
+        "frame": 8869,
+        "simulation_time_s": 21.420639934018254,
+        "host_monotonic_ns": 2076373875460
+      },
+      "stop_hold": {
+        "first_frame": 8870,
+        "last_frame": 8880,
+        "first_simulation_time_s": 21.470639934763312,
+        "last_simulation_time_s": 21.970639942213893,
+        "sample_count": 11,
+        "observed_span_s": 0.5000000074505806
+      },
+      "pre_request_full_brake_frames": [],
+      "stop_hold_completed_after_applied_frames": 11
+    },
+    "transport_status": "PASS",
+    "request_status": "PASS",
+    "adapter_status": "PASS",
+    "motion_status": "PASS"
+  },
+  "status": "PASS",
+  "main_trials_executed": 0
+}

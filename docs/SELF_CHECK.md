@@ -4,6 +4,8 @@
 
 ## 1. 시작 위치와 한글 설명 규칙
 
+최신 다음 단계는 [메시지 예비시험8개](REMAINING_STEPS.md)다. `bash tools/run_self_checks.sh preliminary`로 사용자가 실행하고 경로를 전달한다. CARLA 서버는 필요하지 않다.
+
 ```bash
 cd /home/parkjuwon/can-stop-request-validation
 bash tools/run_self_checks.sh --help
@@ -17,7 +19,7 @@ bash tools/run_self_checks.sh --help
 bash tools/run_self_checks.sh check
 ```
 
-현재 단위 검사 208개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 마지막에 단위 검사 OK와 의존성 오류 없음이 표시되고 종료코드가 0이면 이 검사 단계는 통과다. 실제 CAN이나 CARLA 실행은 별도로 확인한다. 사용자 과거 80개, G3의 119개와 이번 208개는 서로 다른 시점의 기록이다.
+현재 단위 검사238개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 단위 검사OK와 의존성 오류 없음, 종료코드0을 확인한다. 실제CAN/CARLA와 구분한다. 과거80개/G3의119개/G4의208개와 최신238개는 다른 시점의 기록이다.
 
 ## 3. G1 실제 vCAN 송수신
 
