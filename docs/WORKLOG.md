@@ -491,3 +491,5 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - `git merge --no-commit --no-ff origin/main`에서 STATUS/WORKLOG 충돌을 확인했다. 지침에 따라 멈추고 질문했고 사용자가 양쪽 변경 보존 후 병합/push를 승인했다. 이후5장 구성이 최종이며 기존6장 구성을 대체해도 된다고 명시했다. 최종 목차와 원격 본문은 유지하고 상태 문장과 양쪽 작업 이력을 함께 보존했다. 연구 설계와 제출 계획서는 변경하지 않았다.
 - MAIN_PREPARATION에 개발 확인 선정 이유와 본시험 뒤 별도 촬영 계획을 추가했다. 현재 launcher는 -RenderOffScreen이며 화면 표시/차량 시점 이동은 CARLA0.9.15 공식 rendering/actors 문서에서 확인했다. 촬영용 도구는 아직 구현/실행하지 않았고 사진은 추후 시각화 재현으로 구분한다. 본시험의 정량 근거는 원래80개 로그/판정으로 남긴다.
 - 병합 대상은 문서뿐이다. 본시험20개 동결 파일/입력/설정과 소스 사본을 대조하고 문서 링크/충돌 표식/공백을 검사한 뒤 병합 커밋을 게시한다. 실제CAN/CARLA는 실행하지 않는다. 본시험0/80회와 서버 종료 문제를 유지한다. 원격 반영은 push 결과와 ls-remote로 확인한다.
+- 검토 결과: 원격 목차/본문2파일은 원격과 byte 동일, 양쪽 WORKLOG 원문 보존, 동결20개와 사본SHA 일치, 문서링크50개/공백/충돌표식 검사PASS. 기능코드 변경이 없어273개 검사를 반복하지 않았다. merge_review.json에 범위와 결과를 기록했다.
+- 병합 커밋5f8fab7을 `git push origin main`으로 게시했다. 종료코드0,95934cc..5f8fab7 main -> main. `git ls-remote --exit-code origin refs/heads/main`에서5f8fab7c985edeee6f3820bc5ffbad72d82f5a5f가 로컬HEAD와 일치했고 작업 폴더도 깨끗했다. publication.json에 실제 결과를 보존했다. 이 게시 기록과 STATUS/LINUX_HANDOFF 갱신도 후속 문서 커밋으로 저장해 같은 main에 공유한다. 강제push나 본시험 추가 실행은 하지 않았다.

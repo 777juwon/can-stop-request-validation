@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-11-01T13:27:15.441454+00:00",
+  "published_commit": "5f8fab7c985edeee6f3820bc5ffbad72d82f5a5f",
+  "remote_main": "5f8fab7c985edeee6f3820bc5ffbad72d82f5a5f",
+  "remote_main_matches_local_head": true,
+  "push_exit_code": 0,
+  "push_summary": "95934cc..5f8fab7 main -> main",
+  "preserved_remote_commits": [
+    "9e42c53",
+    "95934cc"
+  ],
+  "final_outline_chapters": 5,
+  "original_attempted": 0,
+  "main_trials_executed": 0,
+  "actual_can_executed_by_agent": false,
+  "carla_executed": false,
+  "note": "이 게시 근거와 인수인계 갱신은 후속 문서 커밋으로 함께 게시한다"
+}

@@ -6,7 +6,9 @@ Updated: 2026-11-01 (한국 시각)
 
 최신 본시험 준비: 중단 지점에서 고정 설정/80개 원래ID, 실행기/독립 차량 판정/재개 보호를 마무리했다. 전체273개 코드 검사와 의존성/셸 문법/공백PASS. 새 실행기의 실제CARLA 통합은 아직이며 본시험0/80회다. 다음은 사용자가 별도 B/T-04와 A/T-01 개발 확인을 실행하고 경로를 전달하는 단계다. [전체 명령과 바톤터치](MAIN_PREPARATION.md), [코드 검사 근거](../evidence/implementation/main-preparation-20261101-01/checks.json). 실제CAN/CARLA는 이번 작업에서 실행하지 않았다.
 
-로컬 계획 생성 완료: 코드 커밋09332f8의 설정/소스/입력과80개 고유 token을 `runs/main-v1-20261101/manifest.json`에 동결했다. CLI prepare/status 종료코드0, 시도0/완료0/미시작80, 사본20개 SHA 대조PASS다. [생성 근거](../evidence/implementation/main-preparation-20261101-01/plan_prepared.json). prepare를 다시 실행하지 않고 status부터 조회한다. 구현과 작은 기록은 로컬 커밋으로 저장하며 push는 하지 않았다.
+로컬 계획 생성 완료: 코드 커밋09332f8의 설정/소스/입력과80개 고유 token을 `runs/main-v1-20261101/manifest.json`에 동결했다. CLI prepare/status 종료코드0, 시도0/완료0/미시작80, 사본20개 SHA 대조PASS다. [생성 근거](../evidence/implementation/main-preparation-20261101-01/plan_prepared.json). prepare를 다시 실행하지 않고 status부터 조회한다.
+
+최신 게시: 사용자 승인으로 원격의5장 최종 목차/제1~3장 본문과 로컬 G4/본시험 준비를 보존해 병합했다. `git push origin main` 종료코드0, 원격 직접 조회에서5f8fab7c985edeee6f3820bc5ffbad72d82f5a5f가 로컬HEAD와 일치했다. [게시 근거](../evidence/implementation/main-preparation-20261101-01/publication.json). 이 게시 기록과 인수인계 갱신도 후속 문서 커밋으로 함께 공유한다. 실제 실행은 여전히 사용자 담당이며 본시험0/80회다.
 
 이전 중단 기록: 사용자가5시간 잔여15%를 알려20%기준에 따라 멈췄고, 이후 끊기면 이어가기로 명시적으로 본시험 준비를 재개했다. 이번 준비는 그 예외다. 잔여율을 자동 조회하거나 자동 중지를 보장하는 기능은 없다.
 
