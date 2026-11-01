@@ -1,0 +1,21 @@
+{
+  "scope": "CAN_TRIAL_WORKERS_V1_ONLY",
+  "role": "controller",
+  "pid": 98128,
+  "run_token": 1626212293,
+  "host_monotonic_ns": 4391621338024,
+  "snapshot": {
+    "run_token": 1626212293,
+    "started_ns": 4391334826521,
+    "last_clock_ns": 4391621338024,
+    "state": "INIT_INHIBITED",
+    "reason": 4,
+    "stop": true,
+    "valid_normal_count": 5,
+    "last_valid_rx_ns": 4391621265107,
+    "distance_cm": 1000,
+    "last_counter": 4,
+    "variant": "B",
+    "last_progress_rx_ns": 4391621265107
+  }
+}

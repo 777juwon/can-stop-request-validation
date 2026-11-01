@@ -1,0 +1,11 @@
+{
+  "scope": "CAN_TRIAL_WORKERS_V1_ONLY",
+  "pid": 98185,
+  "run_token": 2177877325,
+  "host_monotonic_ns": 4470411888342,
+  "t0_ns": 4470411869377,
+  "t0_done_ns": 4470411888342,
+  "trial_global_slot": 256,
+  "trial_first_scheduled_ns": 4470411869377,
+  "trial_end_ns": 4490411869377
+}

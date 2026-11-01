@@ -1,0 +1,125 @@
+{
+  "scope": "로컬 원시 로그 보존 목록. 원시 파일은 Git 게시 대상에서 제외",
+  "files": [
+    {
+      "path": "P-T-01-A/can_observer.jsonl",
+      "bytes": 461736,
+      "sha256": "f440d059995b19d8fc917f1e430d44cd02107732bd1f06736a8425b8aa1587e1"
+    },
+    {
+      "path": "P-T-01-A/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "0ec69d850933a61cf292c5a19eee8a69713b8f4b5d8549d7d7ec59751dc36ae5"
+    },
+    {
+      "path": "P-T-01-A/sut_events.jsonl",
+      "bytes": 742048,
+      "sha256": "d71e691d4409f4af0d2adea774775f424f80a3dcc008608828f438ac2ee9b5d5"
+    },
+    {
+      "path": "P-T-01-B/can_observer.jsonl",
+      "bytes": 461978,
+      "sha256": "ea7a87b7b183c1a0740c4aaa356089122befaa2e8b5c6843e115d5dc04be6641"
+    },
+    {
+      "path": "P-T-01-B/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "e87b9f68c1c8636d3d54c2568f645684d0fa5187b1b062643b0e24277d64b50a"
+    },
+    {
+      "path": "P-T-01-B/sut_events.jsonl",
+      "bytes": 888145,
+      "sha256": "96e7241e436c813f421a7254c3d0a36b2c4930de95474beefb475742020140a0"
+    },
+    {
+      "path": "P-T-02-A/can_observer.jsonl",
+      "bytes": 462220,
+      "sha256": "65b99b864dca941b1bc4f82c793a83c3e5dcddac728f8f69269602e05649cd34"
+    },
+    {
+      "path": "P-T-02-A/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "d99021114ae24397aeb96dd99f7dff7ac8a104431e546d0f63918f990e389b03"
+    },
+    {
+      "path": "P-T-02-A/sut_events.jsonl",
+      "bytes": 745280,
+      "sha256": "5f7e8a009096ee2dcad525f8998a2d5d66a25d18bab29eb7ce60baf47c23a1d3"
+    },
+    {
+      "path": "P-T-02-B/can_observer.jsonl",
+      "bytes": 460768,
+      "sha256": "29bc1ad374da03e8283de76c196a9f7fdafac4d9c3c6b314159a547e53d68f95"
+    },
+    {
+      "path": "P-T-02-B/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "912eeaec9d850ef18212594fb812704dc35c746328bb3f4821cc1814608e2434"
+    },
+    {
+      "path": "P-T-02-B/sut_events.jsonl",
+      "bytes": 891917,
+      "sha256": "ae0c79a177936f6116350185f8a4d67c9de9910779dd60b56e14de9e0b77de52"
+    },
+    {
+      "path": "P-T-03-A/can_observer.jsonl",
+      "bytes": 447700,
+      "sha256": "70b839c159c1ea47cbb4eba9c1ff627642c6dae291d337f59823cf83718c3e69"
+    },
+    {
+      "path": "P-T-03-A/input_events.jsonl",
+      "bytes": 508132,
+      "sha256": "6d64156546ff178505ae08e3248a259793f7a49b5c9d81dee92f47ec17f4c326"
+    },
+    {
+      "path": "P-T-03-A/sut_events.jsonl",
+      "bytes": 720352,
+      "sha256": "90ee3a2475af70e4f3a501fe992a38996ce614b4736bb75c2306da23eb084b02"
+    },
+    {
+      "path": "P-T-03-B/can_observer.jsonl",
+      "bytes": 447216,
+      "sha256": "59e8cc6304cdb13091b171382582325c30e9b1878a0926be9ade7e1ad31ea597"
+    },
+    {
+      "path": "P-T-03-B/input_events.jsonl",
+      "bytes": 508132,
+      "sha256": "9542ae808aefb0eeb1ef935ff09dc9c3607c28765b813afe56834dcd37e0f594"
+    },
+    {
+      "path": "P-T-03-B/sut_events.jsonl",
+      "bytes": 863246,
+      "sha256": "c718c11b919165c0b069cfefe1f7b9bf606b90de737c3b1ad6232fb0bdc9f03b"
+    },
+    {
+      "path": "P-T-04-A/can_observer.jsonl",
+      "bytes": 462220,
+      "sha256": "f9349e177ffe8b514add8609e3909187d3fdf97287d2bf6f56c3488dc37f568c"
+    },
+    {
+      "path": "P-T-04-A/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "ded540475715dead84426a8a3033d8a45ebbe218dbd8859b6b0052465cc44d0d"
+    },
+    {
+      "path": "P-T-04-A/sut_events.jsonl",
+      "bytes": 742736,
+      "sha256": "5e614f1599972b6f077b1321b3096590c53e98c698ff7bb38449c1d2716a4226"
+    },
+    {
+      "path": "P-T-04-B/can_observer.jsonl",
+      "bytes": 462220,
+      "sha256": "32c7ddb0ce19647ea1ad0d10e697eed469dcb428327ea90ebccd18bb3e4aadb5"
+    },
+    {
+      "path": "P-T-04-B/input_events.jsonl",
+      "bytes": 520792,
+      "sha256": "41b6c0b9f76559f29ffcd616b16495e9b392bc9e90ea8726e0d838794929ee08"
+    },
+    {
+      "path": "P-T-04-B/sut_events.jsonl",
+      "bytes": 898058,
+      "sha256": "2638d648f319b78e95ab47dd24a238642c9ef92cc163cf9bfccab3d96fdada20"
+    }
+  ]
+}

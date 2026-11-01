@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """A 방식 거리 수신 중단에서 실제 CARLA 정지까지 연결하는 G4 실행기다.
 
-정해진 T-03 입력 한 번만 실행한다. B 비교와 본시험 80회는 수행하지 않는다.
+직접 실행의 기본값은 A/T-03 한 번이다. main_campaign에서 호출하면 동결한
+설정과 A/B 시나리오를 사용하며 원래 시도와 개발 확인을 별도로 기록한다.
 독립 송신기, 관측기와 SUT를 분리하고 여기서만 차량 제어와 tick을 소유한다.
 """
 
@@ -38,7 +39,7 @@ from tools.g4_oracle import evaluate_g4
 
 SCOPE = "G4_A_RX_TIMEOUT_MINIMUM_CHAIN_ONLY"
 EXIT_CODES = {"PASS": 0, "FAIL": 1, "ENV_ERROR": 2, "TOOL_ERROR": 3,
-              "INPUT_ERROR": 4, "SUT_ERROR": 5, "INTERRUPTED": 130}
+              "INPUT_ERROR": 4, "SUT_ERROR": 5, "EVIDENCE_ERROR": 6, "INTERRUPTED": 130}
 
 
 def check_worker_record(role, pid, code, record):
@@ -85,20 +86,37 @@ def start_chain_workers(start_worker, wait_record, deadline):
         wait_record(role + "_ready.json", deadline)
 
 
+def worker_arguments(role, interface, output, token, variant="A", scenario="T-03"):
+    """본시험 선택을 worker에 전달하면서 기존 G4 기본값을 유지한다."""
+    if variant not in ("A", "B") or scenario not in ("T-01", "T-02", "T-03", "T-04"):
+        raise ValueError("정의된 방식/시나리오가 필요합니다")
+    return [sys.executable, "-I", str(REPOSITORY / "tools/g4_can_workers.py"),
+            "--worker", role, "--interface", interface, "--output-dir", str(output),
+            "--run-token", str(token), "--variant", variant, "--scenario", scenario]
+
+
 def run(args) -> int:
+    main_mode = getattr(args, "main_config", None) is not None
+    variant, scenario = getattr(args, "variant", "A"), getattr(args, "scenario", "T-03")
+    original = bool(getattr(args, "original_main_run", False))
+    if original and not main_mode:
+        raise ValueError("원래 본시험은 고정 설정이 필요합니다")
+    scope = "MAIN_CARLA_ORIGINAL_ATTEMPT" if original else "CARLA_CHAIN_CHECK_ONLY" if main_mode else SCOPE
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=False)
-    metadata = {"scope": SCOPE, "gate": "G4", "baseline": "v1.0", "variant": "A",
-                "scenario": "T-03", "run_id": output.name, "run_token": secrets.randbits(32),
+    metadata = {"scope": scope, "gate": "MAIN" if original else "CARLA_CHECK" if main_mode else "G4",
+                "baseline": "v1.0", "variant": variant,
+                "scenario": scenario, "run_id": output.name,
+                "run_token": secrets.randbits(32) if getattr(args, "run_token", None) is None else args.run_token,
                 "coordinator_pid": os.getpid(), "started_utc": datetime.now(timezone.utc).isoformat(),
                 "execution_status": "ENV_ERROR", "fixture_sends_complete": False,
-                "observation_window_complete": False, "main_trials_executed": 0,
+                "observation_window_complete": False, "main_trials_executed": int(original),
                 "command_arguments": sys.argv[1:],
                 "scope_note": "기동/arm과 A의 거리 중단 한 번. 전체 A/B 검증이나 본시험이 아님"}
     world = actor = original_settings = original_weather = bus = core = None
     settings_changed = weather_changed = False
     children, handles, commands = {}, [], []
-    cleanup_errors, samples, adapter_events, adapter_rx = [], [], [], []
+    cleanup_errors, samples, adapter_events, adapter_rx, prearm_rx = [], [], [], [], []
     streams = {name: (output / (name + ".jsonl")).open("x", encoding="utf-8")
                for name in ("coordinator_events", "vehicle_states", "adapter_events",
                             "adapter_rx", "adapter_prearm_rx")}
@@ -111,9 +129,7 @@ def run(args) -> int:
         emit("coordinator_events", {"kind": kind, "host_monotonic_ns": time.monotonic_ns(), **fields})
 
     def start_worker(role):
-        argv = [sys.executable, "-I", str(REPOSITORY / "tools/g4_can_workers.py"),
-                "--worker", role, "--interface", args.interface, "--output-dir", str(output),
-                "--run-token", str(metadata["run_token"])]
+        argv = worker_arguments(role, args.interface, output, metadata["run_token"], variant, scenario)
         stderr = (output / f"{role}_stderr.txt").open("x", encoding="utf-8")
         handles.append(stderr)
         child = subprocess.Popen(argv, stdout=subprocess.DEVNULL, stderr=stderr)
@@ -157,6 +173,7 @@ def run(args) -> int:
             except ValueError as exc:
                 row["decode_error"] = str(exc)
             if prearm:
+                prearm_rx.append(row)
                 emit("adapter_prearm_rx", row)
             else:
                 adapter_rx.append(row)
@@ -173,11 +190,24 @@ def run(args) -> int:
                 raise RunError("INPUT_ERROR", "한 번의 수신에서 지정 범위를 넘는 요청이 관측됐습니다")
 
     try:
+        if main_mode:
+            from tools.main_plan import canonical, digest, validate_config
+            validate_config(args.main_config)
+            if type(metadata["run_token"]) is not int or not 0 <= metadata["run_token"] <= 0xFFFFFFFF:
+                raise ValueError("uint32 실행 token이 필요합니다")
+            metadata.update(fixed_config=args.main_config, config_sha256=digest(canonical(args.main_config)),
+                            planned_run=getattr(args, "planned_run", None),
+                            fixture_sha256=getattr(args, "fixture_sha256", None),
+                            scope_note="고정 시나리오의 CARLA 전체 체인. 원래 시도와 개발 확인 실행을 구분")
         metadata["git_commit"] = subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=REPOSITORY, text=True).strip()
         source_names = ("g4_carla_smoke.py", "g4_can_workers.py", "g4_controller_core.py", "g4_oracle.py",
                         "g3_adapter_core.py", "g3_carla_smoke.py", "g3_request_smoke.py",
                         "g3_integration_can.py", "g2_carla_smoke.py")
+        if main_mode:
+            source_names += ("main_plan.py", "main_campaign.py", "main_trial_oracle.py",
+                             "message_trial_oracle.py", "sequence_controller_core.py")
+            metadata["dbc_sha256"] = hashlib.sha256((REPOSITORY / "config/stop_request_v1.dbc").read_bytes()).hexdigest()
         metadata["source_sha256"] = {name: hashlib.sha256((REPOSITORY / "tools" / name).read_bytes()).hexdigest()
                                      for name in source_names}
         metadata["python_version"] = sys.version
@@ -215,11 +245,20 @@ def run(args) -> int:
         metadata["test_settings"] = str(settings)
         road_map = world.get_map()
         spawns = road_map.get_spawn_points()
-        candidates = [(i, corridor) for i, spawn in enumerate(spawns)
-                      if (corridor := g2.straight_corridor(road_map, spawn, carla))]
+        if main_mode:
+            fixed_index = args.main_config["spawn_index"]
+            corridor = g2.straight_corridor(road_map, spawns[fixed_index], carla) if fixed_index < len(spawns) else None
+            candidates = [(fixed_index, corridor)] if corridor else []
+        else:
+            candidates = [(i, corridor) for i, spawn in enumerate(spawns)
+                          if (corridor := g2.straight_corridor(road_map, spawn, carla))]
         if not candidates:
             raise RunError("ENV_ERROR", "100 m 평탄 직선 후보가 없습니다")
         index, corridor = candidates[0]
+        if main_mode:
+            observed_spawn = g2.transform_dict(spawns[index])
+            if any(abs(observed_spawn[key] - value) > 1e-6 for key, value in args.main_config["spawn_transform"].items()):
+                raise RunError("ENV_ERROR", "동결한 spawn 좌표와 일치하지 않습니다")
         blueprint = world.get_blueprint_library().find("vehicle.tesla.model3")
         blueprint.set_attribute("role_name", "g4_distance_stop_smoke")
         blueprint.set_attribute("sticky_control", "true")
@@ -234,6 +273,18 @@ def run(args) -> int:
                         weather="ClearNoon", vehicle_physics=str(actor.get_physics_control()),
                         ackermann_controller_settings=str(actor.get_ackermann_controller_settings()),
                         spawn_scope="G4 연결 후보; 본시험 고정 좌표 승인과 구분")
+        if main_mode:
+            from tools.main_plan import physics_digest
+            metadata["physics_normalized_sha256"] = physics_digest(metadata["vehicle_physics"])
+            waypoint = road_map.get_waypoint(spawns[index].location)
+            metadata["corridor"]["lane_width_m"] = waypoint.lane_width
+            if (metadata["physics_normalized_sha256"] != args.main_config["physics_normalized_sha256"]
+                    or metadata["ackermann_controller_settings"] != args.main_config["ackermann_settings"]):
+                raise RunError("ENV_ERROR", "동결한 차량 물리/Ackermann 설정과 일치하지 않습니다")
+            metadata["spawn_scope"] = "본시험 전 고정한 spawn143. 결과에 따라 재선정하지 않음"
+            metadata["observed_weather"] = str(world.get_weather())
+            if metadata["observed_weather"] != str(carla.WeatherParameters.ClearNoon):
+                raise RunError("ENV_ERROR", "ClearNoon 적용 상태 불일치")
         bus = open_bus(args.interface)
         bus.setsockopt(socket.SOL_CAN_RAW, socket.CAN_RAW_FILTER, struct.pack("=II", 0x200, 0x7FF))
         bus.setblocking(False)
@@ -315,7 +366,7 @@ def run(args) -> int:
                 trial_started = True
                 event("trial_started", t0_ns=metadata["t0_ns"])
             if trial_started and now >= metadata["trial_end_ns"] + 10_000_000_000:
-                raise RunError("ENV_ERROR", "입력 종료 뒤 추가 관측의 10초 호스트 제한 초과")
+                raise RunError("EVIDENCE_ERROR" if main_mode else "ENV_ERROR", "입력 종료 뒤 추가 관측의 10초 호스트 제한 초과")
             wait = max(0., min(.01, (next_tick - now) / 1e9))
             if select.select([bus], [], [], wait)[0]:
                 receive_available()
@@ -361,8 +412,9 @@ def run(args) -> int:
     except (Exception, KeyboardInterrupt) as exc:
         metadata.update(execution_status=exc.status if isinstance(exc, RunError) else
                         "INTERRUPTED" if isinstance(exc, KeyboardInterrupt) else
-                        "INPUT_ERROR" if isinstance(exc, G3InputError) else
-                        "TOOL_ERROR" if isinstance(exc, AdapterCallError) else
+                        ("SUT_ERROR" if main_mode else "INPUT_ERROR") if isinstance(exc, G3InputError) else
+                        ("SUT_ERROR" if main_mode else "TOOL_ERROR") if isinstance(exc, AdapterCallError) else
+                        "EVIDENCE_ERROR" if main_mode and "t0_ns" in metadata and isinstance(exc, (RuntimeError, subprocess.TimeoutExpired)) else
                         "ENV_ERROR" if isinstance(exc, (OSError, RuntimeError, ImportError, subprocess.TimeoutExpired)) else "TOOL_ERROR",
                         error=str(exc), error_type=type(exc).__name__)
         (output / "error.txt").write_text(traceback.format_exc(), encoding="utf-8")
@@ -425,9 +477,16 @@ def run(args) -> int:
         for handle in handles:
             handle.close()
         metadata.update(finished_utc=datetime.now(timezone.utc).isoformat(), cleanup_errors=cleanup_errors)
+        if main_mode:
+            # 활성화 경계를 걸쳐 도착한 요청도 원시 송신과 빠짐없이 대응한다.
+            metadata["adapter_prearm_rx"] = prearm_rx
         write_json(output / "commands.json", commands)
         try:
-            checks = evaluate_g4(metadata, read_optional_jsonl(output / "input_events.jsonl"),
+            evaluate = evaluate_g4
+            if main_mode:
+                from tools.main_trial_oracle import evaluate_main_trial
+                evaluate = evaluate_main_trial
+            checks = evaluate(metadata, read_optional_jsonl(output / "input_events.jsonl"),
                                  read_optional_jsonl(output / "can_observer.jsonl"),
                                  read_optional_jsonl(output / "sut_events.jsonl"), adapter_rx, adapter_events, samples)
         except Exception as exc:
@@ -435,13 +494,20 @@ def run(args) -> int:
             (output / "oracle_error.txt").write_text(traceback.format_exc(), encoding="utf-8")
             if metadata["execution_status"] == "COMPLETE":
                 metadata["execution_status"] = "TOOL_ERROR"
+        if main_mode and metadata["execution_status"] == "COMPLETE":
+            if checks.get("message_checks", {}).get("sut_output_errors"):
+                metadata["execution_status"] = "SUT_ERROR"
+            elif not checks.get("evidence_valid"):
+                metadata["execution_status"] = "EVIDENCE_ERROR"
         write_json(output / "metadata.json", metadata)
-        result = {"gate": "G4", "scope": SCOPE, "execution_status": metadata["execution_status"],
+        result = {"gate": metadata["gate"], "scope": scope, "execution_status": metadata["execution_status"],
                   "cleanup_status": "FAIL" if cleanup_errors else "PASS", "checks": checks,
                   "status": final_status(metadata["execution_status"], checks, cleanup_errors),
-                  "main_trials_executed": 0}
+                  "main_trials_executed": int(original)}
         write_json(output / "result.json", result)
-    print(json.dumps({"status": result["status"], "scope": SCOPE, "output_dir": str(output)}))
+        if main_mode:
+            write_json(output / "verdict.json", result)
+    print(json.dumps({"status": result["status"], "scope": scope, "output_dir": str(output)}))
     return EXIT_CODES[result["status"]]
 
 

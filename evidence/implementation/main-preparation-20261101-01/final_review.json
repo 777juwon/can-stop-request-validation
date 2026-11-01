@@ -1,0 +1,36 @@
+{
+  "review_status": "PASS",
+  "local_links_checked": 101,
+  "missing_links": [],
+  "new_python_ast_parse": "PASS",
+  "unexpected_kana": [],
+  "protected_baseline_changes": "",
+  "raw_manifest_sha256_match": true,
+  "original_ids": 80,
+  "unique_ids": 80,
+  "checks_file": "checks.json",
+  "review_notes": [
+    "기존 G4 기본값 보존, 본시험 고정 설정 경로와 원래 시도/개발 확인 분리",
+    "preflight 전 claim, 실패 ID 재사용 차단, 변경된 코드/설정/입력으로 재개 거부",
+    "독립 원시 관측과 실제 차량 상태 확인. 메시지와 시뮬레이션 시계 분리",
+    "요구사항 FAIL과 실행 오류 분리. 누락된 근거와 관측된 실패 구분"
+  ],
+  "remaining_limits": [
+    "새 실행기의 실제 CARLA/vCAN 통합 미실행",
+    "본시험0/80회",
+    "서버 Ctrl+C Signal11/139 미해결",
+    "추가 재실행 ID 자동화는 별도 범위"
+  ],
+  "implementation_confidence_only": {
+    "testing": 90,
+    "code_review": 85,
+    "logical_inspection": 88,
+    "weights": [
+      0.4,
+      0.3,
+      0.3
+    ],
+    "weighted_score": 87.9,
+    "does_not_rate_runtime_success": true
+  }
+}

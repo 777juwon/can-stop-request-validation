@@ -1,0 +1,47 @@
+{
+  "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+  "execution_status": "COMPLETE",
+  "variant": "B",
+  "scenario": "T-03",
+  "checks": {
+    "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+    "carla_executed": false,
+    "evidence_valid": true,
+    "evidence_errors": [],
+    "missing_evidence": [],
+    "sut_output_errors": [],
+    "requirements": {
+      "R-03": {
+        "status": "PASS",
+        "reason": "WITHIN_WINDOW"
+      },
+      "R-08": {
+        "status": "PASS"
+      },
+      "R-06": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-07": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-09": {
+        "status": "N/A",
+        "reason": "MESSAGE_EVIDENCE_ONLY",
+        "message_evidence_valid": true
+      }
+    },
+    "metrics": {
+      "input_frames": 1252,
+      "request_frames": 596,
+      "observed_frames": 1848,
+      "trial_input_frames": 740,
+      "first_stop_observed_ns": 4409371567207,
+      "request_after_reference_send_done_ms": 200.263123
+    },
+    "main_trials_executed": 0
+  },
+  "main_trials_executed": 0,
+  "carla_executed": false
+}

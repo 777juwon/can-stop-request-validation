@@ -4,9 +4,15 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
+최신 본시험 준비: 중단 지점에서 고정 설정/80개 원래ID, 실행기/독립 차량 판정/재개 보호를 마무리했다. 전체273개 코드 검사와 의존성/셸 문법/공백PASS. 새 실행기의 실제CARLA 통합은 아직이며 본시험0/80회다. 다음은 사용자가 별도 B/T-04와 A/T-01 개발 확인을 실행하고 경로를 전달하는 단계다. [전체 명령과 바톤터치](MAIN_PREPARATION.md), [코드 검사 근거](../evidence/implementation/main-preparation-20261101-01/checks.json). 실제CAN/CARLA는 이번 작업에서 실행하지 않았다.
+
+이전 중단 기록: 사용자가5시간 잔여15%를 알려20%기준에 따라 멈췄고, 이후 끊기면 이어가기로 명시적으로 본시험 준비를 재개했다. 이번 준비는 그 예외다. 잔여율을 자동 조회하거나 자동 중지를 보장하는 기능은 없다.
+
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / AB_CORE_UNIT_TESTED / PRELIMINARY_INCOMPLETE**
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_0_OF_80**
+
+최신 예비 결과: 사용자가 preliminary-20261101T093650388216046Z-97982에서8개 조합을 모두 정상 완료했다. evidence_valid 모두true이며 기록/출력/정리 오류가 없다. 유일한 요구사항FAIL은 A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는 순번 만료 요청을 약200.193ms에 관측했고R-04 PASS다. COMPLETE_WITH_REQUIREMENT_FAILURES는 중단이 아니라 이FAIL을 보존한 완료 상태다. [결과와 로그 해석](PRELIMINARY_RESULTS_2026-11-01.md). 실제CARLA 검사는 이8개에 없으며 본시험0/80회다. 아래의 첫중단/실행대기 표시는 이전 단계 기록이다.
 
 최신 예비 시도: 사용자 preliminary-20261101T092921604983917Z-97257은 첫T-01/A의 슬롯0 거리 송신 뒤 심박 송신 전에50ms를 넘겨 INPUT_ERROR로 중단됐다. 시도1개/정상완료0개/미시작7개다. 원시 기록에서 두 로그 사이58.374761ms와 해당 경로의 시작신호 fsync를 확인했다. 개별fsync 소요시간까지 계측한 것은 아니다. 신호를 거리/심박 모두 송신한 뒤 게시하고 실시간 신호의 동기 디스크 쓰기를 제거했다. 기한은 완화하지 않았다. 회귀 포함242개 검사PASS이며 실제 재실행은 사용자 대기다. [첫 실패 검토](../evidence/manual/preliminary-20261101T092921604983917Z-97257/failure_review.json), [수정 후 검사](../evidence/implementation/preliminary-start-fix-20261101-01/checks.json).
 
@@ -26,7 +32,7 @@ Updated: 2026-11-01 (한국 시각)
 
 중간점검: [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에 완료한 일, 남은 여섯 작업 묶음과 Git 저장 상태를 정리했다.
 
-The user requested final implementation documents without modifying the already submitted thesis proposal. RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md define v1.0. These documents fix research-only design values and test criteria, not advisor sign-off. G3 and the A-only G4 minimum chain have passed; B and the full comparison framework remain unfinished.
+The user requested final implementation documents without modifying the already submitted thesis proposal. RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md define v1.0. These documents fix research-only design values and test criteria, not advisor sign-off. G3 and the A-only G4 minimum chain have passed. A/B message preliminary runs are complete. The main runner is implemented and unit-tested; its CARLA integration and eighty original attempts remain unexecuted.
 
 The user authorized publishing this document baseline to GitHub on 2026-10-16. A Linux checkout must fetch this revision before relying on it; a shared repository does not automatically update another local checkout.
 
@@ -51,9 +57,10 @@ Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 �
 | G3 request transport tool | IMPLEMENTED / UNIT_TESTED / TRANSPORT_PASS | tools/g3_request_smoke.py, 새 단위 검사 23개와 실제 10프레임 송수신 |
 | G3 adapter core | IMPLEMENTED / UNIT_TESTED / CONNECTED | tools/g3_adapter_core.py와 핵심 검사 18개. G3 실행기에서 실제 제동 연결 |
 | G3 integration runner and oracle | IMPLEMENTED / LOCALLY_VERIFIED | tools/g3_carla_smoke.py, g3_integration_can.py, g3_integration_oracle.py와 실제 20프레임/차량 관측 |
-| SUT implementation and unit tests | AB_CORE_UNIT_TESTED | A/B 핵심과 DBC 구현 및 단위 검사. B 실제 실행과 전체 CARLA 시험 체계는 남음 |
-| Thesis preliminary test execution and result summary | NOT_RUN | G1~G4 연결 확인만 실행. 예비 8개 조합 미실행 |
-| Main comparison runs and result analysis | NOT_RUN | No experimental results |
+| SUT implementation and unit tests | AB_CORE_UNIT_TESTED / MESSAGE_PRELIMINARY_COMPLETE | A/B 핵심과DBC, 실제vCAN8개 완료. 새 CARLA 실행기의 통합 확인은 남음 |
+| Thesis preliminary test execution and result summary | MESSAGE_8_COMPLETE | A/T-04 R-04 FAIL 보존. R-06/R-07과 전체R-09는 미수행 |
+| Main runner, fixed configuration and eighty IDs | IMPLEMENTED / UNIT_TESTED | main_campaign.py/main_trial_oracle.py, config/main_v1.json/main_runs_v1.json. 전체273개 검사PASS |
+| Main comparison runs and result analysis | NOT_RUN / 0_OF_80 | 실제 본시험 및 반복 분석 미수행 |
 
 Writing a scenario, checklist or expected result does not complete an experiment. G1/G2 feasibility runs do not count as thesis preliminary or main trials.
 
@@ -67,8 +74,8 @@ Writing a scenario, checklist or expected result does not complete an experiment
 | Python/CARLA environment | Isolated CPython 3.10.12; carla 0.9.15, python-can 4.6.1, cantools 40.7.1; pip check and matching server connection passed; old 0.9.14 client removed | 본시험 반복 성능 |
 | Standalone vehicle | G2 run04 actual velocity, applied brake, continuous frames, hold window and post-cleanup state checked | R-01~R-09 compliance, repeated main-trial performance |
 | CARLA / vCAN adapter | G3 및 G4 A의 실제 호출/제동/차속과 잠금 유지 PASS | B와 전체 본시험 요구사항 |
-| Watchdog / sequence logic | A 수신 만료 및 기동/arm을 G4에서 확인 | B 순번 감시와 전체 입력 조합 검증 |
-| Fault injection / logging | Existing component code inspected | Our full scenario runner and oracle |
+| Watchdog / sequence logic | A G4와 A/B 메시지 예비8개 실제 확인 | B CARLA 통합과 본시험 반복 성능 |
+| Fault injection / logging | 고정4시나리오의 실제 메시지 예비 완료, 전체 체인 실행기/판정 구현 및 단위 검사 | 새 실행기의 CARLA 통합과80회 실행 |
 | Current repository | v1.0 기준선 이후 설치/도구/증거를 중간점검 스냅샷으로 관리. 해시는 git log로 확인 | 원격 반영은 push 및 원격 ref로 별도 확인 |
 
 ## Feasibility gates
@@ -100,21 +107,21 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 
 - Advisor feedback, without inventing individual parameter approval
 - Resolve or bound the repeatable CARLA shutdown crash before long unattended experiments; do not reinstall drivers or change versions without evidence
-- Actual map/spawn and vehicle-physics records before main testing
-- 사용자 코드 검토 및 직접 재현, B 순번 감시와 전체 시험 체계, 이후 예비/본시험
+- 고정spawn143과 물리/Ackermann 설정을 새 실행기의 실제 CARLA에서 대조
+- 사용자 코드 검토, 별도 CARLA 개발 확인2개 검토, 본시험80개 원래 시도와 분석
 - Project license for original future code
 
 ## Next task
 
-작업 방식 변경: 사용량 절약을 위해 앞으로 실제 서버와 CAN/CARLA 시험은 사용자가 터미널에서 실행한다. 에이전트는 코드/명령 준비와 출력 폴더의 필요한 결과만 검토하며 기본은 단일 에이전트다. 사용자가 알린 5시간 잔여 20% 이하에서는 추가 작업을 중단한다. 현재 공유된 47%는 한 번의 화면 확인 값이며 자동 감시는 불가능하다. [직접 실행과 바톤터치](G4_MINIMUM_CHAIN.md).
+실제 서버와 CAN/CARLA 시험은 사용자가 실행하고 에이전트는 코드와 필요한 결과만 검토한다. 기본은 단일 에이전트다. [MAIN_PREPARATION](MAIN_PREPARATION.md)의 서버 시작 → B/T-04 개발 확인 → A/T-01 개발 확인 순서로 진행한다. 두 결과를 검토한 뒤 준비한 계획의 status를 조회하고 본시험을 한 번씩 시작한다. 개발 확인은80회에 포함하지 않는다.
 
-사용자 직접 실행 안내: [SELF_CHECK.md](SELF_CHECK.md), [G4_MINIMUM_CHAIN.md](G4_MINIMUM_CHAIN.md), 진입점 `bash tools/run_self_checks.sh`. 실제 G4 진입점은 PASS했고 사용자 직접 재현은 대기 중이다. 전체 단위 검사 208개와 의존성/셸 문법/공백 검사가 통과했다. 사용자 과거 검사 80개, G3 때의 119개, 이번 208개는 별도 기록한다. [수정 후 검사](../evidence/g4/2026-11-01/after_startup_fix_checks.json). 새 코드 설명과 주석은 한글로 작성한다.
+코드 검사는 `bash tools/run_self_checks.sh check`로 재현한다. 현재273개PASS이며242/238/208/119/80개는 과거 단계 기록이다. 새 코드 설명과 주석은 한글이다. 사용자 G4 직접 재현과 메시지 예비8개는 확인했지만 새 본시험 실행기의 실제 통합 확인은 아직이다.
 
 Git 공유: 사용자 요청으로 G3 완료 commit `4815250`까지 로컬 커밋 3개를 `git push origin main`으로 게시했다. 직접 원격 조회에서도 main SHA `4815250f531bcabcb7dce1d676b4ab5a838a038d`가 일치했다. 이 게시 결과와 재개 안내는 별도 문서 커밋으로 함께 공유한다. 사용자는 G4를 다음날 이어가기로 했으며 이번 작업에서는 시작하지 않는다.
 
 그 뒤 인수인계 commit bcfa487도 게시됐고, 이번 G4 작업은 해당 main에서 변경 없이 시작했다. G4는 별도 로컬 커밋으로 저장하며 추가 push 요청은 아직 없다. 위 G3 게시 기록의 다음날 재개 계획에 따라 이번에 G4를 실행했다.
 
-다음은 사용자 코드 검사와 메시지 예비시험8개다. 결과 검토 뒤 CARLA 본시험 실행기/고정 설정/80개 원래ID를 준비한다. 잘못된 StopRequest의 본시험 차량 대응은 미정이며 필요한 결정을 이유와 함께 제시한다. B 단위 검사를 실제 B 실행이나 본시험 완료로 확대하지 않는다. sticky_control=true와 batch 제동을 유지하고 서버 종료 문제는 장시간 무인 시험 전에 별도 점검한다.
+실패/중단/환경 오류도 원래 시도로 보존한다. 이미 예약한 ID는 재개 시 건너뛰고 코드/설정이 달라지면 재개를 거부한다. 추가 재실행은 별도 ID/원본/이유가 필요하며 자동화하지 않았다. sticky_control=true와 batch 제동을 유지하고 서버 종료 문제는 장시간 무인 시험 전에 별도 점검한다. 잘못된 StopRequest의 본시험 시나리오는 추가하지 않았다.
 
 Read [G0_ENVIRONMENT_2026-10-19.md](G0_ENVIRONMENT_2026-10-19.md) for observed versions, planned commands and execution limits. Earlier analysis is retained in [THESIS_REVIEW](THESIS_REVIEW.md) and [REVISION_REVIEW](REVISION_REVIEW_2026-10-19.md), with original pre-sync snapshots under evidence/g0/2026-10-19/pre_sync.
 

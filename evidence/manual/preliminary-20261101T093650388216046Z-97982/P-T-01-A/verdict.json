@@ -1,0 +1,45 @@
+{
+  "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+  "execution_status": "COMPLETE",
+  "variant": "A",
+  "scenario": "T-01",
+  "checks": {
+    "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+    "carla_executed": false,
+    "evidence_valid": true,
+    "evidence_errors": [],
+    "missing_evidence": [],
+    "sut_output_errors": [],
+    "requirements": {
+      "R-01": {
+        "status": "PASS"
+      },
+      "R-05": {
+        "status": "PASS"
+      },
+      "R-06": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-07": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-09": {
+        "status": "N/A",
+        "reason": "MESSAGE_EVIDENCE_ONLY",
+        "message_evidence_valid": true
+      }
+    },
+    "metrics": {
+      "input_frames": 1312,
+      "request_frames": 596,
+      "observed_frames": 1908,
+      "trial_input_frames": 800,
+      "first_stop_observed_ns": null
+    },
+    "main_trials_executed": 0
+  },
+  "main_trials_executed": 0,
+  "carla_executed": false
+}

@@ -28,8 +28,11 @@ third_party/
 data/raw/
 artifacts/
 results/raw/
+/runs/
 logs/
 *.log
+# 예비시험 원시 로그는 로컬에 보존하고 요약과 SHA 목록만 게시한다.
+/evidence/manual/preliminary-20261101T093650388216046Z-97982/*/*.jsonl
 
 # Editors and OS
 .vscode/

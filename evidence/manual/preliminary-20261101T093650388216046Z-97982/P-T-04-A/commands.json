@@ -1,0 +1,65 @@
+[
+  {
+    "role": "observer",
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g4_can_workers.py",
+      "--worker",
+      "observer",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-04-A",
+      "--run-token",
+      "3746489168",
+      "--variant",
+      "A",
+      "--scenario",
+      "T-04"
+    ],
+    "pid": 98155
+  },
+  {
+    "role": "controller",
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g4_can_workers.py",
+      "--worker",
+      "controller",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-04-A",
+      "--run-token",
+      "3746489168",
+      "--variant",
+      "A",
+      "--scenario",
+      "T-04"
+    ],
+    "pid": 98157
+  },
+  {
+    "role": "sender",
+    "argv": [
+      "/home/parkjuwon/can-stop-request-validation/.venv/bin/python",
+      "-I",
+      "/home/parkjuwon/can-stop-request-validation/tools/g4_can_workers.py",
+      "--worker",
+      "sender",
+      "--interface",
+      "vcan0",
+      "--output-dir",
+      "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-04-A",
+      "--run-token",
+      "3746489168",
+      "--variant",
+      "A",
+      "--scenario",
+      "T-04"
+    ],
+    "pid": 98159
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "recorded_utc": "2026-11-01T09:45:53.175481+00:00",
+  "review_status": "PASS",
+  "scope": "원시 프레임 수량, 실행 소스 SHA와 T04 동결/복원 및 정지 요청의 별도 대조. 기존 전체 oracle 재실행은 아님",
+  "cases_attempted": 8,
+  "cases_completed": 8,
+  "cases_not_started": 0,
+  "requirement_fail_count": 1,
+  "cases": [
+    {
+      "variant": "A",
+      "scenario": "T-01",
+      "input_frames": 1312,
+      "request_frames": 596,
+      "independent_observed_frames": 1908,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "B",
+      "scenario": "T-01",
+      "input_frames": 1312,
+      "request_frames": 597,
+      "independent_observed_frames": 1909,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "A",
+      "scenario": "T-02",
+      "input_frames": 1312,
+      "request_frames": 598,
+      "independent_observed_frames": 1910,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "B",
+      "scenario": "T-02",
+      "input_frames": 1312,
+      "request_frames": 592,
+      "independent_observed_frames": 1904,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "A",
+      "scenario": "T-03",
+      "input_frames": 1252,
+      "request_frames": 598,
+      "independent_observed_frames": 1850,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "B",
+      "scenario": "T-03",
+      "input_frames": 1252,
+      "request_frames": 596,
+      "independent_observed_frames": 1848,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true
+    },
+    {
+      "variant": "A",
+      "scenario": "T-04",
+      "input_frames": 1312,
+      "request_frames": 598,
+      "independent_observed_frames": 1910,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true,
+      "frozen_payload_100_to_159_matches_slot99": true,
+      "restored_counter": 160,
+      "stop_observed": false,
+      "first_stop_reason": null
+    },
+    {
+      "variant": "B",
+      "scenario": "T-04",
+      "input_frames": 1312,
+      "request_frames": 598,
+      "independent_observed_frames": 1910,
+      "raw_multisets_match": true,
+      "runtime_source_sha256_match": true,
+      "frozen_payload_100_to_159_matches_slot99": true,
+      "restored_counter": 160,
+      "stop_observed": true,
+      "first_stop_reason": 3
+    }
+  ],
+  "agent_additional_can_or_carla_run": false,
+  "main_trials_executed": 0
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "CAN_TRIAL_WORKERS_V1_ONLY",
+  "role": "observer",
+  "pid": 98100,
+  "run_token": 734254332,
+  "interface": "vcan0",
+  "host_monotonic_ns": 4358234971368
+}

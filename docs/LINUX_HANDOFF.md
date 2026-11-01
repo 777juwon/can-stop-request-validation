@@ -2,6 +2,14 @@
 
 ## 현재 인수인계: 2026-11-01 G4
 
+최신 준비: 끊긴 본시험 도구를 이어서 구현/검증했다. main_v1.json, main_runs_v1.json의80개 원래ID, main_campaign.py의 계획/실행/재개, main_trial_oracle.py의 전체 독립 판정을 준비했고 전체273개 검사PASS다. [MAIN_PREPARATION](MAIN_PREPARATION.md)에 서버 시작부터 결과 전달과 재개까지 명령이 있다. 실제CAN/CARLA는 이번에 실행하지 않았고 본시험0/80회다. 다음은 사용자의 별도 B/T-04 및 A/T-01 CARLA 개발 확인과 에이전트의 결과 검토다. 아래 중단/준비 전/검사 대기 표시는 과거 기록이다.
+
+본시험 처리 원칙: prepare가80개ID/token과 코드/설정/입력 해시 및 소스를 동결한다. preflight 전 claim부터 원래 시도로 기록한다. 실패/중단 ID도 재사용하지 않고 동일 계획으로 재개하면 건너뛴다. RESULT_NOT_RECORDED는 실행 중/중단 여부 미확정인 결과 부재다. 요구사항FAIL과 실행 오류를 구분하고 A/T-04의R-04 FAIL을 유지한다. 코드를 바꾸면 동결 대조가 재개를 거부한다. 새 CARLA 통합과 실제80회 성공으로 확대하지 않는다.
+
+최신 중단: 사용자5시간 잔여15% 통보로20%기준에 따라 추가 구현을 멈췄다. 본시험 준비 코드는 아직 시작하지 않았다. 예비8/8완료, A/T-04 R-04 FAIL 보존, 본시험0/80회다. 사용량 초기화/사용자 재개 요청 뒤 CARLA 본시험 실행기/고정 설정/80개 원래ID부터 진행한다. 잔여율 자동 감시는 불가능하며 실제실행은 사용자담당이다.
+
+최신: 사용자 메시지 예비시험8개 모두COMPLETE, 실제 완료8/8이다. [결과 해석](PRELIMINARY_RESULTS_2026-11-01.md). 유일한 요구사항FAIL은A/T-04의R-04 미요청이고 B/T-04는PASS다. 모든실행 evidence_valid=true, 입력+요청과 독립관측 raw수량/소스SHA 대조도 일치했다. COMPLETE_WITH_REQUIREMENT_FAILURES를 중단으로 해석하지 않는다. 다음은 CARLA 본시험 실행기/고정 설정/80개 원래ID 준비다. 본시험0/80회와 실제실행 사용자담당 선호를 유지한다. 아래 첫실패/대기 표시는 과거 기록이다.
+
 최신 오류 수정: 첫 메시지 예비 시도는 T-01/A 첫슬롯의 신호파일 게시 경로 지연으로 INPUT_ERROR, 완료0/8이다. 실패 원본과 당시소스9개를 해당폴더에 보존했다. 같은슬롯의 거리/심박을 모두 보낸 뒤 신호를 게시하고 fsync를 제거했으며 회귀 포함242개 검사PASS다. actual CAN 재실행은 에이전트가 하지 않았다. 사용자가 check 후 preliminary를 새 폴더로 재실행해 경로만 전달하면 된다. 요약은 cases_attempted/cases_completed/cases_not_started를 구분한다. 기존 summary의 cases_completed=1은 과거 시도 수 표기 오류이며 원본은 수정하지 않았다.
 
 최신 후속: B 핵심/자체DBC/메시지 예비8개 실행기를 구현했고238개 검사PASS다. 실제 예비시험은 실행하지 않았다. 사용자가 check, 필요시vcan0준비, `bash tools/run_self_checks.sh preliminary`를 실행하고 경로만 전달한다. [전체 순서](REMAINING_STEPS.md). A/T-04 R-04 FAIL 가능성을 보존하고 COMPLETE를 모든 요구사항PASS로 해석하지 않는다. CARLA 요구사항은 이 단계N/A, 본시험0/80회. CARLA 본시험 실행기와80개 원래ID는 그 다음 준비할 항목이다.

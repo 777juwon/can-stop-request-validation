@@ -433,3 +433,22 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 요약의 cases_completed가 시도 수도 세던 오류를 고쳐 cases_attempted/cases_completed/cases_not_started를 분리했다. 이번 원본의 completed1은 수정하지 않고 검토기록에서 시도1/완료0/미시작7로 설명했다. 요구사항FAIL 보존은 유지했다.
 - 회귀검사4개를 추가했다: 신호교환 fsync 금지, 느린게시 전 같은슬롯 두프레임 완료/기한 유지, 첫중단 완료0개, 정상실행과 요구사항FAIL 분리. `bash tools/run_self_checks.sh check` 종료코드0,242개OK, pip/셸 문법/Git 공백 통과. evidence/implementation/preliminary-start-fix-20261101-01/checks.json에 기록했다.
 - STATUS/LINUX_HANDOFF/REMAINING_STEPS/SELF_CHECK/README를 갱신했다. 예비 정상완료0/8, 본시험0/80회. 실제 재실행은 사용자가 같은check/preliminary 명령으로 새폴더에 수행한다. 에이전트는 단위검사만 실행했으며 push는 하지 않는다.
+
+## 2026-11-01: 사용자 메시지 예비시험8개 완료 검토
+
+- 사용자가 preliminary-20261101T093650388216046Z-97982의8개출력을 제공하고 마지막FAIL/로그 의미를 질문했다. summary와각8개verdict/metadata를 읽어 시도8/완료8/미시작0, 요구사항FAIL1건임을 확인했다. 모든evidence_valid=true, evidence_errors/missing_evidence/sut_output_errors/cleanup_errors는 빈목록이다. 실제 시험이나 단위검사는 추가 실행하지 않았다.
+- A/B는T-01 정상원거리와T-02근거리/T-03거리중단에서 해당 메시지 요구사항을 만족했다. T-04 A는정지요청미관측으로R-04 FAIL, B는reason3/순번갱신만료 요청으로R-04 PASS다. 이FAIL을 고치거나 제외하지 않고 결과로 보존한다. COMPLETE_WITH_REQUIREMENT_FAILURES는 시험중단이 아니다.
+- 기존SUT/oracle를 가져오지 않는 별도원시대조로8개 입력+요청의raw다중집합과독립관측이 전부일치함을 확인했다. 각9개소스SHA도 현재파일과 일치했다. T-04의슬롯100~159는99의payload8byte전체와 같고160으로복원됐다. 본구간A의stop1은없고B의최초reason은3이었다. review.json에 대조범위와 결과를 기록했으며 기존raw/verdict/summary는 변경하지 않았다.
+- 독립 요청 관측 지연은T-02 A0.180839/B0.231404ms, T-03 A200.214454/B200.263123ms, T-04 B200.193427ms였다. 입력송신완료 기준의호스트관측이며 물리CAN지연/차량정지시간/반복성능통계로 확대하지 않는다. R-08 PASS는메시지요청잠금부분이며 CARLA제동유지는이예비에서미수행이다. R-06/R-07/차량포함전체R-09는N/A다.
+- PRELIMINARY_RESULTS_2026-11-01.md에검사대상/로그필드/실측표를 정리하고 STATUS/LINUX_HANDOFF/REMAINING_STEPS/README를완료8/8로갱신했다. 초기INPUT_ERROR도이전폴더에보존한다. 코드변경이없어재실행하지않고문서공백/링크만확인한다. 다음은CARLA본시험실행기/고정설정/80개원래ID준비, 본시험0/80회다. 실제실행은사용자가맡는다.
+
+## 2026-11-01: 중단된 CARLA 본시험 준비 구현과 코드 검증
+
+- 사용자가 잔여15%에서도 끊기면 이어가기로 본시험 준비를 명시적으로 재개했고, 이후 중단 부분 확인과 계속 작업을 요청했다. 기존 main/e6f0a5f와 미완성 파일을 확인했다. 실제CAN/CARLA 실행은 사용자 담당 선호를 유지했다. 단일 에이전트로 구현과 단위 검사만 진행했다.
+- config/main_v1.json에 관측한 Town04/Model3/ClearNoon/spawn143/물리 및 Ackermann 설정을 고정했다. 기존 v1.0의 주기/기한/차량 창/요구사항 및 제출 계획서는 변경하지 않았다. config/main_runs_v1.json에 셀별10회, 홀수A→B/짝수B→A의80개 원래 ID를 배정했다.
+- main_plan.py와 main_campaign.py에 prepare/status/check/run, 고유 token과 설정/fixture/소스20개 SHA 및 사본 동결, 시도 claim, 실패/중단 ID 보존과 건너뛰기, 배치 수 제한/오류 중단을 추가했다. 코드가 달라지면 같은 계획의 재개를 거부한다. status의 결과 부재는 실행 중일 수도 있어 RESULT_NOT_RECORDED로 남긴다. 추가 재실행 ID 자동화는 이번 범위에 없다.
+- G4 기본 A/T-03을 유지하고 본시험 경로에서 A/B와4개 시나리오, 고정 spawn/물리 확인, result/verdict와 실행 상태 분류를 연결했다. main_trial_oracle.py는 메시지 판정을 유지하면서 실제 velocity/적용 제동/frame과 adapter 호출을 별도로 확인한다. 활성화 직전 송신/직후 수신 경계를 초기 큐 원시 기록으로 대응하고 SUT 요청 순번 오류도 보존했다. A/T-04 R-04 FAIL은 비교 결과로 유지한다.
+- 새31개 검사는80개ID/순서/고유 token/동결/중단 재개와 실제 실행기의 mock preflight, 원시 로그 기반50ms/40frame/11표본 경계/제동 유지/관측 누락 등을 확인한다. `bash tools/run_self_checks.sh check` 종료코드0,273개OK, pip check/셸 문법/git diff --check PASS. evidence/implementation/main-preparation-20261101-01/checks.json에 명령과 전체 출력을 기록했다. 실제 시간 성능이나 실제CARLA 통합 성공으로 확대하지 않는다.
+- 첫 개별 unittest 호출은 -I에서 tests import 경로가 없어 실패했고, 기존 프로젝트 방식인 `-I -m unittest discover -s tests -t . -p 'test_main*.py' -q`로 바로잡았다. 새 preflight 검사 작성 중 subprocess mock이 git 조회까지 가로채던 실패를 수정하고 전체 검사를 통과했다. 실패를 합격 결과로 기록하지 않았다.
+- MAIN_PREPARATION.md에 서버 시작부터 본시험 밖 B/T-04 및 A/T-01 확인, 계획 생성/조회, 본시험1개씩 실행, 결과 위치와 재개/중단 판단을 정리했다. STATUS/LINUX_HANDOFF/README/REMAINING_STEPS를 갱신했다. 실제 개발 확인과 본시험은 미실행이며0/80회다. Ctrl+C 서버 Signal11/139 문제도 미해결로 유지한다.
+- 예비8개 원시JSONL24개(14,298,856바이트)는 로컬 보존하고 Git 게시에서 제외했다. raw_manifest.json에 크기/SHA를 기록하고 작은 metadata/판정/요약/검토 기록을 관리한다. 원본 로그와 판정은 수정하지 않았다. runs/도 로컬 실행 자료로 제외한다. push나 branch 변경은 하지 않는다.

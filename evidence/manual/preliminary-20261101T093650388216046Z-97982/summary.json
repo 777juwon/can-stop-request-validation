@@ -1,0 +1,236 @@
+{
+  "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+  "status": "COMPLETE_WITH_REQUIREMENT_FAILURES",
+  "cases_attempted": 8,
+  "cases_completed": 8,
+  "cases_not_started": 0,
+  "planned_cases": 8,
+  "requirement_fail_count": 1,
+  "cases": [
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-01-A",
+      "variant": "A",
+      "scenario": "T-01",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-01-B",
+      "variant": "B",
+      "scenario": "T-01",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-02-A",
+      "variant": "A",
+      "scenario": "T-02",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-02-B",
+      "variant": "B",
+      "scenario": "T-02",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-03-A",
+      "variant": "A",
+      "scenario": "T-03",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-03": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-03-B",
+      "variant": "B",
+      "scenario": "T-03",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-03": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-04-A",
+      "variant": "A",
+      "scenario": "T-04",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-04": {
+          "status": "FAIL",
+          "reason": "STOP_NOT_OBSERVED"
+        },
+        "R-08": {
+          "status": "N/A",
+          "reason": "NO_STOP_TO_LATCH"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    },
+    {
+      "path": "evidence/manual/preliminary-20261101T093650388216046Z-97982/P-T-04-B",
+      "variant": "B",
+      "scenario": "T-04",
+      "execution_status": "COMPLETE",
+      "requirements": {
+        "R-04": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": true
+        }
+      }
+    }
+  ],
+  "carla_executed": false,
+  "main_trials_executed": 0
+}
