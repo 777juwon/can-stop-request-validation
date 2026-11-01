@@ -1,0 +1,1637 @@
+{
+  "recorded_utc": "2026-11-01T14:14:41.044811+00:00",
+  "scope": "T-01원본SHA 유지 및 T-02 전체20회의 결과/정리/동결/원시 송수신/근거리 최초요청/호출50ms/다음tick 제동과11표본 유지 별도 대조. 전체 oracle 재실행은 아님",
+  "review_status": "PASS",
+  "original_attempted": 40,
+  "original_completed": 40,
+  "not_started": 40,
+  "requirement_fail_count": 0,
+  "cells": {
+    "T-01/A": 10,
+    "T-01/B": 10,
+    "T-02/A": 10,
+    "T-02/B": 10
+  },
+  "frozen_code_config_fixture_match": true,
+  "previous_checkpoint_sha256": "84cbff2193072c1578b34bc4f0bdc2dfcdc642dd221de52c8b6413ce20dca17c",
+  "T02_observed_aggregate": {
+    "near_request_observation_after_send_done_ms_range": [
+      0.081995,
+      0.204434
+    ],
+    "max_adapter_processing_ms": 13.743319,
+    "stop_hold_completion_frame_intervals_range": [
+      11,
+      11
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "M-T-01-R01-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "899445c34388b3ae5e18eccf3828eadb7f21452008bfe017d1bdae41247ad05d",
+      "metadata_sha256": "ccf4211284a03de7ce97c598686e4abe632cd2e89c69395a149daed943642737"
+    },
+    {
+      "run_id": "M-T-01-R01-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "071e2f311ba8eb3a28000a6189d562df3ed4b8afb0969ba438888727255219de",
+      "metadata_sha256": "33d34f4a8748696888efdb19971c0cb2289bd092bef18c72b93997d59a762e62"
+    },
+    {
+      "run_id": "M-T-01-R02-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "223e5388ed3cd607ec796dab8aaf70e1782dc0b5323f3ada58ff32d6ad7a091a",
+      "metadata_sha256": "ce86129dc0ea23e5968d167bdb097e639aeeb1d48b3cb2131bf8c7c6761600ba"
+    },
+    {
+      "run_id": "M-T-01-R02-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "803ce275d6a593699624c55ae3b33dbb4274a2536e66f34000ebf74ca67378ff",
+      "metadata_sha256": "ffec7069abc0831a3aaeec23eabb1539fd6aa0543cc28a55352b9553743b39e8"
+    },
+    {
+      "run_id": "M-T-01-R03-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "1005d15c858cbf60e14fa84573e2f4fb57725c8e772e7515a98c5c799495a88c",
+      "metadata_sha256": "2616f27f65af4845b1553599a6e3947296ef22b20977c293a012cae7acb46cd9"
+    },
+    {
+      "run_id": "M-T-01-R03-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "62bd6f40e26b0bdb1216329b0cbca4f0dbd4249ff9bab19088f6b6b531e7babf",
+      "metadata_sha256": "97667b873bb6e3f2d337658fb1a8d61700f29a9a84dd05b3ed3061eac620411a"
+    },
+    {
+      "run_id": "M-T-01-R04-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "b86d411c440f062ae10fafd956e6695d21480b4c19783c96bc2ba3d970e200ed",
+      "metadata_sha256": "081d954edffad25e4161c6ae7daa48b3756760b0226412a2f96613acd1211607"
+    },
+    {
+      "run_id": "M-T-01-R04-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "e5cae6896a3cfe34c7dbc1ef82a1352cc873a4ff254a65e38e22681d3cba903f",
+      "metadata_sha256": "7d30591cc1e67c854940f86b235771afa006d49e15b0ade293a6da9fdd9b1a76"
+    },
+    {
+      "run_id": "M-T-01-R05-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "bd03b6b8f4ecec8375fadec4ad1b0ba283ebe6a85aa7ba0742e81e71967d7dbc",
+      "metadata_sha256": "5deb6ea9ac4b573f042b1d94d599c4ce6a97d6f7d95d4f405595e3d2f1a6d768"
+    },
+    {
+      "run_id": "M-T-01-R05-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "8832655aa367e7a348c1180c065e02c8142e72d3d0f58be106b6889aee4bc002",
+      "metadata_sha256": "9bc9e4e26919634ed3c0ce5d58d26aaf586e0a23f6fb658086ccf402212f1f43"
+    },
+    {
+      "run_id": "M-T-01-R06-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.586106336815696,
+        5.287548893932419
+      ],
+      "result_sha256": "80d5edb667bb5dcd9ed66f47fd5036d269b223bad8ec4202247a314a687190ce",
+      "metadata_sha256": "28d291851862d305802e3b499bd0c86a200331e91be836c247b40b47af4a1299"
+    },
+    {
+      "run_id": "M-T-01-R06-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "d24c6cbb43b42f72edd103ba50f73714391cf68f7c95951d50a8f8f1420cf23f",
+      "metadata_sha256": "21982f12b6ee5b0f7c700efff59b6761b30a27745dbfff31bbc65388bdf95d56"
+    },
+    {
+      "run_id": "M-T-01-R07-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "e4c1d490f403cd0a1ad87578743a8c49afd1bbdacd163c584a4c40a7cf3ad31d",
+      "metadata_sha256": "5fb8d9f1903d13dcc8f005b416e82914a5f00a29c59198994e2595c8e20ef4c8"
+    },
+    {
+      "run_id": "M-T-01-R07-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "934c9599afc57a95fabf3d45e1e5f4b10932258b4e4ef4c1eecbbcc4336e1aa9",
+      "metadata_sha256": "86e98ff17f358bb4c3bb8fe2b572c707da6f1d74e507354ad8f8aed994a954d4"
+    },
+    {
+      "run_id": "M-T-01-R08-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "634cefecdf97d355edbe0137b136871b052b27c66e10faf180d5c55a1df56def",
+      "metadata_sha256": "0842281c1570a96074eef63c5e248c804365d1ae58d26a0ae57abfebd50c0a1c"
+    },
+    {
+      "run_id": "M-T-01-R08-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "e413c58dad02148c3f8ccdcf3f96a4de5ea5eff515237cf25ef7759ab8cb9e6b",
+      "metadata_sha256": "5e0c0199ce054955168d3720fe6f6c5009684f3a65be07a5a6f0476ca870ae6d"
+    },
+    {
+      "run_id": "M-T-01-R09-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "1446fd4ad72ed8f24c30a6cf9c9e8b7cc1fb3b49f357d2b650bd2761f3edfebf",
+      "metadata_sha256": "576a408269d6740e83e10c35bf01b1a3be1a84a117c14ca0ac9fece093d55c5f"
+    },
+    {
+      "run_id": "M-T-01-R09-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "ecd0365d6aae35a690f669d5f54c690bb6cd3fad2d8581db533803da222a7bed",
+      "metadata_sha256": "90e9f3f5973029a2b46693dbc99aa1a4ff7304e4ce71edf7c38f307e0885f4bd"
+    },
+    {
+      "run_id": "M-T-01-R10-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "f92518a7a4ad6b4b45221c4f1cb319ef6b982ebe304c2b575da4ea240141f17c",
+      "metadata_sha256": "70850041efbff2cb510802980147cd1b629e7d274fada13cfa76b2fc2b11af90"
+    },
+    {
+      "run_id": "M-T-01-R10-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "trial_stop_requests": 0,
+      "trial_speed_kmh_range": [
+        4.72972481236241,
+        5.125280442665617
+      ],
+      "result_sha256": "d74e73bff5443f4568219dc06c8bf819dac311bfd53f0211ef117d0fafc2652b",
+      "metadata_sha256": "12bc877f8c71fd2344d676da191d26aea9e41f5d206db0d57b0151c24f5697cb"
+    },
+    {
+      "run_id": "M-T-02-R01-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.166709,
+        "max_adapter_processing_ms": 0.596793,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 266952,
+        "stop_hold_frames": [
+          266953,
+          266963
+        ]
+      },
+      "result_sha256": "c2d03077b7cdb08d37d4cd984b1160eeca8160c35e52897b68462eb1a2be0cd2",
+      "metadata_sha256": "20268e3b979af93adaf4b44da7af03488b26b7a00602ba30d869460cff673e99"
+    },
+    {
+      "run_id": "M-T-02-R01-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.111276,
+        "max_adapter_processing_ms": 0.54435,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 267639,
+        "stop_hold_frames": [
+          267640,
+          267650
+        ]
+      },
+      "result_sha256": "ad47c1beffc72a0d0d3bd2be10cfa3eafec4b1ea477a920dcb335416ecbe6865",
+      "metadata_sha256": "03e430f5ff51c9d639e24238b9a07ae2959672d63c27c81ad5e54ea487fbc085"
+    },
+    {
+      "run_id": "M-T-02-R02-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.176999,
+        "max_adapter_processing_ms": 0.780712,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 268317,
+        "stop_hold_frames": [
+          268318,
+          268328
+        ]
+      },
+      "result_sha256": "61657d1da097c9ebcdb11db0d21caf25c329d980daa84d6f594f34f9f5c7b2b3",
+      "metadata_sha256": "60db9ca11ed3be064416a61eec8b3a499bdec6044496dc5d6691ec0f582ea796"
+    },
+    {
+      "run_id": "M-T-02-R02-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.082654,
+        "max_adapter_processing_ms": 13.578521,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 269003,
+        "stop_hold_frames": [
+          269004,
+          269014
+        ]
+      },
+      "result_sha256": "614a91398c9801b9a3e7b262f4412a01ad54d90ec9f088061e26c36e7247ed92",
+      "metadata_sha256": "5eaa76b1a3bf220d6441be0cf8c12523677bb6bd6c247c15cd61731dbb74cd8e"
+    },
+    {
+      "run_id": "M-T-02-R03-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.186368,
+        "max_adapter_processing_ms": 13.743319,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 269683,
+        "stop_hold_frames": [
+          269684,
+          269694
+        ]
+      },
+      "result_sha256": "10e7e0a5509a5b7049ca6ab4f207793eba554beeafce92d90ed22165e89cf4cb",
+      "metadata_sha256": "7d449014cf55d16e2d0eb6ce5f91ac4e763f1537144f52c51597f55311a11c4b"
+    },
+    {
+      "run_id": "M-T-02-R03-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.114504,
+        "max_adapter_processing_ms": 0.652088,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 270369,
+        "stop_hold_frames": [
+          270370,
+          270380
+        ]
+      },
+      "result_sha256": "387589f71f1ad4968fa0fc862e6c737ed3b97c69db9f4b3bca04ac44b4646a17",
+      "metadata_sha256": "e6af79433988c346668c9a5a9c0c8d6e096396b7c9ce1c8ec81236a957da8de3"
+    },
+    {
+      "run_id": "M-T-02-R04-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.158457,
+        "max_adapter_processing_ms": 0.667519,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 271054,
+        "stop_hold_frames": [
+          271055,
+          271065
+        ]
+      },
+      "result_sha256": "ac8143e7c22c5f13c171673154eeb92f9b8b43141280bf793c5b3b240ec74bab",
+      "metadata_sha256": "39f9126d571326c56d275f4ae63708d1a9af574ba610199ca46f442909dee729"
+    },
+    {
+      "run_id": "M-T-02-R04-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.158467,
+        "max_adapter_processing_ms": 0.639157,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 271734,
+        "stop_hold_frames": [
+          271735,
+          271745
+        ]
+      },
+      "result_sha256": "eea357a7329635ad496ca492752b243c7b2e05ffdb5f205c10f47c35d70db106",
+      "metadata_sha256": "be10704a9f9e230024c5c905d0ac67eebfda8a4d2dcb37bf3b099d049cf36196"
+    },
+    {
+      "run_id": "M-T-02-R05-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.087023,
+        "max_adapter_processing_ms": 1.10345,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 272419,
+        "stop_hold_frames": [
+          272420,
+          272430
+        ]
+      },
+      "result_sha256": "a28aec865bd2bb8ca7b6c2ea1adb51315673b5e78fc8f1c7dcd2557b057bb169",
+      "metadata_sha256": "9b5aba398d377a1d241daa9ab9103901406633f7d4324f80395bb3fb6fab1eab"
+    },
+    {
+      "run_id": "M-T-02-R05-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.204434,
+        "max_adapter_processing_ms": 0.785445,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 273099,
+        "stop_hold_frames": [
+          273100,
+          273110
+        ]
+      },
+      "result_sha256": "0b27468658d7ce9e34e01348d7e04c19fdee402d36b3e2faccea42cfd82d711e",
+      "metadata_sha256": "9452fa53620aea65186521cf5332ef729f2aff04156c301d5558ed2248aa58a2"
+    },
+    {
+      "run_id": "M-T-02-R06-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.150323,
+        "max_adapter_processing_ms": 0.657757,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 273783,
+        "stop_hold_frames": [
+          273784,
+          273794
+        ]
+      },
+      "result_sha256": "c4eedaf9e0a93067405d684cbfdf07559284d1933ac6a71578d032ef84dc2c21",
+      "metadata_sha256": "8eddfa98414b3eee509b4bda5f15b20e6d85a90e3add268eb85bcfafc28d9a8b"
+    },
+    {
+      "run_id": "M-T-02-R06-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.144512,
+        "max_adapter_processing_ms": 0.69112,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 274463,
+        "stop_hold_frames": [
+          274464,
+          274474
+        ]
+      },
+      "result_sha256": "bd4d9b300294d9f883076692b0af18cc4e724db57b4e0cd11fdda06808cec3e0",
+      "metadata_sha256": "34410636c07d1528e5eefe9fecbc448f4831b3a580aa254026bc606751f4170c"
+    },
+    {
+      "run_id": "M-T-02-R07-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.153148,
+        "max_adapter_processing_ms": 0.619617,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 275148,
+        "stop_hold_frames": [
+          275149,
+          275159
+        ]
+      },
+      "result_sha256": "cf5caeb3153ecd957031fe849ff39c3cfbcd210a6d395d2de443ecaec00f37c5",
+      "metadata_sha256": "1a7f2bf5adb2f459f7a5a24f2fef3f6155f06679e41f2b80a89f6700d92ae47d"
+    },
+    {
+      "run_id": "M-T-02-R07-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.116049,
+        "max_adapter_processing_ms": 0.691254,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 275827,
+        "stop_hold_frames": [
+          275828,
+          275838
+        ]
+      },
+      "result_sha256": "439e29c4db8be8fc95f0690d74b370900e621e898d695ea6da9ece65ca67a9ef",
+      "metadata_sha256": "67f27bb2035f263eb948cecf2937464d3ab43e420248c8a83a500b1ee90b4fd8"
+    },
+    {
+      "run_id": "M-T-02-R08-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.203233,
+        "max_adapter_processing_ms": 0.670715,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 276512,
+        "stop_hold_frames": [
+          276513,
+          276523
+        ]
+      },
+      "result_sha256": "5f14dcdb51faf1867b9b8c6049eb66e982c6dad1f2f37a8ae402dc589fe2288c",
+      "metadata_sha256": "ffccb37b5633ba43f7efc5d676076d41e43b467e3e92947500e9722baf9ce8e0"
+    },
+    {
+      "run_id": "M-T-02-R08-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.081995,
+        "max_adapter_processing_ms": 7.446773,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 277193,
+        "stop_hold_frames": [
+          277194,
+          277204
+        ]
+      },
+      "result_sha256": "cb62b3ab27a1575cecca5f05925a95676aaff000f766de4ea6b01729fc043cc2",
+      "metadata_sha256": "fcf5fde320f2d668d63be29748b2d14a071ca095924791535d9a0ff2fe2ed646"
+    },
+    {
+      "run_id": "M-T-02-R09-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.141697,
+        "max_adapter_processing_ms": 0.62448,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 277879,
+        "stop_hold_frames": [
+          277880,
+          277890
+        ]
+      },
+      "result_sha256": "4275474d4169ac75e45f0e5b269423573a0ae67aabd06bc3c1a361d76b316837",
+      "metadata_sha256": "b78ba3002eb790aca89f02c891b8db7ae97860acfb6dc8b658d4d13590de90b8"
+    },
+    {
+      "run_id": "M-T-02-R09-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.164301,
+        "max_adapter_processing_ms": 0.674176,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 278565,
+        "stop_hold_frames": [
+          278566,
+          278576
+        ]
+      },
+      "result_sha256": "df1455c1bd3168f100f5ffd04aba58e2f6d2c31a679cf4beb04541649148b4a4",
+      "metadata_sha256": "8c2c78d4a5a7ee928ac8fe65905a5c5d2616350cf1d006268cf46d01b8487ccf"
+    },
+    {
+      "run_id": "M-T-02-R10-B",
+      "variant": "B",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.155635,
+        "max_adapter_processing_ms": 0.746903,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 279244,
+        "stop_hold_frames": [
+          279245,
+          279255
+        ]
+      },
+      "result_sha256": "e3d0b087a93cb6771fa2f9ea93c98608f8491c6391784406fbccfadc68b13009",
+      "metadata_sha256": "4370cf20530c5ce5f98f1862a03b7c6e22416851984dd47970d8c10915b895d9"
+    },
+    {
+      "run_id": "M-T-02-R10-A",
+      "variant": "A",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-02": {
+          "status": "PASS",
+          "reason": "WITHIN_WINDOW"
+        },
+        "R-08": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "PASS"
+        },
+        "R-07": {
+          "status": "PASS"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "source_config_fixture_plan_match": true,
+      "raw_frame_multisets_match": true,
+      "distance_trial_frames": 400,
+      "first_near_slot": 260,
+      "first_stop_reason": 1,
+      "metrics": {
+        "request_after_reference_send_done_ms": 0.126048,
+        "max_adapter_processing_ms": 0.62836,
+        "stop_hold_completion_frame_intervals": 11,
+        "first_brake_frame": 279929,
+        "stop_hold_frames": [
+          279930,
+          279940
+        ]
+      },
+      "result_sha256": "dbbf03083692d83c2aaafd64fa5c95de6d70f94e04e64d5459b3339caa00076f",
+      "metadata_sha256": "544d48b253ba4ee5b10b8fde5afbb3710675625bd8b6469cbbd470b933ce96dd"
+    }
+  ],
+  "next_original_id": "M-T-03-R01-A",
+  "next_batch_max_runs": 20,
+  "next_batch_scenarios": [
+    "T-03"
+  ],
+  "actual_can_executed_by_agent": false,
+  "carla_executed_by_agent": false
+}
