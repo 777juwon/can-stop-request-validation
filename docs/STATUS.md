@@ -4,7 +4,7 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
-본시험 체크포인트10/80: T-01의 A/B 각각5회, 총10회 모두 COMPLETE/PASS/cleanupPASS. R-01/R-05/R-09 PASS, 정지 요청이 없어 R-06/R-07 N/A다. 계획/설정/fixture/소스 SHA, 원시 송수신 다중집합, 정상 거리400개와 순번 회전, 실제 주행을 대조했다. [누적10회 검토](../evidence/implementation/main-preparation-20261101-01/checkpoint-010.json). 시도10/완료10/미시작70, 요구사항FAIL0, 다음ID M-T-01-R06-B. 다음은 같은 서버에서 T-01의 나머지10회를 사용자 실행해 누적20회까지 진행한다. 수동 문서/커밋은 누적10회 단위 또는 오류/중단/종료 시점에 묶는다. 최신 수는 main_campaign.py status를 기준으로 확인한다. 아래0/80은 이전 체크포인트다.
+본시험 체크포인트20/80: T-01의 A/B 각각10회, 총20회 모두 COMPLETE/PASS/cleanupPASS로 T-01을 완료했다. R-01/R-05/R-09 PASS, 정지 요청이 없어 R-06/R-07 N/A다. 첫10회 원본SHA 유지와 다음10회의 계획/설정/fixture/소스 SHA, 원시 송수신, 정상 거리400개/순번 회전과 실제 주행을 대조했다. [T-01 전체 검토](../evidence/implementation/main-preparation-20261101-01/checkpoint-020.json). 시도20/완료20/미시작60, 요구사항FAIL0, 다음ID M-T-02-R01-A. 사용자 요청대로 같은 서버에서 --max-runs 20으로 T-02 A/B 각각10회를 묶어 진행할 수 있다. 모든 실행의 자동 기록을 유지하고 이번 문서 정리는 시나리오 묶음 종료 또는 오류/중단 시점에 한다. 최신 수는 status를 기준으로 확인한다. 아래0/80은 이전 체크포인트다.
 
 최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
 
@@ -20,7 +20,7 @@ Updated: 2026-11-01 (한국 시각)
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_CHECKPOINT_10_OF_80**
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_CHECKPOINT_20_OF_80**
 
 최신 예비 결과: 사용자가 preliminary-20261101T093650388216046Z-97982에서8개 조합을 모두 정상 완료했다. evidence_valid 모두true이며 기록/출력/정리 오류가 없다. 유일한 요구사항FAIL은 A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는 순번 만료 요청을 약200.193ms에 관측했고R-04 PASS다. COMPLETE_WITH_REQUIREMENT_FAILURES는 중단이 아니라 이FAIL을 보존한 완료 상태다. [결과와 로그 해석](PRELIMINARY_RESULTS_2026-11-01.md). 실제CARLA 검사는 이8개에 없으며 본시험0/80회다. 아래의 첫중단/실행대기 표시는 이전 단계 기록이다.
 
@@ -80,7 +80,7 @@ Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 �
 | SUT implementation and unit tests | AB_CORE_UNIT_TESTED / MESSAGE_PRELIMINARY_COMPLETE | A/B 핵심과DBC, 실제vCAN8개 완료. 새 CARLA 실행기의 통합 확인은 남음 |
 | Thesis preliminary test execution and result summary | MESSAGE_8_COMPLETE | A/T-04 R-04 FAIL 보존. R-06/R-07과 전체R-09는 미수행 |
 | Main runner, fixed configuration and eighty IDs | IMPLEMENTED / UNIT_TESTED / SELECTED_CARLA_CHECKS_PASS | 전체273개 검사PASS, 사용자 B/T-04와 A/T-01 개발 확인PASS |
-| Main comparison runs and result analysis | IN_PROGRESS / CHECKPOINT_10_OF_80 | T-01 A/B 각각5회 PASS. 전체 반복 분석은 미수행 |
+| Main comparison runs and result analysis | IN_PROGRESS / CHECKPOINT_20_OF_80 | T-01 A/B 각각10회 PASS로 T-01 완료. 전체 반복 분석은 미수행 |
 
 Writing a scenario, checklist or expected result does not complete an experiment. G1/G2 feasibility runs do not count as thesis preliminary or main trials.
 
@@ -121,7 +121,7 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 - Four main scenarios, ten original attempts per scenario and variant: eighty planned runs.
 - Latched stop, no automatic restart; request, adapter and motion verdicts are separated.
 - Host monotonic message timing; CARLA simulation-time motion window.
-- A 거리 중단은 G4에서 확인했고, 본시험은 마지막 체크포인트10/80회(T-01 A/B 각각5회)까지 확인했다. 나머지 시나리오와 전체 반복 분석은 남아 있다.
+- A 거리 중단은 G4에서 확인했고, 본시험은 마지막 체크포인트20/80회(T-01 A/B 각각10회)까지 확인했다. T-02~04와 전체 반복 분석은 남아 있다.
 
 ## Remaining execution records and approvals
 
