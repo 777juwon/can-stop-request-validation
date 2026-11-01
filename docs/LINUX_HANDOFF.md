@@ -2,7 +2,7 @@
 
 ## 현재 인수인계: 2026-11-01 G4
 
-최신 바톤터치: B/T-04와 A/T-01의 사용자 CARLA 개발 확인 모두PASS, 정리PASS다. A는 정상 입력400개/순번 회전, 정지 요청/adapter 제동0회와 실제 주행을 원시 대조했다. 계획의 동결 대조PASS, 본시험 시도0/완료0/미시작80. 서버를 유지한 채 `main_campaign.py run --output-dir runs/main-v1-20261101 --max-runs 1 --exclusive-server --allow-world-load`로 첫ID M-T-01-R01-A를 사용자가 실행하고 결과를 전달한다. 에이전트는 실제 시험을 실행하지 않았다. 아래 개발 확인 대기는 과거 상태다.
+최신 바톤터치: 본시험 첫 원래 쌍 M-T-01-R01-A/B 모두 COMPLETE/PASS/cleanupPASS다. 시도2/완료2/미시작78, 다음ID M-T-01-R02-B. 동결 대조/원시 송수신 대조와 고정 설정 일치를 확인했다. checkpoint-002.json에 검토를 남겼다. 서버를 유지한 채 같은 main_campaign.py run 명령에 --max-runs 8로 누적10회까지 사용자가 실행한다. 결과별 상세 문서/커밋 대신 누적10회 또는 오류/중단/세션종료에 묶는다. 에이전트는 실제 시험을 실행하지 않았다. 아래0/80과 개발 확인 대기는 과거 상태다.
 
 최신 사용자 실행: `runs/check-B-T04-01` COMPLETE/PASS/cleanupPASS를 파일과 일부 독립 원시 대조로 확인했다. B의 반복 순번 감지부터 실제 CARLA 정지/잠금 유지까지 R-04/R-06~R-09 PASS다. 본시험0/80회. 다음은 사용자가 서버를 유지한 채 `check --output-dir runs/check-A-T01-01 --variant A --scenario T-01 --exclusive-server --allow-world-load`를 실행하는 단계다. 별도 서버 시작/종료나 실제시험은 에이전트가 수행하지 않았다. 아래 B 개발 확인 대기는 과거 상태다.
 

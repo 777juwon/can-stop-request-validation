@@ -1,0 +1,84 @@
+{
+  "recorded_utc": "2026-11-01T13:43:17.958058+00:00",
+  "scope": "첫 원래 A/B 쌍의 결과/정리/식별/동결 및 원시 프레임 다중집합 검토. 전체 oracle 재실행은 아님",
+  "review_status": "PASS",
+  "original_attempted": 2,
+  "original_completed": 2,
+  "not_started": 78,
+  "requirement_fail_count": 0,
+  "frozen_code_config_fixture_match": true,
+  "runs": [
+    {
+      "run_id": "M-T-01-R01-A",
+      "variant": "A",
+      "execution_git_commit": "862d4a6624b01ba4d493ef7a82d80bce5399111a",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "evidence_valid": true,
+      "raw_frame_multisets_match": true,
+      "config_sha256": "b71f744934425a3f7d3f2a4decaa5af4f4949df366dc4aee567a7389c3009a3c",
+      "fixture_sha256": "f95962b28db81068e86ef0af0e47e2503de21e0ae284580c99e4dda5728a6cc2",
+      "result_sha256": "899445c34388b3ae5e18eccf3828eadb7f21452008bfe017d1bdae41247ad05d",
+      "metadata_sha256": "ccf4211284a03de7ce97c598686e4abe632cd2e89c69395a149daed943642737"
+    },
+    {
+      "run_id": "M-T-01-R01-B",
+      "variant": "B",
+      "execution_git_commit": "862d4a6624b01ba4d493ef7a82d80bce5399111a",
+      "status": "PASS",
+      "execution_status": "COMPLETE",
+      "cleanup_status": "PASS",
+      "requirements": {
+        "R-01": {
+          "status": "PASS"
+        },
+        "R-05": {
+          "status": "PASS"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "NO_IN_WINDOW_STOP_REQUEST"
+        },
+        "R-09": {
+          "status": "PASS",
+          "reason": "FULL_CHAIN_EVIDENCE"
+        }
+      },
+      "evidence_valid": true,
+      "raw_frame_multisets_match": true,
+      "config_sha256": "b71f744934425a3f7d3f2a4decaa5af4f4949df366dc4aee567a7389c3009a3c",
+      "fixture_sha256": "f95962b28db81068e86ef0af0e47e2503de21e0ae284580c99e4dda5728a6cc2",
+      "result_sha256": "071e2f311ba8eb3a28000a6189d562df3ed4b8afb0969ba438888727255219de",
+      "metadata_sha256": "33d34f4a8748696888efdb19971c0cb2289bd092bef18c72b93997d59a762e62"
+    }
+  ],
+  "next_original_id": "M-T-01-R02-B",
+  "next_batch_max_runs": 8,
+  "actual_can_executed_by_agent": false,
+  "carla_executed_by_agent": false
+}

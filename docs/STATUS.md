@@ -4,6 +4,8 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
+본시험 체크포인트2/80: `M-T-01-R01-A/B` 모두 COMPLETE/PASS/cleanupPASS. R-01/R-05/R-09 PASS, 정지 요청이 없어 R-06/R-07 N/A다. claim/계획/설정/fixture/소스 SHA와 입력+요청/독립 관측 raw 다중집합을 대조했다. [첫 쌍 검토](../evidence/implementation/main-preparation-20261101-01/checkpoint-002.json). 시도2/완료2/미시작78, 다음ID M-T-01-R02-B. 다음은 사용자가 같은 서버에서8개를 묶어 누적10회까지 실행하는 단계다. 이후 수동 문서/커밋은 매회 만들지 않고 누적10회 단위 또는 오류/중단/종료 시점에 묶는다. 최신 수는 main_campaign.py status를 기준으로 확인한다. 아래0/80은 이전 체크포인트다.
+
 최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
 
 최신 개발 확인: 사용자가 `runs/check-B-T04-01`에서 B/T-04를 실행했다. COMPLETE/전체PASS/cleanupPASS, R-04/R-06/R-07/R-08/R-09 PASS와 실제 차량 정지를 확인했다. 원시 입력+요청/독립 관측 수량과 실행 소스 SHA, 반복60슬롯/복원counter160, 정지 유지11표본도 별도로 대조했다. [검토 기록](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 본시험은0/80회다. 서버는 사용자가 켜둔 상태를 유지하고 다음은 같은 서버의 A/T-01 개발 확인이다. 에이전트는 파일만 검토했다. 아래 통합 미실행 표시는 이전 단계 기록이다.
@@ -18,7 +20,7 @@ Updated: 2026-11-01 (한국 시각)
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_0_OF_80**
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_CHECKPOINT_2_OF_80**
 
 최신 예비 결과: 사용자가 preliminary-20261101T093650388216046Z-97982에서8개 조합을 모두 정상 완료했다. evidence_valid 모두true이며 기록/출력/정리 오류가 없다. 유일한 요구사항FAIL은 A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는 순번 만료 요청을 약200.193ms에 관측했고R-04 PASS다. COMPLETE_WITH_REQUIREMENT_FAILURES는 중단이 아니라 이FAIL을 보존한 완료 상태다. [결과와 로그 해석](PRELIMINARY_RESULTS_2026-11-01.md). 실제CARLA 검사는 이8개에 없으며 본시험0/80회다. 아래의 첫중단/실행대기 표시는 이전 단계 기록이다.
 
