@@ -16,7 +16,7 @@ Updated: 2026-11-01 (한국 시각)
 
 중간점검: [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에 완료한 일, 남은 여섯 작업 묶음과 Git 저장 상태를 정리했다.
 
-The user requested final implementation documents without modifying the already submitted thesis proposal. RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md define v1.0. These documents fix research-only design values and test criteria, not advisor sign-off. CAN-to-CARLA G3 has now passed; the thesis distance-message SUT is not implemented.
+The user requested final implementation documents without modifying the already submitted thesis proposal. RESEARCH_BASELINE.md and VALIDATION_PLAN.md define the v1.0 research design and test criteria, not advisor sign-off. THESIS_OUTLINE.md was editorially revised on 2026-11-01 to five chapters and ten sections for a 20-page body including tables and figures. The research baseline is unchanged. CAN-to-CARLA G3 has now passed; the thesis distance-message SUT is not implemented.
 
 The user authorized publishing this document baseline to GitHub on 2026-10-16. A Linux checkout must fetch this revision before relying on it; a shared repository does not automatically update another local checkout.
 
@@ -25,6 +25,10 @@ On 2026-10-19 this working tree was fast-forwarded to published commit `94411a45
 The user authorized setup, removal of the detected CARLA 0.9.14 client and resumption after a usage interruption. Python packages and the official 0.9.15 server are installed. G1 passed with independent SocketCAN processes. G2 first failed on a client control-cache transition, then timed out with a rejected configuration change; both attempts are preserved. The corrected batch-control path passed twice, most recently with the final source in run04. See [setup and smoke results](SETUP_AND_SMOKE_2026-10-19.md).
 
 Server lifecycle limitation: G2의 서버 2건에 이어 G3 서버도 차량/설정 복구 후 Ctrl+C에서 Signal 11 / code 139로 종료됐다. 총 3건이며 원인은 미해결이다. 포트 2000/2001과 GPU의 CARLA 프로세스는 남지 않았다. 정상 서버 종료 PASS로 기록하지 않는다. [G2 기록](../evidence/setup/2026-10-19/server_runtime.json), [G3 기록](../evidence/g3/integration-20261101-01/host_and_server.json).
+
+## 논문 목차 조정: 2026-11-01
+
+사용자가 20쪽 분량에 맞춰 목차의 중복과 세분화를 줄이도록 요청했다. [THESIS_OUTLINE.md](THESIS_OUTLINE.md)를 기존 6장에서 5장, 10개 절로 개정했다. 본문 목표는 표와 그림을 포함해 2/2/8/7/1쪽이며, 학과의 공식 분량 산정 범위를 확인한 것으로 표현하지 않는다. 기존 설계와 시험 방법은 새 제3장에 합치고 결과는 제4장, 결론은 제5장에 둔다. 연구 설계 v1.0과 제출한 작성계획서는 변경하지 않았다. 이번 문서 변경에서 코드나 실험을 추가하지 않았으며 G4 NOT_RUN과 본시험 0/80회는 그대로다.
 
 ## Completion checklist
 
