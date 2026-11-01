@@ -559,3 +559,4 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - README/STATUS/LINUX_HANDOFF/MAIN_PREPARATION/REMAINING_STEPS를 실행 완료와 분석 대기로 갱신한다. 기능코드/판정 기준 변경이 없어273개 검사는 반복하지 않고 동결 대조/CSV집계/문서 링크/공백을 확인한다. 로컬 완료 체크포인트 커밋으로 저장하며 추가push는 하지 않는다.
 - 남은 작업은 서버 종료 결과 기록, 실패 포함 전체 통계/그래프/추적표, 최종5장 목차의 본문 갱신과 별도 시각화 촬영이다. 각 실행의actor/날씨/설정 복구는 확인됐지만 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제를 정상 종료로 처리하지 않는다.
 - 마감 검토PASS: CSV80개 고유ID, COMPLETE80/정리PASS80, 결과PASS70/FAIL10와 실제FAIL 항목10개 일치, 원본result/metadata SHA 및 동결 유지, 로컬 문서링크119개와 공백/새문자 검사를 확인했다. completion_review.json에 범위와 CSV/체크포인트 SHA를 보존했다. 서버 정상 종료나 전체 분석 완료로 확대하지 않는다.
+- Git 개행 정규화 안내를 확인해 파생CSV의 로컬 개행도 게시된LF와 일치시켰다. completion_review의 CSV SHA도LF 기준으로 갱신해 다른 체크아웃에서 재현 가능하게 했다.80개 셀 값과 원시 실행 자료/판정은 변경하지 않았다.
