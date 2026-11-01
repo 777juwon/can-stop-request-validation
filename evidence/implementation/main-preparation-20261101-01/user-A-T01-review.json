@@ -1,0 +1,51 @@
+{
+  "recorded_utc": "2026-11-01T13:35:27.703456+00:00",
+  "scope": "사용자 A/T-01 개발 확인의 결과/metadata와 일부 원시 근거 별도 대조. 전체 oracle 재실행은 아님",
+  "output_dir": "runs/check-A-T01-01",
+  "execution_git_commit": "240c764a58497441e0b887ae9232ef57ea7c76c3",
+  "requirements": {
+    "R-01": {
+      "status": "PASS"
+    },
+    "R-05": {
+      "status": "PASS"
+    },
+    "R-06": {
+      "status": "N/A",
+      "reason": "NO_IN_WINDOW_STOP_REQUEST"
+    },
+    "R-07": {
+      "status": "N/A",
+      "reason": "NO_IN_WINDOW_STOP_REQUEST"
+    },
+    "R-09": {
+      "status": "PASS",
+      "reason": "FULL_CHAIN_EVIDENCE"
+    }
+  },
+  "raw_input_plus_request_multisets_match_observer": true,
+  "runtime_source_hashes_match_current": true,
+  "fixed_distance_trial_frames": 400,
+  "counter_255_to_0_observed": true,
+  "trial_stop_requests": 0,
+  "trial_adapter_brake_calls": 0,
+  "trial_motion_samples": 399,
+  "trial_speed_kmh_range": [
+    4.72972481236241,
+    5.125280442665617
+  ],
+  "cleanup_status": "PASS",
+  "post_cleanup": {
+    "synchronous_mode": false,
+    "fixed_delta_seconds": null,
+    "remaining_relevant_actors": []
+  },
+  "review_status": "PASS",
+  "main_plan_frozen_check": "PASS",
+  "next_original_id": "M-T-01-R01-A",
+  "original_attempted": 0,
+  "not_started": 80,
+  "main_trials_executed": 0,
+  "actual_can_executed_by_agent": false,
+  "carla_executed_by_agent": false
+}

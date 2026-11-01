@@ -500,3 +500,10 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - COMPLETE/전체PASS/cleanupPASS, client/server0.9.15/Town04/spawn143과 R-04/R-06/R-07/R-08/R-09 PASS를 확인했다. 원시 입력+요청1907개와 독립 관측의 다중집합, 실행 소스SHA가 일치했다. 거리 n100~159 전체payload는99와 같고160으로 복원됐다. 최초 정지reason3은 마지막 신규 송신 완료 뒤200.131672ms로 W-FAULT 안이었다.
 - adapter 처리 최대1.462236ms, 최초 제동frame5994 뒤5995~6005의11표본에서 실제 평면속도<=0.1m/s와 제동을 별도 확인했다. 차량 제거/날씨/설정 복구와 관련actor0을 기록에서 확인했다. 호스트와 시뮬레이션 시간을 섞지 않았고 이1회 수치를 본시험 통계로 확대하지 않는다.
 - user-B-T04-review.json에 별도 대조 범위를 기록했다. 전체oracle 재실행과 구분한다. 코드 변경이 없어 단위/실제 시험은 반복하지 않고 문서 링크/공백을 점검한다. STATUS/LINUX_HANDOFF/README/MAIN_PREPARATION을 갱신한다. 다음은 사용자 A/T-01 개발 확인이며 본시험0/80회다. 추가 push는 하지 않는다.
+
+## 2026-11-01: 사용자 A/T-01 개발 확인 PASS와 본시험 첫 실행 안내
+
+- 사용자가 `runs/check-A-T01-01`의PASS를 제공했다. result/metadata와 원시 입력/관측/요청/adapter/차량 파일을 읽었다. COMPLETE/전체PASS/cleanupPASS, R-01/R-05/R-09 PASS와 R-06/R-07 N/A를 확인했다. 서버 시작/종료나 실제 시험은 에이전트가 수행하지 않았다.
+- 입력+요청과 독립 관측의 raw 다중집합, 실행 소스SHA가 일치했다. 정상 거리400개와 순번255→0 회전, 본구간stop요청0/adapter제동0회 및 실제 차량의 지속 움직임을 별도 대조했다. 차량/날씨/설정 복구와 관련actor0도 확인했다. user-A-T01-review.json에 범위를 보존하며 전체oracle 재실행과 구분한다.
+- main-v1-20261101의 동결 코드/설정/입력 대조PASS와 실행 설정 일치를 확인했다. 시도0/완료0/미시작80이며 다음ID는M-T-01-R01-A다. 사용자에게 서버 유지와 `run --max-runs 1` 명령을 안내한다. 개발 확인2개는80회에 포함하지 않는다.
+- 기능코드 변경이 없어273개 단위 검사와 실제 시험은 반복하지 않았다. 문서 링크와 Git 공백을 확인하고 STATUS/LINUX_HANDOFF/MAIN_PREPARATION/README를 갱신한다. 다음은 첫 본시험 결과 검토 후 같은 쌍B 안내다. push는 추가하지 않는다.

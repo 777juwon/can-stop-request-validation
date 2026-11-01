@@ -4,6 +4,8 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
+최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
+
 최신 개발 확인: 사용자가 `runs/check-B-T04-01`에서 B/T-04를 실행했다. COMPLETE/전체PASS/cleanupPASS, R-04/R-06/R-07/R-08/R-09 PASS와 실제 차량 정지를 확인했다. 원시 입력+요청/독립 관측 수량과 실행 소스 SHA, 반복60슬롯/복원counter160, 정지 유지11표본도 별도로 대조했다. [검토 기록](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 본시험은0/80회다. 서버는 사용자가 켜둔 상태를 유지하고 다음은 같은 서버의 A/T-01 개발 확인이다. 에이전트는 파일만 검토했다. 아래 통합 미실행 표시는 이전 단계 기록이다.
 
 최신 본시험 준비: 중단 지점에서 고정 설정/80개 원래ID, 실행기/독립 차량 판정/재개 보호를 마무리했다. 전체273개 코드 검사와 의존성/셸 문법/공백PASS. 새 실행기의 실제CARLA 통합은 아직이며 본시험0/80회다. 다음은 사용자가 별도 B/T-04와 A/T-01 개발 확인을 실행하고 경로를 전달하는 단계다. [전체 명령과 바톤터치](MAIN_PREPARATION.md), [코드 검사 근거](../evidence/implementation/main-preparation-20261101-01/checks.json). 실제CAN/CARLA는 이번 작업에서 실행하지 않았다.

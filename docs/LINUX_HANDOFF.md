@@ -2,6 +2,8 @@
 
 ## 현재 인수인계: 2026-11-01 G4
 
+최신 바톤터치: B/T-04와 A/T-01의 사용자 CARLA 개발 확인 모두PASS, 정리PASS다. A는 정상 입력400개/순번 회전, 정지 요청/adapter 제동0회와 실제 주행을 원시 대조했다. 계획의 동결 대조PASS, 본시험 시도0/완료0/미시작80. 서버를 유지한 채 `main_campaign.py run --output-dir runs/main-v1-20261101 --max-runs 1 --exclusive-server --allow-world-load`로 첫ID M-T-01-R01-A를 사용자가 실행하고 결과를 전달한다. 에이전트는 실제 시험을 실행하지 않았다. 아래 개발 확인 대기는 과거 상태다.
+
 최신 사용자 실행: `runs/check-B-T04-01` COMPLETE/PASS/cleanupPASS를 파일과 일부 독립 원시 대조로 확인했다. B의 반복 순번 감지부터 실제 CARLA 정지/잠금 유지까지 R-04/R-06~R-09 PASS다. 본시험0/80회. 다음은 사용자가 서버를 유지한 채 `check --output-dir runs/check-A-T01-01 --variant A --scenario T-01 --exclusive-server --allow-world-load`를 실행하는 단계다. 별도 서버 시작/종료나 실제시험은 에이전트가 수행하지 않았다. 아래 B 개발 확인 대기는 과거 상태다.
 
 최신 준비: 끊긴 본시험 도구를 이어서 구현/검증했다. main_v1.json, main_runs_v1.json의80개 원래ID, main_campaign.py의 계획/실행/재개, main_trial_oracle.py의 전체 독립 판정을 준비했고 전체273개 검사PASS다. [MAIN_PREPARATION](MAIN_PREPARATION.md)에 서버 시작부터 결과 전달과 재개까지 명령이 있다. 실제CAN/CARLA는 이번에 실행하지 않았고 본시험0/80회다. 다음은 사용자의 별도 B/T-04 및 A/T-01 CARLA 개발 확인과 에이전트의 결과 검토다. 아래 중단/준비 전/검사 대기 표시는 과거 기록이다.
