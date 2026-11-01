@@ -4,11 +4,11 @@ Updated: 2026-11-01 (한국 시각)
 
 ## Current state
 
-본시험 체크포인트: **40/80회 완료, 미시작40회, 요구사항FAIL0**. T-01과 T-02 모두 A/B 각각10회 COMPLETE/PASS/cleanupPASS다.
+본시험 체크포인트: **60/80회 완료, 미시작20회, 요구사항FAIL0**. T-01~T-03 모두 A/B 각각10회 COMPLETE/PASS/cleanupPASS다.
 
-[누적40회 검토](../evidence/implementation/main-preparation-20261101-01/checkpoint-040.json): T-01 원본SHA 유지와 T-02 20회의 설정/입력/소스/원시 관측/제어 호출/차량 정지를 확인했다. T-02 R-02/R-06/R-07/R-08/R-09 모두PASS. 입력 송신 완료 뒤 요청 관측0.081995~0.204434ms, adapter 처리 최대13.743319ms, 최초 제동부터11frame 간격 안에 정지 유지 조건을 완료했다. 호스트 관측과 차량 시뮬레이션 시간을 구분한다.
+[누적60회 검토](../evidence/implementation/main-preparation-20261101-01/checkpoint-060.json): 앞선40회 원본SHA 유지와 T-03의 설정/입력/소스/관측/호출/차량/정리를 확인했다. 거리60슬롯 생략, 심박400개 유지와160슬롯 복원 뒤 정지 잠금 유지, R-03/R-06~R-09 모두PASS다. 마지막 신규 거리 송신 완료 뒤 요청 관측200.090836~200.321203ms, adapter 처리 최대23.993759ms, 최초 제동부터11frame 간격 안에 정지 유지 조건을 완료했다. 호스트 관측과 차량 시뮬레이션 시간을 구분한다. T-02 수치는 이전 checkpoint-040.json에 보존했다.
 
-다음은 같은 서버에서 --max-runs 20으로 T-03 전체20회 사용자 실행이다. 다음ID M-T-03-R01-A. 자동 기록은 매회 유지하고 문서/커밋은 시나리오 묶음 종료 또는 오류/중단에 정리한다. 최신 수는 status를 기준으로 확인한다. 아래0/80과 개발 확인 대기는 이전 체크포인트다.
+다음은 같은 서버에서 --max-runs 20으로 T-04 전체20회 사용자 실행이다. 다음ID M-T-04-R01-A. A의 R-04 미요청FAIL과 B의 순번 만료 대응이 설계상 예상되지만 실제 결과는 미확인이다. 요구사항FAIL은 원래 시도에 보존하고 COMPLETE/배치 중단 여부와 구분한다. 자동 기록은 매회 유지하고 문서는 시나리오 종료 또는 오류/중단에 정리한다. 최신 수는 status를 기준으로 확인한다. 아래0/80과 개발 확인 대기는 이전 체크포인트다.
 
 최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
 
@@ -24,7 +24,7 @@ Updated: 2026-11-01 (한국 시각)
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_CHECKPOINT_40_OF_80**
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_CHECKPOINT_60_OF_80**
 
 최신 예비 결과: 사용자가 preliminary-20261101T093650388216046Z-97982에서8개 조합을 모두 정상 완료했다. evidence_valid 모두true이며 기록/출력/정리 오류가 없다. 유일한 요구사항FAIL은 A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는 순번 만료 요청을 약200.193ms에 관측했고R-04 PASS다. COMPLETE_WITH_REQUIREMENT_FAILURES는 중단이 아니라 이FAIL을 보존한 완료 상태다. [결과와 로그 해석](PRELIMINARY_RESULTS_2026-11-01.md). 실제CARLA 검사는 이8개에 없으며 본시험0/80회다. 아래의 첫중단/실행대기 표시는 이전 단계 기록이다.
 
@@ -84,7 +84,7 @@ Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 �
 | SUT implementation and unit tests | AB_CORE_UNIT_TESTED / MESSAGE_PRELIMINARY_COMPLETE | A/B 핵심과DBC, 실제vCAN8개 완료. 새 CARLA 실행기의 통합 확인은 남음 |
 | Thesis preliminary test execution and result summary | MESSAGE_8_COMPLETE | A/T-04 R-04 FAIL 보존. R-06/R-07과 전체R-09는 미수행 |
 | Main runner, fixed configuration and eighty IDs | IMPLEMENTED / UNIT_TESTED / SELECTED_CARLA_CHECKS_PASS | 전체273개 검사PASS, 사용자 B/T-04와 A/T-01 개발 확인PASS |
-| Main comparison runs and result analysis | IN_PROGRESS / CHECKPOINT_40_OF_80 | T-01/T-02 A/B 각각10회 모두PASS. 전체 반복 분석은 미수행 |
+| Main comparison runs and result analysis | IN_PROGRESS / CHECKPOINT_60_OF_80 | T-01~T-03 A/B 각각10회 모두PASS. T-04와 전체 반복 분석은 미수행 |
 
 Writing a scenario, checklist or expected result does not complete an experiment. G1/G2 feasibility runs do not count as thesis preliminary or main trials.
 
@@ -125,7 +125,7 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 - Four main scenarios, ten original attempts per scenario and variant: eighty planned runs.
 - Latched stop, no automatic restart; request, adapter and motion verdicts are separated.
 - Host monotonic message timing; CARLA simulation-time motion window.
-- 본시험 마지막 체크포인트는40/80회(T-01/T-02 A/B 각각10회)다. T-03~04와 전체 반복 분석은 남아 있다.
+- 본시험 마지막 체크포인트는60/80회(T-01~T-03 A/B 각각10회)다. T-04와 전체 반복 분석은 남아 있다.
 
 ## Remaining execution records and approvals
 
