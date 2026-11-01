@@ -117,6 +117,14 @@ class FixtureTests(unittest.TestCase):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_runtime_signal_publication_does_not_force_disk_sync(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "signal.json"
+            with patch.object(worker.os, "fsync") as force_sync:
+                worker.atomic_write_json(path, {"ready": True})
+            force_sync.assert_not_called()
+            self.assertEqual(json.loads(path.read_text()), {"ready": True})
+
     def test_atomic_json_never_overwrites_existing_file_or_symlink(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
@@ -150,6 +158,33 @@ class EvidenceTests(unittest.TestCase):
 
 
 class SenderTests(unittest.TestCase):
+    def test_start_signal_after_both_frames_preserves_slot_when_publication_is_slow(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output, clock, bus = Path(directory), FakeClock(), FakeBus()
+            worker.write_json(output / "trial_requested.json", {"run_token": TOKEN, "host_monotonic_ns": clock.now})
+            publish = worker.atomic_write_json
+
+            def slow_signal(path, value):
+                if path.name == "trial_started.json":
+                    # 준비512개와 본 슬롯0의 거리/심박2개가 먼저 송신돼야 한다.
+                    self.assertEqual(len(bus.sent), 514)
+                    self.assertEqual([worker.CAN_FRAME.unpack(packet)[0] for packet in bus.sent[-2:]], [0x100, 0x101])
+                    clock.advance(60_000_000)
+                return publish(path, value)
+
+            with patch.object(worker, "open_bus", return_value=bus), \
+                    patch.object(worker, "sleep_until", side_effect=clock.sleep_until), \
+                    patch.object(worker.time, "monotonic_ns", side_effect=clock.monotonic_ns), \
+                    patch.object(worker, "atomic_write_json", side_effect=slow_signal):
+                result = worker.sender("vcan0", output, TOKEN, worker.StopSignals(), "T-01")
+            trial = [row for row in read_events(output, "input_events.jsonl") if row["event"] == "tx" and row["phase"] == "trial"]
+            self.assertEqual(result["trial_distance_frames"], 400)
+            self.assertEqual(result["trial_heartbeat_frames"], 400)
+            self.assertEqual([row["arbitration_id"] for row in trial[:2]], [0x100, 0x101])
+            self.assertTrue(all(row["s_begin_ns"] < row["scheduled_ns"] + worker.PERIOD_NS for row in trial))
+            marker = json.loads((output / "trial_started.json").read_text())
+            self.assertEqual(marker["t0_ns"], trial[0]["s_begin_ns"])
+
     def test_sender_preserves_preparation_and_anchors_trial_to_actual_first_send(self):
         with tempfile.TemporaryDirectory() as directory:
             output, clock, bus = Path(directory), FakeClock(), FakeBus()

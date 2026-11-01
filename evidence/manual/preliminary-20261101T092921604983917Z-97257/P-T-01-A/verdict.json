@@ -1,0 +1,52 @@
+{
+  "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+  "execution_status": "INPUT_ERROR",
+  "variant": "A",
+  "scenario": "T-01",
+  "checks": {
+    "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+    "carla_executed": false,
+    "evidence_valid": false,
+    "evidence_errors": [],
+    "missing_evidence": [
+      "sender: 종료 근거 부족",
+      "sender: 20초 종료 근거 부족",
+      "controller: 20초 종료 근거 부족",
+      "observer: 20초 종료 근거 부족",
+      "400슬롯 고정 입력 부족",
+      "run 끝까지 요청 관측 부족"
+    ],
+    "sut_output_errors": [],
+    "requirements": {
+      "R-01": {
+        "status": "INCONCLUSIVE"
+      },
+      "R-05": {
+        "status": "INCONCLUSIVE"
+      },
+      "R-06": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-07": {
+        "status": "N/A",
+        "reason": "CARLA_NOT_EXECUTED"
+      },
+      "R-09": {
+        "status": "N/A",
+        "reason": "MESSAGE_EVIDENCE_ONLY",
+        "message_evidence_valid": false
+      }
+    },
+    "metrics": {
+      "input_frames": 513,
+      "request_frames": 235,
+      "observed_frames": 748,
+      "trial_input_frames": 1,
+      "first_stop_observed_ns": null
+    },
+    "main_trials_executed": 0
+  },
+  "main_trials_executed": 0,
+  "carla_executed": false
+}

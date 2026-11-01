@@ -2,6 +2,8 @@
 
 ## 현재 인수인계: 2026-11-01 G4
 
+최신 오류 수정: 첫 메시지 예비 시도는 T-01/A 첫슬롯의 신호파일 게시 경로 지연으로 INPUT_ERROR, 완료0/8이다. 실패 원본과 당시소스9개를 해당폴더에 보존했다. 같은슬롯의 거리/심박을 모두 보낸 뒤 신호를 게시하고 fsync를 제거했으며 회귀 포함242개 검사PASS다. actual CAN 재실행은 에이전트가 하지 않았다. 사용자가 check 후 preliminary를 새 폴더로 재실행해 경로만 전달하면 된다. 요약은 cases_attempted/cases_completed/cases_not_started를 구분한다. 기존 summary의 cases_completed=1은 과거 시도 수 표기 오류이며 원본은 수정하지 않았다.
+
 최신 후속: B 핵심/자체DBC/메시지 예비8개 실행기를 구현했고238개 검사PASS다. 실제 예비시험은 실행하지 않았다. 사용자가 check, 필요시vcan0준비, `bash tools/run_self_checks.sh preliminary`를 실행하고 경로만 전달한다. [전체 순서](REMAINING_STEPS.md). A/T-04 R-04 FAIL 가능성을 보존하고 COMPLETE를 모든 요구사항PASS로 해석하지 않는다. CARLA 요구사항은 이 단계N/A, 본시험0/80회. CARLA 본시험 실행기와80개 원래ID는 그 다음 준비할 항목이다.
 
 후속 사용자 재현: g4-20261101T090038689401166Z-95119를 사용자가 직접 실행했고 result/metadata의 전체 PASS와 자원 복구를 확인했다. 아래의 직접 재현 미기록은 그 이전 시점이며 현재 G4 직접 실행은 확인됐다. 사용자 코드 검토 완료는 별도다. 이번 확인에서는 파일만 읽고 새 실험을 하지 않았다.

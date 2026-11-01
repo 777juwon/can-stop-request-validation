@@ -153,6 +153,17 @@ def run_case(output, interface, variant, scenario):
     return result
 
 
+def campaign_summary(cases, planned_count):
+    """시도한 조합, 정상 완료와 미시작 수를 섞지 않고 요구사항 FAIL을 유지한다."""
+    completed = sum(case["execution_status"] == "COMPLETE" for case in cases)
+    done = len(cases) == planned_count and completed == planned_count
+    failed = sum(row["status"] == "FAIL" for case in cases for row in case["requirements"].values())
+    status = "COMPLETE_WITH_REQUIREMENT_FAILURES" if done and failed else "COMPLETE" if done else "INCOMPLETE"
+    return {"scope": SCOPE, "status": status, "cases_attempted": len(cases), "cases_completed": completed,
+            "cases_not_started": max(0, planned_count - len(cases)), "planned_cases": planned_count,
+            "requirement_fail_count": failed, "cases": cases, "carla_executed": False, "main_trials_executed": 0}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
@@ -183,14 +194,10 @@ def main():
         print(json.dumps(cases[-1], ensure_ascii=False), flush=True)
         if result["execution_status"] != "COMPLETE":
             break
-    done = len(cases) == len(planned) and all(case["execution_status"] == "COMPLETE" for case in cases)
-    failed = sum(row["status"] == "FAIL" for case in cases for row in case["requirements"].values())
-    status = "COMPLETE_WITH_REQUIREMENT_FAILURES" if done and failed else "COMPLETE" if done else "INCOMPLETE"
-    write_json(args.output_dir / "summary.json", {"scope": SCOPE, "status": status, "cases_completed": len(cases),
-               "planned_cases": len(planned), "requirement_fail_count": failed, "cases": cases,
-               "carla_executed": False, "main_trials_executed": 0})
-    print(json.dumps({"status": status, "output_dir": str(args.output_dir), "main_trials_executed": 0}))
-    return 0 if done else 1
+    summary = campaign_summary(cases, len(planned))
+    write_json(args.output_dir / "summary.json", summary)
+    print(json.dumps({"status": summary["status"], "output_dir": str(args.output_dir), "main_trials_executed": 0}))
+    return 0 if summary["cases_completed"] == len(planned) else 1
 
 
 if __name__ == "__main__":

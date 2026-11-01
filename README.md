@@ -8,6 +8,7 @@
 > 2026-11-01: 전체 G3 첫 실제 실행 PASS. 정상 복원 뒤 제동 유지까지 확인했습니다. Codex가 구현 및 실행했고 사용자 검토와 직접 재현은 다음 단계입니다. [실제 연결 결과와 실행 안내](docs/G3_INTEGRATION.md)
 > 후속 G4: A의 T-03 한 번 PASS. 최초 관측 누락 FAIL은 보존하고 준비 순서를 수정했습니다. 전체 검사 208개 통과. [G4 코드와 직접 실행](docs/G4_MINIMUM_CHAIN.md)
 > 다음: B 핵심/메시지 예비8개 도구 구현, 전체238개 검사PASS. 실제 예비시험은 사용자 실행 대기입니다. [남은 순서와 실행 명령](docs/REMAINING_STEPS.md)
+> 최신: 첫 예비 시도의 시작신호 지연 INPUT_ERROR를 보존하고 수정했습니다. 회귀 포함242개 검사PASS, 실제 정상완료0/8이며 사용자 재실행 대기입니다.
 >
 > 시작 문서: [연구 및 시스템 기준선](docs/RESEARCH_BASELINE.md), [요구사항 및 시험 명세](docs/VALIDATION_PLAN.md), [논문 챕터별 구성](docs/THESIS_OUTLINE.md)
 

@@ -19,7 +19,7 @@ bash tools/run_self_checks.sh --help
 bash tools/run_self_checks.sh check
 ```
 
-현재 단위 검사238개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 단위 검사OK와 의존성 오류 없음, 종료코드0을 확인한다. 실제CAN/CARLA와 구분한다. 과거80개/G3의119개/G4의208개와 최신238개는 다른 시점의 기록이다.
+현재 단위 검사242개, 격리된 Python의 pip check, 셸 문법과 Git 공백 검사를 실행한다. 단위 검사OK와 의존성 오류 없음, 종료코드0을 확인한다. 실제CAN/CARLA와 구분한다. 과거80개/G3의119개/G4의208개/최초 예비준비238개와 최신242개는 다른 시점의 기록이다.
 
 ## 3. G1 실제 vCAN 송수신
 

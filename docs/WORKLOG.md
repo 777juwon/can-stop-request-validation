@@ -424,3 +424,12 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 사용자 G4 g4-20261101T090038689401166Z-95119의9개 소스를 기록된ac6d930 commit에서 읽어 당시SHA와 일치 확인 후 source/에 보존했다. 기존raw/result는 수정하지 않았다. worker가 바뀌어도 과거 실행 근거를 확인할 수 있다.
 - REMAINING_STEPS.md에 전체 순서와 지금 실행할 check/preliminary 명령, 출력 폴더 전달 및 완료/요구사항PASS 구분을 정리했다. STATUS/LINUX_HANDOFF/SELF_CHECK/README를 갱신했다. 실제 예비8개는 사용자 실행 대기, CARLA 본시험 실행기/80개ID는 다음 단계다. 본시험0/80회, 이번 단계push/서버실행 없음.
 - 최종 정적 확인: 로컬 문서링크194개,JSON/JSONL28개,변경/추가파일58개(점검기록자체생성전)와 약3.06MB를 확인했다. Git/새파일 공백,credential형태 혼입과 고정 문서 무변경을 점검했고 final_review.json PASS다. 핵심5개 소스/DBC의SHA를 기록했다. 이후 기능 코드는 변경하지 않았으며 코드/문서/사용자 G4 증거를 로컬 커밋으로 저장한다. push는 하지 않는다.
+
+## 2026-11-01: 첫 메시지 예비시험 INPUT_ERROR 수정
+
+- 사용자가238개OK/의존성 오류 없음과vcan0 UP 출력, preliminary-20261101T092921604983917Z-97257의 첫T-01/A INPUT_ERROR를 제공했다. 나머지7개는 시작되지 않았다. metadata/오류/원시입력만 읽었으며 실제CAN/CARLA는 재실행하지 않았다.
+- 본 슬롯0의 거리 송신완료3790059889635ns부터 심박전 기한검사3790118264396ns까지58.374761ms였다. 슬롯전체 경과는58.393737ms로50ms를 넘겨 입력 오류로 중단한 것이 맞다. 두 송신 사이 trial_started.json 원자적 게시에fsync가 들어가는 구조를 확인했다. fsync 자체 소요시간은 별도 측정하지 않았으므로 이를 단정한 계측값으로 보고하지 않는다.
+- 실패raw/result/summary와당시소스9개를 SHA 대조 후 보존하고 failure_review.json을 추가했다. 50ms 판정은 유지했다. 시작신호를 같은슬롯의 거리/심박 모두 보낸 뒤 게시하고 신호교환 경로에서 fsync를 제거했다. 완성JSON의 close/hardlink 원자성 및 기존파일 덮어쓰기 거부는 유지하며 전원손실 뒤 디스크복구 보장과 구분한다. 시작신호 게시시간도 별도 이벤트로 기록한다.
+- 요약의 cases_completed가 시도 수도 세던 오류를 고쳐 cases_attempted/cases_completed/cases_not_started를 분리했다. 이번 원본의 completed1은 수정하지 않고 검토기록에서 시도1/완료0/미시작7로 설명했다. 요구사항FAIL 보존은 유지했다.
+- 회귀검사4개를 추가했다: 신호교환 fsync 금지, 느린게시 전 같은슬롯 두프레임 완료/기한 유지, 첫중단 완료0개, 정상실행과 요구사항FAIL 분리. `bash tools/run_self_checks.sh check` 종료코드0,242개OK, pip/셸 문법/Git 공백 통과. evidence/implementation/preliminary-start-fix-20261101-01/checks.json에 기록했다.
+- STATUS/LINUX_HANDOFF/REMAINING_STEPS/SELF_CHECK/README를 갱신했다. 예비 정상완료0/8, 본시험0/80회. 실제 재실행은 사용자가 같은check/preliminary 명령으로 새폴더에 수행한다. 에이전트는 단위검사만 실행했으며 push는 하지 않는다.

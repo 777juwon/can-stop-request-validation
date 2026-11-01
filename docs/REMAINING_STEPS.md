@@ -1,10 +1,10 @@
 # 남은 순서와 바톤터치
 
-2026-11-01. G4 A/T-03과 사용자 직접 재현PASS. 이후 B 핵심, 자체 DBC와 메시지 예비시험 도구를 구현했고 전체238개 검사가 통과했다. **실제 예비시험은 미실행, 본시험은0/80회다.**
+2026-11-01. G4 A/T-03과 사용자 직접 재현PASS. B/DBC/예비 도구를 구현했고 최초 시도 중 시험기 시작신호 경로 지연을 수정했다. 전체242개 검사PASS. **실제 예비 정상완료0/8, 본시험0/80회다.** 첫 INPUT_ERROR 원본은 보존하며 새 폴더에서 재시도한다.
 
 | 순서 | 담당과 행동 | 다음 단계 조건 |
 | --- | --- | --- |
-| 1 | Codex: B 핵심/DBC/고정 입력/독립 판정 준비 | 단위 검사238개 PASS. 실제 실행과 구분 |
+| 1 | Codex: B 핵심/DBC/고정 입력/독립 판정 준비 | 단위 검사242개 PASS. 실제 실행과 구분 |
 | 2 | 사용자: 아래 명령으로 메시지 예비시험8개 실행 | 출력 폴더와 마지막status 전달 |
 | 3 | Codex: summary와 필요한 원시 근거 검토/수정 | 8개 실행 상태와 요구사항별 결과 확인 |
 | 4 | Codex: CARLA 실행기/고정 설정/80개 원래run ID 준비 | 코드 검사와 실제 명령을 따로 제공. 아직 준비 전 |
@@ -24,7 +24,7 @@ bash tools/run_self_checks.sh check
 ip -details link show dev vcan0
 ```
 
-check는238개OK와 의존성 오류 없음을 확인한다. vcan0가 없거나 DOWN일 때만 아래 명령을 실행한다. apt/dpkg를 사용하지 않는다.
+check는242개OK와 의존성 오류 없음을 확인한다. vcan0가 없거나 DOWN일 때만 아래 명령을 실행한다. apt/dpkg를 사용하지 않는다.
 
 ```bash
 sudo bash tools/prepare_vcan0.sh
@@ -39,6 +39,8 @@ bash tools/run_self_checks.sh preliminary
 T-01 A/B → T-02 A/B → T-03 A/B → T-04 A/B 순서다. 매번 새 프로세스/token을 사용한다. 정상5개 후arm, 준비counter회전을 기다려T0를 시작하고20초 입력을 실행한다. 예상 약4~5분이며 소요시간 보장은 아니다. 환경/입력/증거 오류면 이후 조합을 강행하지 않는다. 출력 폴더를 재사용하지 않는다.
 
 끝나면 **출력 폴더 경로와 마지막status만** 전달한다. 같은 작업 폴더의 summary.json과 각조합 verdict.json, 필요한 로그만 Codex가 읽는다. 전체 로그를 대화에 붙이거나 실패 폴더를 지우고 PASS까지 반복하지 않는다.
+
+요약의 cases_attempted는 시도 수, cases_completed는 COMPLETE 수, cases_not_started는 시작하지 않은 수다. INPUT_ERROR로 첫 조합이 중단되면 시도1/완료0/미시작7이며8개가 끝난 것이 아니다.
 
 ## 완료와 요구사항 PASS의 차이
 

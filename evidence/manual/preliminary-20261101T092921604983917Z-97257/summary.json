@@ -1,0 +1,38 @@
+{
+  "scope": "MESSAGE_LEVEL_PRELIMINARY_ONLY",
+  "status": "INCOMPLETE",
+  "cases_completed": 1,
+  "planned_cases": 8,
+  "requirement_fail_count": 0,
+  "cases": [
+    {
+      "path": "evidence/manual/preliminary-20261101T092921604983917Z-97257/P-T-01-A",
+      "variant": "A",
+      "scenario": "T-01",
+      "execution_status": "INPUT_ERROR",
+      "requirements": {
+        "R-01": {
+          "status": "INCONCLUSIVE"
+        },
+        "R-05": {
+          "status": "INCONCLUSIVE"
+        },
+        "R-06": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-07": {
+          "status": "N/A",
+          "reason": "CARLA_NOT_EXECUTED"
+        },
+        "R-09": {
+          "status": "N/A",
+          "reason": "MESSAGE_EVIDENCE_ONLY",
+          "message_evidence_valid": false
+        }
+      }
+    }
+  ],
+  "carla_executed": false,
+  "main_trials_executed": 0
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "첫 메시지 예비시험 중단 원인 검토",
+  "attempted_cases": 1,
+  "completed_cases": 0,
+  "unstarted_cases": 7,
+  "archived_source_count": 9,
+  "first_trial_distance_done_ns": 3790059889635,
+  "heartbeat_slot_check_ns": 3790118264396,
+  "observed_gap_after_distance_done_ms": 58.374761,
+  "observed_slot_elapsed_ms": 58.393737,
+  "code_path": "첫 거리 송신과 심박 송신 사이의 trial_started.json 원자적 게시에 fsync가 포함돼 있었다.",
+  "causal_limit": "개별 fsync 소요시간을 직접 계측하지는 않았다. 해당 두 로그 사이의 경과와 코드 경로를 확인했다.",
+  "fix": "두 프레임 송신 뒤 시작 신호 게시, 실시간 신호의 fsync 제거. 50ms 판정 유지.",
+  "legacy_summary_note": "기존 cases_completed=1은 시도 수를 잘못 표시한 값이다. 원본은 보존하고 새 요약에서 시도/완료/미시작을 분리한다.",
+  "main_trials_executed": 0
+}

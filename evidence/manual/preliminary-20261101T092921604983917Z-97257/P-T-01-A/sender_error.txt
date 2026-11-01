@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/parkjuwon/can-stop-request-validation/tools/g4_can_workers.py", line 400, in run_worker
+    result.update(operation(args.interface, output, args.run_token, signals, **options))
+  File "/home/parkjuwon/can-stop-request-validation/tools/g4_can_workers.py", line 197, in sender
+    raise InputFailure(f"전역 송신 슬롯 {global_slot}의 프레임 송신이 지연됐습니다")
+tools.g3_request_smoke.InputFailure: 전역 송신 슬롯 256의 프레임 송신이 지연됐습니다

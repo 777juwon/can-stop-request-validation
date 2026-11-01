@@ -6,7 +6,9 @@ Updated: 2026-11-01 (한국 시각)
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / AB_CORE_UNIT_TESTED / PRELIMINARY_NOT_RUN**
+**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / AB_CORE_UNIT_TESTED / PRELIMINARY_INCOMPLETE**
+
+최신 예비 시도: 사용자 preliminary-20261101T092921604983917Z-97257은 첫T-01/A의 슬롯0 거리 송신 뒤 심박 송신 전에50ms를 넘겨 INPUT_ERROR로 중단됐다. 시도1개/정상완료0개/미시작7개다. 원시 기록에서 두 로그 사이58.374761ms와 해당 경로의 시작신호 fsync를 확인했다. 개별fsync 소요시간까지 계측한 것은 아니다. 신호를 거리/심박 모두 송신한 뒤 게시하고 실시간 신호의 동기 디스크 쓰기를 제거했다. 기한은 완화하지 않았다. 회귀 포함242개 검사PASS이며 실제 재실행은 사용자 대기다. [첫 실패 검토](../evidence/manual/preliminary-20261101T092921604983917Z-97257/failure_review.json), [수정 후 검사](../evidence/implementation/preliminary-start-fix-20261101-01/checks.json).
 
 후속 구현: B 순번 감시, 자체DBC와4개 시나리오×A/B 메시지 예비 도구를 준비했다. 전체238개 검사와 의존성/셸 문법/공백 통과. 실제CAN/CARLA는 추가 실행하지 않았다. 다음은 사용자가 `bash tools/run_self_checks.sh preliminary`로8개 조합을 실행하고 경로를 전달하는 단계다. [순서와 명령](REMAINING_STEPS.md), [검사 근거](../evidence/implementation/preliminary-20261101-01/checks.json). CARLA 본시험 실행기/80개ID는 다음 단계이며 본시험0/80회다.
 

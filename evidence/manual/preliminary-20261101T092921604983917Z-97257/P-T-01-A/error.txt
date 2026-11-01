@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/parkjuwon/can-stop-request-validation/tools/run_message_preliminary.py", line 99, in run_case
+    check_worker_record("sender", children["sender"].pid, children["sender"].poll(),
+  File "/home/parkjuwon/can-stop-request-validation/tools/g4_carla_smoke.py", line 53, in check_worker_record
+    raise RunError(status, role + ": " + str(record.get("error", record.get("status"))))
+tools.g3_carla_smoke.RunError: sender: 전역 송신 슬롯 256의 프레임 송신이 지연됐습니다

@@ -1,0 +1,20 @@
+{
+  "scope": "CAN_TRIAL_WORKERS_V1_ONLY",
+  "role": "sender",
+  "pid": 97267,
+  "status": "INPUT_ERROR",
+  "started_utc": "2026-11-01T09:29:21.758243+00:00",
+  "begin_monotonic_ns": 3777207233856,
+  "interface": "vcan0",
+  "run_token": 3296442500,
+  "variant": "A",
+  "scenario": "T-01",
+  "error": "전역 송신 슬롯 256의 프레임 송신이 지연됐습니다",
+  "error_type": "InputFailure",
+  "finished_utc": "2026-11-01T09:29:34.669818+00:00",
+  "done_monotonic_ns": 3790118805500,
+  "terminate_requested": false,
+  "interrupt_requested": false,
+  "signal_number": null,
+  "exit_code": 4
+}

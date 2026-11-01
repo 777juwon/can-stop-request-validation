@@ -58,7 +58,12 @@ def call_core(operation, *args):
 
 
 def atomic_write_json(path: Path, value) -> None:
-    """완성한 JSON만 공개하고 기존 파일이나 심볼릭 링크를 덮어쓰지 않는다."""
+    """완성한 JSON만 공개하고 기존 파일이나 심볼릭 링크를 덮어쓰지 않는다.
+
+    실시간 신호 교환은 close 뒤 hard link로 완성본을 공개한다. 이 경로에
+    동기 디스크 쓰기를 넣어 송신/검사 주기를 막지 않는다. 전원 손실 뒤의
+    디스크 복구 보장과 실행 중 파일 공개의 원자성은 별개다.
+    """
     temporary = None
     try:
         with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent,
@@ -67,7 +72,6 @@ def atomic_write_json(path: Path, value) -> None:
             json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
             stream.write("\n")
             stream.flush()
-            os.fsync(stream.fileno())
         os.link(temporary, path)
     finally:
         if temporary is not None:
@@ -210,12 +214,17 @@ def sender(interface: str, output: Path, token: int, signals: StopSignals,
                 counts[f"{phase}_{kind}_frames"] += 1
                 if slot == 0 and kind == "distance":
                     trial_done = done
-                    atomic_write_json(output / "trial_started.json", {
-                        "scope": SCOPE, "pid": os.getpid(), "run_token": token,
-                        "host_monotonic_ns": done, "t0_ns": begin, "t0_done_ns": done,
-                        "trial_global_slot": global_slot, "trial_first_scheduled_ns": begin,
-                        "trial_end_ns": begin + TRIAL_SLOTS * PERIOD_NS,
-                    })
+            if slot == 0:
+                # 같은 슬롯의 거리/심박을 모두 보낸 뒤 시작 정보를 공개한다.
+                publish_begin = time.monotonic_ns()
+                atomic_write_json(output / "trial_started.json", {
+                    "scope": SCOPE, "pid": os.getpid(), "run_token": token,
+                    "host_monotonic_ns": trial_done, "t0_ns": trial_origin, "t0_done_ns": trial_done,
+                    "trial_global_slot": global_slot, "trial_first_scheduled_ns": trial_origin,
+                    "trial_end_ns": trial_origin + TRIAL_SLOTS * PERIOD_NS,
+                })
+                emit(stream, event="trial_start_published", host_monotonic_ns=time.monotonic_ns(),
+                     publish_begin_ns=publish_begin, t0_ns=trial_origin, pid=os.getpid())
             global_slot += 1
 
 

@@ -1,0 +1,42 @@
+[
+  {
+    "case_id": "P-T-01-A",
+    "scenario": "T-01",
+    "variant": "A"
+  },
+  {
+    "case_id": "P-T-01-B",
+    "scenario": "T-01",
+    "variant": "B"
+  },
+  {
+    "case_id": "P-T-02-A",
+    "scenario": "T-02",
+    "variant": "A"
+  },
+  {
+    "case_id": "P-T-02-B",
+    "scenario": "T-02",
+    "variant": "B"
+  },
+  {
+    "case_id": "P-T-03-A",
+    "scenario": "T-03",
+    "variant": "A"
+  },
+  {
+    "case_id": "P-T-03-B",
+    "scenario": "T-03",
+    "variant": "B"
+  },
+  {
+    "case_id": "P-T-04-A",
+    "scenario": "T-04",
+    "variant": "A"
+  },
+  {
+    "case_id": "P-T-04-B",
+    "scenario": "T-04",
+    "variant": "B"
+  }
+]

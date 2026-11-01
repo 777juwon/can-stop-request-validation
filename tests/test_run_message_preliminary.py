@@ -12,6 +12,18 @@ from tools import run_message_preliminary as trial
 
 
 class TrialGuardTests(unittest.TestCase):
+    def test_failed_first_attempt_is_not_counted_as_completed(self):
+        summary = trial.campaign_summary([{"execution_status": "INPUT_ERROR", "requirements": {}}], 8)
+        self.assertEqual(summary["status"], "INCOMPLETE")
+        self.assertEqual((summary["cases_attempted"], summary["cases_completed"], summary["cases_not_started"]), (1, 0, 7))
+
+    def test_requirement_failure_is_kept_after_all_executions_complete(self):
+        cases = [{"execution_status": "COMPLETE", "requirements": {"R-01": {"status": "PASS"}}} for _ in range(7)]
+        cases.append({"execution_status": "COMPLETE", "requirements": {"R-04": {"status": "FAIL"}}})
+        summary = trial.campaign_summary(cases, 8)
+        self.assertEqual(summary["status"], "COMPLETE_WITH_REQUIREMENT_FAILURES")
+        self.assertEqual((summary["cases_completed"], summary["requirement_fail_count"]), (8, 1))
+
     def test_output_directory_is_never_reused(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(FileExistsError):
