@@ -34,7 +34,7 @@ Updated: 2026-11-01 (한국 시각)
 
 중간점검: [MIDTERM_REVIEW_2026-10-31](MIDTERM_REVIEW_2026-10-31.md)에 완료한 일, 남은 여섯 작업 묶음과 Git 저장 상태를 정리했다.
 
-The user requested final implementation documents without modifying the already submitted thesis proposal. RESEARCH_BASELINE.md, VALIDATION_PLAN.md and THESIS_OUTLINE.md define v1.0. These documents fix research-only design values and test criteria, not advisor sign-off. G3 and the A-only G4 minimum chain have passed. A/B message preliminary runs are complete. The main runner is implemented and unit-tested; its CARLA integration and eighty original attempts remain unexecuted.
+제출한 작성계획서를 유지하며 RESEARCH_BASELINE.md와 VALIDATION_PLAN.md의 연구 설계 v1.0을 따른다. 연구용 수치는 지도교수 승인이나 실측 성능을 뜻하지 않는다. THESIS_OUTLINE.md는 2026-11-01에 본문20쪽 목표의5장/10개 절로 개정됐고, 사용자가 이번 병합에서 이를 최종 목차로 확인했다. 현재 목차는 기존6장 구성을 대체한다. G3/G4 A 최소 연결PASS, A/B 메시지 예비8개 완료, 본시험 실행기 구현 및 코드 검사 완료다. 새 실행기의 실제CARLA 확인과80회 본시험은 미실행이다.
 
 The user authorized publishing this document baseline to GitHub on 2026-10-16. A Linux checkout must fetch this revision before relying on it; a shared repository does not automatically update another local checkout.
 
@@ -43,6 +43,16 @@ On 2026-10-19 this working tree was fast-forwarded to published commit `94411a45
 The user authorized setup, removal of the detected CARLA 0.9.14 client and resumption after a usage interruption. Python packages and the official 0.9.15 server are installed. G1 passed with independent SocketCAN processes. G2 first failed on a client control-cache transition, then timed out with a rejected configuration change; both attempts are preserved. The corrected batch-control path passed twice, most recently with the final source in run04. See [setup and smoke results](SETUP_AND_SMOKE_2026-10-19.md).
 
 Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 차량/설정 복구 후 Ctrl+C에서 Signal 11 / code 139로 종료됐다. 총 4건이며 원인은 미해결이다. 포트 2000/2001과 GPU의 CARLA 프로세스는 남지 않았다. 정상 서버 종료 PASS로 기록하지 않는다. [G2 기록](../evidence/setup/2026-10-19/server_runtime.json), [G3 기록](../evidence/g3/integration-20261101-01/host_and_server.json), [G4 기록](../evidence/g4/2026-11-01/host_and_server.json).
+
+## 논문 목차 조정: 2026-11-01
+
+사용자가 20쪽 분량에 맞춰 목차의 중복과 세분화를 줄이도록 요청했다. [THESIS_OUTLINE.md](THESIS_OUTLINE.md)를 기존 6장에서 5장, 10개 절로 개정했다. 본문 목표는 표와 그림을 포함해 2/2/8/7/1쪽이며, 학과의 공식 분량 산정 범위를 확인한 것으로 표현하지 않는다. 기존 설계와 시험 방법은 새 제3장에 합치고 결과는 제4장, 결론은 제5장에 둔다. 연구 설계 v1.0과 제출한 작성계획서는 변경하지 않았다. 원격 문서는 G3까지 게시된 당시 상태를 기준으로 작성됐으며, 병합 후 실험 진행 상태는 이 문서 상단의 최신 기록을 따른다.
+
+## 제1~3장 본문 정리: 2026-11-01
+
+사용자 요청으로 [제1~3장 본문](THESIS_CHAPTERS_1_3.md)을 새 5장 목차에 맞춰 정리했다. 표 5개와 수식 2개로 요구사항, 메시지, G3 구축 환경, 시험 시나리오와 독립 판정을 배치했다. 거리 판단 SUT와 G4/예비/본시험은 설계 및 수행 계획으로 서술하고, 실제 환경은 G3 근거로 구분했다. 외부 기술 근거와 연구용 자체 설계값을 구분했다. 본문 작성이 실험 완료나 실제 HWP 페이지 수 확인을 뜻하지 않는다.
+
+5장 목차는 최종으로 유지하며, 기존 본문에 남은 G3 시점의 수행 상태와 서술 시제는 이후 확보한 실험 기록과 대조해 집필 단계에서 갱신한다. 이번 병합에서 원격 제1~3장 본문을 임의로 다시 쓰지 않았다.
 
 ## Completion checklist
 
