@@ -1,0 +1,52 @@
+{
+  "recorded_utc": "2026-11-02T05:45:25.404881+00:00",
+  "review_status": "PASS",
+  "oracle_matches": 80,
+  "input_sha_files_checked": 741,
+  "data_rows": {
+    "per_run_metrics.csv": 80,
+    "cell_outcomes.csv": 8,
+    "metric_statistics.csv": 64,
+    "requirement_traceability.csv": 72,
+    "paired_observations.csv": 40
+  },
+  "paper_tables_match_csv": true,
+  "figure_artifacts_verified": 15,
+  "pdf_fonts": [
+    {
+      "path": "analysis/main-20261102/figures/fig4-1_outcomes.pdf",
+      "font_embedded": true
+    },
+    {
+      "path": "analysis/main-20261102/figures/fig4-2_request_latency.pdf",
+      "font_embedded": true
+    },
+    {
+      "path": "analysis/main-20261102/figures/fig4-3_adapter_maxima.pdf",
+      "font_embedded": true
+    },
+    {
+      "path": "analysis/main-20261102/figures/fig4-4_t04_host_timeline.pdf",
+      "font_embedded": true
+    },
+    {
+      "path": "analysis/main-20261102/figures/fig4-5_vehicle_motion.pdf",
+      "font_embedded": true
+    }
+  ],
+  "visual_review": "PNG5종 직접 확인, 요청 분포 제목 겹침 수정 후 최종 그림 재확인",
+  "chapters": 5,
+  "sections": 10,
+  "references": 9,
+  "draft_rebuild_identical": true,
+  "local_links_checked": 153,
+  "frozen_trial_files_unchanged": 20,
+  "new_experiments_executed": 0,
+  "remaining": [
+    "서버 종료 미확인",
+    "별도 시각화 촬영",
+    "HWP 양식/페이지 편집",
+    "교수/사용자 검토"
+  ],
+  "thesis_draft_sha256": "81738ee45507133e7bf703f9544e6c9b38211b50726f3a70212a66a93cc235b1"
+}

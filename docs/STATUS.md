@@ -1,14 +1,16 @@
 # Project status
 
-Updated: 2026-11-01 (한국 시각)
+Updated: 2026-11-02 (한국 시각)
 
 ## Current state
 
 본시험 실행 완료: **시도80/COMPLETE80/미시작0, 결과PASS70/FAIL10, 자원 정리PASS80**. FAIL10건은 모두 A/T-04의R-04 STOP_NOT_OBSERVED다. 예상한 비교 결과를 보존했으며 추가 실행으로 대체하지 않았다.
 
+분석/원고 반영 완료: 원시80개를 동결 oracle로 오프라인 재계산해 과거 판정과80개 모두 일치를 확인했다. 실행별 지표/셀별 통계/요구사항 추적표/40쌍 대응CSV와 그래프5종(PNG/SVG/PDF)을 생성했다. [분석 보고서와 재현 명령](ANALYSIS_REPORT_2026-11-02.md), [최종5장 통합 원고](THESIS_DRAFT.md). 제1~3장은 실제 수행 상태로 갱신했고 제4~5장과 초록을 작성했다. 기존FAIL과 N/A는 보존했다. 새 분석 검사12개 포함 전체285개PASS, 두 Python 환경의 의존성 검사PASS다. 신규 실험은0회다.
+
 [80회 결과 요약](MAIN_RESULTS_2026-11-01.md), [최종 체크포인트](../evidence/implementation/main-preparation-20261101-01/checkpoint-080.json), [80행CSV](../evidence/implementation/main-preparation-20261101-01/main_run_summary.csv). 앞선60회 결과/metadata SHA 유지와 마지막20회의 반복payload/심박/복원/원시 관측/동결을 확인했다. A는10회 모두 미요청/계속 주행, B는10회 모두reason3 요청/실제 정지/복원 후 잠금 유지다. B의 마지막 신규 거리 송신 완료 뒤 요청 관측200.122921~200.278851ms, adapter 처리 최대23.853492ms였다. 기존 기준은 변경하지 않았다.
 
-다음은 서버 종료 결과 기록과 실패를 포함한 전체 분석/그래프/추적표,5장 목차 본문 갱신 및 별도 시각화 촬영이다. 각 실행의 자원 복구는 확인됐고 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제는 별도로 유지한다. 원래80회를 재실행하거나FAIL을 삭제하지 않는다. 아래 진행 중/0/80/개발 확인 대기는 이전 기록이다.
+남은 작업은 서버 종료 결과 기록, 별도 시각화 촬영, HWP 학교 양식/실제20쪽 편집과 지도교수 검토다. 각 실행의 자원 복구는 확인됐고 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제는 별도로 유지한다. 원래80회를 재실행하거나FAIL을 삭제하지 않는다. 아래 분석 대기/진행 중/0/80 표시는 이전 기록이다.
 
 최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
 
@@ -24,7 +26,7 @@ Updated: 2026-11-01 (한국 시각)
 
 사용자 직접 재현 확인: g4-20261101T090038689401166Z-95119의 result.json/metadata.json을 읽어 G4 A/T-03 전체 PASS와 client/server 0.9.15, 실제 차량 상태 및 자원 복구를 확인했다. 사용자가 제공한 종료 후 포트 조회에는 LISTEN 항목이 없다. 화면이 없는 것은 launcher의 -RenderOffScreen 설정이다. 사용자 코드 검토 완료와 서버 정상 종료코드까지 확인한 것으로 확대하지 않는다.
 
-**DESIGN_BASELINED / G0_G1_G2_G3_G4_MINIMUM_PASSED / MESSAGE_PRELIMINARY_8_COMPLETE / MAIN_ALL_80_COMPLETE_WITH_REQUIREMENT_FAILURES / ANALYSIS_PENDING**
+**DESIGN_BASELINED / MAIN_ALL_80_COMPLETE_WITH_REQUIREMENT_FAILURES / OFFLINE_ANALYSIS_VERIFIED / FIVE_CHAPTER_DRAFT_UPDATED / FINAL_EDITING_PENDING**
 
 최신 예비 결과: 사용자가 preliminary-20261101T093650388216046Z-97982에서8개 조합을 모두 정상 완료했다. evidence_valid 모두true이며 기록/출력/정리 오류가 없다. 유일한 요구사항FAIL은 A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는 순번 만료 요청을 약200.193ms에 관측했고R-04 PASS다. COMPLETE_WITH_REQUIREMENT_FAILURES는 중단이 아니라 이FAIL을 보존한 완료 상태다. [결과와 로그 해석](PRELIMINARY_RESULTS_2026-11-01.md). 실제CARLA 검사는 이8개에 없으며 본시험0/80회다. 아래의 첫중단/실행대기 표시는 이전 단계 기록이다.
 
@@ -85,7 +87,7 @@ Server lifecycle limitation: G2 서버 2건, G3와 이번 G4 서버가 각각 �
 | Thesis preliminary test execution and result summary | MESSAGE_8_COMPLETE | A/T-04 R-04 FAIL 보존. R-06/R-07과 전체R-09는 미수행 |
 | Main runner, fixed configuration and eighty IDs | IMPLEMENTED / UNIT_TESTED / MAIN_EXECUTED | 전체273개 검사PASS, 개발 확인2개와 본시험80회 실제 기록 |
 | Main comparison runs | ALL_80_COMPLETE_WITH_REQUIREMENT_FAILURES | 결과PASS70/FAIL10. FAIL은모두A/T-04 R-04. 정리PASS80 |
-| Full result analysis and thesis update | PENDING | 실행 요약/80행CSV 확보. 전체 통계/그래프/추적표와 본문 반영은 후속 |
+| Full result analysis and thesis update | ANALYZED / DRAFT_UPDATED | 원시80개 재판정 일치, 통계/추적표/그래프5종과 최종5장 검토용 원고 |
 
 Writing a scenario, checklist or expected result does not complete an experiment. G1/G2 feasibility runs do not count as thesis preliminary or main trials.
 
@@ -126,7 +128,7 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 - Four main scenarios, ten original attempts per scenario and variant: eighty planned runs.
 - Latched stop, no automatic restart; request, adapter and motion verdicts are separated.
 - Host monotonic message timing; CARLA simulation-time motion window.
-- 본시험80개 원래 시도는 모두COMPLETE다. A/T-04 R-04 FAIL10건을 보존했으며 전체 반복 분석과 논문 갱신은 남아 있다.
+- 본시험80개 원래 시도는 모두COMPLETE다. A/T-04 R-04 FAIL10건을 보존해 오프라인 분석과5장 검토용 원고에 반영했다. 최종 편집과 교수 검토는 남아 있다.
 
 ## Remaining execution records and approvals
 
@@ -138,9 +140,9 @@ Passing G4 is a minimum proof of the chain, not completion of all thesis experim
 
 ## Next task
 
-본시험 추가 실행은 필요하지 않다. 사용자가 서버를 종료한 뒤 종료 메시지/포트 상태를 기록하고, [MAIN_RESULTS_2026-11-01](MAIN_RESULTS_2026-11-01.md)의80개 원래 결과로 분석을 진행한다. 기본은 단일 에이전트이며 실제 서버/촬영 실행은 사용자 담당이다. 촬영은 본시험과 별도로 준비하고 FAIL을 성공 결과로 대체하지 않는다.
+본시험 추가 실행은 필요하지 않다. 사용자는 [통합 원고](THESIS_DRAFT.md)의 표/해석을 검토하고, 서버 종료 메시지/포트 상태를 기록한다. 다음 실작업은 본시험 외 촬영과 HWP 최종 편집이다. 기본은 단일 에이전트이며 실제 서버/촬영은 사용자 담당이다. 분석 재현은 [ANALYSIS_REPORT](ANALYSIS_REPORT_2026-11-02.md)의 오프라인 명령을 사용한다.
 
-코드 검사는 `bash tools/run_self_checks.sh check`로 재현한다. 현재273개PASS이며242/238/208/119/80개는 과거 단계 기록이다. 새 코드 설명과 주석은 한글이다. 사용자 G4 직접 재현과 메시지 예비8개는 확인했지만 새 본시험 실행기의 실제 통합 확인은 아직이다.
+코드 검사는 `bash tools/run_self_checks.sh check`로 재현한다. 현재285개PASS이며273/242/238/208/119/80개는 과거 단계 기록이다. 새 코드 설명과 주석은 한글이다. 분석은 같은 Python3.10의 별도 .venv-analysis를 사용하며 실험용 .venv/동결20개 파일은 유지했다.
 
 Git 공유: 사용자 요청으로 G3 완료 commit `4815250`까지 로컬 커밋 3개를 `git push origin main`으로 게시했다. 직접 원격 조회에서도 main SHA `4815250f531bcabcb7dce1d676b4ab5a838a038d`가 일치했다. 이 게시 결과와 재개 안내는 별도 문서 커밋으로 함께 공유한다. 사용자는 G4를 다음날 이어가기로 했으며 이번 작업에서는 시작하지 않는다.
 

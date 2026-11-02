@@ -1,0 +1,9 @@
+scenario,variant,original_attempts,PASS,FAIL,COMPLETE,cleanup_PASS,not_observed
+T-01,A,10,10,0,10,10,0
+T-01,B,10,10,0,10,10,0
+T-02,A,10,10,0,10,10,0
+T-02,B,10,10,0,10,10,0
+T-03,A,10,10,0,10,10,0
+T-03,B,10,10,0,10,10,0
+T-04,A,10,0,10,10,10,10
+T-04,B,10,10,0,10,10,0

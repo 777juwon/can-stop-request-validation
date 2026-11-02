@@ -560,3 +560,16 @@ bash tools/run_self_checks.sh g3 --exclusive-server --allow-world-load
 - 남은 작업은 서버 종료 결과 기록, 실패 포함 전체 통계/그래프/추적표, 최종5장 목차의 본문 갱신과 별도 시각화 촬영이다. 각 실행의actor/날씨/설정 복구는 확인됐지만 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제를 정상 종료로 처리하지 않는다.
 - 마감 검토PASS: CSV80개 고유ID, COMPLETE80/정리PASS80, 결과PASS70/FAIL10와 실제FAIL 항목10개 일치, 원본result/metadata SHA 및 동결 유지, 로컬 문서링크119개와 공백/새문자 검사를 확인했다. completion_review.json에 범위와 CSV/체크포인트 SHA를 보존했다. 서버 정상 종료나 전체 분석 완료로 확대하지 않는다.
 - Git 개행 정규화 안내를 확인해 파생CSV의 로컬 개행도 게시된LF와 일치시켰다. completion_review의 CSV SHA도LF 기준으로 갱신해 다른 체크아웃에서 재현 가능하게 했다.80개 셀 값과 원시 실행 자료/판정은 변경하지 않았다.
+
+## 2026-11-02: 80회 오프라인 분석과 그래프/5장 원고 반영
+
+- 사용자가 결과 정리/분석/그래프와 논문 반영을 요청했다. main/9cc99e2, 원격보다9개 로컬 커밋 앞이고 변경 없는 상태에서 시작했다. README/STATUS/LINUX_HANDOFF, 기준선/명세/소스조사와 최종5장 목차/기존 본문을 확인했다. 단일 에이전트로 진행했고 서버/CAN/차량 실험은 추가하지 않았다. 서버 정상 종료는 미확인으로 유지했다.
+- tools/analyze_main_results.py에 원래80개 ID/claim/동결/기존 결과SHA/원시 로그 검증과 동결 oracle 재계산, 실패/결측 보존, 실행별 통계와 요구사항 추적표/40쌍 대응을 구현했다. 입력 원본 내부/기존 출력 폴더 쓰기를 거부한다. 콜백/순번 회전은FIFO로 대응하고 입력 종료 뒤 신규 사건은 본시험 지표에서 제외한다. 모든 측정값은 원래 시도 단위이며 N/A/미관측을0으로 바꾸지 않는다.
+- 실험용 Python3.10.12/.venv와 동결20개는 유지했다. 같은 Python으로 .venv-analysis를 만들고 Matplotlib3.10.8/NumPy2.2.6을 바이너리로 설치했다. 공식PyPI의Python3.10지원과 유지되는 프로젝트임을 확인했고 requirements-analysis.txt/lock에 정확한 버전을 남겼다. sudo/시스템 패키지/드라이버 변경은 없었다.
+- `.venv-analysis/bin/python -I tools/analyze_main_results.py --campaign runs/main-v1-20261101 --output-dir analysis/main-20261102` 종료코드0. 원시80개 재판정과 저장 체크 전체가80개 모두 일치했다. 결과70PASS/10FAIL/정리80PASS를 보존했다.741개 입력/보존소스 파일SHA와 분석코드/의존성/글꼴/대표ID를 analysis_manifest.json에 기록했다. 개발 중 중간 출력은 runs/analysis-development-01 및 analysis-figure-development-01에 보존하고 최종 통계와 구분했다.
+- tools/plot_main_results.py로 그래프5종을 각300dpiPNG/벡터SVG/PDF로 생성했다. 각 셀 첫반복R01 고정, 분포는10개 전부 표시, 호스트/시뮬레이션 시간 분리, 큰 일정지연/adapter 지연값도 보존했다. 그림을 열어 확인했고 요청분포 그림의 제목/상한설명 겹침을 수정한 뒤 최종 경로로 생성했다. PDF의NanumGothic 글꼴 포함을pdffonts로 확인했다. fontTools의TSI 보조테이블subset 안내는 기록했으며 글자/그림은 정상 확인했다.
+- 실제 통계에서 요청 중앙값은T-02 A0.1431045/B0.157046ms, T-03 A200.1608855/B200.205597ms, T-04 B200.206309ms였다. T-04 A는미관측10회로 보존했다. 최대송신일정지연43.512419ms와tick지연22.936023ms도 남겼다. 같은 반복의B-A 값이양수/음수 모두라 미세시각차이를연산성능우위로 단정하지 않았다. 정지50회 유지 완료는11frame/명목0.55초이며 실제실차 성능이나fault확률로 확대하지 않았다.
+- 초록과 제4~5장을 작성하고 제1~3장의 설계예정/환경/실행/분석 방법을 실제 기록에 맞췄다. tools/build_thesis_draft.py로 참고문헌을 끝에 모은 THESIS_DRAFT.md를 생성했다. 최종5장/10개 절 유지, 제출 계획서/HWP/연구기준선 수치는 변경하지 않았다. Matplotlib 공식인용 및 기존CARLA논문/SocketCAN/AUTOSAR의1차자료를 확인했다. HWP20쪽/학과 양식/지도교수 승인과 실제 시각화 사진은 확인하지 않았다.
+- 결측/미적용 구분,통계 분모,FIFO순번회전/종료경계,누락/SHA/출력보호/CSV개행의 새12개 검사를 추가했다. `bash tools/run_self_checks.sh check` 종료코드0,전체285개OK,pip/셸문법/공백PASS. 분석환경의 `pip --no-cache-dir --disable-pip-version-check check`도PASS다. evidence/analysis/2026-11-02/gate_checks.json에 실제 출력을 보존했다. 사용자 재현 명령과 결과/판정은 ANALYSIS_REPORT_2026-11-02.md에 남겼다.
+- README/STATUS/LINUX_HANDOFF/REMAINING_STEPS/MAIN_RESULTS를 분석/검토용 원고 반영 완료와 최종 편집 대기로 갱신했다. 기능검증/원시실험자료는 유지했고 추가push나브랜치변경은 하지 않는다. 남은 것은 사용자원고검토/서버종료확인/본시험외촬영/HWP편집/교수피드백이다.
+- 최종 검토PASS: 원본/보존소스741개와 분석코드SHA 일치, CSV행수80/8/64/72/40, 실패10건/결측 분모 유지, 논문표4-2/4-3/4-4의 수치와CSV 일치를 확인했다. 그림15개SHA/형식과PDF5개글꼴포함, 통합원고5장/10절/참고문헌9개 및 재생성byte동일, 로컬링크153개를 확인했다. evidence/analysis/2026-11-02/final_review.json에 실제 결과를 보존했다. 원시실험파일과 동결20개에는 변경이 없었다.
