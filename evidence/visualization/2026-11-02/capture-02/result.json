@@ -1,0 +1,49 @@
+{
+  "scope": "RECORDED_POSE_VISUALIZATION_ONLY",
+  "started_utc": "2026-11-02T06:11:24.888205+00:00",
+  "actual_can": false,
+  "main_trials_executed": 0,
+  "new_performance_trials": 0,
+  "selection_rule": "각 조건 첫 반복 R01, 고정 호스트 시각 또는 원본 정지 유지 완료 프레임",
+  "notice": "본시험 후 원본 위치 로그로 별도 구성한 사진. 새 주행/제동 측정이 아님. 속도/제어값은 원본 로그.",
+  "analysis_manifest_sha256": "00723e7702213b029e2abca1f8d9f591e1d63db9c79378d0533be15429b72bdc",
+  "source_sha256": "13c25bee6549548758ce833acc4e932de72eede7117713cad19460ab4b5e284f",
+  "original_inputs_before": {
+    "status": "PASS",
+    "verified_files": 741
+  },
+  "captures": [],
+  "capture_status": "INCOMPLETE",
+  "server_command": [
+    "/home/parkjuwon/can-stop-request-validation/third_party/CARLA_0.9.15/CarlaUE4/Binaries/Linux/CarlaUE4-Linux-Shipping",
+    "CarlaUE4",
+    "-RenderOffScreen",
+    "-nosound",
+    "-quality-level=Low",
+    "-carla-rpc-port=2000"
+  ],
+  "owned_server_pid": 17594,
+  "readiness_errors": [],
+  "client_version": "0.9.15",
+  "server_version": "0.9.15",
+  "remaining_relevant_actors": [],
+  "cleanup_errors": [],
+  "cleanup_status": "PASS",
+  "error": "RuntimeError: Spawn failed because of collision at spawn position",
+  "server_shutdown": {
+    "status": "NOT_NORMAL",
+    "returncode": -11,
+    "shell_equivalent_code": 139,
+    "fatal_markers": [
+      "Signal 11"
+    ],
+    "ports_open_after": [],
+    "owned_group_remaining": [],
+    "fallback_signals": []
+  },
+  "original_inputs_after": {
+    "status": "PASS",
+    "verified_files": 741
+  },
+  "finished_utc": "2026-11-02T06:11:43.101941+00:00"
+}

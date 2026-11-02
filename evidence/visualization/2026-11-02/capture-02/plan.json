@@ -1,0 +1,278 @@
+[
+  {
+    "image": "01-normal.png",
+    "run_id": "M-T-01-R01-A",
+    "selector": 2.0,
+    "description": "정상 원거리 주행 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 77293,
+      "simulation_time_s": 399.88033669348806,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 18611563951109,
+      "tick_begin_monotonic_ns": 18611563046538,
+      "tick_done_monotonic_ns": 18611563951109,
+      "control_begin_monotonic_ns": 18611563011842,
+      "control_done_monotonic_ns": 18611563046538,
+      "scheduled_tick_monotonic_ns": 18611562971469,
+      "schedule_lateness_ns": 40373,
+      "actor_id": 149,
+      "control_source": "drive",
+      "velocity_mps": {
+        "x": 0.003225235268473625,
+        "y": -1.4191112518310547,
+        "z": -1.163482693300466e-06
+      },
+      "speed_mps": 1.4191149168464265,
+      "transform": {
+        "x": -493.48663330078125,
+        "y": 212.67279052734375,
+        "z": 0.0016777229029685259,
+        "pitch": 0.00012294339830987155,
+        "yaw": -89.86934661865234,
+        "roll": -6.103515625e-05
+      },
+      "applied_control": {
+        "throttle": 0.12018444389104843,
+        "brake": 0.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 2.044612699,
+    "source_run_status": "PASS",
+    "source_map": "Carla/Maps/Town04"
+  },
+  {
+    "image": "02-near-before.png",
+    "run_id": "M-T-02-R01-B",
+    "selector": 12.0,
+    "description": "근거리 요청 전 주행 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 267619,
+      "simulation_time_s": 1895.3707808307372,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 20130112755504,
+      "tick_begin_monotonic_ns": 20130111420087,
+      "tick_done_monotonic_ns": 20130112755504,
+      "control_begin_monotonic_ns": 20130111382457,
+      "control_done_monotonic_ns": 20130111420087,
+      "scheduled_tick_monotonic_ns": 20130111312894,
+      "schedule_lateness_ns": 69563,
+      "actor_id": 170,
+      "control_source": "drive",
+      "velocity_mps": {
+        "x": -0.004893263801932335,
+        "y": -1.3906794786453247,
+        "z": 8.201598689083767e-07
+      },
+      "speed_mps": 1.3906880873710925,
+      "transform": {
+        "x": -493.48626708984375,
+        "y": 198.8598175048828,
+        "z": 0.0016775322146713734,
+        "pitch": 0.00013660377589985728,
+        "yaw": -90.19811248779297,
+        "roll": -3.051757266803179e-05
+      },
+      "applied_control": {
+        "throttle": 0.12423708289861679,
+        "brake": 0.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 12.010706683,
+    "source_run_status": "PASS",
+    "source_map": "Carla/Maps/Town04"
+  },
+  {
+    "image": "03-near-stop.png",
+    "run_id": "M-T-02-R01-B",
+    "selector": "stop_hold",
+    "description": "근거리 요청 후 정지 유지 완료 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 267650,
+      "simulation_time_s": 1896.920780853834,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 20131664656433,
+      "tick_begin_monotonic_ns": 20131663903185,
+      "tick_done_monotonic_ns": 20131664656433,
+      "control_begin_monotonic_ns": 20131663902855,
+      "control_done_monotonic_ns": 20131663903185,
+      "scheduled_tick_monotonic_ns": 20131663819556,
+      "schedule_lateness_ns": 83299,
+      "actor_id": 170,
+      "control_source": "latched_can",
+      "velocity_mps": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed_mps": 0.0,
+      "transform": {
+        "x": -493.4900207519531,
+        "y": 197.49636840820312,
+        "z": 0.001748638111166656,
+        "pitch": -0.011993811465799809,
+        "yaw": -90.23910522460938,
+        "roll": -6.103522173361853e-05
+      },
+      "applied_control": {
+        "throttle": 0.0,
+        "brake": 1.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 13.562607612,
+    "source_run_status": "PASS",
+    "source_map": "Carla/Maps/Town04"
+  },
+  {
+    "image": "04-timeout-stop.png",
+    "run_id": "M-T-03-R01-B",
+    "selector": "stop_hold",
+    "description": "거리 수신 중단 후 정지 유지 완료 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 346801,
+      "simulation_time_s": 2849.682601100998,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 21095064826560,
+      "tick_begin_monotonic_ns": 21095063909005,
+      "tick_done_monotonic_ns": 21095064826560,
+      "control_begin_monotonic_ns": 21095063908494,
+      "control_done_monotonic_ns": 21095063909005,
+      "scheduled_tick_monotonic_ns": 21095063802964,
+      "schedule_lateness_ns": 105530,
+      "actor_id": 190,
+      "control_source": "latched_can",
+      "velocity_mps": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed_mps": 0.0,
+      "transform": {
+        "x": -493.476318359375,
+        "y": 208.333740234375,
+        "z": 0.0017491340404376388,
+        "pitch": -0.012089434079825878,
+        "yaw": -89.93987274169922,
+        "roll": -6.103480700403452e-05
+      },
+      "applied_control": {
+        "throttle": 0.0,
+        "brake": 1.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 5.745019432,
+    "source_run_status": "PASS",
+    "source_map": "Carla/Maps/Town04"
+  },
+  {
+    "image": "05-repeat-A.png",
+    "run_id": "M-T-04-R01-A",
+    "selector": 9.0,
+    "description": "반복 입력 복원 후 A의 계속 주행 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 421603,
+      "simulation_time_s": 3763.4369195649633,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 22019101434463,
+      "tick_begin_monotonic_ns": 22019100654404,
+      "tick_done_monotonic_ns": 22019101434463,
+      "control_begin_monotonic_ns": 22019100621100,
+      "control_done_monotonic_ns": 22019100654404,
+      "scheduled_tick_monotonic_ns": 22019100553752,
+      "schedule_lateness_ns": 67348,
+      "actor_id": 209,
+      "control_source": "drive",
+      "velocity_mps": {
+        "x": -0.0018492011586204171,
+        "y": -1.3936741352081299,
+        "z": -5.149840944795869e-07
+      },
+      "speed_mps": 1.3936753620169418,
+      "transform": {
+        "x": -493.47552490234375,
+        "y": 203.0262908935547,
+        "z": 0.00167760846670717,
+        "pitch": 0.00013660377589985728,
+        "yaw": -90.0727767944336,
+        "roll": -3.0517576306010596e-05
+      },
+      "applied_control": {
+        "throttle": 0.12412288039922714,
+        "brake": 0.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 9.008009256,
+    "source_run_status": "FAIL",
+    "source_map": "Carla/Maps/Town04"
+  },
+  {
+    "image": "06-repeat-B.png",
+    "run_id": "M-T-04-R01-B",
+    "selector": 9.0,
+    "description": "반복 입력 복원 후 B의 정지 잠금 위치",
+    "source_sample": {
+      "phase": "g4",
+      "frame": 422285,
+      "simulation_time_s": 3796.5983346138382,
+      "simulation_delta_s": 0.05000000074505806,
+      "host_monotonic_ns": 22052578989289,
+      "tick_begin_monotonic_ns": 22052577667456,
+      "tick_done_monotonic_ns": 22052578989289,
+      "control_begin_monotonic_ns": 22052577667085,
+      "control_done_monotonic_ns": 22052577667456,
+      "scheduled_tick_monotonic_ns": 22052577606335,
+      "schedule_lateness_ns": 60750,
+      "actor_id": 210,
+      "control_source": "latched_can",
+      "velocity_mps": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed_mps": 0.0,
+      "transform": {
+        "x": -493.476318359375,
+        "y": 208.333740234375,
+        "z": 0.0017491340404376388,
+        "pitch": -0.012089434079825878,
+        "yaw": -89.93987274169922,
+        "roll": -6.103480700403452e-05
+      },
+      "applied_control": {
+        "throttle": 0.0,
+        "brake": 1.0,
+        "steer": 0.0,
+        "hand_brake": false,
+        "reverse": false,
+        "gear": 1
+      }
+    },
+    "source_host_from_t0_s": 9.000460706,
+    "source_run_status": "PASS",
+    "source_map": "Carla/Maps/Town04"
+  }
+]

@@ -34,6 +34,8 @@ logs/
 *.log
 # 예비시험 원시 로그는 로컬에 보존하고 요약과 SHA 목록만 게시한다.
 /evidence/manual/preliminary-20261101T093650388216046Z-97982/*/*.jsonl
+# 촬영 개발 시도의 중복 사진은 로컬에 보존하고 최종 capture-04만 공유한다.
+/evidence/visualization/2026-11-02/capture-03/captures/
 
 # Editors and OS
 .vscode/

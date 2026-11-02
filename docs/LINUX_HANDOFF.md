@@ -2,6 +2,8 @@
 
 ## 현재 인수인계: 2026-11-01 G4
 
+2026-11-02 후속 촬영/종료 확인: 사용자 명시 위임으로 Codex가 전용 서버를 직접 실행했다. [사진6개와 캡션/재현](CARLA_CAPTURES_2026-11-02.md), [capture-04](../evidence/visualization/2026-11-02/capture-04/result.json). 본시험 위치를 별도 배치한 설명용 사진이며 물리/CAN/주행 성능 시험은 아니다. 최종 사진/자원 정리PASS, 원본741개SHA 유지, 전체297개 검사PASS. 종료 시Signal11/139 재현으로 NOT_NORMAL, 포트/GPU에CARLA잔존 없음. 이번Signal11은3건이며 기존4건 포함7건, 원인 미해결이다. 다음은 Windows에서 사용자의 원고/HWP 편집과 사진 선택, 별도 서버 crash 조사다. 본시험80회/70PASS/10FAIL은 유지한다. 아래 미촬영/종료 미확인은 과거 단계 기록이다.
+
 2026-11-02 최신 분석 완료: 원시80개를 동결 oracle로 재판정해 저장 결과와80개 모두 일치했다. 통계/추적표/40쌍 대응과 그래프5종(PNG/SVG/PDF)을 analysis/main-20261102에 작성했다. [분석/재현 안내](ANALYSIS_REPORT_2026-11-02.md), [최종5장 통합 원고](THESIS_DRAFT.md). 제1~3장의 실행 상태를 갱신하고 제4~5장과 초록을 작성했다. 전체285개 검사와 분석 환경 pip check PASS, 추가실험0회다. 서버 정상 종료/사진 촬영/HWP 편집/교수 검토는 미확인이다.
 
 최신 실행 완료: **시도80/COMPLETE80/미시작0, 결과PASS70/FAIL10, 정리PASS80**. FAIL은전부A/T-04의R-04 STOP_NOT_OBSERVED다. B/T-04는reason3 요청/실제 정지/복원 후 제동 유지10회PASS다. checkpoint-080.json, main_run_summary.csv와 [결과 요약](MAIN_RESULTS_2026-11-01.md)에 근거와 해석을 남겼다. 앞선60회 결과/metadata SHA 유지와 마지막20회의 원시 송수신/반복payload/복원/실제 움직임/제동을 별도로 대조했다.

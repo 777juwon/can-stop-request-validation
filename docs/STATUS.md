@@ -4,13 +4,15 @@ Updated: 2026-11-02 (한국 시각)
 
 ## Current state
 
+2026-11-02 후속 위임: Codex가 전용 CARLA 서버를 시작해 원본 위치 로그를 재구성한 설명용 사진6개를 저장하고 실제 종료를 점검했다. [사진/캡션/명령](CARLA_CAPTURES_2026-11-02.md), [최종 촬영 결과](../evidence/visualization/2026-11-02/capture-04/result.json). 사진 저장PASS/차량·카메라 제거 및 설정 복구PASS, 원본741개SHA 전후 일치, 새12개 포함297개 코드 검사PASS다. CAN/주행 성능 시험은 추가하지 않았다. 종료는SIGINT 뒤Signal11/139가 다시 발생해 NOT_NORMAL이다. 포트2000/2001과GPU에CARLA프로세스가 남지 않은 것은 별도로 확인했다. 이번3회Signal11 재현을 기존4건에 더해 관측7건이며 원인은 미해결이다. 초기API대기/생성충돌/이전snapshot정리오인 시도도 보존했다. 원고 검토/HWP 편집은 사용자가 Windows에서 진행하고, 사진은 설명용으로 선택해 사용한다. 아래 촬영 미완료/종료 미실행 표시는 이 후속 작업 이전 상태다.
+
 본시험 실행 완료: **시도80/COMPLETE80/미시작0, 결과PASS70/FAIL10, 자원 정리PASS80**. FAIL10건은 모두 A/T-04의R-04 STOP_NOT_OBSERVED다. 예상한 비교 결과를 보존했으며 추가 실행으로 대체하지 않았다.
 
 분석/원고 반영 완료: 원시80개를 동결 oracle로 오프라인 재계산해 과거 판정과80개 모두 일치를 확인했다. 실행별 지표/셀별 통계/요구사항 추적표/40쌍 대응CSV와 그래프5종(PNG/SVG/PDF)을 생성했다. [분석 보고서와 재현 명령](ANALYSIS_REPORT_2026-11-02.md), [최종5장 통합 원고](THESIS_DRAFT.md). 제1~3장은 실제 수행 상태로 갱신했고 제4~5장과 초록을 작성했다. 기존FAIL과 N/A는 보존했다. 새 분석 검사12개 포함 전체285개PASS, 두 Python 환경의 의존성 검사PASS다. 신규 실험은0회다.
 
 [80회 결과 요약](MAIN_RESULTS_2026-11-01.md), [최종 체크포인트](../evidence/implementation/main-preparation-20261101-01/checkpoint-080.json), [80행CSV](../evidence/implementation/main-preparation-20261101-01/main_run_summary.csv). 앞선60회 결과/metadata SHA 유지와 마지막20회의 반복payload/심박/복원/원시 관측/동결을 확인했다. A는10회 모두 미요청/계속 주행, B는10회 모두reason3 요청/실제 정지/복원 후 잠금 유지다. B의 마지막 신규 거리 송신 완료 뒤 요청 관측200.122921~200.278851ms, adapter 처리 최대23.853492ms였다. 기존 기준은 변경하지 않았다.
 
-남은 작업은 서버 종료 결과 기록, 별도 시각화 촬영, HWP 학교 양식/실제20쪽 편집과 지도교수 검토다. 각 실행의 자원 복구는 확인됐고 서버 프로세스 종료는 아직 미확인이다. 기존 Ctrl+C Signal11/139 문제는 별도로 유지한다. 원래80회를 재실행하거나FAIL을 삭제하지 않는다. 아래 분석 대기/진행 중/0/80 표시는 이전 기록이다.
+남은 작업은 서버 종료 crash의 원인 조사, 사용자의 사진 선택과 Windows 원고 검토/HWP 학교 양식/실제20쪽 편집, 지도교수 검토다. 촬영용 서버는 종료됐으나 정상 종료는 확인하지 못했다. 원래80회를 재실행하거나FAIL을 삭제하지 않는다. 아래 분석 대기/진행 중/0/80 표시는 이전 기록이다.
 
 최신 개발 확인2개 완료: 사용자 B/T-04에 이어 `runs/check-A-T01-01`도 COMPLETE/전체PASS/cleanupPASS다. 정상 거리400개와 순번 회전, 본 구간 정지 요청/adapter 제동0회 및 실제 주행을 별도 대조했다. R-01/R-05/R-09 PASS, R-06/R-07 N/A다. [A 검토](../evidence/implementation/main-preparation-20261101-01/user-A-T01-review.json), [B 검토](../evidence/implementation/main-preparation-20261101-01/user-B-T04-review.json). 동결 설정과 기존 계획을 확인했으며 시도0/완료0/미시작80이다. 다음은 사용자 본시험 `M-T-01-R01-A` 1회 실행이다. 아래 A 개발 확인 대기는 이전 상태다.
 

@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "scope": "CAPTURE_ARTIFACT_REVIEW_ONLY_SERVER_SHUTDOWN_NOT_NORMAL",
+  "original_files_verified": 741,
+  "original_80_outcomes_unchanged": true,
+  "new_performance_trials": 0,
+  "images": [
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/01-normal.png",
+      "sha256": "affe4890dcfe8795d621faf59de138e90e2c93e6253737d6a1f4d67453b0d30d",
+      "bytes": 1939687,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 3.0078126656007953e-07,
+        "y": 4.726562394807843e-07,
+        "z": 2.770970314741345e-07,
+        "pitch": 5.6601690128453824e-08,
+        "yaw": 3.813476610048383e-07,
+        "roll": 3.515625000000128e-08
+      }
+    },
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/02-near-before.png",
+      "sha256": "be3859493a54927c01f40e38f7780a41ce0d20b22340e053e3b09b0f6093e4fe",
+      "bytes": 1950177,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 3.0089843733094312e-05,
+        "y": 4.951171774791874e-07,
+        "z": 4.6778532862665374e-07,
+        "pitch": 3.962241001427135e-07,
+        "yaw": 4.877929740132458e-07,
+        "roll": 4.82427331968212e-07
+      }
+    },
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/03-near-stop.png",
+      "sha256": "94d127d11453759f5fd24a570eb1e436e2fe53553c52f7a645b64c086f8514c8",
+      "bytes": 1994240,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 2.4804688791846274e-07,
+        "y": 4.0820313529366103e-07,
+        "z": 3.618888333438864e-07,
+        "pitch": 1.8853420019095124e-07,
+        "yaw": 2.2460937998403097e-07,
+        "roll": 3.522173361852893e-08
+      }
+    },
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/04-timeout-stop.png",
+      "sha256": "8ea4becd34021c61df4b51a782a643878311ff746c0f4a9bf5bbee2351da3729",
+      "bytes": 1988763,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 3.5937500797444955e-07,
+        "y": 2.343749940791895e-07,
+        "z": 1.340404376388559e-07,
+        "pitch": 4.340798258773565e-07,
+        "yaw": 3.074169922001602e-05,
+        "roll": 3.4807004034520474e-08
+      }
+    },
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/05-repeat-A.png",
+      "sha256": "8cd1b675ac234ed11724e545e72527f6ba9edcbb2145ccdd82db57fc186d0c14",
+      "bytes": 1994189,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 3.090234372393752e-05,
+        "y": 1.0644529879755282e-07,
+        "z": 3.9153329283001144e-07,
+        "pitch": 3.962241001427135e-07,
+        "yaw": 2.0556640834001882e-07,
+        "roll": 4.824236939894049e-07
+      }
+    },
+    {
+      "path": "evidence/visualization/2026-11-02/capture-04/captures/06-repeat-B.png",
+      "sha256": "5147f98a2260fb8bb6b0797fbe77e983166e6e97ac5cb096fb224bd8ab7b55cb",
+      "bytes": 1988292,
+      "size": [
+        1600,
+        900
+      ],
+      "nonuniform_pixels": true,
+      "rendered_pose_absolute_difference": {
+        "x": 3.5937500797444955e-07,
+        "y": 2.343749940791895e-07,
+        "z": 1.340404376388559e-07,
+        "pitch": 4.340798258773565e-07,
+        "yaw": 3.074169922001602e-05,
+        "roll": 3.4807004034520474e-08
+      }
+    }
+  ],
+  "visual_review": "실제 PNG 6개를 모두 열어 차량과 도로가 보이는 것을 확인",
+  "pose_note": "위치는m,각도는degree.표현/배치의미세차이를기록하며새성능허용기준이아님.완전한수치동일성은주장하지않음.",
+  "photo_table_matches_source": true,
+  "source_snapshots_match": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "capture_status": "INCOMPLETE",
+      "returncode": 130,
+      "server_log_sha256": "6b8ff45f2044dfe6cc18da416e3e5333ee075972a61227f6a46527bc86a8532e",
+      "server_log_excerpt": "FUnixPlatformMisc::RequestExitWithStatus\n\u0000FUnixPlatformMisc::RequestExit\n\u00004.26.2-0+++UE4+Release-4.26 522 0\nDisabling core dumps.\nExiting abnormally (error code: 130)\n"
+    },
+    {
+      "attempt": 2,
+      "capture_status": "INCOMPLETE",
+      "returncode": -11,
+      "server_log_sha256": "dde02e4b92a0b65c12099c8057bb85bda163384882894de743332e9604c56e7c",
+      "server_log_excerpt": "4.26.2-0+++UE4+Release-4.26 522 0\nDisabling core dumps.\nERROR: session 0 : error retrieving stream id : End of file \nFUnixPlatformMisc::RequestExitWithStatus\n\u0000FUnixPlatformMisc::RequestExit\n\u0000Signal 11 caught.\nMalloc Size=65538 LargeMemoryPoolOffset=65554 \nMalloc Size=131160 LargeMemoryPoolOffset=196744 \nMalloc Size=131160 LargeMemoryPoolOffset=327928 \nCommonUnixCrashHandler: Signal=11\nEngine crash handling finished; re-raising signal 11 for the default handler. Good bye.\n"
+    },
+    {
+      "attempt": 3,
+      "capture_status": "CLEANUP_ERROR",
+      "returncode": -11,
+      "server_log_sha256": "dde02e4b92a0b65c12099c8057bb85bda163384882894de743332e9604c56e7c",
+      "server_log_excerpt": "4.26.2-0+++UE4+Release-4.26 522 0\nDisabling core dumps.\nERROR: session 0 : error retrieving stream id : End of file \nFUnixPlatformMisc::RequestExitWithStatus\n\u0000FUnixPlatformMisc::RequestExit\n\u0000Signal 11 caught.\nMalloc Size=65538 LargeMemoryPoolOffset=65554 \nMalloc Size=131160 LargeMemoryPoolOffset=196744 \nMalloc Size=131160 LargeMemoryPoolOffset=327928 \nCommonUnixCrashHandler: Signal=11\nEngine crash handling finished; re-raising signal 11 for the default handler. Good bye.\n"
+    },
+    {
+      "attempt": 4,
+      "capture_status": "PASS",
+      "returncode": -11,
+      "server_log_sha256": "dde02e4b92a0b65c12099c8057bb85bda163384882894de743332e9604c56e7c",
+      "server_log_excerpt": "4.26.2-0+++UE4+Release-4.26 522 0\nDisabling core dumps.\nERROR: session 0 : error retrieving stream id : End of file \nFUnixPlatformMisc::RequestExitWithStatus\n\u0000FUnixPlatformMisc::RequestExit\n\u0000Signal 11 caught.\nMalloc Size=65538 LargeMemoryPoolOffset=65554 \nMalloc Size=131160 LargeMemoryPoolOffset=196744 \nMalloc Size=131160 LargeMemoryPoolOffset=327928 \nCommonUnixCrashHandler: Signal=11\nEngine crash handling finished; re-raising signal 11 for the default handler. Good bye.\n"
+    }
+  ],
+  "local_document_links_verified": 166,
+  "post_capture_ports": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+  "post_capture_gpu_query": {
+    "command": "nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader",
+    "returncode": 0,
+    "stdout": ""
+  },
+  "gate_checks": {
+    "tests": 297,
+    "returncode": 0
+  },
+  "server_shutdown": {
+    "status": "NOT_NORMAL",
+    "returncode": -11,
+    "shell_equivalent_code": 139,
+    "fatal_markers": [
+      "Signal 11"
+    ],
+    "ports_open_after": [],
+    "owned_group_remaining": [],
+    "fallback_signals": []
+  }
+}
