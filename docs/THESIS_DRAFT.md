@@ -91,9 +91,9 @@ CAN과 CARLA를 연결하는 참고 구현으로는 공개 프로젝트인 Yes, 
 
 | ID 및 메시지 | 바이트 배치 | 송신 조건 |
 | --- | --- | --- |
-| 0x100 DistanceInput | 0~1: distance_cm(uint16), 2: counter(uint8), 3: valid(uint8), 4~7: run_token(uint32) | 정상 구간에서 50 ms 주기 |
-| 0x101 BackgroundHeartbeat | 0: counter(uint8), 1~3: 0, 4~7: run_token(uint32) | 거리 메시지 이상 중에도 50 ms 주기 |
-| 0x200 StopRequest | 0: stop(uint8), 1: reason(uint8), 2: counter(uint8), 3: 0, 4~7: run_token(uint32) | 상태 전이 즉시, 이후 50 ms 주기 |
+| 0x100 DistanceInput | 0∼1: distance_cm(uint16), 2: counter(uint8), 3: valid(uint8), 4∼7: run_token(uint32) | 정상 구간에서 50 ms 주기 |
+| 0x101 BackgroundHeartbeat | 0: counter(uint8), 1∼3: 0, 4∼7: run_token(uint32) | 거리 메시지 이상 중에도 50 ms 주기 |
+| 0x200 StopRequest | 0: stop(uint8), 1: reason(uint8), 2: counter(uint8), 3: 0, 4∼7: run_token(uint32) | 상태 전이 즉시, 이후 50 ms 주기 |
 
 distance_cm의 유효 범위는 0~10,000 cm이며 valid=1인 입력만 인정한다. ID, 길이, 현재 시험의 run_token과 디코딩 결과를 함께 확인하고 잘못된 입력은 거리 값과 감시 시각의 갱신에 사용하지 않는다. run_token은 다른 실행의 프레임을 구분하기 위한 식별값이며 보안 인증값은 아니다. 배경 심박은 버스의 다른 통신이 유지되는 상황을 만들기 위한 것으로 거리 메시지의 감시 시각을 갱신하지 않는다.
 
